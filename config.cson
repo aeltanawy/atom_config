@@ -8,6 +8,10 @@
     projectHome: "/Users/eltanawy/"
     reopenProjectMenuCount: 5
     telemetryConsent: "no"
+    themes: [
+      "atom-light-ui"
+      "one-dark-syntax"
+    ]
   editor:
     fontSize: 15
     showIndentGuide: true
