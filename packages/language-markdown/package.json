@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "lib-ass": "0.0.6",
-    "lodash": "^3.10.1",
+    "lodash": "4.17.5",
     "season": "^5.3"
   },
   "description": "Adds grammar support for Markdown (including Github flavored, AtomDoc, Markdown Extra, CriticMark, YAML/TOML front-matter, and R Markdown), and smart context-aware behavior to lists, and keyboard shortcuts for inline emphasis.",
