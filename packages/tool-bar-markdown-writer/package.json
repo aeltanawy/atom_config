@@ -1,0 +1,78 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-71802-1verwez.jm09la0pb9"
+    ]
+  ],
+  "_from": "../d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+  "_id": "tool-bar-markdown-writer@0.4.0",
+  "_inCache": true,
+  "_location": "/tool-bar-markdown-writer",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+  "_shasum": "f2f211eb4111660fdbfa59c0387e4684d7ca865f",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-71802-1verwez.jm09la0pb9",
+  "bugs": {
+    "url": "https://github.com/zhuochun/tool-bar-md-writer/issues"
+  },
+  "consumedServices": {
+    "tool-bar": {
+      "versions": {
+        "^0 || ^1": "consumeToolBar"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-package-deps": "^4.3.1"
+  },
+  "description": "A tool-bar plugin that adds Markdown editing actions",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/zhuochun/tool-bar-md-writer#readme",
+  "keywords": [
+    "tool-bar",
+    "markdown",
+    "markdown-writer",
+    "writing"
+  ],
+  "license": "MIT",
+  "main": "./lib/tool-bar-markdown-writer",
+  "name": "tool-bar-markdown-writer",
+  "optionalDependencies": {},
+  "package-deps": [
+    "tool-bar",
+    "markdown-writer"
+  ],
+  "readme": "# Toolbar for Markdown-Writer\n\n[![Apm Version](https://img.shields.io/apm/v/tool-bar-markdown-writer.svg)](https://atom.io/packages/tool-bar-markdown-writer)\n[![Apm Downloads](https://img.shields.io/apm/dm/tool-bar-markdown-writer.svg)](https://atom.io/packages/tool-bar-markdown-writer)\n\nA tool-bar plugin that adds Markdown editing buttons.\n\nPowered with [Markdown Writer](https://atom.io/packages/markdown-writer) and [Atom Tool Bar](https://atom.io/packages/tool-bar).\n\n![Toolbar for Markdown-Writer](http://i.imgur.com/GK5zB1L.png)\n\n## Installation\n\n```\napm install tool-bar markdown-writer tool-bar-markdown-writer\n```\n\n## Tricks\n\n- `shift` + **New Post**: Add New Draft\n- `shift` + **Insert Link**: Open Link in Browser\n- `shift` + **Code**: Insert Code Block\n- `shift` + **Ordered List**: Format Ordered List Numbers\n- `shift` + **Task List**: Toggle Task Done/Undone\n\n## Configuration\n\n- **Visibility**:\n  - `showToolbarOnMarkdown`: show toolbar in Markdown files.\n  - `showButtonsOnMarkdown`: show Markdown buttons in Markdown files. Useful when you have multiple plugins installed.\n  - `showButtonsOnAll`: always show toolbar and Markdown buttons\n- **Grammars**:\n  - An array of file types to be treated as Markdown files.\n- **Critic Markup**:\n  - A boolean to show or not CriticMarkup buttons.\n\nHappy writing!\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuochun/tool-bar-md-writer.git"
+  },
+  "version": "0.4.0"
+}

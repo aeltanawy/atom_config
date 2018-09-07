@@ -1,0 +1,27 @@
+"*":
+  "autocomplete-python":
+    useKite: false
+  core:
+    disabledPackages: [
+      "language-gfm"
+    ]
+    projectHome: "/Users/eltanawy/"
+    reopenProjectMenuCount: 5
+    telemetryConsent: "no"
+  editor:
+    fontSize: 15
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    zoomFontWhenCtrlScrolling: true
+  "exception-reporting":
+    userId: "6e913096-91d7-4f3e-ab51-6c2f4585cd82"
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  welcome:
+    showOnStartup: false
