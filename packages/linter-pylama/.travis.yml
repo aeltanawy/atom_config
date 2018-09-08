@@ -1,0 +1,42 @@
+matrix:
+  include:
+    - os: linux
+      language: python
+      env: ATOM_CHANNEL=stable
+    - os: linux
+      language: python
+      env: ATOM_CHANNEL=beta
+    - os: osx
+      language: generic
+      env: ATOM_CHANNEL=stable
+    - os: osx
+      language: generic
+      env: ATOM_CHANNEL=beta
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ln -s $(which python2) /usr/local/bin/python; ln -s $(which pip2) /usr/local/bin/pip; fi
+  - pip install pylama pylama_pylint
+
+script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+sudo: false
+
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+      - fakeroot
+      - git
+      - libsecret-1-dev
+
+git:
+  depth: 10

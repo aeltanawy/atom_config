@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59278-4zkym5.qanq5pcik9"
+    ]
+  ],
+  "_from": "../d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+  "_id": "linter-selective@0.3.1",
+  "_inCache": true,
+  "_location": "/linter-selective",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+  "_shasum": "39cb3fce95a16a4d260229e45592bbe16128305e",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59278-f6k2ic.542zh93sor/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59278-4zkym5.qanq5pcik9",
+  "bugs": {
+    "url": "https://github.com/ChristianMurphy/linter-selective/issues"
+  },
+  "dependencies": {
+    "@selective/atom": "0.2.8"
+  },
+  "description": "Atom bindings for selective",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.7.0 <2.0.0"
+  },
+  "homepage": "https://github.com/ChristianMurphy/linter-selective#readme",
+  "keywords": [
+    "lint",
+    "linter",
+    "html",
+    "selector",
+    "rehype"
+  ],
+  "license": "MIT",
+  "main": "./linter.js",
+  "name": "linter-selective",
+  "optionalDependencies": {},
+  "package-deps": [
+    "linter"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "readme": "# Selective Atom Plugin\n\n[![apm](https://img.shields.io/apm/v/linter-selective.svg)](https://atom.io/packages/linter-selective)\n[![Linux Build Status](https://travis-ci.org/ChristianMurphy/selective.svg?branch=master)](https://travis-ci.org/ChristianMurphy/selective)\n[![Windows Build status](https://ci.appveyor.com/api/projects/status/5vcbepc478hkyt2f/branch/master?svg=true)](https://ci.appveyor.com/project/ChristianMurphy/selective/branch/master)\n\n> Use CSS selectors to find HTML anti-patterns\n\n```bash\napm install linter-selective\n```\n\n![selective lint example](docs/selective-lint-example.gif)\n\n## References\n\n* [Selective](https://github.com/ChristianMurphy/selective)\n* [Atom Linter](https://atom.io/packages/linter)\n* [Rehype](https://github.com/rehypejs/rehype)\n* [CSS Selectors](https://developer.mozilla.org/en-us/docs/web/css/css_selectors)\n",
+  "readmeFilename": "README.md",
+  "renovate": {
+    "extends": [
+      "config:base"
+    ],
+    "automerge": true,
+    "major": {
+      "automerge": false
+    },
+    "lockFileMaintenance": {
+      "enabled": true
+    },
+    "semanticPrefix": "chore:",
+    "semanticCommitScope": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianMurphy/linter-selective.git"
+  },
+  "version": "0.3.1"
+}

@@ -1,0 +1,72 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59246-f68z3q.l29gdgqfr"
+    ]
+  ],
+  "_from": "../d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+  "_id": "linter-liferay@3.0.0",
+  "_inCache": true,
+  "_location": "/linter-liferay",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+  "_shasum": "b15f2821720e3848a7cd176fc083fef87dc88c7e",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-1gwh0bl.shgixxn7b9/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59246-f68z3q.l29gdgqfr",
+  "author": {
+    "name": "Michael Hadley"
+  },
+  "bugs": {
+    "url": "https://github.com/mthadley/linter-liferay/issues"
+  },
+  "dependencies": {
+    "atom-linter": "^8.0.0",
+    "check-source-formatting": "^2.0.0-rc.6"
+  },
+  "description": "Linter plugin for Liferay, using check-source-formatting",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "homepage": "https://github.com/mthadley/linter-liferay#readme",
+  "license": "MIT",
+  "main": "./lib/init",
+  "name": "linter-liferay",
+  "optionalDependencies": {},
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "readme": "# Linter-Liferay\n\n[![Build Status](https://travis-ci.org/mthadley/linter-liferay.svg?branch=master)](https://travis-ci.org/mthadley/linter-liferay)\n\n`linter-liferay` is a [Linter](https://github.com/AtomLinter/Linter) plugin that uses [check-source-formatting](https://github.com/natecavanaugh/check-source-formatting) to lint your code against Liferay's source formatting guidelines.\n\n## Installation\n\nRun the following in a terminal:\n\n```ShellSession\n$ apm install linter linter-liferay\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mthadley/linter-liferay.git"
+  },
+  "version": "3.0.0"
+}

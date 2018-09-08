@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-61007-2hdajd.dvyisy8pvi"
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59246-a6hsui.2o81gaatt9"
     ]
   ],
-  "_from": "../d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
+  "_from": "../d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
   "_id": "linter@2.2.0",
   "_inCache": true,
   "_location": "/linter",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
+  "_resolved": "file:../d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
   "_shasum": "58c53b67851cb486e4d3d1d033438122fbf82104",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-61007-1hni8w7.xq9m4mquxr/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-61007-2hdajd.dvyisy8pvi",
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59246-fdt98c.ybmnr60f6r/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59246-a6hsui.2o81gaatt9",
   "author": {
     "name": "steelbrain"
   },

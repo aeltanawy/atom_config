@@ -13,7 +13,7 @@
       "one-dark-syntax"
     ]
   editor:
-    fontSize: 15
+    fontSize: 13
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
@@ -21,11 +21,27 @@
     zoomFontWhenCtrlScrolling: true
   "exception-reporting":
     userId: "6e913096-91d7-4f3e-ab51-6c2f4585cd82"
+  linter:
+    lintOnChangeInterval: 1
+  "linter-python":
+    enableDebug: true
+    executablePath: "/Users/eltanawy/anaconda3/lib/python3.6/site-packages/pylama"
+    force: true
+    lintTrigger: "File saved or modified"
+    withMcCabe: true
+    withPep257: true
+    withPep8: true
+    withPyflakes: true
+    withPylint: true
+  "linter-ui-default":
+    panelHeight: 300
   minimap:
     plugins:
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
       pigments: true
       pigmentsDecorationsZIndex: 0
+  "tool-bar":
+    visible: false
   welcome:
     showOnStartup: false

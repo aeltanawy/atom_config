@@ -1,0 +1,73 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59579-dh79mo.kwl02lz0k9"
+    ]
+  ],
+  "_from": "../d-11887-59579-zzv1c.kz060f6r/package.tgz",
+  "_id": "linter-markdownlint@1.0.2",
+  "_inCache": true,
+  "_location": "/linter-markdownlint",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11887-59579-zzv1c.kz060f6r/package.tgz",
+  "_shasum": "2438a73ccc6bae91b5604aa5ddfe174054deed66",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59579-zzv1c.kz060f6r/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59579-dh79mo.kwl02lz0k9",
+  "activationCommands": {},
+  "bugs": {
+    "url": "https://github.com/leonelgalan/linter-markdownlint/issues"
+  },
+  "dependencies": {},
+  "description": "Lint Markdown with mdl",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/leonelgalan/linter-markdownlint#readme",
+  "keywords": [
+    "linter",
+    "mdl",
+    "markdown",
+    "markdownlint"
+  ],
+  "license": "MIT",
+  "main": "./lib/init",
+  "name": "linter-markdownlint",
+  "optionalDependencies": {},
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "readme": "# linter-markdownlint\n\nThis linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to [markdownlint](https://github.com/mivok/markdownlint). It will be used with files that have the \"Markdown\" syntax.\n\n## Installation\n\nLinter package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).\n\n### mdl installation\n\nBefore using this plugin, you must ensure that `mdl` is installed on your system. To install `mdl`, do the following:\n\n1. Install [ruby](https://www.ruby-lang.org/).\n\n1. Install [markdownlint](https://github.com/mivok/markdownlint) by typing the following in a terminal:\n\n```sh\ngem install mdl\n```\n\nNow you can proceed to install the _linter-markdownlint_ plugin.\n\n### Plugin installation\n\n```sh\napm install linter-markdownlint\n```\n\n## Settings\n\nYou can configure _linter-markdownlint_ by editing ~/.atom/config.cson (choose _Config..._ in _Atom_ menu):\n\n```cson\n'linter-markdownlint':\n  executablePath: null\n```\n\nRun `which mdl` to find the path, if you using _rbenv_ run `rbenv which mdl`\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonelgalan/linter-markdownlint.git"
+  },
+  "version": "1.0.2"
+}

@@ -1,0 +1,181 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59156-1gia71e.my53lerk9"
+    ]
+  ],
+  "_from": "../d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+  "_id": "linter-revive@0.4.0",
+  "_inCache": true,
+  "_location": "/linter-revive",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+  "_shasum": "032a08853fa307be425a5c2a5e626fc1234f9a5e",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59156-kkeydl.6vx4siqkt9/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59156-1gia71e.my53lerk9",
+  "author": {
+    "name": "Markus Wiegand",
+    "email": "mail@morphy2k.io",
+    "url": "https://morphy2k.io"
+  },
+  "bugs": {
+    "url": "https://github.com/morphy2k/linter-revive/issues"
+  },
+  "configSchema": {
+    "executablePath": {
+      "title": "Revive Executable Path",
+      "description": "The path to `revive` executable",
+      "type": "string",
+      "default": "revive"
+    },
+    "configFile": {
+      "title": "Configuration File",
+      "description": "Path to the configuration TOML file (i.e. revive.toml). It must be placed within the project directory!",
+      "type": "string",
+      "default": "revive.toml"
+    },
+    "exclude": {
+      "title": "Exclude Files",
+      "description": "A list of globs which specify files to be excluded (i.e. foo/...)",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "scopes": {
+      "title": "Scopes",
+      "type": "array",
+      "default": [
+        "source.go",
+        "go"
+      ],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "contributors": "https://github.com/morphy2k/linter-revive/graphs/contributors",
+  "dependencies": {
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^4.0.1",
+    "execa": "^0.10.0",
+    "named-js-regexp": "^1.3.3"
+  },
+  "description": "Lint Go files, using Revive",
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "engines": {
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "globals": {
+      "atom": "true"
+    },
+    "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module"
+    },
+    "rules": {
+      "global-require": "off",
+      "import/no-unresolved": [
+        "error",
+        {
+          "ignore": [
+            "atom"
+          ]
+        }
+      ],
+      "eqeqeq": "error",
+      "no-var": "error",
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "semi-style": [
+        "error",
+        "last"
+      ],
+      "no-console": 0
+    }
+  },
+  "homepage": "https://github.com/morphy2k/linter-revive#readme",
+  "keywords": [
+    "linter",
+    "golang",
+    "go",
+    "revive"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "linter-revive",
+  "optionalDependencies": {},
+  "package-deps": [
+    "linter:2.0.0"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "readme": "[![Build Status](https://travis-ci.com/morphy2k/linter-revive.svg?branch=master)](https://travis-ci.com/morphy2k/linter-revive)\n[![David](https://david-dm.org/morphy2k/linter-revive.svg)](https://david-dm.org)\n[![apm](https://img.shields.io/apm/v/linter-revive.svg)](https://atom.io/packages/linter-revive)\n\n\n# linter-revive\nAtom linter plugin for [Go](https://golang.org/), using [Revive](https://github.com/mgechev/revive)\n\n## Installation\n\n### Revive\n*Please make sure you use the latest version of Revive!*\n```BASH\n$ go get -u github.com/mgechev/revive\n```\n### Plugin\n```BASH\n$ apm install linter-revive\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morphy2k/linter-revive.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "apm test"
+  },
+  "version": "0.4.0"
+}

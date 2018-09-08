@@ -1,0 +1,85 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59685-11r3lg5.res4079zfr"
+    ]
+  ],
+  "_from": "../d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+  "_id": "linter-pylama@0.10.1",
+  "_inCache": true,
+  "_location": "/linter-pylama",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+  "_shasum": "f53651fd13d1965cdfc2ae05143b695a986b4481",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59685-w0y3gz.40kxqlrf6r/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59685-11r3lg5.res4079zfr",
+  "bugs": {
+    "url": "https://github.com/AtomLinter/linter-pylama/issues"
+  },
+  "dependencies": {
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^4.6.0"
+  },
+  "description": "Lint python on the fly, using pylama",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/AtomLinter/linter-pylama#readme",
+  "keywords": [
+    "linter",
+    "python",
+    "pylint",
+    "pep8",
+    "pep257",
+    "pycodestyle",
+    "pydocstyle",
+    "pyflakes",
+    "mccabe",
+    "isort",
+    "radon"
+  ],
+  "license": "MIT",
+  "main": "./lib/init",
+  "name": "linter-pylama",
+  "optionalDependencies": {},
+  "package-deps": [
+    "linter"
+  ],
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "readme": "# linter-pylama [![Build Status](https://travis-ci.org/AtomLinter/linter-pylama.svg?branch=master)](https://travis-ci.org/AtomLinter/linter-pylama) [![apm downloads](https://img.shields.io/apm/dm/linter-pylama.svg?maxAge=2592000)](https://atom.io/packages/linter-pylama) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/AtomLinter/linter-pylama/master/LICENSE)\n\nThis package will lint your opened Python-files in Atom, using [pylama](https://github.com/klen/pylama#-pylama) (wrapper for Pylint, pycodestyle/pep8, pydocstyle/pep257, Pyflakes, McCabe, Radon and isort).\n\n![img](https://raw.githubusercontent.com/AtomLinter/linter-pylama/master/in_action.gif)\n\n## Installation\n\n### With internal Pylama wrapper\n* `$ apm install linter-pylama`\n\n### With external Pylama wrapper\n* Install [pylama](https://github.com/klen/pylama#instalation).\n* If you need to `pylint` linter, you should install [pylama_pylint](https://github.com/klen/pylama_pylint#installation) module.\n* `$ apm install linter-pylama`\n\n## Other available linters\nThere are other linters available - take a look at the linters [mainpage](https://github.com/AtomLinter/Linter).\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomLinter/linter-pylama.git"
+  },
+  "version": "0.10.1"
+}

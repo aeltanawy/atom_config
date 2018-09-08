@@ -1,0 +1,43 @@
+### Project specific config ###
+matrix:
+  include:
+    - os: linux
+      language: go
+      go: 1.6.2
+
+    - os: linux
+      language: go
+      go: 1.x
+      env: ATOM_CHANNEL=beta
+
+install:
+  - go get -u github.com/golang/lint/golint
+
+### Generic setup follows ###
+script:
+  - curl -s -O https://raw.githubusercontent.com/atom/ci/master/build-package.sh
+  - chmod u+x build-package.sh
+  - ./build-package.sh
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+
+git:
+  depth: 10
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+    - build-essential
+    - git
+    - libgnome-keyring-dev
+    - fakeroot
