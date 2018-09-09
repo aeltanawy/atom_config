@@ -4,6 +4,9 @@
   core:
     disabledPackages: [
       "language-gfm"
+      "linter-pylama"
+      "linter-pycodestyle"
+      "linter-flake8"
     ]
     projectHome: "/Users/eltanawy/"
     reopenProjectMenuCount: 5
@@ -13,7 +16,7 @@
       "one-dark-syntax"
     ]
   editor:
-    fontSize: 13
+    fontSize: 12
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
@@ -21,8 +24,7 @@
     zoomFontWhenCtrlScrolling: true
   "exception-reporting":
     userId: "6e913096-91d7-4f3e-ab51-6c2f4585cd82"
-  linter:
-    lintOnChangeInterval: 1
+  linter: {}
   "linter-python":
     enableDebug: true
     executablePath: "/Users/eltanawy/anaconda3/lib/python3.6/site-packages/pylama"
@@ -45,3 +47,39 @@
     visible: false
   welcome:
     showOnStartup: false
+".console.python.text":
+  editor:
+    softWrapHangingIndent: 2
+".erb.html.text":
+  editor:
+    softWrapHangingIndent: 2
+".gemfile.ruby.source":
+  editor:
+    softWrapHangingIndent: 2
+".html.ruby.text":
+  editor:
+    softWrapHangingIndent: 2
+".js.rails.source source.jquery.js":
+  editor:
+    softWrapHangingIndent: 2
+".python.regexp.source":
+  editor:
+    softWrapHangingIndent: 2
+".python.source":
+  editor:
+    softWrapHangingIndent: 2
+".python.text.traceback":
+  editor:
+    softWrapHangingIndent: 2
+".rails.rjs.ruby.source":
+  editor:
+    softWrapHangingIndent: 2
+".rails.ruby.source":
+  editor:
+    softWrapHangingIndent: 2
+".ruby.source":
+  editor:
+    softWrapHangingIndent: 2
+".ruby.source.sql":
+  editor:
+    softWrapHangingIndent: 2
