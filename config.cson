@@ -4,9 +4,6 @@
   core:
     disabledPackages: [
       "language-gfm"
-      "linter-pylama"
-      "linter-pycodestyle"
-      "linter-flake8"
     ]
     projectHome: "/Users/eltanawy/"
     reopenProjectMenuCount: 5
@@ -16,7 +13,6 @@
       "one-dark-syntax"
     ]
   editor:
-    fontSize: 11
     showIndentGuide: true
     showInvisibles: true
     softWrap: true

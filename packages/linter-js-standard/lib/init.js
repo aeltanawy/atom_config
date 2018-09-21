@@ -2,49 +2,57 @@
 
 // Dependencies
 import { CompositeDisposable } from 'atom'
-import styleSettings from './utils/style-settings'
+import deprecateConfig from './utils/deprecate-config'
 
 const scope = ['javascript', 'source.js', 'source.js.jsx', 'source.js.jquery', 'source.gfm', 'source.vue']
 
 export const config = {
   style: {
     type: 'string',
-    default: styleSettings.defaultStyle,
-    enum: styleSettings.styleOptions
+    title: 'Default style',
+    description: 'Default global style when none is installed locally.',
+    default: 'standard',
+    enum: [
+      { value: 'standard', description: 'JavaScript Standard Style (standard)' },
+      { value: 'semistandard', description: 'JavaScript Semi-Standard Style (semistandard)' },
+      { value: 'happiness', description: 'JavaScript Happiness Style (happiness)' }
+    ],
+    order: 1
   },
   checkStyleDevDependencies: {
     type: 'boolean',
-    title: 'Check for standard',
-    description: 'Only run if standard, semistandard or happiness present in package.json `devDependencies`',
-    default: false
-  },
-  checkForEslintConfig: {
-    type: 'boolean',
-    title: 'Disable if the project uses ESLint',
-    description: 'Do not run if the project has configured ESLint',
-    default: true
-  },
-  honorStyleSettings: {
-    type: 'boolean',
-    description: 'Honor code style settings on package.json',
-    default: true
+    title: 'Only lint if installed locally',
+    description: 'Only lint if `standard` (or one of the other styles) is installed as a dependency.',
+    default: false,
+    order: 2
   },
   showEslintRules: {
     type: 'boolean',
-    title: 'Show ESLint Rules',
-    description: 'Show the ESLint rule name on error/warning\'s message',
-    default: false
+    title: 'Show ESLint rule ID',
+    description: 'Show ESLint’s rule ID in the message description.',
+    default: false,
+    order: 3
   },
-  lintMarkdownFiles: {
+  checkForEslintConfig: {
     type: 'boolean',
-    description: 'Lint markdown fenced code blocks',
-    default: false
+    title: 'Skip if ESLint is installed locally',
+    description: 'Skip linting if ESLint is installed locally.',
+    default: true,
+    order: 4
   },
   lintHtmlFiles: {
     type: 'boolean',
-    title: 'Lint HTML Files',
-    description: 'Lint HTML-embedded script blocks',
-    default: false
+    title: 'Lint HTML documents',
+    description: 'Lint JavaScript code within `<script>` tags in HTML documents.',
+    default: false,
+    order: 5
+  },
+  lintMarkdownFiles: {
+    type: 'boolean',
+    title: 'Lint Markdown documents',
+    description: 'Lint JavaScript code blocks within Markdown documents.',
+    default: false,
+    order: 6
   }
 }
 
@@ -64,6 +72,8 @@ export async function activate () {
       scope.push(grammar.scopeName)
     }
   }))
+
+  deprecateConfig()
 }
 
 export function deactivate () {

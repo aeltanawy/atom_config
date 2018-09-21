@@ -1,4 +1,5 @@
 // Dependencies
+var path = require('path')
 var linter = require('./utils/linter')
 var allowUnsafeNewFunction = require('loophole').allowUnsafeNewFunction
 var markdownSplitter = require('./utils/markdown-splitter')
@@ -15,7 +16,14 @@ function generateLintPromise (textEditor, filePath, fileContent, settings, lineS
         lineStart: lineStart || 0
       })
 
+      var workingDirectory = path.dirname(filePath)
+      var previousWorkingDirectory = process.cwd()
+
+      process.chdir(workingDirectory)
+
       settings.style.lintText(fileContent, settings.opts, (err, results) => {
+        process.chdir(previousWorkingDirectory)
+
         if (err) {
           return reject(err)
         }
@@ -32,7 +40,7 @@ module.exports = function (textEditor) {
   var fileScope = textEditor.getGrammar().scopeName
   var config = atom.config.get('linter-js-standard')
 
-  var opts = config.honorStyleSettings ? styleSettings.checkStyleSettings(filePath, textEditor) : {}
+  var opts = styleSettings.checkStyleSettings(filePath, textEditor)
 
   opts.filename = filePath
 

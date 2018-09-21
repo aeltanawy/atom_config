@@ -54,19 +54,22 @@ export function reduceOutputs(
   return outputs;
 }
 
-export function isSingeLine(text: string, availableSpace: number) {
+export function isSingeLine(text: ?string, availableSpace: number) {
   // If it turns out escapeCarriageReturn is a bottleneck, we should remove it.
   return (
-    (text.indexOf("\n") === -1 || text.indexOf("\n") === text.length - 1) &&
+    (!text || text.indexOf("\n") === -1 || text.indexOf("\n") === text.length - 1) &&
     availableSpace > escapeCarriageReturn(text).length
   );
 }
 
 export default class OutputStore {
   outputs: IObservableArray<Object> = observable([]);
-  @observable status: string = "running";
-  @observable executionCount: ?number = null;
-  @observable index: number = -1;
+  @observable
+  status: string = "running";
+  @observable
+  executionCount: ?number = null;
+  @observable
+  index: number = -1;
   @observable
   position = {
     lineHeight: 0,

@@ -26,11 +26,16 @@ export class Store {
   subscriptions = new CompositeDisposable();
   markers = new MarkerStore();
   runningKernels: IObservableArray<Kernel> = observable([]);
-  @observable kernelMapping: KernelMapping = new Map();
-  @observable startingKernels: Map<string, boolean> = new Map();
-  @observable editor = atom.workspace.getActiveTextEditor();
-  @observable grammar: ?atom$Grammar;
-  @observable configMapping: Map<string, ?mixed> = new Map();
+  @observable
+  kernelMapping: KernelMapping = new Map();
+  @observable
+  startingKernels: Map<string, boolean> = new Map();
+  @observable
+  editor = atom.workspace.getActiveTextEditor();
+  @observable
+  grammar: ?atom$Grammar;
+  @observable
+  configMapping: Map<string, ?mixed> = new Map();
   globalMode: boolean = Boolean(atom.config.get("Hydrogen.globalMode"));
 
   @computed
@@ -125,7 +130,7 @@ export class Store {
     this.runningKernels.remove(kernel);
   }
 
-  getFilesForKernel(kernel: Kernel) {
+  getFilesForKernel(kernel: Kernel): Array<?string> {
     const grammar = kernel.grammar.name;
     return this.filePaths.filter(file => {
       const kernelOrMap = this.kernelMapping.get(file);

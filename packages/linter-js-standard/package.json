@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59535-beeo0b.osz232fbt9"
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118819-67236-2mk43r.x02f14te29"
     ]
   ],
-  "_from": "../d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
-  "_id": "linter-js-standard@5.1.0",
+  "_from": "../d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
+  "_id": "linter-js-standard@6.0.0",
   "_inCache": true,
   "_location": "/linter-js-standard",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
-  "_shasum": "3713b949539b3d9cdf544b7c16ee31a5d61af746",
+  "_resolved": "file:../d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
+  "_shasum": "2ced72b816b4ccf7731bf28940b4fe7ca9c8bf3c",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59535-f59dyu.xyh0itqpvi/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59535-beeo0b.osz232fbt9",
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118819-67236-2mk43r.x02f14te29",
   "activationCommands": [],
   "author": {
     "name": "Ricardo Barros",
@@ -55,8 +55,7 @@
     "loophole": "^1.1.0",
     "pkg-config": "^1.1.1",
     "semistandard": "^12.0.0",
-    "standard": "^11.0.0",
-    "standard-flow": "^1.0.0"
+    "standard": "^12.0.0"
   },
   "description": "Linter plugin for JavaScript Standard Style",
   "devDependencies": {},
@@ -83,7 +82,7 @@
       }
     }
   },
-  "readme": "linter-js-standard\n=========================\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)\n\nThis plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface for error/warning messages from [standard](https://github.com/feross/standard), as well as variations of standard such as [semistandard](https://github.com/Flet/semistandard) and [happiness](https://github.com/JedWatson/happiness).\n\n![demo](https://cloud.githubusercontent.com/assets/6867996/8457085/4bd7575e-2007-11e5-9762-e3f942b78232.gif)\n\n## Installation\nLinter package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).\n\n### Plugin installation\n```\n$ apm install linter-js-standard\n```\n\n## Features\n- Support `standard`, `semistandard` and `happiness` styles.\n- Support ignore glob patterns in package.json.\n- Support custom parsers in package.json.\n- Support global variables in package.json _(supported by standard and semistandard)_\n- Support fenced code lint in markdown files\n\nCustom parsers currently supported:\n- esprima\n- esprima-fb\n- babel-eslint\n\n> Note: If a custom parser is missing from this list please make a PR by adding the missing parser to package.json dependencies.\n\n## Settings\n\n### checkStyleDevDependencies (default: false)\nCheck code style in package.json `devDependencies` or `dependencies`. If a valid style is not found it won't lint.\n\n> Note: This will use the nearest package.json.\n\n### checkForEslintConfig (default: true)\nCheck if the project uses ESLint using [detect-eslint-config](https://github.com/chee/detect-eslint-config). If it does it won’t lint.\n\n### honorStyleSettings (default: true)\nHonors style settings defined in package.json.\n\nCurrent style settings supported:\n- `ignore`\n- `parser`\n\n> Note: This will use the nearest package.json.\n\n### style (default: standard)\nSwitch between standard and semistandard styles.\nIf `checkStyleDevDependencies` is true this setting will be **ignored**.\n\n### showEslintRules (default: false)\nEnable/disable showing the id of the offended ESLint rules.\n\nExample of messages while showEslintRules is:\n- **true:** Extra semicolon. (semi)\n- **false:** Extra semicolon.\n\n### lintMarkdownFiles (default: false)\nLint markdown fenced code blocks.\n\n### Global Variable Support\nTo have the linter not warn about undeclared variables when using global variables, honorStyleSettings has to be checked/true and a \"globals\" section has to be added to package.json:\n```\n\"semistandard\": {\n    \"globals\": [\n      \"var1\",\n      \"var2\"\n    ]\n  }\n  OR\n\"standard\": {\n    \"globals\": [\n      \"var1\",\n      \"var2\"\n    ]\n  }\n  ```\nAlso see https://github.com/feross/standard#i-use-a-library-that-pollutes-the-global-namespace-how-do-i-prevent-variable-is-not-defined-errors.\n\n## License\nMIT\n",
+  "readme": "# linter-js-standard\n\n![apm](https://img.shields.io/apm/v/linter-js-standard.svg)\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n\n> [Linter](https://github.com/steelbrain/linter) for [JavaScript Standard Style](https://standardjs.com) and its forks.\n\n![](screenshot.png)\n\n## Highlights\n\n- Supports [JavaScript Standard style](https://standardjs.com) and [some of its forks](#default-style).\n- Lints JavaScript within HTML and Markdown documents.\n- Links to ESLint’s rule documentation.\n- Runs globally, if desired.\n\n## Installation\n\n```console\n$ apm install linter-js-standard\n```\n\nAlternatively, go to Settings → Install and search for `linter-js-standard`.\n\n## Settings\n\n### Default style\n\nDefault global style when none is installed locally. Choose between:\n\n- [JavaScript Standard Style (`standard`)](https://standardjs.com)\n- [JavaScript Semi-Standard Style (`semistandard`)](https://github.com/Flet/semistandard)\n- [JavaScript Happiness Style (`happiness`)](https://github.com/JedWatson/happiness)\n\n### Only lint if installed locally\n\nOnly lint if `standard` (or one of the [other styles](#default-style)) is installed as a dependency (that is, if it is listed in `devDependencies` or `dependencies` in `package.json`).\n\n### Show ESLint rule ID\n\nShow ESLint’s rule ID in the message description. For example: `Extra semicolon. (semi)`.\n\n### Skip if ESLint is installed locally\n\nSkip linting if ESLint is installed locally.\n\n### Lint HTML documents\n\nLint JavaScript code within `<script>` tags in HTML documents.\n\n### Lint Markdown documents\n\nLint JavaScript code blocks within Markdown documents.\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
@@ -94,5 +93,5 @@
       "atom"
     ]
   },
-  "version": "5.1.0"
+  "version": "6.0.0"
 }

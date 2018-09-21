@@ -2,7 +2,6 @@
 
 import _ from "lodash";
 import * as kernelspecs from "kernelspecs";
-import { launchSpec } from "spawnteract";
 import { shell } from "electron";
 
 import ZMQKernel from "./zmq-kernel";
@@ -82,13 +81,17 @@ export class KernelManager {
     const transport = new ZMQKernel(kernelSpec, grammar, options, () => {
       const kernel = new Kernel(transport);
       store.newKernel(kernel, filePath, editor, grammar);
+      // $FlowFixMe
       if (onStarted) onStarted(kernel);
     });
   }
 
-  async update() {
+  async update(): Promise<Kernelspec[]> {
     const kernelSpecs = await ks.findAll();
-    this.kernelSpecs = _.sortBy(_.map(kernelSpecs, "spec"), spec => spec.display_name);
+    this.kernelSpecs = _.sortBy(
+      _.map(kernelSpecs, "spec"),
+      spec => spec.display_name
+    );
     return this.kernelSpecs;
   }
 
@@ -97,7 +100,9 @@ export class KernelManager {
     return this.updateKernelSpecs(grammar);
   }
 
-  async getAllKernelSpecsForGrammar(grammar: ?atom$Grammar) {
+  async getAllKernelSpecsForGrammar(
+    grammar: ?atom$Grammar
+  ): Promise<Kernelspec[]> {
     if (!grammar) return [];
 
     const kernelSpecs = await this.getAllKernelSpecs(grammar);
