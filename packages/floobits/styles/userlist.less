@@ -1,0 +1,176 @@
+@import "./util.less";
+@import "./icons.less";
+
+@userBarHeight: 32px;
+@iconFontSize: 20px;
+@iconPadding: 3px;
+
+.userlist-icon {
+  border: 1px solid;
+  opacity: 0.45;
+  margin-right: 5px;
+}
+
+@userBarHeight: 32px;
+@iconFontSize: 20px;
+
+.user-thumbnail-background {
+  background-color: rgba(0, 0, 0, 0.36);
+}
+
+.user-thumbnail-text {
+  color: @thumbnailGray;
+}
+
+.user-list {
+  width: @userThumbWidth;
+  overflow-x: hidden;
+  .user {
+    height: @userThumbHeight;
+    width: @userThumbWidth;
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    i.user-indicator {
+      position: absolute;
+      cursor: pointer;
+      font-size: @iconFontSize;
+      color: @white;
+      opacity: 0.5;
+      &.enabled, &:hover {
+        opacity: 1;
+      }
+      border: 1px solid @thumbnailGrayShadow;
+      background-color: @thumbnailGrayShadow;
+    }
+    .visualizer-container {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      height: @userBarHeight;
+      width: @userBarHeight;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .visualizer {
+        background-color: @white;
+        border-radius: 50%;
+        opacity: 0.45;
+        z-index: @zPlane1;
+      }
+    }
+    i.user-stop {
+      top: 3px;
+      right: 3px;
+      z-index: @zPlane1;
+      .floobits-icon-remove;
+    }
+    i.in-video {
+      top: auto;
+      bottom: @userBarHeight + 3;
+      left: 3px;
+      .floobits-video-icon;
+    }
+    i.user-following {
+      top: auto;
+      bottom: @userBarHeight + 3;
+      right: 3px;
+      .floobits-follow-icon;
+    }
+    .user-thumb {
+      cursor: pointer;
+      background-color: black;
+      height: @userThumbHeight;
+      width: @userThumbWidth;
+      &.user-my-conn {
+        transform: scaleX(-1);
+      }
+      &.audio-only {
+        transform: scaleX(1);
+      }
+    }
+    .user-face {
+      .click-to-video {
+        .noselect;
+        .pos(0, 0, @userBarHeight, 0);
+        .user-thumbnail-background;
+        .user-thumbnail-text;
+        display: none;
+        font-size: @iconFontSize;
+        padding-top: (@userThumbHeight - @userBarHeight) / 2;
+        text-align: center;
+        cursor: pointer;
+        // In Chrome, transform properties mess with z-index. This is a workaround.
+        z-index: @zPlane1;
+        .glyphicon {
+          top: @iconPadding;
+        }
+      }
+      &:hover .click-to-video {
+        display: block;
+      }
+    }
+    &.opened {
+      .user-thumb {
+        .blur(5px);
+      }
+      .user-info {
+        top: 0;
+        opacity: 1;
+      }
+      .user-bar i.user-arrow {
+        .floobits-arrow-down-icon;
+      }
+    }
+    .user-bar {
+      cursor: pointer;
+      padding: 4px 5px;
+      .user-thumbnail-text;
+      .user-thumbnail-background;
+      .pos_bottom;
+      .noselect;
+      font-size: 18px;
+      height: @userBarHeight;
+      i.user-arrow {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        .floobits-arrow-up-icon;
+      }
+    }
+    .user-info {
+      opacity: 0;
+      hr {
+        margin: 5px 0;
+        border-color: #333;
+       }
+      .stack-up {
+        padding: 3px 5px;
+        .stack-up-content {
+          padding: 0 3px;
+          a {
+            color: #73B893;
+          }
+        }
+      }
+      .user-conn {
+        clear: both;
+      }
+      .user-thumbnail-text;
+      .user-thumbnail-background;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: @userThumbHeight - @userBarHeight;
+      bottom: @userBarHeight;
+      transition: top 0.25s, opacity 0s;
+      -webkit-transition: top 0.25s, opacity 0s;
+      height: @userThumbHeight - @userBarHeight;
+      text-align: left;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 100%;
+    }
+  }
+}

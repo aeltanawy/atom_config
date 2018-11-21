@@ -4,6 +4,16 @@
   core:
     disabledPackages: [
       "language-gfm"
+      "linter"
+      "linter-golinter"
+      "linter-pycodestyle"
+      "linter-pylama"
+      "linter-pylint"
+      "linter-python-pep8"
+      "linter-reek"
+      "linter-revive"
+      "linter-selective"
+      "linter-ui-default"
     ]
     projectHome: "/Users/eltanawy/"
     reopenProjectMenuCount: 5
@@ -13,6 +23,7 @@
       "one-dark-syntax"
     ]
   editor:
+    fontSize: 16
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
@@ -39,8 +50,7 @@
     withPep8: true
     withPyflakes: true
     withPylint: true
-  "linter-ui-default":
-    panelHeight: 300
+  "linter-ui-default": {}
   minimap:
     plugins:
       "highlight-selected": true

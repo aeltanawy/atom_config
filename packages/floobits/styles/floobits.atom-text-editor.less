@@ -1,0 +1,96 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/stylesheets/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+@import "./edit_permissions_wizard";
+
+@transition-time: 0.5s;
+@size: 2px;
+
+@-webkit-keyframes floobits-highlight-animation {
+  0%   {opacity: .5;}
+  100% {opacity: 0;}
+}
+
+.make_highlight_dark(@hlcolor) {
+  .floobits-highlight-dark_@{hlcolor} .region {
+    background-color: @hlcolor;
+    opacity: .3;
+  }
+  .floobits-border-dark_@{hlcolor} .region {
+    background-color: @hlcolor;
+    -webkit-animation: floobits-highlight-animation 2s ease 1;
+    opacity: 0;
+  }
+  .floobits-highlight-dark_@{hlcolor}.line-number:before {
+    border-right: @size solid @hlcolor;
+    content: " ";
+  }
+}
+
+.floobits-highlight-light(@hlcolor) {
+  .floobits-highlight_@{hlcolor}.region {
+    background-color: @hlcolor;
+    opacity: .8;
+  }
+  .floobits-border-light_@{hlcolor} .region {
+    background-color: @hlcolor;
+    -webkit-animation: floobits-highlight-animation 2s ease 1;
+    opacity: 0;
+  }
+  .floobits-highlight_@{hlcolor}.line-number:before {
+    border-right: @size solid @hlcolor;
+    content: " ";
+  }
+}
+.floobits {
+  a {
+    //color: #428BCA;
+    outline: none !important;
+  }
+}
+
+.make_highlight_dark(e("black"));
+.make_highlight_dark(e("blue"));
+.make_highlight_dark(e("darkblue"));
+.make_highlight_dark(e("fuchsia"));
+.make_highlight_dark(e("gray"));
+.make_highlight_dark(e("green"));
+.make_highlight_dark(e("greenyellow"));
+.make_highlight_dark(e("indigo"));
+.make_highlight_dark(e("lime"));
+.make_highlight_dark(e("magenta"));
+.make_highlight_dark(e("maroon"));
+.make_highlight_dark(e("midnightblue"));
+.make_highlight_dark(e("orange"));
+.make_highlight_dark(e("orangered"));
+.make_highlight_dark(e("purple"));
+.make_highlight_dark(e("red"));
+.make_highlight_dark(e("teal"));
+.make_highlight_dark(e("yellow"));
+
+floobits-conflicts div {
+  padding: 10px;
+//  color: white;
+}
+
+input.floobits-submit {
+  color: black;
+  display: inline-block;
+  min-width: 125px;
+  content: 'Select Directory';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  float: right;
+}

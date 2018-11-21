@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118810-56758-jjbxcj.bpkptu766r"
-    ]
-  ],
-  "_from": "../d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-  "_id": "hydrogen-python@0.0.7",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball",
+  "_id": "hydrogen-python@0.0.8",
+  "_inBundle": false,
+  "_integrity": "sha512-Mktc/34LXE8PfFG6RixVB7WqOm3HgBaT6fAdrj5W09vZMnS+dKospkUx0/yWigv8w6akU3mcJ95WD9UUvljoVQ==",
   "_location": "/hydrogen-python",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-  "_shasum": "bc016f0ac6b659c1dcbf8312b058beae6a56bffb",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118810-56758-1rea1jl.k7jhv9529/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118810-56758-jjbxcj.bpkptu766r",
+  "_resolved": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball",
+  "_shasum": "c4e256ed7528fc3c1dc4365cc9e2a0c72c9a3edc",
+  "_spec": "https://www.atom.io/api/packages/hydrogen-python/versions/0.0.8/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-1181020-25490-1oky32y.veo1j",
   "bugs": {
     "url": "https://github.com/nikitakit/hydrogen-python/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "expandCode": {
       "title": "Extend Executable Code [experimental]",
@@ -82,6 +68,7 @@
     "strip-indent": "^2.0.0",
     "uuid": "^3.0.1"
   },
+  "deprecated": false,
   "description": "Python language-specific extensions for hydrogen",
   "devDependencies": {
     "babel-eslint": "^7.1.0",
@@ -101,12 +88,9 @@
   "license": "MIT",
   "main": "./lib/main",
   "name": "hydrogen-python",
-  "optionalDependencies": {},
   "package-deps": [
     "hydrogen"
   ],
-  "readme": "# Python language-specific extensions for Hydrogen\n\nFeatures:\n* Variable explorer (see [nteract/hydrogen#64]( https://github.com/nteract/hydrogen/issues/64))\n* Allows running code with common leading whitespace when there are empty lines at the start (see [nteract/hydrogen#862]( https://github.com/nteract/hydrogen/issues/862))\n* Extend executable code to include `else` clauses, decorators, and more (experimental, must be manually enabled in the package settings)\n\nCompatibility:\n* [Hydrogen](https://github.com/nteract/hydrogen) version 2.3.0 or later\n* Variable explorer has only been tested to work with Python 3.5 or later. Pull requests to add Python 2 support are welcome.\n\n## Feature: Variable Explorer\n\nActivate using the _\"Hydrogen Python: Toggle Variable Explorer\"_ command.\n\nThis feature is currently in proof-of-concept status. Please file an issue about any functionality you want to have in the variable exploror!\n\n## Feature: Extend Executable Code [experimental]\n\nWhen a line is executed without selection, hydrogen only passes on code up that is indented compared to the current line.\nIn python that unfortunately does not always work, because some control structures (e.g. else) continue on the same indentation level.\nFor example, the following code block would only execute the `if` statement, but not the `else` statement when the `Run and Move Down` or the `Run` commands are used.\n\n```python\nif False:\n    print('False')\nelse:\n    print('True')\n# with `Run` or `Run and Move Down`\n# there is no output in standard hydrogen\n# as the else block is not included\n```\n\nEnabling the setting `Extend Executable Code` (by default it is disabled!) expands the executed code beyond what hydrogen suggests on the basis of the indentation level.\nA list of strings for which the code is extended can be defined.\nIn the default setting, `else`, `elif`, `except`, `finally`, as well as all closing braces are included in the expansion.\n\n**Warning:** Note with all this, that as of now the hydrogen tick markers are unfortunately _not_ moved to the right location. They still remain where the original code selection of hydrogen ended.\n\nWhen enabling the setting, examples like the following should work as expected:\n\n```python\nsomeDictionary = {\n    'one': 1\n}\n\nsomeList = [\n    1,\n    2,\n    3\n]\n\nfoo(\n    argument1,\n    argument2\n)\n# in hydrogen each of these would throw an error\n# because the closing brace is not included\n# as it is on the same indentation level\n```\n\n```python\nif False:\n    pass\nelif False:\n    pass\nelse:\n    print('executed')\n# in hydrogen this would only execute the\n# if-statement as elif and else are not extended\n```\n\n```python\ntry:\n    throw(IndentationError)\nexcept:\n    print('some error occurred')\nfinally:\n    print('finally')\n# in hydrogen this would only raise an error but not\n# execute the except and finally blocks\n```\n\n### Extension to the Top (e.g. for decorators)\n\nIn the second configuration field, expansion towards the top is defined.\nThe preset is to extends decorators (`@`) of functions, so that the following example works when selecting either the line with the decorator or with the function definition and executing via `run` or `run-and-move-down`.\n\n```python\ndef deco(f):\n    return lambda x: f(x + 1)\n\n@deco\ndef myfunc(x):\n    return 1 / x\n\nmyfunc(0)\n```\n\nContrary to the expansion to the bottom, this _does not_ automatically include comments, or further indentation, but only the immediate match.\nThe following example thus would not work with the default settings, but could easily be enabled by adding `#` to the list:\n\n```python\n@deco\n# comment\ndef myfunc(x):\n    return 1 / x\n```\n\n### Customisation\n\nYou can extend this list by your choice.\nMake sure you check that the behaviour has no unintended circumstances;\n`hydrogen-python` logs to the console when code is extended.\nOne possibly useful addition can be to add `plt\\.` to the list, so that the following code block can be run without having to select lines independently:\n\n```python\nplt.plot()\nplt.xlabel()\nplt.ylabel()\nplt.show()\n```\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nikitakit/hydrogen-python.git"
@@ -114,5 +98,5 @@
   "scripts": {
     "lint": "eslint ."
   },
-  "version": "0.0.7"
+  "version": "0.0.8"
 }

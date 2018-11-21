@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-71802-1verwez.jm09la0pb9"
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118824-10582-1mnrwo6.5dwl1bgldi"
     ]
   ],
-  "_from": "../d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
-  "_id": "tool-bar-markdown-writer@0.4.0",
+  "_from": "../d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
+  "_id": "tool-bar-markdown-writer@0.5.0",
   "_inCache": true,
   "_location": "/tool-bar-markdown-writer",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
-  "_shasum": "f2f211eb4111660fdbfa59c0387e4684d7ca865f",
+  "_resolved": "file:../d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
+  "_shasum": "e10327f1062645c46086bf668f345e1610f2841e",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-71802-1cjc8ff.8mp6yiizfr/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-71802-1verwez.jm09la0pb9",
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118824-10582-1mnrwo6.5dwl1bgldi",
   "bugs": {
     "url": "https://github.com/zhuochun/tool-bar-md-writer/issues"
   },
@@ -74,5 +74,5 @@
     "type": "git",
     "url": "git+https://github.com/zhuochun/tool-bar-md-writer.git"
   },
-  "version": "0.4.0"
+  "version": "0.5.0"
 }

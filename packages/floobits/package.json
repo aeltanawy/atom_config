@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118824-56910-18las3x.oc9j9ejyvi"
+    ]
+  ],
+  "_from": "../d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+  "_id": "floobits@0.32.12",
+  "_inCache": true,
+  "_location": "/floobits",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+  "_shasum": "ae321f9d63f29a5893f75beb63017f8f53125c09",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-56910-1k58cw2.4uqc7kfbt9/package.tgz",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118824-56910-18las3x.oc9j9ejyvi",
+  "bugs": {
+    "url": "https://github.com/Floobits/floobits-atom/issues"
+  },
+  "consumedServices": {
+    "term3-service": {
+      "versions": {
+        "0.1.3": "term3-service"
+      }
+    }
+  },
+  "contributors": [
+    {
+      "name": "Geoff Greer",
+      "url": "http://geoff.greer.fm/"
+    },
+    {
+      "name": "Matt Kaniaris",
+      "url": "https://github.com/kans"
+    },
+    {
+      "name": "Bjorn Tipling",
+      "url": "https://github.com/btipling"
+    }
+  ],
+  "dependencies": {
+    "async": "1.x",
+    "atom-space-pen-views": "2.2.x",
+    "chokidar": "1.x",
+    "dmp": "1.x",
+    "event-kit": "1.5.x",
+    "flukes": ">=0.1.4",
+    "fs-plus": "2.x",
+    "lodash": "4.x",
+    "minimatch": "3.x",
+    "mkdirp": "0.5.x",
+    "open": "0.x",
+    "react-atom-fork": "0.11.x",
+    "react-tools": "0.11.x",
+    "reactionary-atom-fork": "1.x",
+    "request": "2.x"
+  },
+  "description": "The Floobits pair programming plugin for Atom.  This plugin adds support for real-time collaborative editing, video chatting, and sharing terminals via the Term3 plugin.  A Floobits account is required, but the plugin will guide you.",
+  "devDependencies": {
+    "eslint": "3.x",
+    "eslint-config-floobits": "*",
+    "eslint-plugin-react": "5.x"
+  },
+  "engines": {
+    "atom": ">=1.0"
+  },
+  "homepage": "https://github.com/Floobits/floobits-atom#readme",
+  "license": "Apache-2.0",
+  "main": "./lib/floobits",
+  "maintainers": [
+    {
+      "name": "Geoff Greer",
+      "url": "http://geoff.greer.fm/"
+    },
+    {
+      "name": "Matt Kaniaris",
+      "url": "https://github.com/kans"
+    }
+  ],
+  "name": "floobits",
+  "optionalDependencies": {},
+  "readme": "# [Floobits](https://floobits.com/) for Atom\n\n### Remote pair programming across editors.\n\n### Development status: Beta\n\n[![Floobits Status](https://floobits.com/Floobits/atom.svg)](https://floobits.com/Floobits/atom/redirect)\n\n[![Build Status](https://travis-ci.org/Floobits/floobits-atom.svg?branch=master)](https://travis-ci.org/Floobits/floobits-atom)\n\n[![#floobits on Freenode](https://img.shields.io/Freenode/%23floobits.png)](https://webchat.freenode.net/?channels=floobits)\n\nFloobits adds support for real-time collaborative editing to text editors and IDEs.  In addition to Atom, Floobits also supports [Sublime Text](https://github.com/Floobits/floobits-sublime), [Emacs](https://github.com/Floobits/floobits-emacs), [Vim](https://github.com/Floobits/floobits-vim), and [IntelliJ](https://github.com/Floobits/floobits-intellij).\n\nThis plugin also allows collaborators to video chat using WebRTC and to share terminals via the [term3 plugin](https://atom.io/packages/term3) without leaving Atom.\n\nFor a demo of this plugin in action, see [this video](https://www.youtube.com/watch?v=liwChJKd4og) of [ggreer](https://github.com/ggreer) and [btipling](https://github.com/btipling) pairing on [ag](https://github.com/ggreer/the_silver_searcher).\n\n[Documentation](https://floobits.com/help/plugins/atom) is on the Floobits website.\n\n---\n\n### Video chat in Atom\n\n<img alt=\"Joining a Floobits workspace in Atom\" src=\"https://floobits.com/static/images/atom-start.gif\" width=\"640\" height=\"400\" style=\"width: 640px; height: 400px;\" />\n\n### Collaboratively edit\n\n<img alt=\"Editing together in Atom\" src=\"https://floobits.com/static/images/atom-edit.gif\" width=\"640\" height=\"400\" style=\"width: 640px; height: 400px;\" />\n\n### Share terminals\n\n<img alt=\"Sharing terminals in Atom\" src=\"https://floobits.com/static/images/atom-term.gif\" width=\"640\" height=\"400\" style=\"width: 640px; height: 400px;\" />\n\n---\n\n## Configuration\n\nOn first usage, the plugin will guide you through the setup process. If you don't already have a Floobits account, it will help you create one for free.\n\n\n## Help\n\nIf you have trouble setting up or using this plugin, please [contact us](https://floobits.com/help#support).\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Floobits/floobits-atom.git"
+  },
+  "scripts": {
+    "build": "npm run install",
+    "install": "jsx --harmony templates lib/build",
+    "lint": "eslint lib templates",
+    "watch": "jsx --watch --harmony templates lib/build"
+  },
+  "version": "0.32.12"
+}

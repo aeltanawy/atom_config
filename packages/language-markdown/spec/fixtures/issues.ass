@@ -485,3 +485,48 @@
     }
   }
 }
+
+@178a
+"test1235 test<4 mydata.vcf.gz" {
+  text.md {
+    "test1235 test"
+    "<"
+    "4 mydata.vcf.gz"
+  }
+}
+
+@178b
+"David <3 chocolate!" {
+  text.md {
+    "David "
+    "<"
+    "3 chocolate!"
+  }
+}
+
+@178c
+"lorem <- ipsum" {
+  text.md {
+    "lorem "
+    "<"
+    "- ipsum"
+  }
+}
+
+@174a
+"M&M's": text.md
+
+@174b
+"M &M's": text.md
+
+@174c
+"M& M's": text.md
+
+@174dz
+"M & M's" {
+  text.md {
+    "M "
+    "&": ampersand.md
+    " M's"
+  }
+}
