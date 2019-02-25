@@ -27,9 +27,9 @@ const outputTypes = ["execute_result", "display_data", "stream", "error"];
  * @return {Array<Object>} updated-outputs - Outputs + Output
  */
 export function reduceOutputs(
-  outputs: IObservableArray<Object>,
+  outputs: Array<Object>,
   output: Object
-): IObservableArray<Object> {
+): Array<Object> {
   const last = outputs.length - 1;
   if (
     outputs.length > 0 &&
@@ -57,13 +57,16 @@ export function reduceOutputs(
 export function isSingeLine(text: ?string, availableSpace: number) {
   // If it turns out escapeCarriageReturn is a bottleneck, we should remove it.
   return (
-    (!text || text.indexOf("\n") === -1 || text.indexOf("\n") === text.length - 1) &&
+    (!text ||
+      text.indexOf("\n") === -1 ||
+      text.indexOf("\n") === text.length - 1) &&
     availableSpace > escapeCarriageReturn(text).length
   );
 }
 
 export default class OutputStore {
-  outputs: IObservableArray<Object> = observable([]);
+  @observable
+  outputs: Array<Object> = [];
   @observable
   status: string = "running";
   @observable
@@ -154,7 +157,7 @@ export default class OutputStore {
 
   @action
   clear = () => {
-    this.outputs.clear();
+    this.outputs = [];
     this.index = -1;
   };
 }

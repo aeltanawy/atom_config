@@ -1,4 +1,4 @@
-// https://d3js.org/d3-array/ v1.2.4 Copyright 2018 Mike Bostock
+// https://d3js.org/d3-array/ v2.0.3 Copyright 2018 Mike Bostock
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -45,118 +45,131 @@ var ascendingBisect = bisector(ascending);
 var bisectRight = ascendingBisect.right;
 var bisectLeft = ascendingBisect.left;
 
-function pairs(array, f) {
-  if (f == null) f = pair;
-  var i = 0, n = array.length - 1, p = array[0], pairs = new Array(n < 0 ? 0 : n);
-  while (i < n) pairs[i] = f(p, p = array[++i]);
-  return pairs;
+function length(array) {
+  return array.length | 0;
 }
 
-function pair(a, b) {
-  return [a, b];
+function empty(length) {
+  return !(length > 0);
 }
 
-function cross(values0, values1, reduce) {
-  var n0 = values0.length,
-      n1 = values1.length,
-      values = new Array(n0 * n1),
-      i0,
-      i1,
-      i,
-      value0;
+function arrayify(values) {
+  return typeof values !== "object" || "length" in values ? values : Array.from(values);
+}
 
-  if (reduce == null) reduce = pair;
+function reducer(reduce) {
+  return values => reduce(...values);
+}
 
-  for (i0 = i = 0; i0 < n0; ++i0) {
-    for (value0 = values0[i0], i1 = 0; i1 < n1; ++i1, ++i) {
-      values[i] = reduce(value0, values1[i1]);
+function cross(...values) {
+  const reduce = typeof values[values.length - 1] === "function" && reducer(values.pop());
+  values = values.map(arrayify);
+  const lengths = values.map(length);
+  const j = values.length - 1;
+  const index = new Array(j + 1).fill(0);
+  const product = [];
+  if (j < 0 || lengths.some(empty)) return product;
+  while (true) {
+    product.push(index.map((j, i) => values[i][j]));
+    let i = j;
+    while (++index[i] === lengths[i]) {
+      if (i === 0) return reduce ? product.map(reduce) : product;
+      index[i--] = 0;
     }
   }
-
-  return values;
 }
 
 function descending(a, b) {
   return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
 }
 
-function number(x) {
-  return x === null ? NaN : +x;
-}
-
 function variance(values, valueof) {
-  var n = values.length,
-      m = 0,
-      i = -1,
-      mean = 0,
-      value,
-      delta,
-      sum = 0;
-
-  if (valueof == null) {
-    while (++i < n) {
-      if (!isNaN(value = number(values[i]))) {
+  let count = 0;
+  let delta;
+  let mean = 0;
+  let sum = 0;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null && (value = +value) >= value) {
         delta = value - mean;
-        mean += delta / ++m;
+        mean += delta / ++count;
+        sum += delta * (value - mean);
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null && (value = +value) >= value) {
+        delta = value - mean;
+        mean += delta / ++count;
         sum += delta * (value - mean);
       }
     }
   }
-
-  else {
-    while (++i < n) {
-      if (!isNaN(value = number(valueof(values[i], i, values)))) {
-        delta = value - mean;
-        mean += delta / ++m;
-        sum += delta * (value - mean);
-      }
-    }
-  }
-
-  if (m > 1) return sum / (m - 1);
+  if (count > 1) return sum / (count - 1);
 }
 
-function deviation(array, f) {
-  var v = variance(array, f);
+function deviation(values, valueof) {
+  const v = variance(values, valueof);
   return v ? Math.sqrt(v) : v;
 }
 
 function extent(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      min,
-      max;
-
-  if (valueof == null) {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = values[i]) != null && value >= value) {
-        min = max = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = values[i]) != null) {
-            if (min > value) min = value;
-            if (max < value) max = value;
-          }
+  let min;
+  let max;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null && value >= value) {
+        if (min === undefined) {
+          min = max = value;
+        } else {
+          if (min > value) min = value;
+          if (max < value) max = value;
+        }
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null && value >= value) {
+        if (min === undefined) {
+          min = max = value;
+        } else {
+          if (min > value) min = value;
+          if (max < value) max = value;
         }
       }
     }
   }
-
-  else {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = valueof(values[i], i, values)) != null && value >= value) {
-        min = max = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = valueof(values[i], i, values)) != null) {
-            if (min > value) min = value;
-            if (max < value) max = value;
-          }
-        }
-      }
-    }
-  }
-
   return [min, max];
+}
+
+function identity(x) {
+  return x;
+}
+
+function dogroup(values, keyof) {
+  const map = new Map();
+  let index = -1;
+  for (const value of values) {
+    const key = keyof(value, ++index, values);
+    const group = map.get(key);
+    if (group) group.push(value);
+    else map.set(key, [value]);
+  }
+  return map;
+}
+
+function rollup(values, reduce, ...keys) {
+  return (function regroup(values, i) {
+    if (i >= keys.length) return reduce(values);
+    const map = dogroup(values, keys[i]);
+    return new Map(Array.from(map, ([k, v]) => [k, regroup(v, i + 1)]));
+  })(values, 0);
+}
+
+function group(values, ...keys) {
+  return rollup(values, identity, ...keys);
 }
 
 var array = Array.prototype;
@@ -168,10 +181,6 @@ function constant(x) {
   return function() {
     return x;
   };
-}
-
-function identity(x) {
-  return x;
 }
 
 function range(start, stop, step) {
@@ -250,6 +259,8 @@ function histogram() {
       threshold = sturges;
 
   function histogram(data) {
+    if (!Array.isArray(data)) data = Array.from(data);
+
     var i,
         n = data.length,
         x,
@@ -311,8 +322,11 @@ function histogram() {
   return histogram;
 }
 
-function quantile(values, p, valueof) {
-  if (valueof == null) valueof = number;
+function number(x) {
+  return x === null ? NaN : +x;
+}
+
+function quantile(values, p, valueof = number) {
   if (!(n = values.length)) return;
   if ((p = +p) <= 0 || n < 2) return +valueof(values[0], 0, values);
   if (p >= 1) return +valueof(values[n - 1], n - 1, values);
@@ -334,144 +348,165 @@ function scott(values, min, max) {
 }
 
 function max(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      max;
-
-  if (valueof == null) {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = values[i]) != null && value >= value) {
+  let max;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null
+          && value >= value
+          && (max === undefined || max < value)) {
         max = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = values[i]) != null && value > max) {
-            max = value;
-          }
-        }
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null
+          && value >= value
+          && (max === undefined || max < value)) {
+        max = value;
       }
     }
   }
-
-  else {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = valueof(values[i], i, values)) != null && value >= value) {
-        max = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = valueof(values[i], i, values)) != null && value > max) {
-            max = value;
-          }
-        }
-      }
-    }
-  }
-
   return max;
 }
 
 function mean(values, valueof) {
-  var n = values.length,
-      m = n,
-      i = -1,
-      value,
-      sum = 0;
-
-  if (valueof == null) {
-    while (++i < n) {
-      if (!isNaN(value = number(values[i]))) sum += value;
-      else --m;
+  let count = 0;
+  let sum = 0;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null && (value = +value) >= value) {
+        ++count, sum += value;
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null && (value = +value) >= value) {
+        ++count, sum += value;
+      }
     }
   }
+  if (count) return sum / count;
+}
 
-  else {
-    while (++i < n) {
-      if (!isNaN(value = number(valueof(values[i], i, values)))) sum += value;
-      else --m;
+// Based on https://github.com/mourner/quickselect
+// ISC license, Copyright 2018 Vladimir Agafonkin.
+function quickselect(array, k, left = 0, right = array.length - 1, compare = ascending) {
+  while (right > left) {
+    if (right - left > 600) {
+      const n = right - left + 1;
+      const m = k - left + 1;
+      const z = Math.log(n);
+      const s = 0.5 * Math.exp(2 * z / 3);
+      const sd = 0.5 * Math.sqrt(z * s * (n - s) / n) * (m - n / 2 < 0 ? -1 : 1);
+      const newLeft = Math.max(left, Math.floor(k - m * s / n + sd));
+      const newRight = Math.min(right, Math.floor(k + (n - m) * s / n + sd));
+      quickselect(array, k, newLeft, newRight, compare);
+    }
+
+    const t = array[k];
+    let i = left;
+    let j = right;
+
+    swap(array, left, k);
+    if (compare(array[right], t) > 0) swap(array, left, right);
+
+    while (i < j) {
+      swap(array, i, j), ++i, --j;
+      while (compare(array[i], t) < 0) ++i;
+      while (compare(array[j], t) > 0) --j;
+    }
+
+    if (compare(array[left], t) === 0) swap(array, left, j);
+    else ++j, swap(array, j, right);
+
+    if (j <= k) left = j + 1;
+    if (k <= j) right = j - 1;
+  }
+  return array;
+}
+
+function swap(array, i, j) {
+  const t = array[i];
+  array[i] = array[j];
+  array[j] = t;
+}
+
+function* numbers(values, valueof) {
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null && (value = +value) >= value) {
+        yield value;
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null && (value = +value) >= value) {
+        yield value;
+      }
     }
   }
-
-  if (m) return sum / m;
 }
 
 function median(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      numbers = [];
+  values = Float64Array.from(numbers(values, valueof));
+  if (!values.length) return;
+  const n = values.length;
+  const i = n >> 1;
+  quickselect(values, i - 1, 0);
+  if ((n & 1) === 0) quickselect(values, i, i);
+  return quantile(values, 0.5);
+}
 
-  if (valueof == null) {
-    while (++i < n) {
-      if (!isNaN(value = number(values[i]))) {
-        numbers.push(value);
-      }
-    }
+function* flatten(arrays) {
+  for (const array of arrays) {
+    yield* array;
   }
-
-  else {
-    while (++i < n) {
-      if (!isNaN(value = number(valueof(values[i], i, values)))) {
-        numbers.push(value);
-      }
-    }
-  }
-
-  return quantile(numbers.sort(ascending), 0.5);
 }
 
 function merge(arrays) {
-  var n = arrays.length,
-      m,
-      i = -1,
-      j = 0,
-      merged,
-      array;
-
-  while (++i < n) j += arrays[i].length;
-  merged = new Array(j);
-
-  while (--n >= 0) {
-    array = arrays[n];
-    m = array.length;
-    while (--m >= 0) {
-      merged[--j] = array[m];
-    }
-  }
-
-  return merged;
+  return Array.from(flatten(arrays));
 }
 
 function min(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      min;
-
-  if (valueof == null) {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = values[i]) != null && value >= value) {
+  let min;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null
+          && value >= value
+          && (min === undefined || min > value)) {
         min = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = values[i]) != null && min > value) {
-            min = value;
-          }
-        }
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null
+          && value >= value
+          && (min === undefined || min > value)) {
+        min = value;
       }
     }
   }
-
-  else {
-    while (++i < n) { // Find the first comparable value.
-      if ((value = valueof(values[i], i, values)) != null && value >= value) {
-        min = value;
-        while (++i < n) { // Compare the remaining values.
-          if ((value = valueof(values[i], i, values)) != null && min > value) {
-            min = value;
-          }
-        }
-      }
-    }
-  }
-
   return min;
+}
+
+function pairs(values, pairof = pair) {
+  const pairs = [];
+  let previous;
+  let first = false;
+  for (const value of values) {
+    if (first) pairs.push(pairof(previous, value));
+    previous = value;
+    first = true;
+  }
+  return pairs;
+}
+
+function pair(a, b) {
+  return [a, b];
 }
 
 function permute(array, indexes) {
@@ -480,27 +515,24 @@ function permute(array, indexes) {
   return permutes;
 }
 
-function scan(values, compare) {
-  if (!(n = values.length)) return;
-  var n,
-      i = 0,
-      j = 0,
-      xi,
-      xj = values[j];
-
-  if (compare == null) compare = ascending;
-
-  while (++i < n) {
-    if (compare(xi = values[i], xj) < 0 || compare(xj, xj) !== 0) {
-      xj = xi, j = i;
+function scan(values, compare = ascending) {
+  let min;
+  let minIndex;
+  let index = -1;
+  for (const value of values) {
+    ++index;
+    if (minIndex === undefined
+        ? compare(value, value) === 0
+        : compare(value, min) < 0) {
+      min = value;
+      minIndex = index;
     }
   }
-
-  if (compare(xj, xj) === 0) return j;
+  return minIndex;
 }
 
-function shuffle(array, i0, i1) {
-  var m = (i1 == null ? array.length : i1) - (i0 = i0 == null ? 0 : +i0),
+function shuffle(array, i0 = 0, i1 = array.length) {
+  var m = i1 - (i0 = +i0),
       t,
       i;
 
@@ -515,29 +547,27 @@ function shuffle(array, i0, i1) {
 }
 
 function sum(values, valueof) {
-  var n = values.length,
-      i = -1,
-      value,
-      sum = 0;
-
-  if (valueof == null) {
-    while (++i < n) {
-      if (value = +values[i]) sum += value; // Note: zero and null are equivalent.
+  let sum = 0;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value = +value) {
+        sum += value;
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if (value = +valueof(value, ++index, values)) {
+        sum += value;
+      }
     }
   }
-
-  else {
-    while (++i < n) {
-      if (value = +valueof(values[i], i, values)) sum += value;
-    }
-  }
-
   return sum;
 }
 
 function transpose(matrix) {
   if (!(n = matrix.length)) return [];
-  for (var i = -1, m = min(matrix, length), transpose = new Array(m); ++i < m;) {
+  for (var i = -1, m = min(matrix, length$1), transpose = new Array(m); ++i < m;) {
     for (var j = -1, n, row = transpose[i] = new Array(n); ++j < n;) {
       row[j] = matrix[j][i];
     }
@@ -545,7 +575,7 @@ function transpose(matrix) {
   return transpose;
 }
 
-function length(d) {
+function length$1(d) {
   return d.length;
 }
 
@@ -562,6 +592,7 @@ exports.cross = cross;
 exports.descending = descending;
 exports.deviation = deviation;
 exports.extent = extent;
+exports.group = group;
 exports.histogram = histogram;
 exports.thresholdFreedmanDiaconis = freedmanDiaconis;
 exports.thresholdScott = scott;
@@ -574,7 +605,9 @@ exports.min = min;
 exports.pairs = pairs;
 exports.permute = permute;
 exports.quantile = quantile;
+exports.quickselect = quickselect;
 exports.range = range;
+exports.rollup = rollup;
 exports.scan = scan;
 exports.shuffle = shuffle;
 exports.sum = sum;

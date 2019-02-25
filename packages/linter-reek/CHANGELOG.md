@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.4.1
+
+*   Use Reek's JSON output (#121)
+
+## 2.4.0
+
+*   Add rule description to the lint message marker tooltip (#120)
+
+## 2.3.1
+
+*   Friendlier error for timeouts (#116)
+*   Update dependencies
+
+## 2.3.0
+
+*   Update dependencies
+*   Update to Linter API v2
+
 ## 2.2.2
 
 *   Update dependencies

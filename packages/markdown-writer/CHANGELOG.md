@@ -1,3 +1,32 @@
+## 2.11.5
+
+* Fix indent/outdent on Alpha List ([#276](https://github.com/zhuochun/md-writer/pull/276))
+* Add `Hugo` Engine configs ([#277](https://github.com/zhuochun/md-writer/pull/277))
+
+## 2.11.4
+
+* Add config `foldInlineLinks` to fold links at insertion ([#272](https://github.com/zhuochun/md-writer/pull/272))
+* Add command `markdown-writer:open-link-in-file` to open a local file linked ([#271](https://github.com/zhuochun/md-writer/pull/271))
+
+## 2.11.3
+
+* Update `open-cheat-sheet` command ([268](https://github.com/zhuochun/md-writer/pull/268))
+* Update multiple project config files support [269](https://github.com/zhuochun/md-writer/pull/269)
+
+## 2.11.2
+
+* Add command `update-toc` to update TOC ([264](https://github.com/zhuochun/md-writer/pull/264))
+* Fix multiple opened projects handling ([266](https://github.com/zhuochun/md-writer/pull/266))
+
+## 2.11.1
+
+* Minor improvement to TOC support ([#263](https://github.com/zhuochun/md-writer/pull/263))
+
+## 2.11.0
+
+* Add Table of Contents (TOC) support ([#261](https://github.com/zhuochun/md-writer/pull/261))
+* Add Fold Headings support ([#262](https://github.com/zhuochun/md-writer/pull/262)
+
 ## 2.10.3
 
 * Fix undefined `getCurrentParagraphBufferRange` ([#259](https://github.com/zhuochun/md-writer/pull/259))

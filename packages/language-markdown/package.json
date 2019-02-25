@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball",
-  "_id": "language-markdown@0.27.0",
+  "_from": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball",
+  "_id": "language-markdown@0.29.0",
   "_inBundle": false,
-  "_integrity": "sha512-2+Gq+tEqxpbEGc0ocf2nWNEjVO9QZNd65hvLIX8wTUHTBNZHZYfsvbKYbnhKtvu5VttA2Vh+Y4jwfH97FEwdAg==",
+  "_integrity": "sha512-o9acPMLEZBfvlbh74ncsObzRjHmh+N4bD8hZi1FgzPgc2e+uXjDCId9S56AxQaj89sk6GiHTd3DtcgErl9JO0w==",
   "_location": "/language-markdown",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball"
+    "raw": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball",
-  "_shasum": "5a84ca467b7edf86a9bc522256b9a9bb740eb793",
-  "_spec": "https://www.atom.io/api/packages/language-markdown/versions/0.27.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118919-68310-c451rq.qvyew",
+  "_resolved": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball",
+  "_shasum": "8307d6b34f1dc4a7799dbadc77b1d83afe28470d",
+  "_spec": "https://www.atom.io/api/packages/language-markdown/versions/0.29.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98880-92moe2.hlicf",
   "bugs": {
     "url": "https://github.com/burodepeper/language-markdown/issues"
   },
@@ -60,5 +60,5 @@
     "type": "git",
     "url": "git+https://github.com/burodepeper/language-markdown.git"
   },
-  "version": "0.27.0"
+  "version": "0.29.0"
 }

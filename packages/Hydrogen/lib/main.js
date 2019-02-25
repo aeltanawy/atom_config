@@ -27,7 +27,7 @@ import WatchesPane from "./panes/watches";
 import OutputPane from "./panes/output-area";
 import KernelMonitorPane from "./panes/kernel-monitor";
 
-import { toggleInspector } from "./commands";
+import { toggleInspector, toggleOutputMode } from "./commands";
 
 import store from "./store";
 import OutputStore from "./store/output";
@@ -55,6 +55,7 @@ import {
 } from "./utils";
 
 import exportNotebook from "./export-notebook";
+import { importNotebook, ipynbOpener } from "./import-notebook";
 
 const Hydrogen = {
   config: Config.schema,
@@ -109,8 +110,7 @@ const Hydrogen = {
         "hydrogen:run-cell": () => this.runCell(),
         "hydrogen:run-cell-and-move-down": () => this.runCell(true),
         "hydrogen:toggle-watches": () => atom.workspace.toggle(WATCHES_URI),
-        "hydrogen:toggle-output-area": () =>
-          atom.workspace.toggle(OUTPUT_AREA_URI),
+        "hydrogen:toggle-output-area": () => toggleOutputMode(),
         "hydrogen:toggle-kernel-monitor": () =>
           atom.workspace.toggle(KERNEL_MONITOR_URI),
         "hydrogen:start-local-kernel": () => this.startZMQKernel(),
@@ -140,7 +140,9 @@ const Hydrogen = {
         "hydrogen:shutdown-kernel": () =>
           this.handleKernelCommand({ command: "shutdown-kernel" }),
         "hydrogen:toggle-bubble": () => this.toggleBubble(),
-        "hydrogen:export-notebook": () => exportNotebook()
+        "hydrogen:export-notebook": () => exportNotebook(),
+        "hydrogen:fold-current-cell": () => this.foldCurrentCell(),
+        "hydrogen:fold-all-but-current-cell": () => this.foldAllButCurrentCell()
       })
     );
 
@@ -150,7 +152,8 @@ const Hydrogen = {
           store.markers.clear();
           if (!store.kernel) return;
           store.kernel.outputStore.clear();
-        }
+        },
+        "hydrogen:import-notebook": () => importNotebook()
       })
     );
 
@@ -217,6 +220,7 @@ const Hydrogen = {
         }
       })
     );
+    store.subscriptions.add(atom.workspace.addOpener(ipynbOpener));
 
     store.subscriptions.add(
       // Destroy any Panes when the package is deactivated.
@@ -434,6 +438,8 @@ const Hydrogen = {
   run(moveDown: boolean = false) {
     const editor = store.editor;
     if (!editor) return;
+    // https://github.com/nteract/hydrogen/issues/1452
+    atom.commands.dispatch(editor.element, "autocomplete-plus:cancel");
     const codeBlock = codeManager.findCodeBlock(editor);
     if (!codeBlock) {
       return;
@@ -511,6 +517,8 @@ const Hydrogen = {
   runCell(moveDown: boolean = false) {
     const editor = store.editor;
     if (!editor) return;
+    // https://github.com/nteract/hydrogen/issues/1452
+    atom.commands.dispatch(editor.element, "autocomplete-plus:cancel");
     const { start, end } = codeManager.getCurrentCell(editor);
     const code = codeManager.getTextInRange(editor, start, end);
     const endRow = codeManager.escapeBlankRows(editor, start.row, end.row);
@@ -521,6 +529,18 @@ const Hydrogen = {
       }
       this.createResultBubble(editor, code, endRow);
     }
+  },
+
+  foldCurrentCell() {
+    const editor = store.editor;
+    if (!editor) return;
+    codeManager.foldCurrentCell(editor);
+  },
+
+  foldAllButCurrentCell() {
+    const editor = store.editor;
+    if (!editor) return;
+    codeManager.foldAllButCurrentCell(editor);
   },
 
   startZMQKernel() {

@@ -44,8 +44,10 @@ function getConfig(filePath) {
   if (path.isAbsolute(configPath)) {
     config = configFile.load(false, configPath);
   } else if (filePath) {
-    config = configFile.load(false,
-      path.join(path.dirname(filePath), configPath));
+    config = configFile.load(
+      false,
+      path.join(path.dirname(filePath), configPath),
+    );
   }
 
   if (!config && onlyConfig) {
@@ -178,13 +180,18 @@ export default {
       // Fix before saving
       editorHandlers.add(editor.getBuffer().onWillSave(() => {
         const scope = editor.getGrammar().scopeName;
-        if ((atom.workspace.getActiveTextEditor().id === editor.id &&
-          (grammarScopes.indexOf(scope) !== -1 && scope !== 'text.html.basic'))
-          || this.testFixOnSave) {
+        if (
+          (
+            atom.workspace.getActiveTextEditor().id === editor.id
+            && (grammarScopes.indexOf(scope) !== -1 && scope !== 'text.html.basic')
+          )
+          || this.testFixOnSave
+        ) {
           // Exclude `excludeFiles` for fix on save
           const config = getConfig(filePath);
           const exclude = globule.isMatch(
-            config && config.excludeFiles, getFilePath(filePath),
+            config && config.excludeFiles,
+            getFilePath(filePath),
           );
 
           if ((fixOnSave && !exclude) || this.testFixOnSave) {
@@ -225,7 +232,7 @@ export default {
       name: 'JSCS',
       grammarScopes,
       scope: 'file',
-      lintOnFly: true,
+      lintsOnChange: true,
       lint: (editor, opts, overrideOptions, testFixOnSave) => {
         startMeasure('linter-jscs: Lint');
 
@@ -249,7 +256,8 @@ export default {
 
         // Exclude `excludeFiles` for errors
         const exclude = globule.isMatch(
-          config && config.excludeFiles, getFilePath(editor.getPath()),
+          config && config.excludeFiles,
+          getFilePath(editor.getPath()),
         );
         if (exclude) {
           endMeasure('linter-jscs: Lint');
@@ -291,15 +299,16 @@ export default {
         }
         endMeasure('linter-jscs: JSCS');
 
-        const translatedErrors = errors.map(({ rule, message, line, column }) => {
-          const type = displayAs;
-          // TODO: Remove this when https://github.com/jscs-dev/node-jscs/issues/2235 has been addressed
-          const cleanMessage = message.replace(`${rule}: `, '');
-          const html = `<span class='badge badge-flexible'>${rule}</span> ${cleanMessage}`;
-          const range = helpers.generateRange(editor, line - 1, column - 1);
-
-          return { type, html, filePath, range };
-        });
+        const translatedErrors = errors.map(({
+          message, line, column,
+        }) => ({
+          severity: displayAs,
+          excerpt: message,
+          location: {
+            file: filePath,
+            position: helpers.generateRange(editor, line - 1, column - 1),
+          },
+        }));
         endMeasure('linter-jscs: Lint');
         return Promise.resolve(translatedErrors);
       },

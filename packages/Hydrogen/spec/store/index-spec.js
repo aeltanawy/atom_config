@@ -7,6 +7,7 @@ import KernelTransport from "./../../lib/kernel-transport";
 import Kernel from "./../../lib/kernel";
 import MarkerStore from "./../../lib/store/markers";
 const commutable = require("@nteract/commutable");
+import { waitAsync } from "../helpers/test-utils";
 
 describe("Store initialize", () => {
   it("should correctly initialize store", () => {
@@ -18,15 +19,15 @@ describe("Store initialize", () => {
     expect(isObservableProp(store, "editor")).toBeTruthy();
     expect(isObservableProp(store, "grammar")).toBeTruthy();
     expect(isComputedProp(store, "kernel")).toBeTruthy();
+    expect(isComputedProp(store, "notebook")).toBeTruthy();
   });
 });
 
 describe("Store", () => {
   beforeEach(() => {
     store.subscriptions = new CompositeDisposable();
-    store.startingKernels.clear();
-    store.runningKernels.clear();
-    store.kernelMapping.clear();
+    store.startingKernels = store.kernelMapping = new Map();
+    store.runningKernels = [];
     store.editor = null;
     store.grammar = null;
   });
@@ -182,7 +183,7 @@ describe("Store", () => {
         )
       );
 
-      store.runningKernels.replace([kernel1, kernel2, kernel3]);
+      store.runningKernels = [kernel1, kernel2, kernel3];
       store.kernelMapping = new Map([
         ["foo.py", kernel1],
         ["bar.py", kernel1],
@@ -268,7 +269,7 @@ describe("Store", () => {
       spyOn(store.markers, "clear");
       const kernel1 = jasmine.createSpyObj("kernel1", ["destroy"]);
       const kernel2 = jasmine.createSpyObj("kernel2", ["destroy"]);
-      store.runningKernels.replace([kernel1, kernel2]);
+      store.runningKernels = [kernel1, kernel2];
       store.dispose();
       expect(store.runningKernels.length).toEqual(0);
       expect(store.kernelMapping.size).toBe(0);
@@ -291,44 +292,57 @@ describe("Store", () => {
   });
 
   describe("get notebook", () => {
+    let editor;
+    beforeEach(
+      waitAsync(async () => {
+        editor = atom.workspace.buildTextEditor();
+        await atom.packages.activatePackage("language-python");
+        editor.setGrammar(atom.grammars.grammarForScopeName("source.python"));
+      })
+    );
+
     it("should return null if no editor", () => {
       expect(store.notebook).toBeNull();
     });
 
-    it("should return a single cell notebook for empty file", () => {
-      // This editor will be empty.
-      const editor = atom.workspace.buildTextEditor();
+    it("should return an empty notebook for empty file", () => {
       store.updateEditor(editor);
       // Build a notebook with one code cell.
-      let codeCell = commutable.emptyCodeCell.set("source", "");
-      const nb = commutable.appendCellToNotebook(
-        commutable.emptyNotebook,
-        codeCell
-      );
+      const nb = commutable.emptyNotebook;
       expect(store.notebook).toEqual(commutable.toJS(nb));
     });
 
-    xit("should return a fully-fledged notebook when the file isn't empty", () => {
-      // This editor will have some cells.
-      const editor = atom.workspace.buildTextEditor();
-      editor.setGrammar(atom.grammars.grammarForScopeName("source.python"));
-      // Add some code to the editor.
-      const source1 = 'print "Hola World! I <3 ZMQ!"';
+    it("should return a fully-fledged notebook when the file isn't empty", () => {
+      const source1 = 'print("Hola World! I <3 ZMQ!")';
       const source2 = "2 + 2";
-      editor.insertText(source1);
-      editor.insertNewline();
-      editor.insertText("# %%");
-      editor.insertNewline();
-      editor.insertText(source2);
+      editor.setText(`# %%\n${source1}\n# %%\n${source2}\n`);
       store.updateEditor(editor);
-      // Build a notebook with these two cells.
       const codeCell1 = commutable.emptyCodeCell.set("source", source1);
       const codeCell2 = commutable.emptyCodeCell.set("source", source2);
+      // The outputted notebook will have three cells because currently a cell
+      // is always created before the first `# %%`
       let nb = commutable.appendCellToNotebook(
         commutable.emptyNotebook,
         codeCell1
       );
       nb = commutable.appendCellToNotebook(nb, codeCell2);
+      expect(store.notebook).toEqual(commutable.toJS(nb));
+    });
+
+    it("should export markdown to markdown cells", () => {
+      const source1 = 'print("Hola World! I <3 ZMQ!")';
+      const source2 = "2 + 2";
+      editor.setText(`# %%\n${source1}\n# %% markdown\n${source2}\n`);
+      store.updateEditor(editor);
+      const codeCell = commutable.emptyCodeCell.set("source", source1);
+      const markdownCell = commutable.emptyMarkdownCell.set("source", source2);
+      // The outputted notebook will have three cells because currently a cell
+      // is always created before the first `# %%`
+      let nb = commutable.appendCellToNotebook(
+        commutable.emptyNotebook,
+        codeCell
+      );
+      nb = commutable.appendCellToNotebook(nb, markdownCell);
       expect(store.notebook).toEqual(commutable.toJS(nb));
     });
   });

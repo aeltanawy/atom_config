@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59308-xzj4bj.2bmv1v2t9"
-    ]
-  ],
-  "_from": "../d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-  "_id": "linter-tidy@2.3.1",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball",
+  "_id": "linter-tidy@2.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-3sCbD6RRWh6eNVfnw9Ua6E4LgnaUlftrF6+o/mLO3ThFQPeRPzHNCcRg/WhSRQ/qw1SI4qfW5VPHsVUwfTfLxA==",
   "_location": "/linter-tidy",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-  "_shasum": "3e54633d267e306572dc549a76e1bffa4bd15f86",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59308-1j79r2g.cvgi90ms4i/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59308-xzj4bj.2bmv1v2t9",
+  "_resolved": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball",
+  "_shasum": "7c8fbc79ca8fea991d749798ba22fd5f3b62ea72",
+  "_spec": "https://www.atom.io/api/packages/linter-tidy/versions/2.4.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-99041-1pam9rm.iu8f",
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-tidy/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "executablePath": {
       "default": "tidy",
@@ -71,14 +57,16 @@
     }
   },
   "dependencies": {
-    "atom-linter": "^9.0.0",
-    "atom-package-deps": "^4.0.1"
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^5.0.0"
   },
+  "deprecated": false,
   "description": "Linter plugin for HTML, using tidy",
   "devDependencies": {
-    "eslint": "^3.16.1",
-    "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "jasmine-fix": "^1.3.0"
   },
   "engines": {
     "atom": ">=1.4.0 <2.0.0"
@@ -113,20 +101,17 @@
   "license": "MIT",
   "main": "./lib/main.js",
   "name": "linter-tidy",
-  "optionalDependencies": {},
   "package-deps": [
-    "linter"
+    "linter:2.0.0"
   ],
   "private": true,
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   },
-  "readme": "# linter-tidy\n\nThis package will lint your `.html` opened files in Atom through [tidy-html5][].\n\n## Installation\n\n*   Install [tidy-html5][]\n*   `$ apm install linter-tidy`\n\n## Settings\n\nYou can configure linter-tidy by editing ~/.atom/config.cson (choose Open Your\nConfig in Atom menu):\n\n```coffeescript\n'linter-tidy':\n  'tidyExecutablePath': null # tidy path. run 'which tidy' to find the path\n  'grammarScopes': [\n    'text.html.basic'\n  ] # A list of grammar scopes to lint with Tidy.\n```\n\n[tidy-html5]: http://www.html-tidy.org\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomLinter/linter-tidy.git"
@@ -135,5 +120,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.3.1"
+  "version": "2.4.0"
 }

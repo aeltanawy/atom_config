@@ -1,5 +1,10 @@
 File Icons
 ==========
+
+[![Build status: TravisCI](https://travis-ci.org/file-icons/atom.svg?branch=master)](https://travis-ci.org/file-icons/atom)
+[![Build status: AppVeyor](https://ci.appveyor.com/api/projects/status/6p3e1pj327ee7ylu?svg=true)](https://ci.appveyor.com/project/Alhadis/atom)
+[![Latest package version](https://img.shields.io/apm/v/file-icons.svg?colorB=brightgreen)](https://github.com/file-icons/atom/releases/latest)
+
 File-specific icons in Atom for improved visual grepping.
 
 <img alt="Icon previews" width="850" src="https://raw.githubusercontent.com/file-icons/atom/6714706f268e257100e03c9eb52819cb97ad570b/preview.png" />
@@ -37,7 +42,7 @@ Consult the package stylesheets to see what classes are used:
 
 #### Icon reference
 * [**File-Icons**](https://github.com/file-icons/source/blob/master/charmap.md) 
-* [**FontAwesome 4.7.0**](http://fontawesome.io/cheatsheet/)
+* [**FontAwesome 4.7.0**](https://fontawesome.com/v4.7.0/cheatsheet/)
 * [**Mfizz**](https://github.com/file-icons/MFixx/blob/master/charmap.md)
 * [**Devicons**](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)
 
@@ -265,7 +270,9 @@ Backers
 If you enjoy these icons, help support the project by [becoming a backer][20]. Huge thanks
 to our current backers for their generous support:
 
+<a title="Justin Ireland" href="https://github.com/justinireland"><img alt="Justin Ireland" height="32" src="https://images.opencollective.com/proxy/images?src=https%3A%2F%2Fwww.gravatar.com%2Favatar%2Fa23264984bdeee03b97d970cd893a595%3Fdefault%3D404"/></a>
 <a title="Tipe" href="https://tipe.io/"><img alt="Tipe" height="32" src="https://camo.githubusercontent.com/cc8c116a0174ba6f6884fda5415ccd232173d0c7/68747470733a2f2f63646e2e746970652e696f2f746970652f746970652d3130323478313032342e706e67"/></a>
+<a title="Triplebyte" href="https://github.com/triplebyte"><img alt="Triplebyte" height="32" src="https://avatars3.githubusercontent.com/u/12144133"/></a>
 
 
 Acknowledgements

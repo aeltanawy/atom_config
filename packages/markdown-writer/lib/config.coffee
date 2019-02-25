@@ -58,6 +58,12 @@ engines =
       date: "{date}"
       ---
       """
+  hugo:
+    siteDraftsDir: "content/posts/"
+    sitePostsDir: "content/posts/"
+    siteImagesDir: "{directory}/images/"
+    relativeImagePath: true
+    renameImageOnCopy: true
 
 module.exports =
   projectConfigs: {}
@@ -125,9 +131,15 @@ module.exports =
   getSampleConfigFile: -> getConfigFile("config.cson")
 
   getProjectConfigFile: ->
-    return if !atom.project || atom.project.getPaths().length < 1
+    return if atom.project.getPaths().length < 1
 
-    projectPath = atom.project.getPaths()[0]
+    projectPath = undefined
+    # try resolve based on opened file editor
+    editor = atom.workspace.getActiveTextEditor()
+    projectPath = atom.project.relativizePath(editor.getPath())[0] if editor
+    # try resolve based on the first project
+    projectPath = atom.project.getPaths()[0] unless projectPath
+
     fileName = @getUser("projectConfigFile") || @getDefault("projectConfigFile")
     path.join(projectPath, fileName)
 

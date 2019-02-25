@@ -1,40 +1,25 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59611-1ej9vay.dfdprs5rk9"
-    ]
-  ],
-  "_from": "../d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-  "_id": "linter-flake8@2.3.0",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+  "_id": "linter-flake8@2.4.0",
+  "_inBundle": false,
+  "_integrity": "sha512-ZkVVBhwsoPSD5H9SAPVTRolLR1Gf8u5Qobq7O4VjRti8ypHmoWYStE9H4rtc2F+hqOpQyeOa/ysCrqtXOT+H8Q==",
   "_location": "/linter-flake8",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-  "_shasum": "7021f063deb3406d4603bc5ff9ba968f41a81336",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59611-1b39bnu.rargj5rk9/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59611-1ej9vay.dfdprs5rk9",
+  "_resolved": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+  "_shasum": "ceb0aafc6f523ab5eefdc659e12929c08792b992",
+  "_spec": "https://www.atom.io/api/packages/linter-flake8/versions/2.4.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98931-gexpj7.pzx2h",
   "activationHooks": [
     "language-python:grammar-used",
     "MagicPython:grammar-used",
@@ -44,6 +29,7 @@
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-flake8/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "executablePath": {
       "type": "string",
@@ -111,10 +97,11 @@
   },
   "dependencies": {
     "atom-linter": "^10.0.0",
-    "atom-package-deps": "^4.0.1",
+    "atom-package-deps": "^5.0.0",
     "fs-plus": "^3.0.0",
     "semver": "^5.4.1"
   },
+  "deprecated": false,
   "description": "Atom linter plugin for Python, using flake8",
   "devDependencies": {
     "eslint": "^4.6.0",
@@ -150,19 +137,16 @@
   "license": "MIT",
   "main": "./lib/main.js",
   "name": "linter-flake8",
-  "optionalDependencies": {},
   "package-deps": [
-    "linter"
+    "linter:2.0.0"
   ],
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   },
-  "readme": "# linter-flake8\n\n[![Build Status](https://travis-ci.org/AtomLinter/linter-flake8.svg)](https://travis-ci.org/AtomLinter/linter-flake8)\n\nlinter-flake8 is a [flake8](https://pypi.python.org/pypi/flake8) provider for\n[linter](https://github.com/atom-community/linter).\n\n![img](https://cloud.githubusercontent.com/assets/4278113/8768482/52f975c6-2e3f-11e5-87e4-27c8359fd36c.gif)\n\n## Installation\n\nTo use this plugin `flake8` will need to be installed on your\nsystem. If it is not already installed, you can install\n[flake8](https://pypi.python.org/pypi/flake8) by typing the following in a\nterminal:\n\n```ShellSession\npip install flake8\n```\n\nYou can then install this package from with Atom or by typing:\n\n```ShellSession\n$ apm install linter-flake8\n```\n\n_Note: If the `linter` package is not currently installed, it will be installed\nfor you._\n\n### Built-in docstrings check (Optional)\n\nTo include built-in docstrings (pep257) support you will also need to install:\n\n```ShellSession\npip install flake8-docstrings\n```\n\n### OpenStack Style Guidelines check (Optional)\n\nTo support\n[OpenStack Style Guidelines](http://google.github.io/styleguide/pyguide.html),\nyou will also need to install the\n[hacking](https://github.com/openstack-dev/hacking) module:\n\n```ShellSession\npip install hacking\n```\n\n### Virtualenv\n\nTo ensure `flake8` targets the proper Python version for each project you work\non, it is highly recommended to install `flake8` in each project's\n[virtualenv](https://virtualenv.pypa.io/en/latest/):\n\n*   If you are okay with installing `flake8` inside each virtualenv, just do\n    that.\n\n*   If you'd rather use the system-wide `flake8` versions (e.g. `flake8` and\n    `flake8-python2`), create a `flake8` symlink in each virtualenv pointing to\n    your desired flake8 version. For example: `ln -s /usr/bin/flake8-python2\n    ~/.virtualenvs/random_python2_project/bin/flake8`\n\nThen [activate your virtualenv](https://virtualenv.pypa.io/en/latest/userguide.html#activate-script)\nfrom the command line before starting Atom, and you're good to go!\n\n## Settings\n\nYou can configure linter-flake8 like any [Atom](https://atom.io/) package by\nediting the settings in _Atom -> Preferences -> Packages -> linter-flake8_.\n\n![image](https://cloud.githubusercontent.com/assets/427137/10375451/758567d2-6dad-11e5-9b5e-3e820f4c3d57.png)\n\nOr if you prefer you can use Atom _config.cson_ file _~/.atom/config.cson_\n(click _Open Your Config_ in _Atom_ menu).\n\nIf you installed `flake8` in a location not in your `$PATH`, the Settings panel\nwill let you specify where it lives. For example:\n\n```cson\n'linter-flake8':\n  'executablePath': '/usr/bin/flake8'\n```\n\nThe `executablePath` setting may use `$PROJECT` and `$PROJECT_NAME` for the path or name of the current project, respectively.\n\n\n\n### Project configuration files\n\nLinter also supports reading `flake8` configuration files. To use them, you\nneed specify their names manually into _Config Files Names_ in the package\nsettings. Note that package settings from Settings panel will be **ignored** if\na configuration file was found.\n\n![img](https://cloud.githubusercontent.com/assets/4278113/8768510/0d3769f2-2e40-11e5-8e27-d31991973246.png)\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomLinter/linter-flake8.git"
@@ -171,5 +155,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.3.0"
+  "version": "2.4.0"
 }

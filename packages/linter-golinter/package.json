@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59116-994mr8.mqxinklnmi"
-    ]
-  ],
-  "_from": "../d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-  "_id": "linter-golinter@1.2.2",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball",
+  "_id": "linter-golinter@1.3.0",
+  "_inBundle": false,
+  "_integrity": "sha512-rYa+wSDIW4GR0qd5sR46C+Rwp1F9Z7fJ/GUgJlkRDs1NlYh3D87wmbTdS63qLWNA8YVxRuk3IyWiPkwVhShN2w==",
   "_location": "/linter-golinter",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-  "_shasum": "4347f97f10f9955772c1e1005e9c68d7b0c5b6f3",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59116-1qxgzw4.r5tfpc766r/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59116-994mr8.mqxinklnmi",
+  "_resolved": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball",
+  "_shasum": "667ea05f7c3535199388d327fd7da4845c1564b8",
+  "_spec": "https://www.atom.io/api/packages/linter-golinter/versions/1.3.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98957-12zzgl0.oycs",
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-golinter/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "executablePath": {
       "title": "golint Executable Path",
@@ -53,14 +39,15 @@
     }
   },
   "dependencies": {
-    "atom-linter": "^9.0.0",
-    "atom-package-deps": "^4.0.1"
+    "atom-linter": "^10.0.0",
+    "atom-package-deps": "^5.0.0"
   },
+  "deprecated": false,
   "description": "Check Go files with golint tool",
   "devDependencies": {
-    "eslint": "^3.13.0",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint": "^4.6.0",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
   },
   "engines": {
     "atom": ">=1.4.0 <2.0.0"
@@ -94,19 +81,16 @@
   "license": "MIT",
   "main": "lib/main.js",
   "name": "linter-golinter",
-  "optionalDependencies": {},
   "package-deps": [
-    "linter"
+    "linter:2.0.0"
   ],
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   },
-  "readme": "# linter-golinter\n\nThis plugin for [Linter][linter] provides an interface to the\n[golint](https://github.com/golang/lint) tool. It will be used\nwith files that have the `Go` syntax.\n\n## Prerequisites\n\n  1. [Install Go](https://golang.org/doc/install) for your system.\n  \n  2. Install `golint` per the instructions at its [repo](https://github.com/golang/lint).\n\n## Installation\n\n```ShellSession\n$ apm install linter-golinter\n```\n\n## Settings\n\nYou can configure linter-golinter inside the Atom settings menu or by editing\nyour `~/.atom/config.cson` file (choose Open Your Config in Atom menu):\n\n```CoffeeScript\n\"linter-golinter\":\n  \"executablePath\": \"golint\" # Path to golint executable.\n```\n\n> Tip:\n> \n> Add your [`GOPATH`](https://github.com/golang/go/wiki/GOPATH) binaries directory to your `PATH`. If you installed `Go` to the default location, you can use this shell command to add it to your `.bashrc` file:\n> \n> ```bash\nprintf \"\\nexport PATH=\\$PATH:\\$HOME/go/bin\\n\" >> $HOME/.bashrc\n```\n> \n> This should prevent needing to set the `golint` executable path.\n\n_If the default path resolution of just `golint` is not working for you, you\ncan try using the command `which golint` on UNIX / macOS or `where.exe golint` on\nWindows in a terminal / command prompt to print the path to your `golint`\ninstallation. In most cases it should be `$GOPATH/bin/golint`._\n\n[linter]: https://github.com/atom-community/linter\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomLinter/linter-golinter.git"
@@ -115,5 +99,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "1.2.2"
+  "version": "1.3.0"
 }

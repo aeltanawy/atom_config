@@ -1,40 +1,25 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118813-39846-ky6unn.3y3lb7f1or"
-    ]
-  ],
-  "_from": "../d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-  "_id": "Hydrogen@2.6.0",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
+  "_id": "Hydrogen@2.8.0",
+  "_inBundle": false,
+  "_integrity": "sha512-/jVIX91J0MFPmlMAMSKv5qYy73g2FUoYevqdVthomnL9Ypod3vHrjDCi6yocrfZAVH4p+6laRBEypRP/mc+ryw==",
   "_location": "/Hydrogen",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-  "_shasum": "831fba0ab043df8854285231952ca190eba85737",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39846-1dgoduf.66wam50zfr/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118813-39846-ky6unn.3y3lb7f1or",
+  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
+  "_shasum": "47e427dc3a3413d949560299bd70d2e6064c875c",
+  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98862-pch60w.z33di",
   "activationCommands": {
     "atom-text-editor": [
       "hydrogen:start-local-kernel",
@@ -47,6 +32,9 @@
       "hydrogen:run-cell-and-move-down",
       "hydrogen:restart-kernel-and-re-evaluate-bubbles",
       "hydrogen:toggle-bubble"
+    ],
+    "atom-workspace": [
+      "hydrogen:import-notebook"
     ]
   },
   "atomTestRunner": "atom-jasmine3-test-runner",
@@ -56,6 +44,7 @@
   "bugs": {
     "url": "https://github.com/nteract/hydrogen/issues"
   },
+  "bundleDependencies": false,
   "consumedServices": {
     "status-bar": {
       "versions": {
@@ -66,47 +55,56 @@
   "dependencies": {
     "@babel/runtime-corejs2": "^7.0.0",
     "@jupyterlab/services": "^0.52.0",
-    "@nteract/commutable": "^3.0.4",
-    "@nteract/display-area": "^3.1.7",
-    "@nteract/transform-plotly": "^3.1.4",
-    "@nteract/transform-vega": "^3.1.1",
-    "@nteract/transforms": "^3.1.4",
+    "@nteract/commutable": "^5.0.0",
+    "@nteract/display-area": "^4.4.8",
+    "@nteract/mathjax": "^3.0.1",
+    "@nteract/transform-plotly": "^3.2.5",
+    "@nteract/transform-vega": "^3.2.6",
+    "@nteract/transforms": "^4.4.7",
     "anser": "^1.4.4",
     "atom-select-list": "^0.7.0",
     "escape-carriage": "^1.2.0",
     "escape-string-regexp": "^1.0.5",
-    "jmp": "^1.0.0",
+    "jmp": "^2.0.0",
     "kernelspecs": "^2.0.0",
     "lodash": "^4.14.0",
-    "mobx": "^5.0.3",
+    "mathjax-electron": "^3.0.0",
+    "mobx": "^5.1.1",
     "mobx-react": "^5.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-hot-loader": "^4.3.3",
     "react-rangeslider": "^2.1.0",
     "spawnteract": "^5.1.0",
+    "strip-indent": "^2.0.0",
     "tildify": "^1.2.0",
     "uuid": "^3.2.1",
     "ws": "^3.3.1",
     "xmlhttprequest": "^1.8.0"
   },
+  "deprecated": false,
   "description": "Run code interactively, inspect data, and plot. All the power of Jupyter kernels, inside your favorite text editor.",
   "devDependencies": {
     "atom-jasmine3-test-runner": "^4.0.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
-    "flow-bin": "^0.79.0",
-    "husky": "^0.14.0",
-    "lint-staged": "^7.0.0",
+    "flow-bin": "^0.92.0",
+    "husky": "^1.1.0",
+    "lint-staged": "^8.0.0",
     "markdox": "^0.1.10",
     "mobx-react-devtools": "^6.0.0",
-    "prettier": "^1.8.2",
+    "prettier": "^1.14.3",
     "react-test-renderer": "^16.0.0"
   },
   "engines": {
     "atom": ">=1.20.0 <2.0.0"
   },
   "homepage": "https://github.com/nteract/hydrogen#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "keywords": [
     "execute",
     "run",
@@ -130,7 +128,6 @@
   },
   "main": "./lib/main",
   "name": "Hydrogen",
-  "optionalDependencies": {},
   "providedServices": {
     "autocomplete.provider": {
       "versions": {
@@ -144,17 +141,14 @@
       }
     }
   },
-  "readme": "# Hydrogen <img src=\"https://cdn.rawgit.com/nteract/hydrogen/17eda245/static/animate-logo.svg\" alt=\"hydrogen animated logo\" height=\"50px\" align=\"right\" />\n\n[![slack in](https://slackin-nteract.now.sh/badge.svg)](https://slackin-nteract.now.sh)\n[![Greenkeeper badge](https://badges.greenkeeper.io/nteract/hydrogen.svg)](https://greenkeeper.io/)\n[![Build Status](https://travis-ci.org/nteract/hydrogen.svg?branch=master)](https://travis-ci.org/nteract/hydrogen)\n\nHydrogen is an interactive coding environment that supports Python, R, JavaScript and [other Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels).\n\nCheckout our [Documentation](https://nteract.gitbooks.io/hydrogen/) and [Medium blog post](https://medium.com/nteract/hydrogen-interactive-computing-in-atom-89d291bcc4dd) to see what you can do with Hydrogen.\n\n![hero](https://cloud.githubusercontent.com/assets/13285808/20360886/7e03e524-ac03-11e6-9176-37677f226619.gif)\n\n## Contents\n\n1. [Background](#background)\n2. [Features](#features)\n3. [Plugins for Hydrogen](#plugins-for-hydrogen)\n4. [How it works](#how-it-works)\n5. [Why \"Hydrogen\"?](#why-hydrogen)\n6. [Contributing](#contributing)\n7. [Changelog](#changelog)\n8. [License](#license)\n\n## Background\n\nHydrogen was inspired by Bret Victor's ideas about the power of instantaneous feedback and the design of [Light Table](http://lighttable.com/). Running code inline and in real time is a more natural way to develop. By bringing the interactive style of Light Table to the rock-solid usability of Atom, Hydrogen makes it easy to write code the way you want to.\n\nYou also may be interested in our latest project – [nteract](https://github.com/nteract/nteract) – a desktop application that wraps up the best of the web based Jupyter notebook.\n\n## Features\n\n- execute a line, selection, or block at a time\n- rich media support for plots, images, and video\n- watch expressions let you keep track of variables and re-run snippets after every change\n- completions from the running kernel, just like autocomplete in the Chrome dev tools\n- code can be inspected to show useful information provided by the running kernel\n- one kernel per language (so you can run snippets from several files, all in the same namespace)\n- interrupt or restart the kernel if anything goes wrong\n- use a custom kernel connection (for example to run code inside Docker), read more in the \"Custom kernel connection (inside Docker)\" section\n\n## [Documentation](https://nteract.gitbooks.io/hydrogen/)\n\n- [Installation](https://nteract.gitbooks.io/hydrogen/docs/Installation.html)\n- [Usage](https://nteract.gitbooks.io/hydrogen/docs/Usage/GettingStarted.html)\n  - [Getting started](https://nteract.gitbooks.io/hydrogen/docs/Usage/GettingStarted.html)\n  - [Examples](https://nteract.gitbooks.io/hydrogen/docs/Usage/Examples.html)\n  - [Remote Kernels](https://nteract.gitbooks.io/hydrogen/docs/Usage/RemoteKernelConnection.html)\n- [Troubleshooting Guide](https://nteract.gitbooks.io/hydrogen/docs/Troubleshooting.html)\n\n## Plugins for Hydrogen\n\nHydrogen has support for plugins. Feel free to add your own to the list:\n\n- [Hydrogen Launcher](https://github.com/lgeiger/hydrogen-launcher)\n- [hydrogen-python](https://github.com/nikitakit/hydrogen-python)\n- [Data Explorer](https://github.com/BenRussert/data-explorer)\n\nIf you are interested in building a plugin take a look at our [plugin API documentation](https://nteract.gitbooks.io/hydrogen/docs/PluginAPI.md).\n\n## How it works\n\nHydrogen implements the [messaging protocol](http://jupyter-client.readthedocs.io/en/latest/messaging.html) for [Jupyter](https://jupyter.org/). Jupyter (formerly IPython) uses ZeroMQ to connect a client (like Hydrogen) to a running kernel (like IJulia or iTorch). The client sends code to be executed to the kernel, which runs it and sends back results.\n\n## Why \"Hydrogen\"?\n\nHydrogen atoms make up 90% of Jupiter by volume.\n\nPlus, it was easy to make a logo.\n\n## Contributing\n\nThanks for taking the time to contribute. Take a look at our [Contributing Guide](https://github.com/nteract/hydrogen/blob/master/CONTRIBUTING.md) to get started.\n\n## Changelog\n\nEvery release is documented on the [GitHub Releases page](https://github.com/nteract/hydrogen/releases).\n\n## License\n\nThis project is licensed under the MIT License - see the [LICENSE.md](https://github.com/nteract/hydrogen/blob/master/LICENSE.md) file for details\n\n**[⬆ back to top](#contents)**\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nteract/hydrogen.git"
+    "url": "git+https://github.com/nteract/hydrogen.git"
   },
   "scripts": {
     "build:docs": "markdox lib/plugin-api/hydrogen-provider.js lib/plugin-api/hydrogen-kernel.js -o docs/PluginAPI.md",
     "flow": "flow",
-    "precommit": "lint-staged",
     "prettier": "prettier --write 'lib/**/*.js' 'spec/**/*.js'"
   },
-  "version": "2.6.0"
+  "version": "2.8.0"
 }

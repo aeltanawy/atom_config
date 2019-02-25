@@ -1,5 +1,49 @@
 ## Changelog
 
+### 8.6.1
+
+- Fix [#781](https://github.com/akonwi/git-plus/issues/781)
+
+### 8.6.0
+
+- Show current branch next to the repo root in the tree view.
+  - This can be disabled in the general settings of the plugin.
+  - ![screenshot](https://dl.dropboxusercontent.com/s/bt3lbsd9oxqhhbh//tree-view-branch.png.png)
+
+### 8.5.0
+
+- Render emojis in commit messages. [#780](https://github.com/akonwi/git-plus/issues/780)
+
+### 8.4.2
+
+- Fix for a window creating 2 output views at startup
+
+### 8.4.1
+
+- Fix [#776](https://github.com/akonwi/git-plus/issues/776)
+
+### 8.4.0
+
+- Show notifications for command errors if 'Always show result output' is disabled.
+- If the output view is destroyed, it can be recreated via the toggle with restored state.
+- Fixes some deserialization bugs with the output view.
+
+### 8.3.0
+
+- Fix [#774](https://github.com/akonwi/git-plus/issues/774). Brings back clicking on the branch name in status bar to activate the Checkout branch command.
+- The tree view context menu has been improved to only show commands that are applicable to the selected items. Unfortunately, the current api has no way of knowing if the directory root is a git repository, so there will be git options for non git directories.
+
+### 8.2.1
+
+- Fix issue with git plus hijacking copy/paste commands
+
+### 8.2.0
+
+- bump minimum required atom version to 1.28
+- Address [#758](https://github.com/akonwi/git-plus/issues/758)
+  - Show command log and output in chronologically descending order. (most recent first)
+  - The 'Always show result output' config being enabled will also automatically expand the output of the last command
+
 ### 8.1.0
 
 - The output view has been overhauled so it's now more of a log of commands executed.

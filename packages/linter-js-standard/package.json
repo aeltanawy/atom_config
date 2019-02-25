@@ -1,40 +1,25 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118819-67236-2mk43r.x02f14te29"
-    ]
-  ],
-  "_from": "../d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-  "_id": "linter-js-standard@6.0.0",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
+  "_id": "linter-js-standard@6.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-kHjU6SUTqhhwK4Mwz3KT93Ic7OdfUxulaXs3iXvYSkwWyDXlNdRRRHmaopAcZk8yfRBhSFqAjtL7SJdl/Lm1QQ==",
   "_location": "/linter-js-standard",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-  "_shasum": "2ced72b816b4ccf7731bf28940b4fe7ca9c8bf3c",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118819-67236-1gw66vf.vyrsikvs4i/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118819-67236-2mk43r.x02f14te29",
+  "_resolved": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
+  "_shasum": "fbda73b0b4427c289f9712b2f3c91876858f70b0",
+  "_spec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98986-y17dmy.sjtgs",
   "activationCommands": [],
   "author": {
     "name": "Ricardo Barros",
@@ -43,6 +28,7 @@
   "bugs": {
     "url": "https://github.com/ricardofbarros/linter-js-standard/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "atom-linter": "^10.0.0",
     "atom-package-deps": "^4.6.1",
@@ -57,8 +43,8 @@
     "semistandard": "^12.0.0",
     "standard": "^12.0.0"
   },
+  "deprecated": false,
   "description": "Linter plugin for JavaScript Standard Style",
-  "devDependencies": {},
   "engines": {
     "atom": ">=1.14.0 <2.0.0"
   },
@@ -71,7 +57,6 @@
   "license": "MIT",
   "main": "./lib/init.js",
   "name": "linter-js-standard",
-  "optionalDependencies": {},
   "package-deps": [
     "linter:2.0.0"
   ],
@@ -82,8 +67,6 @@
       }
     }
   },
-  "readme": "# linter-js-standard\n\n![apm](https://img.shields.io/apm/v/linter-js-standard.svg)\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n\n> [Linter](https://github.com/steelbrain/linter) for [JavaScript Standard Style](https://standardjs.com) and its forks.\n\n![](screenshot.png)\n\n## Highlights\n\n- Supports [JavaScript Standard style](https://standardjs.com) and [some of its forks](#default-style).\n- Lints JavaScript within HTML and Markdown documents.\n- Links to ESLint’s rule documentation.\n- Runs globally, if desired.\n\n## Installation\n\n```console\n$ apm install linter-js-standard\n```\n\nAlternatively, go to Settings → Install and search for `linter-js-standard`.\n\n## Settings\n\n### Default style\n\nDefault global style when none is installed locally. Choose between:\n\n- [JavaScript Standard Style (`standard`)](https://standardjs.com)\n- [JavaScript Semi-Standard Style (`semistandard`)](https://github.com/Flet/semistandard)\n- [JavaScript Happiness Style (`happiness`)](https://github.com/JedWatson/happiness)\n\n### Only lint if installed locally\n\nOnly lint if `standard` (or one of the [other styles](#default-style)) is installed as a dependency (that is, if it is listed in `devDependencies` or `dependencies` in `package.json`).\n\n### Show ESLint rule ID\n\nShow ESLint’s rule ID in the message description. For example: `Extra semicolon. (semi)`.\n\n### Skip if ESLint is installed locally\n\nSkip linting if ESLint is installed locally.\n\n### Lint HTML documents\n\nLint JavaScript code within `<script>` tags in HTML documents.\n\n### Lint Markdown documents\n\nLint JavaScript code blocks within Markdown documents.\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ricardofbarros/linter-js-standard.git"
@@ -93,5 +76,5 @@
       "atom"
     ]
   },
-  "version": "6.0.0"
+  "version": "6.1.0"
 }

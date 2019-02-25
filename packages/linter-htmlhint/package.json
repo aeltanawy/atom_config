@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118813-39800-ifcgoi.ttme56d2t9"
-    ]
-  ],
-  "_from": "../d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-  "_id": "linter-htmlhint@1.5.1",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball",
+  "_id": "linter-htmlhint@1.6.0",
+  "_inBundle": false,
+  "_integrity": "sha512-oAI9fZ6eLEeJEBgqCPXEdNUE2IKuZyjBgGZBUOnWImsgIknhwBpIR3macMi/g8e+oiHfN3XuhMRQHj2XYgTvDA==",
   "_location": "/linter-htmlhint",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-  "_shasum": "a1254820c58cad7a182c1ea6c115c51a4eabdbe4",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118813-39800-1njl2x9.ifi6nwxw29/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118813-39800-ifcgoi.ttme56d2t9",
+  "_resolved": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball",
+  "_shasum": "e28493900fac3191df51533162aaeced19e987e5",
+  "_spec": "https://www.atom.io/api/packages/linter-htmlhint/versions/1.6.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98980-lwtneq.90cdb",
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-htmlhint/issues"
   },
+  "bundleDependencies": false,
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -66,23 +52,24 @@
   },
   "dependencies": {
     "atom-linter": "^10.0.0",
-    "atom-package-deps": "^4.6.0",
+    "atom-package-deps": "^5.0.0",
     "htmlhint": "0.10.0",
     "strip-json-comments": "^2.0.1",
     "tiny-promisify": "^1.0.0"
   },
+  "deprecated": false,
   "description": "A plugin for Atom Linter providing an interface to HTMLHint.",
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
     "@commitlint/travis-cli": "^7.0.0",
-    "@semantic-release/apm-config": "^5.0.2",
+    "@semantic-release/apm-config": "^6.0.1",
     "eslint": "^5.4.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "husky": "^0.14.3",
+    "husky": "^1.3.1",
     "jasmine-fix": "^1.3.1",
-    "semantic-release": "^15.9.0"
+    "semantic-release": "^15.10.0"
   },
   "engines": {
     "atom": ">=1.4.0 <2.0.0"
@@ -113,6 +100,11 @@
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-htmlhint#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "keywords": [
     "html",
     "lint",
@@ -121,20 +113,17 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "linter-htmlhint",
-  "optionalDependencies": {},
   "package-deps": [
-    "linter"
+    "linter:2.0.0"
   ],
   "private": true,
   "providedServices": {
     "linter": {
       "versions": {
-        "1.0.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   },
-  "readme": "# linter-htmlhint\n\nA plugin for [Linter] providing an interface to [HTMLHint]. It will be\nused with files that have the syntax.\n\n## Installation\n\nThe [Linter] package will be installed for you to provide an interface to this package. If you are using an alternative debugging interface that supports linter plugins simply disable [Linter].\n\n```ShellSession\n$ apm install linter-htmlhint\n```\n\n## Config\n\nThis plugin will search for a [HTMLHint] configuration file called `.htmlhintrc` and use that file if it exists in any parent folder. It will stop at the first `.htmlhintrc` file found.\n\n## Settings\n\nYou can configure `linter-htmlhint` in Atom's Settings.\n\n[linter]: https://github.com/atom-community/linter \"Linter\"\n[HTMLHint]: https://github.com/yaniswang/HTMLHint \"HTMLHint\"\n",
-  "readmeFilename": "README.md",
   "release": {
     "extends": "@semantic-release/apm-config"
   },
@@ -143,9 +132,8 @@
     "url": "git+https://github.com/AtomLinter/linter-htmlhint.git"
   },
   "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "1.5.1"
+  "version": "1.6.0"
 }

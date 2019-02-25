@@ -49,6 +49,7 @@ class PublishDraft
     return if @frontMatter.isEmpty
 
     @frontMatter.setIfExists("published", true)
+    @frontMatter.setIfExists("draft", false)
     @frontMatter.setIfExists("date", templateHelper.getFrontMatterDate(@dateTime))
 
     @frontMatter.save()
@@ -56,7 +57,7 @@ class PublishDraft
   getPostPath: ->
     frontMatter= templateHelper.getFrontMatter(this)
 
-    localDir = utils.getSitePath(config.get("siteLocalDir"))
+    localDir = utils.getSitePath(config.get("siteLocalDir"), @editor.getPath())
     postsDir = templateHelper.create("sitePostsDir", frontMatter, @dateTime)
     fileName = templateHelper.create("newPostFileName", frontMatter, @dateTime)
 

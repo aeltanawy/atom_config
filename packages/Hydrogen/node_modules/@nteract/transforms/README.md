@@ -7,8 +7,12 @@ release of the display area (:soon:).
 
 ## Installation
 
-```
+You may use whichever package manager (`npm` or `yarn`) best suits your workflow. The `nteract` team internally uses `yarn`.
+
+```bash
 npm install @nteract/transforms
+# OR
+yarn add @nteract/transforms
 ```
 
 Note: React is a peer dependencies you'll have to install yourself.

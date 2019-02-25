@@ -5,8 +5,12 @@ Elements.
 
 ## Installation
 
-```
+You may use whichever package manager (`npm` or `yarn`) best suits your workflow. The `nteract` team internally uses `yarn`.
+
+```bash
 npm install --save @nteract/transform-vdom
+# OR
+yarn add @nteract/transform-vdom
 ```
 
 Note: This transform is included in `@nteract/transforms` so if you're using that

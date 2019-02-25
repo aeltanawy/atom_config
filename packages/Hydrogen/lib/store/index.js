@@ -18,14 +18,13 @@ import MarkerStore from "./markers";
 import kernelManager from "./../kernel-manager";
 import Kernel from "./../kernel";
 
-import type { IObservableArray } from "mobx";
-
 const commutable = require("@nteract/commutable");
 
 export class Store {
   subscriptions = new CompositeDisposable();
   markers = new MarkerStore();
-  runningKernels: IObservableArray<Kernel> = observable([]);
+  @observable
+  runningKernels: Array<Kernel> = [];
   @observable
   kernelMapping: KernelMapping = new Map();
   @observable
@@ -67,17 +66,31 @@ export class Store {
   @computed
   get notebook() {
     const editor = this.editor;
-    if (!editor) {
-      return null;
-    }
-    // Should we consider starting off with a monocellNotebook ?
+    if (!editor) return null;
     let notebook = commutable.emptyNotebook;
+    if (this.kernel) {
+      notebook = notebook.setIn(
+        ["metadata", "kernelspec"],
+        this.kernel.transport.kernelSpec
+      );
+    }
     const cellRanges = codeManager.getCells(editor);
     _.forEach(cellRanges, cell => {
       const { start, end } = cell;
       let source = codeManager.getTextInRange(editor, start, end);
       source = source ? source : "";
-      const newCell = commutable.emptyCodeCell.set("source", source);
+      // When the cell marker following a given cell range is on its own line,
+      // the newline immediately preceding that cell marker is included in
+      // `source`. We remove that here. See #1512 for more details.
+      if (source.slice(-1) === "\n") source = source.slice(0, -1);
+      const cellType = codeManager.getMetadataForRow(editor, start);
+      let newCell;
+      if (cellType === "code") {
+        newCell = commutable.emptyCodeCell.set("source", source);
+      } else if (cellType === "markdown") {
+        source = codeManager.removeCommentsMarkdownCell(editor, source);
+        newCell = commutable.emptyMarkdownCell.set("source", source);
+      }
       notebook = commutable.appendCellToNotebook(notebook, newCell);
     });
     return commutable.toJS(notebook);
@@ -127,7 +140,7 @@ export class Store {
       }
     });
 
-    this.runningKernels.remove(kernel);
+    this.runningKernels = this.runningKernels.filter(k => k !== kernel);
   }
 
   getFilesForKernel(kernel: Kernel): Array<?string> {
@@ -145,7 +158,7 @@ export class Store {
     this.subscriptions.dispose();
     this.markers.clear();
     this.runningKernels.forEach(kernel => kernel.destroy());
-    this.runningKernels.clear();
+    this.runningKernels = [];
     this.kernelMapping.clear();
   }
 

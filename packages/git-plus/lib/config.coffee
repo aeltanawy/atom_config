@@ -48,7 +48,20 @@ module.exports =
         title: "Always show result output"
         type: "boolean"
         default: false
-        description: "Always display bottom dock with output after command is complete (regardless of dock visibility)"
+        description: "Always display the output view after a command completes (regardless of dock visibility). If the view has been destroyed, it will need to be manually toggled."
+      newBranchKey:
+        order: 7
+        title: "Status-bar New Branch modifier key"
+        type: "string"
+        default: "alt"
+        description: "Holding this modifier key while clicking on the branch name in the status bar will trigger creatinga a new branch. Note that _[`meta`](#{meta.define})_ is <kbd>#{meta.key}</kbd>"
+        enum: ["alt", "shift", "meta", "ctrl"]
+      showBranchInTreeView:
+        order: 8
+        title: "Show current branch name in tree view."
+        type: "boolean"
+        default: true
+        description: "The branch name will be displayed next to repo root in the tree view as `[branch-name]`."
   commits:
     order: 2
     type: "object"
@@ -161,9 +174,3 @@ module.exports =
         type: "boolean"
         default: false
         description: "Show notifications while running `fetch --all`?"
-      betaOutputView:
-        order: 5
-        title: 'Improved output view'
-        type: "boolean"
-        default: true
-        description: "The new pane will show all executed git commands and their results"

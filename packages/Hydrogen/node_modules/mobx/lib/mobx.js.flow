@@ -3,7 +3,7 @@
 export type IObservableMapInitialValues<K, V> = IMapEntries<K, V> | KeyValueMap<V> | IMap<K, V>
 
 export interface IMobxConfigurationOptions {
-    +enforceActions?: boolean | "strict",
+    +enforceActions?: boolean | "strict" | "never" | "always" | "observed",
     computedRequiresReaction?: boolean,
     isolateGlobalState?: boolean,
     disableErrorBoundaries?: boolean,
@@ -260,13 +260,6 @@ declare export class IObservableFactories {
     deep(target: Object, property?: string, descriptor?: PropertyDescriptor): IObservableDecorator
 }
 
-export interface Iterator<T> {
-    next(): {
-        done: boolean,
-        value?: T
-    }
-}
-
 export interface Lambda {
     (): void,
     name?: string
@@ -318,7 +311,7 @@ declare export function reaction<T>(
     expression: (r: IReactionPublic) => T,
     effect: (arg: T, r: IReactionPublic) => void,
     opts?: IReactionOptions
-): any
+): () => mixed
 
 export interface IWhenOptions {
     name?: string,
@@ -326,7 +319,11 @@ export interface IWhenOptions {
     onError?: (error: any) => void
 }
 
-declare export function when(cond: () => boolean, effect: Lambda, options?: IWhenOptions): any
+declare export function when(
+    cond: () => boolean,
+    effect: Lambda,
+    options?: IWhenOptions
+): () => mixed
 declare export function when(cond: () => boolean, options?: IWhenOptions): Promise<any>
 
 declare export function computed<T>(
@@ -353,6 +350,12 @@ declare export function isComputedProp(value: any, property: string): boolean
 
 declare export function isObservable(value: any): boolean
 declare export function isObservableProp(value: any, property: string): boolean
+
+declare export var comparer: {
+    identity: IEqualsComparer<any>,
+    structural: IEqualsComparer<any>,
+    default: IEqualsComparer<any>
+}
 
 declare export var observable: IObservableFactory &
     IObservableFactories & {

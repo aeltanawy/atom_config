@@ -3,8 +3,12 @@ Render Jupyter notebook outputs in a trim little React component.
 
 ## Installation
 
-```
+You may use whichever package manager (`npm` or `yarn`) best suits your workflow. The `nteract` team internally uses `yarn`.
+
+```bash
 npm install @nteract/display-area
+# OR
+yarn add @nteract/display-area
 ```
 
 ## Usage

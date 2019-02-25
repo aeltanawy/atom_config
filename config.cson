@@ -23,7 +23,7 @@
       "one-dark-syntax"
     ]
   editor:
-    fontSize: 16
+    fontSize: 17
     showIndentGuide: true
     showInvisibles: true
     softWrap: true

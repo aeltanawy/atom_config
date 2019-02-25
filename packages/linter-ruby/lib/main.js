@@ -10,10 +10,14 @@ export default {
     require('atom-package-deps').install('linter-ruby');
 
     this.subscriptions = new CompositeDisposable();
-    this.subscriptions.add(atom.config.observe('linter-ruby.rubyExecutablePath',
-      (value) => { this.executablePath = value; }));
-    this.subscriptions.add(atom.config.observe('linter-ruby.ignoredExtensions',
-      (value) => { this.ignoredExtensions = value; }));
+    this.subscriptions.add(
+      atom.config.observe('linter-ruby.rubyExecutablePath', (value) => {
+        this.executablePath = value;
+      }),
+      atom.config.observe('linter-ruby.ignoredExtensions', (value) => {
+        this.ignoredExtensions = value;
+      }),
+    );
   },
 
   deactivate() {
@@ -26,7 +30,7 @@ export default {
       name: 'Ruby',
       grammarScopes: ['source.ruby', 'source.ruby.rails', 'source.ruby.rspec'],
       scope: 'file',
-      lintOnFly: true,
+      lintsOnChange: true,
       lint: async (textEditor) => {
         const filePath = textEditor.getPath();
         if (!filePath) {
@@ -61,12 +65,14 @@ export default {
         let match = regex.exec(output);
         while (match !== null) {
           const msgLine = Number.parseInt(match[1] - 1, 10);
-          const type = match[2] === 'warning' ? 'Warning' : 'Error';
+          const severity = match[2] === 'warning' ? 'warning' : 'error';
           toReturn.push({
-            range: helpers.generateRange(textEditor, msgLine),
-            type,
-            text: match[3],
-            filePath,
+            severity,
+            location: {
+              file: filePath,
+              position: helpers.generateRange(textEditor, msgLine),
+            },
+            excerpt: match[3],
           });
           match = regex.exec(output);
         }

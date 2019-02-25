@@ -4,10 +4,6 @@ import type { Map as ImmutableMap, List as ImmutableList } from "immutable";
 
 type PrimitiveImmutable = string | number | boolean | null;
 
-export type JSONType = PrimitiveImmutable | JSONObject | JSONArray; // eslint-disable-line no-use-before-define
-export type JSONObject = { [key: string]: JSONType };
-export type JSONArray = Array<JSONType>;
-
 export type ImmutableJSONType =
   | PrimitiveImmutable
   | ImmutableMap<string, ImmutableJSONType>

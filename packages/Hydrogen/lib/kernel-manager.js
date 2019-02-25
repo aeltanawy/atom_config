@@ -32,7 +32,7 @@ export class KernelManager {
           grammar && /python/g.test(grammar.scopeName)
             ? "\n\nTo detect your current Python install you will need to run:<pre>python -m pip install ipykernel\npython -m ipykernel install --user</pre>"
             : "";
-        const description = `Check that the language for this file is set in Atom and that you have a Jupyter kernel installed for it.${pythonDescription}`;
+        const description = `Check that the language for this file is set in Atom, that you have a Jupyter kernel installed for it, and that you have configured the language mapping in Hydrogen preferences.${pythonDescription}`;
         atom.notifications.addError(message, {
           description,
           dismissable: pythonDescription !== ""
@@ -89,7 +89,12 @@ export class KernelManager {
   async update(): Promise<Kernelspec[]> {
     const kernelSpecs = await ks.findAll();
     this.kernelSpecs = _.sortBy(
-      _.map(kernelSpecs, "spec"),
+      _.map(
+        _.mapKeys(kernelSpecs, function(value, key) {
+          return (value.spec.name = key);
+        }),
+        "spec"
+      ),
       spec => spec.display_name
     );
     return this.kernelSpecs;

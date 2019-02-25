@@ -3,6 +3,7 @@
 import { Point, Range } from "atom";
 
 import escapeStringRegexp from "escape-string-regexp";
+import stripIndent from "strip-indent";
 import _ from "lodash";
 
 import {
@@ -48,6 +49,43 @@ export function getRows(
     }
   });
   return normalizeString(code);
+}
+
+export function getMetadataForRow(
+  editor: atom$TextEditor,
+  start: atom$Point
+): string {
+  // `start` is a Point on the first line of the cell. The cell marker is on the
+  // previous line
+  if (start.row === 0) {
+    return "code";
+  }
+  var rowText = getRow(editor, start.row - 1);
+  if (_.includes(rowText, "md") || _.includes(rowText, "markdown")) {
+    return "markdown";
+  } else {
+    return "code";
+  }
+}
+
+export function removeCommentsMarkdownCell(
+  editor: atom$TextEditor,
+  text: string
+): string {
+  const commentStartString = getCommentStartString(editor);
+  if (!commentStartString) return text;
+
+  const lines = text.split("\n");
+  const editedLines = [];
+  _.forEach(lines, line => {
+    if (line.startsWith(commentStartString)) {
+      // Remove comment from start of line
+      editedLines.push(line.slice(commentStartString.length));
+    } else {
+      editedLines.push(line);
+    }
+  });
+  return stripIndent(editedLines.join("\n"));
 }
 
 export function getSelectedText(editor: atom$TextEditor) {
@@ -118,7 +156,7 @@ export function getCodeToInspect(editor: atom$TextEditor) {
   return [code, cursorPosition];
 }
 
-export function getRegexString(editor: atom$TextEditor) {
+export function getCommentStartString(editor: atom$TextEditor): ?string {
   const {
     commentStartString
     // $FlowFixMe: This is an unofficial API
@@ -130,12 +168,16 @@ export function getRegexString(editor: atom$TextEditor) {
     log("CellManager: No comment string defined in root scope");
     return null;
   }
+  return commentStartString.trimRight();
+}
 
-  const escapedCommentStartString = escapeStringRegexp(
-    commentStartString.trimRight()
-  );
+export function getRegexString(editor: atom$TextEditor) {
+  const commentStartString = getCommentStartString(editor);
+  if (!commentStartString) return null;
 
-  const regexString = `${escapedCommentStartString}(%%| %%| <codecell>| In\[[0-9 ]*\]:?)`;
+  const escapedCommentStartString = escapeStringRegexp(commentStartString);
+
+  const regexString = `${escapedCommentStartString}(%%| %%| <(?:codecell|md|markdown)>| In\[[0-9 ]*\]:?)`;
 
   return regexString;
 }
@@ -148,7 +190,9 @@ export function getBreakpoints(editor: atom$TextEditor) {
   if (regexString) {
     const regex = new RegExp(regexString, "g");
     buffer.scan(regex, ({ range }) => {
-      breakpoints.push(range.start);
+      if (isComment(editor, range.start)) {
+        breakpoints.push(range.start);
+      }
     });
   }
 
@@ -243,16 +287,26 @@ export function getCells(
   } else {
     breakpoints = getBreakpoints(editor);
   }
-  return getCellsForBreakPoints(breakpoints);
+  return getCellsForBreakPoints(editor, breakpoints);
 }
 
-export function getCellsForBreakPoints(breakpoints: Array<atom$Point>) {
+export function getCellsForBreakPoints(
+  editor: atom$TextEditor,
+  breakpoints: Array<atom$Point>
+): Array<atom$Range> {
   let start = new Point(0, 0);
-  return _.map(breakpoints, end => {
-    const cell = new Range(start, end);
-    start = new Point(end.row + 1, 0);
-    return cell;
+  // Let start be earliest row with text
+  editor.scan(/\S/, match => {
+    start = new Point(match.range.start.row, 0);
+    match.stop();
   });
+  return _.compact(
+    _.map(breakpoints, end => {
+      const cell = end.isEqual(start) ? null : new Range(start, end);
+      start = new Point(end.row + 1, 0);
+      return cell;
+    })
+  );
 }
 
 export function moveDown(editor: atom$TextEditor, row: number) {
@@ -330,4 +384,43 @@ export function findCodeBlock(editor: atom$TextEditor) {
     return findPrecedingBlock(editor, row, indentLevel);
   }
   return [getRow(editor, row), row];
+}
+
+export function foldCurrentCell(editor: atom$TextEditor) {
+  const cellRange = getCurrentCell(editor);
+  const newRange = adjustCellFoldRange(editor, cellRange);
+  editor.setSelectedBufferRange(newRange);
+  editor.getSelections()[0].fold();
+}
+
+export function foldAllButCurrentCell(editor: atom$TextEditor) {
+  const initialSelections = editor.getSelectedBufferRanges();
+
+  // I take .slice(1) because there's always an empty cell range from [0,0] to
+  // [0,0]
+  const allCellRanges = getCells(editor).slice(1);
+  const currentCellRange = getCurrentCell(editor);
+  const newRanges = allCellRanges
+    .filter(cellRange => !cellRange.isEqual(currentCellRange))
+    .map(cellRange => adjustCellFoldRange(editor, cellRange));
+
+  editor.setSelectedBufferRanges(newRanges);
+  editor.getSelections().forEach(selection => selection.fold());
+
+  // Restore selections
+  editor.setSelectedBufferRanges(initialSelections);
+}
+
+function adjustCellFoldRange(editor: atom$TextEditor, range: atom$Range) {
+  const startRow = range.start.row > 0 ? range.start.row - 1 : 0;
+  const startWidth = editor.lineTextForBufferRow(startRow).length;
+  const endRow =
+    range.end.row == editor.getLastBufferRow()
+      ? range.end.row
+      : range.end.row - 1;
+
+  return new Range(
+    new Point(startRow, startWidth),
+    new Point(endRow, range.end.column)
+  );
 }

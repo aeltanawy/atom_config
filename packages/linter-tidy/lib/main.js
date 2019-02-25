@@ -6,6 +6,7 @@ import * as helpers from 'atom-linter';
 import { dirname } from 'path';
 
 // Local variables
+const VALID_SEVERITY = new Set(['error', 'warning', 'info']);
 const regex = /line (\d+) column (\d+) - (Warning|Error): (.+)/g;
 const defaultExecutableArguments = [
   '-language', 'en',
@@ -18,6 +19,11 @@ const grammarScopes = [];
 let executablePath;
 let configExecutableArguments;
 
+const getSeverity = (givenSeverity) => {
+  const severity = givenSeverity.toLowerCase();
+  return VALID_SEVERITY.has(severity) ? severity : 'warning';
+};
+
 export default {
   activate() {
     require('atom-package-deps').install('linter-tidy');
@@ -27,17 +33,9 @@ export default {
       atom.config.observe('linter-tidy.executablePath', (value) => {
         executablePath = value;
       }),
-    );
-
-    this.subscriptions.add(
       atom.config.observe('linter-tidy.executableArguments', (value) => {
         configExecutableArguments = value;
       }),
-    );
-
-    // Add a listener to update the list of grammar scopes linted when the
-    // config value changes.
-    this.subscriptions.add(
       atom.config.observe('linter-tidy.grammarScopes', (configScopes) => {
         grammarScopes.splice(0, grammarScopes.length);
         grammarScopes.push(...configScopes);
@@ -54,7 +52,7 @@ export default {
       grammarScopes,
       name: 'tidy',
       scope: 'file',
-      lintOnFly: true,
+      lintsOnChange: true,
       lint: async (textEditor) => {
         const filePath = textEditor.getPath();
         const fileText = textEditor.getText();
@@ -82,10 +80,12 @@ export default {
           const line = Number.parseInt(match[1], 10) - 1;
           const col = Number.parseInt(match[2], 10) - 1;
           messages.push({
-            type: match[3],
-            text: match[4],
-            filePath,
-            range: helpers.generateRange(textEditor, line, col),
+            severity: getSeverity(match[3]),
+            excerpt: match[4],
+            location: {
+              file: filePath,
+              position: helpers.generateRange(textEditor, line, col),
+            },
           });
           match = regex.exec(output);
         }

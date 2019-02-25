@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59784-1jhk4os.r3tfzb0529"
-    ]
-  ],
-  "_from": "../d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-  "_id": "linter-reek@2.2.2",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball",
+  "_id": "linter-reek@2.4.1",
+  "_inBundle": false,
+  "_integrity": "sha512-BVqO8rJeMheDG9LkWELtQhZqMcoss5TjXzFMez3+Ujl7QuOVD7IF5GExHEpuwWskjL/y9xCBgKHXQz1io9eFUQ==",
   "_location": "/linter-reek",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-  "_shasum": "bb4783c644ba5f61eb7b186f1c60d7606be7d190",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59784-1gexlkb.1z0j05dn29/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59784-1jhk4os.r3tfzb0529",
+  "_resolved": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball",
+  "_shasum": "3aa421d7f9f998c8c736e8e2ab1aca5547d35c75",
+  "_spec": "https://www.atom.io/api/packages/linter-reek/versions/2.4.1/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-99044-a8jt77.vhk1",
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-reek/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "executablePath": {
       "type": "string",
@@ -46,15 +32,16 @@
     }
   },
   "dependencies": {
-    "atom-linter": "^10.0.0",
-    "atom-package-deps": "^4.0.1"
+    "atom-linter": "10.0.0",
+    "atom-package-deps": "5.0.0"
   },
+  "deprecated": false,
   "description": "Find code smells in your Ruby projects with Reek",
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.2",
-    "eslint-plugin-import": "^2.7.0",
-    "jasmine-fix": "^1.3.0"
+    "eslint": "5.13.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "jasmine-fix": "1.3.1"
   },
   "engines": {
     "atom": ">=1.7.0 <2.0.0"
@@ -84,19 +71,32 @@
   "license": "MIT",
   "main": "./lib/linter-reek.js",
   "name": "linter-reek",
-  "optionalDependencies": {},
   "package-deps": [
-    "linter"
+    "linter:2.0.0"
   ],
+  "private": true,
   "providedServices": {
     "linter": {
       "versions": {
-        "1.1.0": "provideLinter"
+        "2.0.0": "provideLinter"
       }
     }
   },
-  "readme": "[![apm](https://img.shields.io/apm/dm/linter-reek.svg)](https://atom.io/packages/linter-reek) [![apm](https://img.shields.io/apm/v/linter-reek.svg)](https://atom.io/packages/linter-reek) [![apm](https://img.shields.io/apm/l/linter-reek.svg)](https://atom.io/packages/linter-reek)\n[![Build Status](https://travis-ci.org/AtomLinter/linter-reek.svg?branch=master)](https://travis-ci.org/AtomLinter/linter-reek)\n\n# linter-reek\n\nThis plugin for [Linter](https://github.com/AtomLinter/Linter) provides an\ninterface to [Reek](https://github.com/troessner/reek). It will be used with\nfiles that use the Ruby syntax.\n\n## Installation\n\nLinter must be installed in order to use this plugin. It is a hard dependency.\nIf Linter is not installed, please follow the instructions\n[here](https://github.com/AtomLinter/Linter).\n\n### Installing Reek\n\nBefore using this plugin, you must ensure that `reek` is installed on your\nsystem. To install `reek`, do the following:\n\n1.  Install [ruby](https://www.ruby-lang.org/).\n\n2.  Install [Reek](https://github.com/troessner/reek) by typing the following\n    in a terminal:\n\n    ```ShellSession\n    gem install reek\n    ```\n\nNow you can proceed to install the linter-reek plugin.\n\n### Installing the Plugin\n\n```ShellSession\n$ apm install linter-reek\n```\n\n## Settings\n\nYou can configure linter-reek from its settings panel or by editing\n`~/.atom/config.cson` (choose Open Your Config in Atom menu). The only thing\nthat needs to be configured is the path to the `reek` executable.\n\n### Executable Path\n\n```coffeescript\n'linter-reek':\n  'reekExecutablePath': /path/to/your/reek/here\n```\n\nRun `which reek` to find the path (if you're using rbenv run\n`rbenv which reek`).\n\n**Note**: This plugin finds the nearest `config.reek` file and will\nautomatically use it if it exists. If it does not, `reek` will run with its\ndefault settings.\n\n## Donation\n\n[![Share the love!](https://techtalkers.files.wordpress.com/2012/07/buy-me-a-beer-button.jpg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q7588UPXABV3A)\n",
-  "readmeFilename": "README.md",
+  "renovate": {
+    "extends": [
+      "config:base"
+    ],
+    "semanticCommits": true,
+    "rangeStrategy": "pin",
+    "packageRules": [
+      {
+        "packagePatterns": [
+          "^eslint"
+        ],
+        "groupName": "ESLint packages"
+      }
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomLinter/linter-reek.git"
@@ -105,5 +105,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.2.2"
+  "version": "2.4.1"
 }

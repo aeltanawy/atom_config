@@ -202,7 +202,7 @@ function OutBatch() {
 
 OutBatch.prototype.append = function (buf, flags, cb) {
   if (!Buffer.isBuffer(buf)) {
-    buf = new Buffer(String(buf), 'utf8');
+    buf = Buffer.from(String(buf), 'utf8');
   }
 
   this.content.push(buf, flags);
@@ -303,7 +303,9 @@ exports.Socket = function (type) {
   this._outgoing = new BatchList();
 
   this._zmq.onReadReady = function () {
-    self._flushReads();
+    setImmediate(function(){
+      self._flushReads();
+    });
   };
 
   this._zmq.onSendReady = function () {
@@ -407,9 +409,16 @@ Object.keys(opts).forEach(function(name){
   });
 
   Socket.prototype.__defineSetter__(name, function(val) {
-    if ('string' == typeof val) val = new Buffer(val, 'utf8');
+    if ('string' == typeof val) val = Buffer.from(val, 'utf8');
     return this._zmq.setsockopt(opts[name], val);
   });
+});
+
+/**
+ * Return true if socket state is closed.
+ */
+Socket.prototype.__defineGetter__("closed", function() {
+  return this._zmq.state === zmq.STATE_CLOSED;
 });
 
 /**
@@ -815,25 +824,25 @@ function proxy (frontend, backend, capture){
 
         //forwarding router/dealer pack signature: id, delimiter, msg
         frontend.on('message',function (id,delimiter,msg){
-          backend.send([id,delimiter,msg]);
+          backend.send([].slice.call(arguments));
         });
 
         backend.on('message',function (id,delimiter,msg){
-          frontend.send([id,delimiter,msg]);
+          frontend.send([].slice.call(arguments));
 
           //forwarding message to the capture socket
-          capture.send(msg);
+          capture.send([].slice.call(arguments, 2));
         });
 
       } else {
 
         //forwarding router/dealer signatures without capture
         frontend.on('message',function (id,delimiter,msg){
-          backend.send([id,delimiter,msg]);
+          backend.send([].slice.call(arguments));
         });
 
         backend.on('message',function (id,delimiter,msg){
-          frontend.send([id,delimiter,msg]);
+          frontend.send([].slice.call(arguments));
         });
 
       }

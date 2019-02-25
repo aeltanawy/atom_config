@@ -108,6 +108,8 @@ module.exports = {
         const previousLine = editor.getTextInRange(previousRowRange)
         let { tokens } = grammar.tokenizeLine(previousLine)
         tokens.reverse()
+        let leadingWhitespaces = 0
+        let hasNonEmptyText = false
         for (const token of tokens) {
           let isPunctuation = false
           let isListItem = false
@@ -118,13 +120,21 @@ module.exports = {
             const classes = scope.split('.')
 
             /*
+            Check and remember if line has non-empty (other than whitespaces)
+            text tokens.
+            */
+            if (classes.includes('text') && !/^\s*$/.test(token.value)) {
+              hasNonEmptyText = true
+            }
+
+            /*
             A list-item is valid when a punctuation class is immediately
             followed by a non-empty list-item class.
             */
             if (classes.includes('punctuation')) {
               isPunctuation = true
             } else if (isPunctuation && classes.includes('list')) {
-              if (!classes.includes('empty')) {
+              if (!classes.includes('empty') && hasNonEmptyText) {
                 isListItem = true
                 typeOfList = 'unordered'
                 if (classes.includes('ordered')) {
@@ -146,6 +156,10 @@ module.exports = {
             }
           }
 
+          if (!isListItem) {
+            leadingWhitespaces = token.value.match(/^ */)[0].length
+          }
+
           if (isListItem && typeOfList !== 'definition') {
             let text = token.value
             if (typeOfList === 'ordered') {
@@ -164,7 +178,7 @@ module.exports = {
             } else {
               text = text.replace('x', ' ')
             }
-            editor.insertText(text + '')
+            editor.insertText(text + ' '.repeat(leadingWhitespaces))
             break
           }
         }
