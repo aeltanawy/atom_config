@@ -149,11 +149,12 @@ const Hydrogen = {
     store.subscriptions.add(
       atom.commands.add("atom-workspace", {
         "hydrogen:clear-results": () => {
-          store.markers.clear();
-          if (!store.kernel) return;
-          store.kernel.outputStore.clear();
+          const { kernel, markers } = store;
+          if (markers) markers.clear();
+          if (!kernel) return;
+          kernel.outputStore.clear();
         },
-        "hydrogen:import-notebook": () => importNotebook()
+        "hydrogen:import-notebook": importNotebook
       })
     );
 
@@ -309,7 +310,7 @@ const Hydrogen = {
   }) {
     log("handleKernelCommand:", arguments);
 
-    const { kernel, grammar } = store;
+    const { kernel, grammar, markers } = store;
 
     if (!grammar) {
       atom.notifications.addError("Undefined grammar");
@@ -327,7 +328,7 @@ const Hydrogen = {
     } else if (command === "restart-kernel") {
       kernel.restart();
     } else if (command === "shutdown-kernel") {
-      store.markers.clear();
+      if (markers) markers.clear();
       // Note that destroy alone does not shut down a WSKernel
       kernel.shutdown();
       kernel.destroy();
@@ -337,7 +338,7 @@ const Hydrogen = {
     ) {
       kernel.transport.promptRename();
     } else if (command === "disconnect-kernel") {
-      store.markers.clear();
+      if (markers) markers.clear();
       kernel.destroy();
     }
   },
@@ -347,7 +348,7 @@ const Hydrogen = {
 
     if (!filePath || !grammar) {
       return atom.notifications.addError(
-        "Your file must be saved in order to start a kernel"
+        "The language grammar must be set in order to start a kernel. The easiest way to do this is to save the file."
       );
     }
 
@@ -383,9 +384,11 @@ const Hydrogen = {
         : null;
 
     if (globalOutputStore) openOrShowDock(OUTPUT_AREA_URI);
+    const { markers } = store;
+    if (!markers) return;
 
     const { outputStore } = new ResultView(
-      store.markers,
+      markers,
       kernel,
       editor,
       row,
@@ -400,12 +403,13 @@ const Hydrogen = {
 
   restartKernelAndReEvaluateBubbles() {
     const { editor, kernel, markers } = store;
+    if (!editor || !kernel || !markers) return;
 
     let breakpoints = [];
     markers.markers.forEach((bubble: ResultView) => {
       breakpoints.push(bubble.marker.getBufferRange().start);
     });
-    store.markers.clear();
+    markers.clear();
 
     if (!editor || !kernel) {
       this.runAll(breakpoints);
@@ -416,7 +420,7 @@ const Hydrogen = {
 
   toggleBubble() {
     const { editor, kernel, markers } = store;
-    if (!editor) return;
+    if (!editor || !markers) return;
     const [startRow, endRow] = editor.getLastSelection().getBufferRowRange();
 
     for (let row = startRow; row <= endRow; row++) {
@@ -553,9 +557,9 @@ const Hydrogen = {
           this.kernelPicker = new KernelPicker(kernelSpecs);
 
           this.kernelPicker.onConfirmed = (kernelSpec: Kernelspec) => {
-            const { editor, grammar, filePath } = store;
-            if (!editor || !grammar || !filePath) return;
-            store.markers.clear();
+            const { editor, grammar, filePath, markers } = store;
+            if (!editor || !grammar || !filePath || !markers) return;
+            markers.clear();
 
             kernelManager.startKernel(kernelSpec, grammar, editor, filePath);
           };
@@ -569,9 +573,9 @@ const Hydrogen = {
     if (!this.wsKernelPicker) {
       this.wsKernelPicker = new WSKernelPicker((transport: WSKernel) => {
         const kernel = new Kernel(transport);
-        store.markers.clear();
-        const { editor, grammar, filePath } = store;
-        if (!editor || !grammar || !filePath) return;
+        const { editor, grammar, filePath, markers } = store;
+        if (!editor || !grammar || !filePath || !markers) return;
+        markers.clear();
 
         if (kernel.transport instanceof ZMQKernel) kernel.destroy();
 

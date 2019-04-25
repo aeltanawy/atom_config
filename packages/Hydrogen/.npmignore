@@ -6,3 +6,5 @@ node_modules
 kernel-configs/
 types/
 flow-typed/
+.json
+!spec/helpers/*.ipynb

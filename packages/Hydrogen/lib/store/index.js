@@ -22,7 +22,8 @@ const commutable = require("@nteract/commutable");
 
 export class Store {
   subscriptions = new CompositeDisposable();
-  markers = new MarkerStore();
+  @observable
+  markersMapping: Map<number, MarkerStore> = new Map();
   @observable
   runningKernels: Array<Kernel> = [];
   @observable
@@ -39,23 +40,30 @@ export class Store {
 
   @computed
   get kernel(): ?Kernel {
+    if (!this.grammar || !this.editor) return null;
+
     if (this.globalMode) {
-      if (!this.grammar) return null;
       const currentScopeName = this.grammar.scopeName;
-      return this.runningKernels.filter(
+      return this.runningKernels.find(
         k => k.grammar.scopeName === currentScopeName
-      )[0];
+      );
     }
 
-    if (!this.filePath) return null;
+    const grammar = this.getEmbeddedGrammar(this.editor);
     const kernelOrMap = this.kernelMapping.get(this.filePath);
-    if (!kernelOrMap || kernelOrMap instanceof Kernel) return kernelOrMap;
-    if (this.grammar) return kernelOrMap.get(this.grammar.name);
+    if (!kernelOrMap) return null;
+    if (kernelOrMap instanceof Kernel) return kernelOrMap;
+    return this.grammar && this.grammar.name
+      ? kernelOrMap.get(this.grammar.name)
+      : null;
   }
 
   @computed
   get filePath(): ?string {
-    return this.editor ? this.editor.getPath() : null;
+    const editor = this.editor;
+    if (!editor) return null;
+    const savedFilePath = editor.getPath();
+    return savedFilePath ? savedFilePath : `Unsaved Editor ${editor.id}`;
   }
 
   @computed
@@ -94,6 +102,21 @@ export class Store {
       notebook = commutable.appendCellToNotebook(notebook, newCell);
     });
     return commutable.toJS(notebook);
+  }
+
+  @computed
+  get markers(): ?MarkerStore {
+    const editor = this.editor;
+    if (!editor) return null;
+    const markerStore = this.markersMapping.get(editor.id);
+    return markerStore ? markerStore : this.newMarkerStore(editor.id);
+  }
+
+  @action
+  newMarkerStore(editorId: number) {
+    const markerStore = new MarkerStore();
+    this.markersMapping.set(editorId, markerStore);
+    return markerStore;
   }
 
   @action
@@ -156,7 +179,8 @@ export class Store {
   @action
   dispose() {
     this.subscriptions.dispose();
-    this.markers.clear();
+    this.markersMapping.forEach(markerStore => markerStore.clear());
+    this.markersMapping.clear();
     this.runningKernels.forEach(kernel => kernel.destroy());
     this.runningKernels = [];
     this.kernelMapping.clear();
@@ -174,6 +198,23 @@ export class Store {
     }
   }
 
+  // Returns the embedded grammar for multilanguage, normal grammar otherwise
+  getEmbeddedGrammar(editor: atom$TextEditor): ?atom$Grammar {
+    const grammar = editor.getGrammar();
+    if (!isMultilanguageGrammar(grammar)) {
+      return grammar;
+    }
+
+    const embeddedScope = getEmbeddedScope(
+      editor,
+      editor.getCursorBufferPosition()
+    );
+
+    if (!embeddedScope) return grammar;
+    const scope = embeddedScope.replace(".embedded", "");
+    return atom.grammars.grammarForScopeName(scope);
+  }
+
   @action
   setGrammar(editor: ?atom$TextEditor) {
     if (!editor) {
@@ -181,21 +222,7 @@ export class Store {
       return;
     }
 
-    let grammar = editor.getGrammar();
-
-    if (isMultilanguageGrammar(grammar)) {
-      const embeddedScope = getEmbeddedScope(
-        editor,
-        editor.getCursorBufferPosition()
-      );
-
-      if (embeddedScope) {
-        const scope = embeddedScope.replace(".embedded", "");
-        grammar = atom.grammars.grammarForScopeName(scope);
-      }
-    }
-
-    this.grammar = grammar;
+    this.grammar = this.getEmbeddedGrammar(editor);
   }
 
   @action
@@ -210,8 +237,16 @@ export class Store {
     // Force mobx to recalculate filePath (which depends on editor observable)
 
     const currentEditor = this.editor;
+    if (!currentEditor) return;
+
+    const oldKey = this.filePath;
     this.updateEditor(null);
     this.updateEditor(currentEditor);
+    const newKey = this.filePath;
+
+    // Change key of kernelMapping from editor ID to file path
+    this.kernelMapping.set(newKey, this.kernelMapping.get(oldKey));
+    this.kernelMapping.delete(oldKey);
   }
 }
 

@@ -1,48 +1,34 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59814-k2orqf.fk3obf0f6r"
-    ]
-  ],
-  "_from": "../d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-  "_id": "linter-rubocop@2.2.3",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
+  "_id": "linter-rubocop@2.2.4",
+  "_inBundle": false,
+  "_integrity": "sha512-OV6drx+lMwx6sA1pz1Nxt4AV2sMT3n4Ob0UxSLNavs1gO8cmKAkRZy9JH93n3ArckIZH/uPUpHW1UuB8xtPQpQ==",
   "_location": "/linter-rubocop",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-  "_shasum": "0bc39d07f52693ee287f1a22b6d7b2ac6e0cced2",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-59814-vgfc9w.vxulkgldi/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-59814-k2orqf.fk3obf0f6r",
+  "_resolved": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
+  "_shasum": "2c10a071ad04e179de33a7a697cf40a5bc9d918c",
+  "_spec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119312-74477-1qmil7n.f9t1",
   "activationHooks": [
-    "language-ruby:grammar-used",
-    "language-ruby-on-rails:grammar-used",
-    "language-chef:grammar-used"
+    "source.ruby:root-scope-used",
+    "source.ruby.rails:root-scope-used",
+    "source.chef.recipes:root-scope-used"
   ],
   "bugs": {
     "url": "https://github.com/AtomLinter/linter-rubocop/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "command": {
       "type": "string",
@@ -57,20 +43,21 @@
     }
   },
   "dependencies": {
-    "atom-linter": "^10.0.0",
-    "atom-package-deps": "^4.5.0",
-    "pluralize": "^7.0.0",
-    "request": "^2.81.0",
-    "request-promise": "^4.1.1",
-    "semver": "^5.5.0"
+    "atom-linter": "10.0.0",
+    "atom-package-deps": "5.0.0",
+    "pluralize": "7.0.0",
+    "request": "2.88.0",
+    "request-promise": "4.2.4",
+    "semver": "5.6.0"
   },
+  "deprecated": false,
   "description": "Lint Ruby on the fly, using rubocop",
   "devDependencies": {
-    "eslint": "^4.6.0",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "jasmine-fix": "^1.3.1",
-    "tmp": "^0.0.33"
+    "eslint": "5.14.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.16.0",
+    "jasmine-fix": "1.3.1",
+    "tmp": "0.0.33"
   },
   "engines": {
     "atom": ">=1.4.0 <2.0.0"
@@ -96,17 +83,18 @@
       "atom": true
     },
     "env": {
-      "node": true
+      "node": true,
+      "browser": true
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-rubocop#readme",
   "license": "MIT",
   "main": "./src/index.js",
   "name": "linter-rubocop",
-  "optionalDependencies": {},
   "package-deps": [
     "linter:2.0.0"
   ],
+  "private": true,
   "providedServices": {
     "linter": {
       "versions": {
@@ -114,8 +102,21 @@
       }
     }
   },
-  "readme": "# linter-rubocop\n\n[![Gitter](https://img.shields.io/badge/gitter-join%20chat-1dce73.svg?style=flat)](https://gitter.im/AtomLinter/Linter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n[![Build Status](https://travis-ci.org/AtomLinter/linter-rubocop.svg?branch=master)](https://travis-ci.org/AtomLinter/linter-rubocop)\n[![Plugin installs!](https://img.shields.io/apm/dm/linter-rubocop.svg)](https://atom.io/packages/linter-rubocop)\n[![Package version!](https://img.shields.io/apm/v/linter-rubocop.svg?style=flat)](https://atom.io/packages/linter-rubocop)\n[![Dependencies!](https://david-dm.org/AtomLinter/Linter.svg)](https://david-dm.org/AtomLinter/linter-rubocop)\n\nThis linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides\nan interface to [rubocop](https://github.com/bbatsov/rubocop). It will be used\nwith files that have the “Ruby” syntax.\n\n## Installation\n\nLinter package must be installed in order to use this plugin. If Linter is not\ninstalled, please follow the instructions [here](https://github.com/AtomLinter/Linter).\n\n### `rubocop` installation\n\nBefore using this plugin, you must ensure that `rubocop`, version 0.37 or\ngreater, is installed on your system. To install `rubocop`, do the following:\n\n1.  Install [ruby](https://www.ruby-lang.org/).\n\n2.  Install [rubocop](https://github.com/bbatsov/rubocop) by typing the\n    following in a terminal:\n\n    ```shell\n    gem install rubocop\n    ```\n\nNow you can proceed to install the linter-rubocop plugin.\n\n### Plugin installation\n\n```shell\napm install linter-rubocop\n```\n\n## Settings\n\nYou can configure linter-rubocop by editing `~/.atom/config.cson`\n(choose Open Your Config in Atom menu):\n\n### Using RVM\n\nIf you're using RVM and receiving errors in Atom that indicate Rubocop can't be\nfound, you may need to change `/bin` to `/wrappers` in the path that gets\nreturned from `which rubocop` before using it as your `command` setting.\nFor example, change:\n\n```cson\n\"linter-rubocop\":\n  command: \"/Users/JohnDoe/.rvm/gems/ruby-2.2.4@global/bin/rubocop\"\n```\n\nTo:\n\n```cson\n\"linter-rubocop\":\n  command: \"/Users/JohnDoe/.rvm/gems/ruby-2.2.4@global/wrappers/rubocop\"\n```\n### Using `rbenv`\n\nIf you're using `rbenv`, it's recommended that you set your `command` to point to the Rubocop shim. This way, when you upgrade Ruby, the command will be a pointer to a Rubocop executable, regardless of your current Ruby version.\n\n```cson\n\"linter-rubocop\":\n  command: \"/Users/JohnDoe/.rbenv/shims/rubocop\"\n```\n\n## Contributing\n\nIf you would like to contribute enhancements or fixes, please do the following:\n\n1.  Fork the plugin repository.\n2.  Hack on a separate topic branch created from the latest `master`.\n3.  Commit and push the topic branch.\n4.  Make a pull request.\n5.  Welcome to the club!\n\nPlease note that modifications should follow these coding guidelines:\n\n-   Indent is 2 spaces.\n-   Code should pass `npm run lint` (eslint).\n-   Vertical whitespace helps readability, don’t be afraid to use it.\n\nThank you for helping out!\n\n## Donation\n\n[![Share the love!](https://s3-eu-west-1.amazonaws.com/atom-linter/we-need-your-help.png?style=flat)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8 \"Share the love\")\n\n[![Gratipay donate button](https://img.shields.io/gratipay/hd-deman.svg?style=flat)](https://www.gratipay.com/hd-deman/ \"Donate weekly to this project using Gratipay\")\n[![PayPal donate button](https://img.shields.io/badge/paypal-donate-yellow.svg?style=flat)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8 \"Donate once-off to this project using Paypal\")\n[![BitCoin donate button](https://img.shields.io/badge/bitcoin-donate-yellow.svg?style=flat)](https://www.coinbase.com/checkouts/2945dab392cb1cefbb7097e4cd17a603 \"Donate once-off to this project using BitCoin\")\n",
-  "readmeFilename": "README.md",
+  "renovate": {
+    "extends": [
+      "config:base"
+    ],
+    "semanticCommits": true,
+    "rangeStrategy": "pin",
+    "packageRules": [
+      {
+        "packagePatterns": [
+          "^eslint"
+        ],
+        "groupName": "ESLint packages"
+      }
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AtomLinter/linter-rubocop.git"
@@ -124,5 +125,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.2.3"
+  "version": "2.2.4"
 }

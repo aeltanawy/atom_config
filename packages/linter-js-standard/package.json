@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
-  "_id": "linter-js-standard@6.1.0",
+  "_from": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball",
+  "_id": "linter-js-standard@6.1.1",
   "_inBundle": false,
-  "_integrity": "sha512-kHjU6SUTqhhwK4Mwz3KT93Ic7OdfUxulaXs3iXvYSkwWyDXlNdRRRHmaopAcZk8yfRBhSFqAjtL7SJdl/Lm1QQ==",
+  "_integrity": "sha512-u6aKqLKd+ToA9a/AIIF5U84I7TfvcBuoXVOagsoqCIHgDQKg9/tkBGFB/hUpelJdnoOX2P4hgSZgmHBFG28Vng==",
   "_location": "/linter-js-standard",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
-  "_shasum": "fbda73b0b4427c289f9712b2f3c91876858f70b0",
-  "_spec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98986-y17dmy.sjtgs",
+  "_resolved": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball",
+  "_shasum": "6ac6318610c5995b2e8122ac71c07d1529da4d4f",
+  "_spec": "https://www.atom.io/api/packages/linter-js-standard/versions/6.1.1/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119312-74463-10sn20.xdvwu",
   "activationCommands": [],
   "author": {
     "name": "Ricardo Barros",
@@ -76,5 +76,5 @@
       "atom"
     ]
   },
-  "version": "6.1.0"
+  "version": "6.1.1"
 }

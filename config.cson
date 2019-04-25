@@ -73,6 +73,8 @@
     toggles:
       autoClose: true
       cursorBlink: false
+  tabs:
+    addNewTabsAtEnd: true
   "tool-bar":
     visible: false
   welcome:

@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
-  "_id": "Hydrogen@2.8.0",
+  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball",
+  "_id": "Hydrogen@2.9.0",
   "_inBundle": false,
-  "_integrity": "sha512-/jVIX91J0MFPmlMAMSKv5qYy73g2FUoYevqdVthomnL9Ypod3vHrjDCi6yocrfZAVH4p+6laRBEypRP/mc+ryw==",
+  "_integrity": "sha512-dNmoC8DwMUOTzM4u8fd2jm+aELRMu4Kfs4vXAgXcp9tIXNt+gUBprW672uXW0CiHkmITOU/gakRM41/kh+gmUA==",
   "_location": "/Hydrogen",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball"
+    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
-  "_shasum": "47e427dc3a3413d949560299bd70d2e6064c875c",
-  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.8.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-98862-pch60w.z33di",
+  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball",
+  "_shasum": "8b62baac4b9e17c9739a5bdf33d39274190c97c0",
+  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.9.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119312-74457-m4vit6.5jjha",
   "activationCommands": {
     "atom-text-editor": [
       "hydrogen:start-local-kernel",
@@ -50,12 +50,17 @@
       "versions": {
         "^1.0.0": "consumeStatusBar"
       }
+    },
+    "tree-view": {
+      "versions": {
+        "^1.0.0": "consumeTreeView"
+      }
     }
   },
   "dependencies": {
     "@babel/runtime-corejs2": "^7.0.0",
     "@jupyterlab/services": "^0.52.0",
-    "@nteract/commutable": "^5.0.0",
+    "@nteract/commutable": "^7.0.0",
     "@nteract/display-area": "^4.4.8",
     "@nteract/mathjax": "^3.0.1",
     "@nteract/transform-plotly": "^3.2.5",
@@ -88,7 +93,7 @@
     "atom-jasmine3-test-runner": "^4.0.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
-    "flow-bin": "^0.92.0",
+    "flow-bin": "^0.96.0",
     "husky": "^1.1.0",
     "lint-staged": "^8.0.0",
     "markdox": "^0.1.10",
@@ -97,7 +102,7 @@
     "react-test-renderer": "^16.0.0"
   },
   "engines": {
-    "atom": ">=1.20.0 <2.0.0"
+    "atom": ">=1.28.0 <2.0.0"
   },
   "homepage": "https://github.com/nteract/hydrogen#readme",
   "husky": {
@@ -150,5 +155,5 @@
     "flow": "flow",
     "prettier": "prettier --write 'lib/**/*.js' 'spec/**/*.js'"
   },
-  "version": "2.8.0"
+  "version": "2.9.0"
 }
