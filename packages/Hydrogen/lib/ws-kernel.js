@@ -3,13 +3,12 @@
 import KernelTransport from "./kernel-transport";
 import type { ResultsCallback } from "./kernel-transport";
 import InputView from "./input-view";
-import { log } from "./utils";
+import { log, js_idx_to_char_idx } from "./utils";
 
 import type { Session } from "@jupyterlab/services";
 
 export default class WSKernel extends KernelTransport {
   session: Session;
-  gatewayName: string;
 
   constructor(
     gatewayName: string,
@@ -58,7 +57,7 @@ export default class WSKernel extends KernelTransport {
     this.session.kernel
       .requestComplete({
         code,
-        cursor_pos: code.length
+        cursor_pos: js_idx_to_char_idx(code.length, code)
       })
       .then((message: Message) => onResults(message, "shell"));
   }

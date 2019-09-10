@@ -1,6 +1,6 @@
 /* @flow */
 
-import { CompositeDisposable } from "atom";
+import { CompositeDisposable, File } from "atom";
 import {
   observable,
   computed,
@@ -9,7 +9,11 @@ import {
   keys,
   values
 } from "mobx";
-import { isMultilanguageGrammar, getEmbeddedScope } from "./../utils";
+import {
+  isMultilanguageGrammar,
+  getEmbeddedScope,
+  isUnsavedFilePath
+} from "./../utils";
 import _ from "lodash";
 
 import Config from "./../config";
@@ -48,9 +52,9 @@ export class Store {
         k => k.grammar.scopeName === currentScopeName
       );
     }
-
-    const grammar = this.getEmbeddedGrammar(this.editor);
-    const kernelOrMap = this.kernelMapping.get(this.filePath);
+    const file = this.filePath;
+    if (!file) return null;
+    const kernelOrMap = this.kernelMapping.get(file);
     if (!kernelOrMap) return null;
     if (kernelOrMap instanceof Kernel) return kernelOrMap;
     return this.grammar && this.grammar.name
@@ -67,7 +71,7 @@ export class Store {
   }
 
   @computed
-  get filePaths(): Array<?string> {
+  get filePaths(): Array<string> {
     return keys(this.kernelMapping);
   }
 
@@ -93,7 +97,7 @@ export class Store {
       if (source.slice(-1) === "\n") source = source.slice(0, -1);
       const cellType = codeManager.getMetadataForRow(editor, start);
       let newCell;
-      if (cellType === "code") {
+      if (cellType === "codecell") {
         newCell = commutable.emptyCodeCell.set("source", source);
       } else if (cellType === "markdown") {
         source = codeManager.removeCommentsMarkdownCell(editor, source);
@@ -124,6 +128,35 @@ export class Store {
     this.startingKernels.set(kernelDisplayName, true);
   }
 
+  addFileDisposer(editor: atom$TextEditor, filePath: string) {
+    const fileDisposer = new CompositeDisposable();
+
+    if (isUnsavedFilePath(filePath)) {
+      fileDisposer.add(
+        editor.onDidSave(event => {
+          fileDisposer.dispose();
+          this.addFileDisposer(editor, event.path); // Add another `fileDisposer` once it's saved
+        })
+      );
+      fileDisposer.add(
+        editor.onDidDestroy(() => {
+          this.kernelMapping.delete(filePath);
+          fileDisposer.dispose();
+        })
+      );
+    } else {
+      const file: atom$File = new File(filePath);
+      fileDisposer.add(
+        file.onDidDelete(() => {
+          this.kernelMapping.delete(filePath);
+          fileDisposer.dispose();
+        })
+      );
+    }
+
+    this.subscriptions.add(fileDisposer);
+  }
+
   @action
   newKernel(
     kernel: Kernel,
@@ -136,10 +169,11 @@ export class Store {
         this.kernelMapping.set(filePath, new Map());
       }
       const multiLanguageMap = this.kernelMapping.get(filePath);
-      multiLanguageMap.set(grammar.name, kernel);
+      if (multiLanguageMap) multiLanguageMap.set(grammar.name, kernel);
     } else {
       this.kernelMapping.set(filePath, kernel);
     }
+    this.addFileDisposer(editor, filePath);
     const index = this.runningKernels.findIndex(k => k === kernel);
     if (index === -1) {
       this.runningKernels.push(kernel);
@@ -166,10 +200,11 @@ export class Store {
     this.runningKernels = this.runningKernels.filter(k => k !== kernel);
   }
 
-  getFilesForKernel(kernel: Kernel): Array<?string> {
+  getFilesForKernel(kernel: Kernel): Array<string> {
     const grammar = kernel.grammar.name;
     return this.filePaths.filter(file => {
       const kernelOrMap = this.kernelMapping.get(file);
+      if (!kernelOrMap) return false;
       return kernelOrMap instanceof Kernel
         ? kernelOrMap === kernel
         : kernelOrMap.get(grammar) === kernel;
@@ -233,16 +268,21 @@ export class Store {
     this.configMapping.set(keyPath, newValue);
   }
 
+  /**
+   * Force mobx to recalculate filePath (which depends on editor observable)
+   */
   forceEditorUpdate() {
-    // Force mobx to recalculate filePath (which depends on editor observable)
-
     const currentEditor = this.editor;
     if (!currentEditor) return;
 
     const oldKey = this.filePath;
+    // Return back if the kernel for this editor is already disposed.
+    if (!oldKey || !this.kernelMapping.has(oldKey)) return;
+
     this.updateEditor(null);
     this.updateEditor(currentEditor);
     const newKey = this.filePath;
+    if (!newKey) return;
 
     // Change key of kernelMapping from editor ID to file path
     this.kernelMapping.set(newKey, this.kernelMapping.get(oldKey));

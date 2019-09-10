@@ -12,33 +12,27 @@ import _ from "lodash";
 import { autorun } from "mobx";
 import React from "react";
 
-import KernelPicker from "./kernel-picker";
-import WSKernelPicker from "./ws-kernel-picker";
-import ExistingKernelPicker from "./existing-kernel-picker";
-import SignalListView from "./signal-list-view";
-import * as codeManager from "./code-manager";
-
-import Inspector from "./components/inspector";
-import ResultView from "./components/result-view";
-import StatusBar from "./components/status-bar";
-
 import InspectorPane from "./panes/inspector";
 import WatchesPane from "./panes/watches";
 import OutputPane from "./panes/output-area";
 import KernelMonitorPane from "./panes/kernel-monitor";
-
-import { toggleInspector, toggleOutputMode } from "./commands";
-
-import store from "./store";
-import OutputStore from "./store/output";
-
 import Config from "./config";
-import kernelManager from "./kernel-manager";
 import ZMQKernel from "./zmq-kernel";
 import WSKernel from "./ws-kernel";
 import Kernel from "./kernel";
-import AutocompleteProvider from "./autocomplete-provider";
+import KernelPicker from "./kernel-picker";
+import WSKernelPicker from "./ws-kernel-picker";
+import ExistingKernelPicker from "./existing-kernel-picker";
 import HydrogenProvider from "./plugin-api/hydrogen-provider";
+
+import store from "./store";
+import kernelManager from "./kernel-manager";
+import services from "./services";
+import * as commands from "./commands";
+import * as codeManager from "./code-manager";
+import * as result from "./result";
+
+import type MarkerStore from "./store/markers";
 
 import {
   log,
@@ -110,9 +104,13 @@ const Hydrogen = {
         "hydrogen:run-cell": () => this.runCell(),
         "hydrogen:run-cell-and-move-down": () => this.runCell(true),
         "hydrogen:toggle-watches": () => atom.workspace.toggle(WATCHES_URI),
-        "hydrogen:toggle-output-area": () => toggleOutputMode(),
-        "hydrogen:toggle-kernel-monitor": () =>
-          atom.workspace.toggle(KERNEL_MONITOR_URI),
+        "hydrogen:toggle-output-area": () => commands.toggleOutputMode(),
+        "hydrogen:toggle-kernel-monitor": async () => {
+          const lastItem = atom.workspace.getActivePaneItem();
+          const lastPane = atom.workspace.paneForItem(lastItem);
+          await atom.workspace.toggle(KERNEL_MONITOR_URI);
+          if (lastPane) lastPane.activate();
+        },
         "hydrogen:start-local-kernel": () => this.startZMQKernel(),
         "hydrogen:connect-to-remote-kernel": () => this.connectToWSKernel(),
         "hydrogen:connect-to-existing-kernel": () =>
@@ -130,30 +128,24 @@ const Hydrogen = {
           }
         },
         "hydrogen:update-kernels": () => kernelManager.updateKernelSpecs(),
-        "hydrogen:toggle-inspector": () => toggleInspector(store),
+        "hydrogen:toggle-inspector": () => commands.toggleInspector(store),
         "hydrogen:interrupt-kernel": () =>
-          this.handleKernelCommand({ command: "interrupt-kernel" }),
+          this.handleKernelCommand({ command: "interrupt-kernel" }, store),
         "hydrogen:restart-kernel": () =>
-          this.handleKernelCommand({ command: "restart-kernel" }),
-        "hydrogen:restart-kernel-and-re-evaluate-bubbles": () =>
-          this.restartKernelAndReEvaluateBubbles(),
+          this.handleKernelCommand({ command: "restart-kernel" }, store),
         "hydrogen:shutdown-kernel": () =>
-          this.handleKernelCommand({ command: "shutdown-kernel" }),
-        "hydrogen:toggle-bubble": () => this.toggleBubble(),
+          this.handleKernelCommand({ command: "shutdown-kernel" }, store),
+        "hydrogen:clear-result": () => result.clearResult(store),
         "hydrogen:export-notebook": () => exportNotebook(),
         "hydrogen:fold-current-cell": () => this.foldCurrentCell(),
-        "hydrogen:fold-all-but-current-cell": () => this.foldAllButCurrentCell()
+        "hydrogen:fold-all-but-current-cell": () =>
+          this.foldAllButCurrentCell(),
+        "hydrogen:clear-results": () => result.clearResults(store)
       })
     );
 
     store.subscriptions.add(
       atom.commands.add("atom-workspace", {
-        "hydrogen:clear-results": () => {
-          const { kernel, markers } = store;
-          if (markers) markers.clear();
-          if (!kernel) return;
-          kernel.outputStore.clear();
-        },
         "hydrogen:import-notebook": importNotebook
       })
     );
@@ -250,6 +242,7 @@ const Hydrogen = {
     store.dispose();
   },
 
+  /*-------------- Service Providers --------------*/
   provideHydrogen() {
     if (!this.hydrogenProvider) {
       this.hydrogenProvider = new HydrogenProvider(this);
@@ -258,41 +251,24 @@ const Hydrogen = {
     return this.hydrogenProvider;
   },
 
+  provideAutocompleteResults() {
+    return services.provided.autocomplete.provideAutocompleteResults(store);
+  },
+  /*-----------------------------------------------*/
+
+  /*-------------- Service Consumers --------------*/
+  consumeAutocompleteWatchEditor(watchEditor: Function) {
+    return services.consumed.autocomplete.consume(store, watchEditor);
+  },
+
   consumeStatusBar(statusBar: atom$StatusBar) {
-    const statusBarElement = document.createElement("div");
-    statusBarElement.classList.add("inline-block", "hydrogen");
-
-    statusBar.addLeftTile({
-      item: statusBarElement,
-      priority: 100
-    });
-
-    const onClick = this.showKernelCommands.bind(this);
-
-    reactFactory(
-      <StatusBar store={store} onClick={onClick} />,
-      statusBarElement
+    return services.consumed.statusBar.addStatusBar(
+      store,
+      statusBar,
+      this.handleKernelCommand.bind(this)
     );
-
-    // We should return a disposable here but Atom fails while calling .destroy()
-    // return new Disposable(statusBarTile.destroy);
   },
-
-  provide() {
-    if (atom.config.get("Hydrogen.autocomplete") === true) {
-      return AutocompleteProvider();
-    }
-    return null;
-  },
-
-  showKernelCommands() {
-    if (!this.signalListView) {
-      this.signalListView = new SignalListView();
-      this.signalListView.onConfirmed = (kernelCommand: { command: string }) =>
-        this.handleKernelCommand(kernelCommand);
-    }
-    this.signalListView.toggle();
-  },
+  /*-----------------------------------------------*/
 
   connectToExistingKernel() {
     if (!this.existingKernelPicker) {
@@ -301,24 +277,14 @@ const Hydrogen = {
     this.existingKernelPicker.toggle();
   },
 
-  handleKernelCommand({
-    command,
-    payload
-  }: {
-    command: string,
-    payload: ?Kernelspec
-  }) {
+  handleKernelCommand(
+    { command, payload }: { command: string, payload: ?Kernelspec },
+    { kernel, markers }: { kernel: ?Kernel, markers: ?MarkerStore }
+  ) {
     log("handleKernelCommand:", arguments);
 
-    const { kernel, grammar, markers } = store;
-
-    if (!grammar) {
-      atom.notifications.addError("Undefined grammar");
-      return;
-    }
-
     if (!kernel) {
-      const message = `No running kernel for grammar \`${grammar.name}\` found`;
+      const message = "No running kernel for grammar or editor found";
       atom.notifications.addError(message);
       return;
     }
@@ -343,102 +309,6 @@ const Hydrogen = {
     }
   },
 
-  createResultBubble(editor: atom$TextEditor, code: string, row: number) {
-    const { grammar, filePath, kernel } = store;
-
-    if (!filePath || !grammar) {
-      return atom.notifications.addError(
-        "The language grammar must be set in order to start a kernel. The easiest way to do this is to save the file."
-      );
-    }
-
-    if (kernel) {
-      this._createResultBubble(editor, kernel, code, row);
-      return;
-    }
-
-    kernelManager.startKernelFor(
-      grammar,
-      editor,
-      filePath,
-      (kernel: ZMQKernel) => {
-        this._createResultBubble(editor, kernel, code, row);
-      }
-    );
-  },
-
-  _createResultBubble(
-    editor: atom$TextEditor,
-    kernel: Kernel,
-    code: string,
-    row: number
-  ) {
-    if (atom.workspace.getActivePaneItem() instanceof WatchesPane) {
-      kernel.watchesStore.run();
-      return;
-    }
-    const globalOutputStore =
-      atom.config.get("Hydrogen.outputAreaDefault") ||
-      atom.workspace.getPaneItems().find(item => item instanceof OutputPane)
-        ? kernel.outputStore
-        : null;
-
-    if (globalOutputStore) openOrShowDock(OUTPUT_AREA_URI);
-    const { markers } = store;
-    if (!markers) return;
-
-    const { outputStore } = new ResultView(
-      markers,
-      kernel,
-      editor,
-      row,
-      !globalOutputStore
-    );
-
-    kernel.execute(code, result => {
-      outputStore.appendOutput(result);
-      if (globalOutputStore) globalOutputStore.appendOutput(result);
-    });
-  },
-
-  restartKernelAndReEvaluateBubbles() {
-    const { editor, kernel, markers } = store;
-    if (!editor || !kernel || !markers) return;
-
-    let breakpoints = [];
-    markers.markers.forEach((bubble: ResultView) => {
-      breakpoints.push(bubble.marker.getBufferRange().start);
-    });
-    markers.clear();
-
-    if (!editor || !kernel) {
-      this.runAll(breakpoints);
-    } else {
-      kernel.restart(() => this.runAll(breakpoints));
-    }
-  },
-
-  toggleBubble() {
-    const { editor, kernel, markers } = store;
-    if (!editor || !markers) return;
-    const [startRow, endRow] = editor.getLastSelection().getBufferRowRange();
-
-    for (let row = startRow; row <= endRow; row++) {
-      const destroyed = markers.clearOnRow(row);
-
-      if (!destroyed) {
-        const { outputStore } = new ResultView(
-          markers,
-          kernel,
-          editor,
-          row,
-          true
-        );
-        outputStore.status = "empty";
-      }
-    }
-  },
-
   run(moveDown: boolean = false) {
     const editor = store.editor;
     if (!editor) return;
@@ -449,13 +319,24 @@ const Hydrogen = {
       return;
     }
 
-    const [code, row] = codeBlock;
-    if (code) {
-      if (moveDown === true) {
-        codeManager.moveDown(editor, row);
-      }
-      this.createResultBubble(editor, code, row);
+    const codeNullable = codeBlock.code;
+    if (codeNullable === null) return;
+
+    const { row } = codeBlock;
+    const cellType = codeManager.getMetadataForRow(editor, new Point(row, 0));
+
+    const code =
+      cellType === "markdown"
+        ? codeManager.removeCommentsMarkdownCell(editor, codeNullable)
+        : codeNullable;
+
+    if (moveDown === true) {
+      codeManager.moveDown(editor, row);
     }
+
+    this.checkForKernel(store, kernel => {
+      result.createResult(store, { code, row, cellType });
+    });
   },
 
   runAll(breakpoints: ?Array<atom$Point>) {
@@ -477,7 +358,7 @@ const Hydrogen = {
       grammar,
       editor,
       filePath,
-      (kernel: ZMQKernel) => {
+      (kernel: Kernel) => {
         this._runAll(editor, kernel, breakpoints);
       }
     );
@@ -489,19 +370,32 @@ const Hydrogen = {
     breakpoints?: Array<atom$Point>
   ) {
     let cells = codeManager.getCells(editor, breakpoints);
-    _.forEach(
-      cells,
-      ({ start, end }: { start: atom$Point, end: atom$Point }) => {
-        const code = codeManager.getTextInRange(editor, start, end);
-        const endRow = codeManager.escapeBlankRows(editor, start.row, end.row);
-        this._createResultBubble(editor, kernel, code, endRow);
-      }
-    );
+    for (const cell of cells) {
+      const { start, end } = cell;
+      const codeNullable = codeManager.getTextInRange(editor, start, end);
+      if (codeNullable === null) continue;
+
+      const row = codeManager.escapeBlankRows(
+        editor,
+        start.row,
+        end.row == editor.getLastBufferRow() ? end.row : end.row - 1
+      );
+      const cellType = codeManager.getMetadataForRow(editor, start);
+
+      const code =
+        cellType === "markdown"
+          ? codeManager.removeCommentsMarkdownCell(editor, codeNullable)
+          : codeNullable;
+
+      this.checkForKernel(store, kernel => {
+        result.createResult(store, { code, row, cellType });
+      });
+    }
   },
 
   runAllAbove() {
-    const editor = store.editor; // to make flow happy
-    if (!editor) return;
+    const { editor, kernel, grammar, filePath } = store;
+    if (!editor || !grammar || !filePath) return;
     if (isMultilanguageGrammar(editor.getGrammar())) {
       atom.notifications.addError(
         '"Run All Above" is not supported for this file type!'
@@ -509,12 +403,52 @@ const Hydrogen = {
       return;
     }
 
-    const cursor = editor.getLastCursor();
-    const row = codeManager.escapeBlankRows(editor, 0, cursor.getBufferRow());
-    const code = codeManager.getRows(editor, 0, row);
+    if (editor && kernel) {
+      this._runAllAbove(editor, kernel);
+      return;
+    }
 
-    if (code) {
-      this.createResultBubble(editor, code, row);
+    kernelManager.startKernelFor(
+      grammar,
+      editor,
+      filePath,
+      (kernel: Kernel) => {
+        this._runAllAbove(editor, kernel);
+      }
+    );
+  },
+
+  _runAllAbove(editor: atom$TextEditor, kernel: Kernel) {
+    const cursor = editor.getCursorBufferPosition();
+    cursor.column = editor.getBuffer().lineLengthForRow(cursor.row);
+    const breakpoints = codeManager.getBreakpoints(editor);
+    breakpoints.push(cursor);
+    const cells = codeManager.getCells(editor, breakpoints);
+    for (const cell of cells) {
+      const { start, end } = cell;
+      const codeNullable = codeManager.getTextInRange(editor, start, end);
+
+      const row = codeManager.escapeBlankRows(
+        editor,
+        start.row,
+        end.row == editor.getLastBufferRow() ? end.row : end.row - 1
+      );
+      const cellType = codeManager.getMetadataForRow(editor, start);
+
+      if (codeNullable !== null) {
+        const code =
+          cellType === "markdown"
+            ? codeManager.removeCommentsMarkdownCell(editor, codeNullable)
+            : codeNullable;
+
+        this.checkForKernel(store, kernel => {
+          result.createResult(store, { code, row, cellType });
+        });
+      }
+
+      if (cell.containsPoint(cursor)) {
+        break;
+      }
     }
   },
 
@@ -523,16 +457,30 @@ const Hydrogen = {
     if (!editor) return;
     // https://github.com/nteract/hydrogen/issues/1452
     atom.commands.dispatch(editor.element, "autocomplete-plus:cancel");
-    const { start, end } = codeManager.getCurrentCell(editor);
-    const code = codeManager.getTextInRange(editor, start, end);
-    const endRow = codeManager.escapeBlankRows(editor, start.row, end.row);
 
-    if (code) {
-      if (moveDown === true) {
-        codeManager.moveDown(editor, endRow);
-      }
-      this.createResultBubble(editor, code, endRow);
+    const { start, end } = codeManager.getCurrentCell(editor);
+    const codeNullable = codeManager.getTextInRange(editor, start, end);
+    if (codeNullable === null) return;
+
+    const row = codeManager.escapeBlankRows(
+      editor,
+      start.row,
+      end.row == editor.getLastBufferRow() ? end.row : end.row - 1
+    );
+    const cellType = codeManager.getMetadataForRow(editor, start);
+
+    const code =
+      cellType === "markdown"
+        ? codeManager.removeCommentsMarkdownCell(editor, codeNullable)
+        : codeNullable;
+
+    if (moveDown === true) {
+      codeManager.moveDown(editor, row);
     }
+
+    this.checkForKernel(store, kernel => {
+      result.createResult(store, { code, row, cellType });
+    });
   },
 
   foldCurrentCell() {
@@ -585,6 +533,40 @@ const Hydrogen = {
 
     this.wsKernelPicker.toggle((kernelSpec: Kernelspec) =>
       kernelSpecProvidesGrammar(kernelSpec, store.grammar)
+    );
+  },
+
+  // Accepts store as an arg
+  checkForKernel(
+    {
+      editor,
+      grammar,
+      filePath,
+      kernel
+    }: {
+      editor: atom$TextEditor,
+      grammar: atom$Grammar,
+      filePath: string,
+      kernel?: Kernel
+    },
+    callback: (kernel: Kernel) => void
+  ) {
+    if (!filePath || !grammar) {
+      return atom.notifications.addError(
+        "The language grammar must be set in order to start a kernel. The easiest way to do this is to save the file."
+      );
+    }
+
+    if (kernel) {
+      callback(kernel);
+      return;
+    }
+
+    kernelManager.startKernelFor(
+      grammar,
+      editor,
+      filePath,
+      (newKernel: Kernel) => callback(newKernel)
     );
   }
 };

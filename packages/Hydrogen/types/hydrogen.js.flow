@@ -1,3 +1,9 @@
+/* @flow */
+
+import Kernel from './../lib/kernel';
+
+export type HydrogenCellType = 'codecell' | 'markdown';
+
 export type Kernelspec = {
   env: Object,
   argv: Array<string>,
@@ -8,6 +14,7 @@ export type Kernelspec = {
 // Be more specific
 export type Message = {
   header: Object,
+  parent_header: Object,
   content: Object
 };
 

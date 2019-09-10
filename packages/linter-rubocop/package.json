@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
-  "_id": "linter-rubocop@2.2.4",
+  "_from": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball",
+  "_id": "linter-rubocop@2.4.2",
   "_inBundle": false,
-  "_integrity": "sha512-OV6drx+lMwx6sA1pz1Nxt4AV2sMT3n4Ob0UxSLNavs1gO8cmKAkRZy9JH93n3ArckIZH/uPUpHW1UuB8xtPQpQ==",
+  "_integrity": "sha512-UCvfWwRlRIDNE+OX1I1vKMM/n/dUyTPifeyCmAq5hsgHmq0qZAjGtpdN9V3JRB05BECWBtUTBSHO/6X8wDDIPw==",
   "_location": "/linter-rubocop",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
-  "_shasum": "2c10a071ad04e179de33a7a697cf40a5bc9d918c",
-  "_spec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.2.4/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119312-74477-1qmil7n.f9t1",
+  "_resolved": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball",
+  "_shasum": "f05f90bd8ba20cd344fc0ed299b573b2c702f09a",
+  "_spec": "https://www.atom.io/api/packages/linter-rubocop/versions/2.4.2/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99322-158254x.yoly",
   "activationHooks": [
     "source.ruby:root-scope-used",
     "source.ruby.rails:root-scope-used",
@@ -29,6 +29,11 @@
     "url": "https://github.com/AtomLinter/linter-rubocop/issues"
   },
   "bundleDependencies": false,
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "configSchema": {
     "command": {
       "type": "string",
@@ -44,23 +49,27 @@
   },
   "dependencies": {
     "atom-linter": "10.0.0",
-    "atom-package-deps": "5.0.0",
-    "pluralize": "7.0.0",
-    "request": "2.88.0",
-    "request-promise": "4.2.4",
-    "semver": "5.6.0"
+    "atom-package-deps": "5.1.0",
+    "pluralize": "8.0.0",
+    "semver": "6.1.2"
   },
   "deprecated": false,
   "description": "Lint Ruby on the fly, using rubocop",
   "devDependencies": {
-    "eslint": "5.14.1",
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
+    "@commitlint/travis-cli": "8.0.0",
+    "@semantic-release/apm-config": "6.0.1",
+    "eslint": "6.0.0",
     "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-import": "2.17.3",
+    "husky": "2.5.0",
     "jasmine-fix": "1.3.1",
-    "tmp": "0.0.33"
+    "semantic-release": "15.13.16",
+    "tmp": "0.1.0"
   },
   "engines": {
-    "atom": ">=1.4.0 <2.0.0"
+    "atom": ">=1.30.0 <2.0.0"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
@@ -88,6 +97,11 @@
     }
   },
   "homepage": "https://github.com/AtomLinter/linter-rubocop#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "license": "MIT",
   "main": "./src/index.js",
   "name": "linter-rubocop",
@@ -102,6 +116,9 @@
       }
     }
   },
+  "release": {
+    "extends": "@semantic-release/apm-config"
+  },
   "renovate": {
     "extends": [
       "config:base"
@@ -115,6 +132,9 @@
         ],
         "groupName": "ESLint packages"
       }
+    ],
+    "ignorePaths": [
+      "spec/fixtures/**"
     ]
   },
   "repository": {
@@ -125,5 +145,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.2.4"
+  "version": "2.4.2"
 }

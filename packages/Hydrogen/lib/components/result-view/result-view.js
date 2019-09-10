@@ -3,9 +3,8 @@
 import { CompositeDisposable } from "atom";
 import React from "react";
 import { observer } from "mobx-react";
-import { action, observable, toJS } from "mobx";
-import { Display } from "@nteract/display-area";
-import { transforms, displayOrder } from "./transforms";
+import { action, observable } from "mobx";
+import Display from "./display";
 import Status from "./status";
 
 import type OutputStore from "./../../store/output";
@@ -39,6 +38,15 @@ class ResultViewComponent extends React.Component<Props> {
       this.openInEditor();
     } else {
       this.copyToClipboard();
+    }
+  };
+
+  checkForSelection = (event: MouseEvent) => {
+    const selection = document.getSelection();
+    if (selection && selection.toString()) {
+      return;
+    } else {
+      this.handleClick(event);
     }
   };
 
@@ -85,12 +93,20 @@ class ResultViewComponent extends React.Component<Props> {
     return (event: WheelEvent) => {
       const clientHeight = element.clientHeight;
       const scrollHeight = element.scrollHeight;
+      const clientWidth = element.clientWidth;
+      const scrollWidth = element.scrollWidth;
       const scrollTop = element.scrollTop;
+      const scrollLeft = element.scrollLeft;
       const atTop = scrollTop !== 0 && event.deltaY < 0;
+      const atLeft = scrollLeft !== 0 && event.deltaX < 0;
       const atBottom =
         scrollTop !== scrollHeight - clientHeight && event.deltaY > 0;
+      const atRight =
+        scrollLeft !== scrollWidth - clientWidth && event.deltaX > 0;
 
       if (clientHeight < scrollHeight && (atTop || atBottom)) {
+        event.stopPropagation();
+      } else if (clientWidth < scrollWidth && (atLeft || atRight)) {
         event.stopPropagation();
       }
     };
@@ -106,7 +122,8 @@ class ResultViewComponent extends React.Component<Props> {
 
     const inlineStyle = {
       marginLeft: `${position.lineLength + position.charWidth}px`,
-      marginTop: `-${position.lineHeight}px`
+      marginTop: `-${position.lineHeight}px`,
+      userSelect: "text"
     };
 
     if (outputs.length === 0 || this.props.showResult === false) {
@@ -125,16 +142,22 @@ class ResultViewComponent extends React.Component<Props> {
 
     return (
       <div
-        className={isPlain ? "inline-container" : "multiline-container"}
-        onClick={isPlain ? this.handleClick : undefined}
+        className={
+          (isPlain ? "inline-container" : "multiline-container") +
+          " native-key-bindings"
+        }
+        tabIndex={"-1"}
+        onClick={isPlain ? this.checkForSelection : undefined}
         style={
           isPlain
             ? inlineStyle
             : {
                 maxWidth: `${position.editorWidth - 2 * position.charWidth}px`,
-                margin: "0px"
+                margin: "0px",
+                userSelect: "text"
               }
         }
+        hydrogen-wrapoutput={atom.config.get(`Hydrogen.wrapOutput`).toString()}
       >
         <div
           className="hydrogen_cell_display"
@@ -159,14 +182,9 @@ class ResultViewComponent extends React.Component<Props> {
             overflowY: "auto"
           }}
         >
-          <Display
-            outputs={toJS(outputs)}
-            displayOrder={displayOrder}
-            transforms={transforms}
-            theme="light"
-            models={{}}
-            expanded
-          />
+          {outputs.map((output, index) => (
+            <Display output={output} key={index} />
+          ))}
         </div>
         {isPlain ? null : (
           <div className="toolbar">

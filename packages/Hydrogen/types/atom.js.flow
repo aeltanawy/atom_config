@@ -1,3 +1,5 @@
+/* @flow */
+
 /**
  * Adapted from https://github.com/facebook/nuclide/tree/master/flow-libs
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -5,8 +7,6 @@
  *
  * This source code is licensed under the license found in the LICENSE file in
  * the root directory of this source tree.
- *
- * @flow
  */
 
 /**
@@ -14,7 +14,7 @@
  */
 
 // Octicons v4.4.0. List extracted from the atom-styleguide package.
-type atom$Octicon = 'alert' | 'alignment-align' | 'alignment-aligned-to' | 'alignment-unalign' |
+declare type atom$Octicon = 'alert' | 'alignment-align' | 'alignment-aligned-to' | 'alignment-unalign' |
   'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-small-down' | 'arrow-small-left' |
   'arrow-small-right' | 'arrow-small-up' | 'arrow-up' | 'beaker' | 'beer' | 'bell' | 'bold' |
   'book' | 'bookmark' | 'briefcase' | 'broadcast' | 'browser' | 'bug' | 'calendar' | 'check' |
@@ -47,10 +47,10 @@ type atom$Octicon = 'alert' | 'alignment-align' | 'alignment-aligned-to' | 'alig
   'shield' | 'sign-in' | 'sign-out' | 'smiley' | 'split' | 'squirrel' | 'star' | 'star-add' |
   'star-delete' | 'steps' | 'stop' | 'sync' | 'tag' | 'tag-add' | 'tag-remove' | 'tasklist' |
   'telescope' | 'terminal' | 'text-size' | 'three-bars' | 'thumbsdown' | 'thumbsup' | 'tools' |
-  'trashcan' | 'triangle-down' | 'triangle-left' | 'triangle-right' | 'triangle-up' | 'type-array'|
-  'type-boolean'| 'type-class'| 'type-constant'| 'type-constructor'| 'type-enum'| 'type-field'|
-  'type-file'| 'type-function'| 'type-interface'| 'type-method'| 'type-module'| 'type-namespace'|
-  'type-number'| 'type-package'| 'type-property'| 'type-string'| 'type-variable' | 'unfold' |
+  'trashcan' | 'triangle-down' | 'triangle-left' | 'triangle-right' | 'triangle-up' | 'type-array' |
+  'type-boolean' | 'type-class' | 'type-constant' | 'type-constructor' | 'type-enum' | 'type-field' |
+  'type-file' | 'type-function' | 'type-interface' | 'type-method' | 'type-module' | 'type-namespace' |
+  'type-number' | 'type-package' | 'type-property' | 'type-string' | 'type-variable' | 'unfold' |
   'unmute' | 'unverified' | 'verified' | 'versions' | 'watch' | 'x' | 'zap';
 
 type atom$PaneLocation = 'left' | 'right' | 'bottom' | 'center';
@@ -155,6 +155,10 @@ type atom$ConfigSchema = {
   ): IDisposable,
 
   // Managing Settings
+  // get method for special cases (@NOTE: This should be listed ABOVE the general case one)
+  get("Hydrogen.autocompleteSuggestionPriority"): number,
+  get("Hydrogen.wrapOutput"): boolean,
+  // get method for general cases
   get(
     keyPath?: string,
     options?: {
@@ -428,6 +432,7 @@ declare class atom$Pane {
   getActiveItemIndex(): number,
   activateItem(item: Object): ?Object,
   activateItemAtIndex(index: number): void,
+  activateItemForURI(uri: string): boolean,
   moveItemToPane(item: Object, pane: atom$Pane, index: number): void,
   destroyItem(item: Object, force?: boolean): boolean | Promise<boolean>,
   itemForURI(uri: string): Object,
@@ -1208,7 +1213,7 @@ declare class atom$Workspace {
 
   // Opening
   open(
-    uri?: string,
+    uri?: string | atom$TextEditor,
     options?: {
       activatePane?: ?boolean,
       initialLine?: ?number,
@@ -1531,6 +1536,7 @@ declare class atom$GrammarRegistry {
   removeGrammarForScopeName(scopeName: string): ?atom$Grammar,
   loadGrammarSync(grammarPath: string): atom$Grammar,
   selectGrammar(filePath: string, fileContents: string): atom$Grammar,
+  assignLanguageMode(bufferOrEditor: atom$TextBuffer | atom$TextEditor, languageId: string): boolean,
 
   // Private API
   clear(): IDisposable,
@@ -1551,7 +1557,7 @@ declare class atom$KeyBinding {
   cachedKeyups: ?Array<string>,
   command: string,
   index: number,
-  keystrokeArray : Array<string>,
+  keystrokeArray: Array<string>,
   keystrokeCount: number,
   keystrokes: string,
   priority: number,
@@ -2009,54 +2015,6 @@ declare class atom$GitRepositoryInternal {
   isStatusDeleted: (status: number) => boolean,
 }
 
-// One of text or snippet is required.
-// TODO(hansonw): use a union + intersection type
-type atom$AutocompleteSuggestion = {
-  text?: string,
-  snippet?: string,
-  displayText?: string,
-  replacementPrefix?: string,
-  type?: ?string,
-  leftLabel?: ?string,
-  leftLabelHTML?: ?string,
-  rightLabel?: ?string,
-  rightLabelHTML?: ?string,
-  className?: ?string,
-  iconHTML?: ?string,
-  description?: ?string,
-  descriptionMoreURL?: ?string,
-};
-
-type atom$AutocompleteRequest = {
-  editor: TextEditor,
-  bufferPosition: atom$Point,
-  scopeDescriptor: string,
-  prefix: string,
-  activatedManually?: boolean,
-};
-
-type atom$AutocompleteProvider = {
-  +selector: string,
-  +getSuggestions: (
-    request: atom$AutocompleteRequest,
-  ) => Promise<?Array<atom$AutocompleteSuggestion>> | ?Array<atom$AutocompleteSuggestion>,
-  +disableForSelector?: string,
-  +inclusionPriority?: number,
-  +excludeLowerPriority?: boolean,
-  +suggestionPriority?: number,
-  +filterSuggestions?: boolean,
-  +disposable?: () => void,
-  +onDidInsertSuggestion?: (
-    insertedSuggestion: atom$SuggestionInsertedRequest,
-  ) => void,
-};
-
-type atom$SuggestionInsertedRequest = {
-  +editor: atom$TextEditor,
-  +triggerPosition: atom$Point,
-  +suggestion: atom$AutocompleteSuggestion,
-};
-
 // Undocumented API.
 declare class atom$Token {
   value: string,
@@ -2098,4 +2056,4 @@ declare class atom$PanelContainer {
   viewRegistry: atom$ViewRegistry,
 
   getPanels(): Array<atom$Panel>,
-};
+}

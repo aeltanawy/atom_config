@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball",
-  "_id": "tool-bar@1.1.11",
+  "_from": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball",
+  "_id": "tool-bar@1.1.12",
   "_inBundle": false,
-  "_integrity": "sha512-2I8v1qujehuUdGgjwwCyu0b4grZal3dh5Xtxzi2TftCL/vls5CiRosYRENv2VctNW17BDY6ndHIT+oKDarCQrw==",
+  "_integrity": "sha512-DbEc04MkwXUruxOdT7cJCXkYI6ApPbDW2wtUEpNELp1fTStHoQYvVBS+KWYu9klpTbvBUWqiStSYuJGpDepN4A==",
   "_location": "/tool-bar",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball"
+    "raw": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball",
-  "_shasum": "37af44882ae8a79da725fdf610de2fbaed6079b0",
-  "_spec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.11/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-1181020-25493-qndqlr.h1x0l",
+  "_resolved": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball",
+  "_shasum": "ead79bd3f51a5ff873cac2f065e185b38cef4a3f",
+  "_spec": "https://www.atom.io/api/packages/tool-bar/versions/1.1.12/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99376-15u790s.2cuk",
   "bugs": {
     "url": "https://github.com/suda/toolbar/issues"
   },
@@ -62,5 +62,5 @@
   "scripts": {
     "lint": "eslint --format tap . && remark ."
   },
-  "version": "1.1.11"
+  "version": "1.1.12"
 }

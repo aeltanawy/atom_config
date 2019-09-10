@@ -1,13 +1,9 @@
 /* @flow */
 
 import React from "react";
-import { toJS } from "mobx";
 import { observer } from "mobx-react";
-import { Output } from "@nteract/display-area";
-import { richestMimetype } from "@nteract/transforms";
+import Display from "./display";
 import Slider from "react-rangeslider";
-
-import { transforms, displayOrder } from "./transforms";
 
 import type OutputStore from "../../store/output";
 
@@ -51,15 +47,9 @@ const History = observer(({ store }: { store: OutputStore }) => {
         style={{
           fontSize: atom.config.get(`Hydrogen.outputAreaFontSize`) || "inherit"
         }}
+        hydrogen-wrapoutput={atom.config.get(`Hydrogen.wrapOutput`).toString()}
       >
-        <Output
-          output={toJS(output)}
-          displayOrder={displayOrder}
-          transforms={transforms}
-          theme="light"
-          models={{}}
-          expanded
-        />
+        <Display output={output} />
       </div>
     </div>
   ) : null;

@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball",
-  "_id": "python-indent@1.1.7",
+  "_from": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball",
+  "_id": "python-indent@1.2.3",
   "_inBundle": false,
-  "_integrity": "sha512-OyMI4bd1Er6RfKmNOemMpe7q5qJvHRfSO6BQ1XVg/DaKrgasq0J5U5Kb6C/2WRb0ZEoxSV0SmoNY234YEh0wsg==",
+  "_integrity": "sha512-WfpANw9Aon9yJCGw+OuBDNWrLkpz9pN7tcd+XDvkY8nfIaQllIJCmBxlk4AHnueTliKO3xKRyo5hbofpHnVu5Q==",
   "_location": "/python-indent",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball"
+    "raw": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball",
-  "_shasum": "5ed05e06475e39ac9c1716e885b096410362747a",
-  "_spec": "https://www.atom.io/api/packages/python-indent/versions/1.1.7/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-99057-zutvve.t4fn",
+  "_resolved": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball",
+  "_shasum": "6e199c020228e4a7786bb44c063958a2e47f47f2",
+  "_spec": "https://www.atom.io/api/packages/python-indent/versions/1.2.3/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99362-1w5h01d.vaogi",
   "author": {
     "name": "Dustin Speckhals",
     "email": "dustin1114@gmail.com"
@@ -34,15 +34,20 @@
       "email": "dustin1114@gmail.com"
     }
   ],
+  "dependencies": {
+    "python-indent-parser": "0.1.2"
+  },
   "deprecated": false,
   "description": "Python PEP8 auto-indentation",
   "devDependencies": {
-    "eslint": "^5.13.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0"
   },
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.22.0 <2.0.0"
   },
   "homepage": "https://github.com/DSpeckhals/python-indent#readme",
   "keywords": [
@@ -57,5 +62,5 @@
     "type": "git",
     "url": "git+https://github.com/DSpeckhals/python-indent.git"
   },
-  "version": "1.1.7"
+  "version": "1.2.3"
 }

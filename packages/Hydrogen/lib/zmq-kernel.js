@@ -8,7 +8,7 @@ import { launchSpec, launchSpecFromConnectionInfo } from "spawnteract";
 import Config from "./config";
 import KernelTransport from "./kernel-transport";
 import type { ResultsCallback } from "./kernel-transport";
-import { log } from "./utils";
+import { log, js_idx_to_char_idx } from "./utils";
 
 export type Connection = {
   control_port: number,
@@ -162,7 +162,7 @@ export default class ZMQKernel extends KernelTransport {
     let startupCode = Config.getJson("startupCode")[displayName];
     if (startupCode) {
       log("KernelManager: Executing startup code:", startupCode);
-      startupCode = `${startupCode} \n`;
+      startupCode += "\n";
       this.execute(startupCode, (message, channel) => {});
     }
   }
@@ -236,7 +236,7 @@ export default class ZMQKernel extends KernelTransport {
       code,
       text: code,
       line: code,
-      cursor_pos: code.length
+      cursor_pos: js_idx_to_char_idx(code.length, code)
     };
 
     this.executionCallbacks[requestId] = onResults;
@@ -318,7 +318,6 @@ export default class ZMQKernel extends KernelTransport {
     }
 
     const { msg_type } = message.header;
-
     if (msg_type === "status") {
       const status = message.content.execution_state;
       this.setExecutionState(status);

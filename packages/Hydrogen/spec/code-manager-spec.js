@@ -82,7 +82,7 @@ describe("CodeManager", () => {
         waitAsync(async () => {
           await atom.packages.activatePackage("language-python");
           editor.setGrammar(atom.grammars.grammarForScopeName("source.python"));
-          const code = ["v0 = 0 # %%", "v1 = 1", "v2 = 2 # %%", "v3 = 3"]; // row0:bp // row1 // row2:bp // row3
+          const code = ["v0 = 0 #   %%", "v1 = 1", "v2 = 2 #%%", "v3 = 3"]; // row0:bp // row1 // row2:bp // row3
           editor.setText(code.join("\n") + "\n");
         })
       );
@@ -149,6 +149,58 @@ describe("CodeManager", () => {
           ].map(toRange); // zero to row0:bp // nextRow of row0:bp to row1:bp // nextRow of row1:bp to row2:bp
 
           expect(CM.getCells(editor, breakpoints)).toEqual(cellsExpected);
+        });
+      });
+      describe("labeled markdown", () => {
+        beforeEach(() => {
+          const code = [
+            "#%% md Block 1",
+            "##Markdown Header",
+            "Plain Text",
+            "# %%markdown Block 2",
+            "#`code`",
+            "`code`",
+            "# <markdown> Block 3",
+            "#*Italics*"
+          ];
+          editor.setText(code.join("\n") + "\n");
+        });
+        it("returns correct cellType", () => {
+          expect(CM.getMetadataForRow(editor, new Point(1, 0))).toBe(
+            "markdown"
+          );
+          expect(CM.getMetadataForRow(editor, new Point(5, 0))).toBe(
+            "markdown"
+          );
+          expect(CM.getMetadataForRow(editor, new Point(7, 0))).toBe(
+            "markdown"
+          );
+        });
+      });
+      describe("labeled markdown and codecell", () => {
+        beforeEach(() => {
+          const code = [
+            "#%% md Block 1",
+            "##Markdown Header",
+            "Plain Text",
+            "# %% Block 2",
+            "#comment",
+            "print('hi')",
+            "# ln[0] Block 3",
+            "#comment"
+          ];
+          editor.setText(code.join("\n") + "\n");
+        });
+        it("returns correct cellType", () => {
+          expect(CM.getMetadataForRow(editor, new Point(2, 0))).toBe(
+            "markdown"
+          );
+          expect(CM.getMetadataForRow(editor, new Point(5, 0))).toBe(
+            "codecell"
+          );
+          expect(CM.getMetadataForRow(editor, new Point(7, 0))).toBe(
+            "codecell"
+          );
         });
       });
     });

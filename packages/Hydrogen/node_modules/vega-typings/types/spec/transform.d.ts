@@ -23,13 +23,16 @@ export type Transforms =
   | IdentifierTransform
   | ImputeTransform
   | JoinAggregateTransform
+  | KDETransform
   | _TODO_<'linkpath'>
+  | LoessTransform
   | LookupTransform
   | _TODO_<'nest'>
   | _TODO_<'pack'>
   | _TODO_<'partition'>
   | _TODO_<'pie'>
   | _TODO_<'project'>
+  | RegressionTransform
   | _TODO_<'resolvefilter'>
   | SampleTransform
   | _TODO_<'sequence'>
@@ -80,6 +83,7 @@ export type AggregateOp =
 export interface BinTransform extends BaseBin {
   type: 'bin';
   extent: Vector2<number | SignalRef> | SignalRef;
+  span?: number | SignalRef;
   field: string | TransformField;
   as?: Vector2<string | SignalRef> | SignalRef;
   signal?: string;
@@ -139,10 +143,10 @@ export interface CollectTransform {
 export interface CountPatternTransform {
   type: 'countpattern';
   field: string | TransformField;
-  case?: string;
-  pattern?: string;
-  stopwords?: string;
-  as?: string[];
+  case?: string | SignalRef;
+  pattern?: string | SignalRef;
+  stopwords?: string | SignalRef;
+  as?: Vector2<string | SignalRef> | SignalRef;
 }
 
 export type ContourTransform = {
@@ -177,13 +181,13 @@ export interface FilterTransform {
 export interface FlattenTransform {
   type: 'flatten';
   fields: (string | TransformField)[] | SignalRef;
-  as?: string[];
+  as?: (string | SignalRef)[] | SignalRef;
 }
 
 export interface FoldTransform {
   type: 'fold';
   fields: (string | TransformField)[] | SignalRef;
-  as?: [string, string];
+  as?: Vector2<string | SignalRef> | SignalRef;
 }
 
 export interface FormulaTransform {
@@ -252,6 +256,30 @@ export interface JoinAggregateTransform {
   as?: (string | SignalRef | null)[] | SignalRef;
 }
 
+export interface KDETransform {
+  type: 'kde';
+  field: string | TransformField;
+  groupby?: (string | TransformField)[] | SignalRef;
+  cumulative?: boolean | SignalRef;
+  counts?: boolean | SignalRef;
+  bandwidth?: number | SignalRef;
+  extent?: [number, number] | SignalRef;
+  resolve?: 'shared' | 'independent';
+  steps?: number | SignalRef;
+  minsteps?: number | SignalRef;
+  maxsteps?: number | SignalRef;
+  as?: Vector2<string | SignalRef> | SignalRef;
+}
+
+export interface LoessTransform {
+  type: 'loess';
+  x: string | TransformField;
+  y: string | TransformField;
+  groupby?: (string | TransformField)[] | SignalRef;
+  bandwidth?: number | SignalRef;
+  as?: Vector2<string | SignalRef> | SignalRef;
+}
+
 export interface LookupTransform {
   type: 'lookup';
   from: string;
@@ -260,6 +288,18 @@ export interface LookupTransform {
   values?: string[];
   as?: (string | SignalRef)[] | SignalRef;
   default?: any;
+}
+
+export interface RegressionTransform {
+  type: 'regression';
+  x: string | TransformField;
+  y: string | TransformField;
+  groupby?: (string | TransformField)[] | SignalRef;
+  method?: 'linear' | 'exp' | 'log' | 'quad' | 'poly' | 'pow' | SignalRef;
+  order?: number | SignalRef;
+  extent?: [number, number] | SignalRef;
+  params?: boolean | SignalRef;
+  as?: Vector2<string | SignalRef> | SignalRef;
 }
 
 export interface SampleTransform {
@@ -288,7 +328,9 @@ export type WindowOnlyOp =
   | 'lead'
   | 'first_value'
   | 'last_value'
-  | 'nth_value';
+  | 'nth_value'
+  | 'prev_value'
+  | 'next_value';
 
 export interface WindowTransform {
   type: 'window';

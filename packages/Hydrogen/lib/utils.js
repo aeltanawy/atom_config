@@ -45,7 +45,12 @@ export async function openOrShowDock(URI: string): Promise<?void> {
   // this function is basically workspace.open, except it
   // will not focus the newly opened pane
   let dock = atom.workspace.paneContainerForURI(URI);
-  if (dock) return dock.show();
+  if (dock) {
+    // If the target item already exist, activate it and show dock
+    const pane = atom.workspace.paneForURI(URI);
+    if (pane) pane.activateItemForURI(URI);
+    return dock.show();
+  }
 
   await atom.workspace.open(URI, {
     searchAllPanes: true,
@@ -121,6 +126,10 @@ const markupGrammars = new Set([
 export function isMultilanguageGrammar(grammar: atom$Grammar) {
   return markupGrammars.has(grammar.scopeName);
 }
+
+export const isUnsavedFilePath = (filePath: string): boolean => {
+  return filePath.match(/Unsaved\sEditor\s\d+/) ? true : false;
+};
 
 export function kernelSpecProvidesGrammar(
   kernelSpec: Kernelspec,
@@ -229,3 +238,56 @@ export const EmptyMessage = () => {
     </ul>
   );
 };
+
+/**
+ * Given a message whose type if `execute_reply`, calculates exection time and returns its string representation.
+ *
+ * @param {Message} message - A Message object whose type is `execute_reply`
+ * @return {String} - A string representation of the execution time
+ */
+export function executionTime(message: Message): string {
+  if (!message.parent_header.date || !message.header.date) {
+    return "Not available";
+  }
+  const start = Date.parse(message.parent_header.date);
+  const end = Date.parse(message.header.date);
+  let time = end - start; // milliseconds
+  let sec = time / 1000; // seconds
+  if (sec < 60) {
+    return sec.toFixed(3) + " sec";
+  }
+  let min = (sec - (sec % 60)) / 60;
+  sec = (sec % 60).toFixed(0);
+  if (min < 60) {
+    return min + " min " + sec + " sec";
+  }
+  let hour = (min - (min % 60)) / 60;
+  min %= 60;
+  return hour + " h " + min + " m " + sec + " s";
+}
+
+export function js_idx_to_char_idx(js_idx: number, text: string | null) {
+  if (text === null) return -1;
+  var char_idx = js_idx;
+  for (var i = 0; i < text.length && i < js_idx; i++) {
+    var char_code = text.charCodeAt(i);
+    // check for the first half of a surrogate pair
+    if (char_code >= 0xd800 && char_code < 0xdc00) {
+      char_idx -= 1;
+    }
+  }
+  return char_idx;
+}
+
+export function char_idx_to_js_idx(char_idx: number, text: string | null) {
+  if (text === null) return -1;
+  var js_idx = char_idx;
+  for (var i = 0; i < text.length && i < js_idx; i++) {
+    var char_code = text.charCodeAt(i);
+    // check for the first half of a surrogate pair
+    if (char_code >= 0xd800 && char_code < 0xdc00) {
+      js_idx += 1;
+    }
+  }
+  return js_idx;
+}

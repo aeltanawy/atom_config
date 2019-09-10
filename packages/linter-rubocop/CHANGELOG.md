@@ -1,3 +1,87 @@
+## [2.4.2](https://github.com/AtomLinter/linter-rubocop/compare/v2.4.1...v2.4.2) (2019-06-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v6.1.2 ([60957d2](https://github.com/AtomLinter/linter-rubocop/commit/60957d2))
+
+## [2.4.1](https://github.com/AtomLinter/linter-rubocop/compare/v2.4.0...v2.4.1) (2019-06-17)
+
+
+### Bug Fixes
+
+* fixed missing trailing comma, comma-dangle ([116c35a](https://github.com/AtomLinter/linter-rubocop/commit/116c35a))
+* removed configuration to run Rubocop with extra Rails cops ([9086d2c](https://github.com/AtomLinter/linter-rubocop/commit/9086d2c))
+
+# [2.4.0](https://github.com/AtomLinter/linter-rubocop/compare/v2.3.4...v2.4.0) (2019-06-06)
+
+
+### Bug Fixes
+
+* 'Naming/FileName' rule on test tmp file ([07c3453](https://github.com/AtomLinter/linter-rubocop/commit/07c3453))
+
+
+### Features
+
+* fix file refactor, added fix file option to contextual menu ([2b5c5db](https://github.com/AtomLinter/linter-rubocop/commit/2b5c5db))
+
+## [2.3.4](https://github.com/AtomLinter/linter-rubocop/compare/v2.3.3...v2.3.4) (2019-06-06)
+
+
+### Bug Fixes
+
+* rule cache ([5de081e](https://github.com/AtomLinter/linter-rubocop/commit/5de081e))
+
+## [2.3.3](https://github.com/AtomLinter/linter-rubocop/compare/v2.3.2...v2.3.3) (2019-05-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v6.1.1 ([0fa563d](https://github.com/AtomLinter/linter-rubocop/commit/0fa563d))
+
+## [2.3.2](https://github.com/AtomLinter/linter-rubocop/compare/v2.3.1...v2.3.2) (2019-05-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pluralize to v8 ([8095f32](https://github.com/AtomLinter/linter-rubocop/commit/8095f32))
+
+## [2.3.1](https://github.com/AtomLinter/linter-rubocop/compare/v2.3.0...v2.3.1) (2019-05-25)
+
+
+### Bug Fixes
+
+* fixed ruby file for 2.4, added unsupported lambda style ([c72bba0](https://github.com/AtomLinter/linter-rubocop/commit/c72bba0))
+
+# [2.3.0](https://github.com/AtomLinter/linter-rubocop/compare/v2.2.7...v2.3.0) (2019-05-01)
+
+
+### Features
+
+* implements [#306](https://github.com/AtomLinter/linter-rubocop/issues/306) ([c7fc64f](https://github.com/AtomLinter/linter-rubocop/commit/c7fc64f))
+
+## [2.2.7](https://github.com/AtomLinter/linter-rubocop/compare/v2.2.6...v2.2.7) (2019-04-30)
+
+
+### Bug Fixes
+
+* updated minimum Atom version to 1.30 ([5f16450](https://github.com/AtomLinter/linter-rubocop/commit/5f16450)), closes [#314](https://github.com/AtomLinter/linter-rubocop/issues/314)
+
+## [2.2.6](https://github.com/AtomLinter/linter-rubocop/compare/v2.2.5...v2.2.6) (2019-04-30)
+
+
+### Bug Fixes
+
+* rubocop v0.68.0 doesn't include the cop name in the message anymore ([c71ec58](https://github.com/AtomLinter/linter-rubocop/commit/c71ec58))
+
+## [2.2.5](https://github.com/AtomLinter/linter-rubocop/compare/v2.2.4...v2.2.5) (2019-04-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency atom-package-deps to v5.1.0 ([6a6b00d](https://github.com/AtomLinter/linter-rubocop/commit/6a6b00d))
+* **deps:** update dependency semver to v6 ([20cb5f2](https://github.com/AtomLinter/linter-rubocop/commit/20cb5f2))
+
 # Changelog
 
 ## [v2.2.4](https://github.com/AtomLinter/linter-rubocop/compare/v2.2.3...v2.2.4)

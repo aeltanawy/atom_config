@@ -6,6 +6,7 @@ Statistical routines and probability distributions.
 
 - [Random Number Generation](#random-number-generation)
 - [Distributions](#distributions)
+- [Regression](#regression)
 - [Statistics](#statistics)
 
 ### Random Number Generation
@@ -79,6 +80,84 @@ Creates a distribution object representing a [kernel density estimate](https://e
 
 Once created, *data* and *bandwidth* values can be accessed or modified using the `data` and `bandwidth` getter/setter methods.
 
+### Regression
+
+Two-dimensional regression methods to predict one variable given another.
+
+<a name="regressionLinear" href="#regressionLinear">#</a>
+vega.<b>regressionLinear</b>(<i>data</i>, <i>x</i>, <i>y</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/linear.js "Source")
+
+Fit a linear regression model with functional form _y = a + b * x_ for the input *data* array and corresponding *x* and *y* accessor functions. Returns an object for the fit model parameters with the following properties:
+
+- _coef_: An array of fitted coefficients of the form _[a, b]_.
+- _predict_: A function that returns a regression prediction for an input _x_ value.
+- _rSquared_: The R<sup>2</sup> [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), indicating the amount of total variance of _y_ accounted for by the model.
+
+<a name="regressionLog" href="#regressionLog">#</a>
+vega.<b>regressionLog</b>(<i>data</i>, <i>x</i>, <i>y</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/log.js "Source")
+
+Fit a logarithmic regression model with functional form _y = a + b * log(x)_ for the input input *data* array and corresponding *x* and *y* accessor functions.
+
+Returns an object for the fit model parameters with the following properties:
+
+- _coef_: An array of fitted coefficients of the form _[a, b]_.
+- _predict_: A function that returns a regression prediction for an input _x_ value.
+- _rSquared_: The R<sup>2</sup> [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), indicating the amount of total variance of _y_ accounted for by the model.
+
+<a name="regressionExp" href="#regressionExp">#</a>
+vega.<b>regressionExp</b>(<i>data</i>, <i>x</i>, <i>y</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/exp.js "Source")
+
+Fit an exponential regression model with functional form _y = a + e<sup>b * x</sup>_ for the input *data* array and corresponding *x* and *y* accessor functions. Returns an object for the fit model parameters with the following properties:
+
+- _coef_: An array of fitted coefficients of the form _[a, b]_.
+- _predict_: A function that returns a regression prediction for an input _x_ value.
+- _rSquared_: The R<sup>2</sup> [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), indicating the amount of total variance of _y_ accounted for by the model.
+
+<a name="regressionPow" href="#regressionPow">#</a>
+vega.<b>regressionPow</b>(<i>data</i>, <i>x</i>, <i>y</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/pow.js "Source")
+
+Fit a power law regression model with functional form _y = a * x<sup>b</sup>_ for the input *data* array and corresponding *x* and *y* accessor functions. Returns an object for the fit model parameters with the following properties:
+
+- _coef_: An array of fitted coefficients of the form _[a, b]_.
+- _predict_: A function that returns a regression prediction for an input _x_ value.
+- _rSquared_: The R<sup>2</sup> [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), indicating the amount of total variance of _y_ accounted for by the model.
+
+<a name="regressionQuad" href="#regressionQuad">#</a>
+vega.<b>regressionLinear</b>(<i>data</i>, <i>x</i>, <i>y</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/quad.js "Source")
+
+Fit a quadratic regression model with functional form _y = a + b * x + c * x<sup>2</sup>_ for the input *data* array and corresponding *x* and *y* accessor functions. Returns an object for the fit model parameters with the following properties:
+
+- _coef_: An array of fitted coefficients of the form _[a, b, c]_,
+- _predict_: A function that returns a regression prediction for an input _x_ value.
+- _rSquared_: The R<sup>2</sup> [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), indicating the amount of total variance of _y_ accounted for by the model.
+
+<a name="regressionPoly" href="#regressionPoly">#</a>
+vega.<b>regressionPoly</b>(<i>data</i>, <i>x</i>, <i>y</i>, <i>order</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/poly.js "Source")
+
+Fit a polynomial regression model of specified _order_ with functional form _y = a + b * x + ... + k * x<sup>order</sup>_ for the input *data* array and corresponding *x* and *y* accessor functions. Returns an object for the fit model parameters with the following properties:
+
+- _coef_: An _(order + 1)_-length array of polynomial coefficients of the form _[a, b, c, d, ...]_.
+- _predict_: A function that returns a regression prediction for an input _x_ value.
+- _rSquared_: The R<sup>2</sup> [coefficient of determination](https://en.wikipedia.org/wiki/Coefficient_of_determination), indicating the amount of total variance of _y_ accounted for by the model.
+
+<a name="regressionLoess" href="#regressionLoess">#</a>
+vega.<b>regressionLoess</b>(<i>data</i>, <i>x</i>, <i>y</i>, <i>bandwidth</i>)
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/regression/loess.js "Source")
+
+Fit a smoothed, non-parametric trend line the input *data* array and corresponding *x* and *y* accessor functions using _loess_ (locally-estimated scatterplot smoothing). Loess performs a sequence of local weighted regressions over a sliding window of nearest-neighbor points. The _bandwidth_ argument determines the size of the sliding window, expressed as a [0, 1] fraction of the total number of data points included.
+
+<a name="sampleCurve" href="#sampleCurve">#</a>
+vega.<b>sampleCurve</b>(<i>f</i>, <i>extent</i>[, <i>minSteps</i>, <i>maxSteps</i>])
+[<>](https://github.com/vega/vega/blob/master/packages/vega-statistics/src/sampleCurve.js "Source")
+
+Generate sample points from an interpolation function _f_ for the provided domain _extent_ and return an array of _[x, y]_ points. Performs adaptive subdivision to dynamically sample more points in regions of higher curvature. Subdivision stops when the difference in angles between the current samples and a proposed subdivision falls below one-quarter of a degree. The optional _minSteps_ argument (default 25), determines the minimal number of initial, uniformly-spaced sample points to draw. The optional _maxSteps_ argument (default 200), indicates the maximum resolution at which adaptive sampling will stop, defined relative to a uniform grid of size _maxSteps_. If _minSteps_ and _maxSteps_ are identical, no adaptive sampling will be performed and only the initial, uniformly-spaced samples will be returned.
+
 ### Statistics
 
 Statistical methods for calculating bins, bootstrapped confidence intervals, and quartile boundaries.
@@ -91,10 +170,11 @@ Determine a quantitative binning scheme, for example to create a histogram. Base
 
 The supported options properties are:
 
-- _extent_: (required) A two-element (`[min, max]`) array indicating the range of desired bin values.
+- _extent_: (required) A two-element (`[min, max]`) array indicating the range over which the bin values are defined.
 - _base_: The number base to use for automatic bin determination (default base `10`).
 - _maxbins_: The maximum number of allowable bins (default `20`).
-- _step_: An exact step size to use between bins. If provided, the _maxbins_ and _steps_ options will be ignored.
+- _span_: The value span over which to generate bin boundaries. The default is `extent[1] - extent[0]`. This parameter allows automatic step size determination over custom spans (for example, a zoomed-in region) while retaining the overall _extent_.
+- _step_: An exact step size to use between bins. If provided, the _maxbins_, _span_, and _steps_ options will be ignored.
 - _steps_: An array of allowable step sizes to choose from. If provided, the _maxbins_ option will be ignored.
 - _minstep_: A minimum allowable step size (particularly useful for integer values, default `0`).
 - _divide_: An array of scale factors indicating allowable subdivisions. The default value is `[5, 2]`, which indicates that the method may consider dividing bin sizes by 5 and/or 2. For example, for an initial step size of 10, the method can check if bin sizes of 2 (= 10/5), 5 (= 10/2), or 1 (= 10/(5*2)) might also satisfy the given constraints.
