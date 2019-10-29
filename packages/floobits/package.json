@@ -78,7 +78,7 @@
   },
   "description": "The Floobits pair programming plugin for Atom.  This plugin adds support for real-time collaborative editing, video chatting, and sharing terminals via the Term3 plugin.  A Floobits account is required, but the plugin will guide you.",
   "devDependencies": {
-    "eslint": "3.x",
+    "eslint": "6.x",
     "eslint-config-floobits": "*",
     "eslint-plugin-react": "5.x"
   },
