@@ -70,7 +70,7 @@
     "lodash": "4.x",
     "minimatch": "3.x",
     "mkdirp": "0.5.x",
-    "open": "0.x",
+    "open": "7.x",
     "react-atom-fork": "0.11.x",
     "react-tools": "0.11.x",
     "reactionary-atom-fork": "1.x",
