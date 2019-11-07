@@ -19,7 +19,7 @@
   "_resolved": "https://www.atom.io/api/packages/platformio-ide-terminal/versions/2.9.1/tarball",
   "_shasum": "0da58d5ba8d9e606f0e96b705e73f0a45ef94c3a",
   "_spec": "https://www.atom.io/api/packages/platformio-ide-terminal/versions/2.9.1/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119124-99055-16yy9ep.i45gh",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119107-91447-2prsqt.vyg39",
   "activationHooks": [
     "core:loaded-shell-environment"
   ],

@@ -14,6 +14,7 @@
       "linter-revive"
       "linter-selective"
       "linter-ui-default"
+      "minimap"
     ]
     projectHome: "/Users/eltanawy/"
     reopenProjectMenuCount: 5
@@ -23,7 +24,7 @@
       "one-dark-syntax"
     ]
   editor:
-    fontSize: 17
+    fontSize: 16
     showIndentGuide: true
     showInvisibles: true
     softWrap: true

@@ -33,15 +33,15 @@ const getConfig = async (filePath) => {
   return null;
 };
 
-const phpScopedEditor = editor => (
-  editor.getCursors().some(cursor => (
-    cursor.getScopeDescriptor().getScopesArray().some(scope => (
+const phpScopedEditor = (editor) => (
+  editor.getCursors().some((cursor) => (
+    cursor.getScopeDescriptor().getScopesArray().some((scope) => (
       scope === phpEmbeddedScope
     ))
   ))
 );
 
-const removePHP = str => str.replace(/<\?(?:php|=)?(?:[\s\S])+?\?>/gi, (match) => {
+const removePHP = (str) => str.replace(/<\?(?:php|=)?(?:[\s\S])+?\?>/gi, (match) => {
   const newlines = match.match(/\r?\n|\r/g);
   const newlineCount = newlines ? newlines.length : 0;
 
@@ -56,7 +56,11 @@ const loadDeps = () => {
     ({ dirname } = require('path'));
   }
   if (!HTMLHint) {
-    ({ HTMLHint } = require('htmlhint'));
+    const htmlhintModule = require('htmlhint');
+    HTMLHint = new htmlhintModule.HTMLHint();
+    Object.keys(htmlhintModule.HTMLRules).forEach((rule) => {
+      HTMLHint.addRule(htmlhintModule.HTMLRules[rule]);
+    });
   }
   if (!findAsync || !generateRange) {
     ({ findAsync, generateRange } = require('atom-linter'));
@@ -102,7 +106,7 @@ export default {
   },
 
   deactivate() {
-    this.idleCallbacks.forEach(callbackID => window.cancelIdleCallback(callbackID));
+    this.idleCallbacks.forEach((callbackID) => window.cancelIdleCallback(callbackID));
     this.idleCallbacks.clear();
     this.subscriptions.dispose();
   },

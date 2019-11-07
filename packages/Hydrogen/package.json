@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball",
-  "_id": "Hydrogen@2.12.0",
+  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
+  "_id": "Hydrogen@2.13.1",
   "_inBundle": false,
-  "_integrity": "sha512-6MC/dzVUCMSkT005hRbByRBh5PWErcucDsCUe7CFj8Yr7QFhg5rO0AdfLoEiZaBmnqCxOpQss2SCZQ1vpA8iAQ==",
+  "_integrity": "sha512-zL30t6W+njAVRNafJ1Sy+iXa0mWL/zPUekylU1CQ/LvCggkP/apQkGvK4fuMpkk9TVHwRGTc+7kZYl8CK6mSvw==",
   "_location": "/Hydrogen",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball"
+    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball",
-  "_shasum": "3e059adaa3a8f97e3227c54a72395e6674c1b843",
-  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.12.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99161-1av6hyv.ctqx",
+  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
+  "_shasum": "58bbb496dc5515f5c87ad35dfe2eacc514b46a67",
+  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119107-90303-1pm2287.lqit",
   "activationCommands": {
     "atom-text-editor": [
       "hydrogen:start-local-kernel",
@@ -59,9 +59,9 @@
   "dependencies": {
     "@babel/runtime-corejs2": "^7.0.0",
     "@jupyterlab/services": "^0.52.0",
-    "@nteract/commutable": "^7.0.0",
+    "@nteract/commutable": "^7.1.4",
     "@nteract/markdown": "^4.0.0",
-    "@nteract/mathjax": "^4.0.0",
+    "@nteract/mathjax": "^4.0.1",
     "@nteract/outputs": "^2.1.5",
     "@nteract/plotly": "^1.48.3",
     "@nteract/transform-vega": "^6.0.0",
@@ -92,7 +92,7 @@
     "atom-jasmine3-test-runner": "^4.0.0",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
-    "flow-bin": "^0.102.0",
+    "flow-bin": "^0.110.0",
     "husky": "^3.0.0",
     "lint-staged": "^9.0.0",
     "markdox": "^0.1.10",
@@ -156,5 +156,5 @@
     "flow": "flow",
     "prettier": "prettier --write \"lib/**/*.js\" \"spec/**/*.js\""
   },
-  "version": "2.12.0"
+  "version": "2.13.1"
 }

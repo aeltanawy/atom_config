@@ -6,7 +6,24 @@ tries to follow the [Keep a CHANGELOG](http://keepachangelog.com) convention.
 
 ## [vNext](https://github.com/suda/tool-bar/compare/v1.1.0...master) - Unreleased
 
-*   ...
+*
+
+## [v1.2.0](https://github.com/suda/tool-bar/compare/v1.2.0...v1.1.12) - 2019-10-03
+
+⚠️ **Warning:** This version contains [breaking changes in ionicons](https://github.com/suda/tool-bar/issues/264).
+Icons have been renamed by the Ionicons team, and now the iOS versions require `ios-` prefix and the Material ones require `md-` prefix.
+
+* [Update ionicons icons (release v4.5.10-1)](https://github.com/suda/tool-bar/pull/263) (by [@ericcornelissen](https://github.com/ericcornelissen))
+
+## [v1.1.13](https://github.com/suda/tool-bar/compare/v1.1.13...v1.1.13) - 2019-10-02
+
+**Note:** This version has been unpublished and published again as 1.2.0 due to [breaking changes in ionicons](https://github.com/suda/tool-bar/issues/264).
+
+* ~~[Update ionicons icons (release v4.5.10-1)](https://github.com/suda/tool-bar/pull/263) (by [@ericcornelissen](https://github.com/ericcornelissen))~~
+
+## [v1.1.12](https://github.com/suda/tool-bar/compare/v1.1.12...v1.1.11) - 2019-07-11
+
+* [Update `font-awesome` to 5.9.0 including brand icons](https://github.com/suda/tool-bar/pull/257) (by [@malnvenshorn](https://github.com/malnvenshorn))
 
 ## [v1.1.11](https://github.com/suda/tool-bar/compare/v1.1.11...v1.1.10) - 2018-11-04
 
