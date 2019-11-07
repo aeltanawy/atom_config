@@ -6,3 +6,4 @@ recovery
 .apm
 .node-gyp
 .npm
+.atom-*
