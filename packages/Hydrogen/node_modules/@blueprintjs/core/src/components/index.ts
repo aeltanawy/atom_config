@@ -14,13 +14,7 @@
  * limitations under the License.
  */
 
-declare function require(moduleName: string): any; // declare node.js "require" so that we can conditionally import
-if (typeof window !== "undefined" && typeof document !== "undefined") {
-    // we're in browser
-    // tslint:disable-next-line:no-var-requires
-    require("dom4"); // only import actual dom4 if we're in the browser (not server-compatible)
-    // we'll still need dom4 types for the TypeScript to compile, these are included in package.json
-}
+import "../common/configureDom4";
 
 import * as contextMenu from "./context-menu/contextMenu";
 export const ContextMenu = contextMenu;
@@ -36,6 +30,8 @@ export * from "./collapse/collapse";
 export * from "./collapsible-list/collapsibleList";
 export * from "./context-menu/contextMenuTarget";
 export * from "./dialog/dialog";
+export * from "./dialog/multistepDialog";
+export * from "./dialog/dialogStep";
 export * from "./divider/divider";
 export * from "./drawer/drawer";
 export * from "./editable-text/editableText";
@@ -50,7 +46,7 @@ export * from "./forms/textArea";
 export * from "./html/html";
 export * from "./html-select/htmlSelect";
 export * from "./html-table/htmlTable";
-export * from "./hotkeys/hotkeys";
+export * from "./hotkeys/index";
 export * from "./icon/icon";
 export * from "./menu/menu";
 export * from "./menu/menuDivider";
@@ -65,11 +61,14 @@ export * from "./overlay/overlay";
 export * from "./text/text";
 export * from "./panel-stack/panelProps";
 export * from "./panel-stack/panelStack";
+export { PanelStack2, PanelStack2Props } from "./panel-stack2/panelStack2";
+export { Panel, PanelProps } from "./panel-stack2/panelTypes";
 export * from "./popover/popover";
 export * from "./popover/popoverSharedProps";
 export * from "./portal/portal";
 export * from "./progress-bar/progressBar";
 export * from "./resize-sensor/resizeSensor";
+export * from "./resize-sensor/resizeObserverTypes";
 export * from "./slider/handleProps";
 export * from "./slider/multiSlider";
 export * from "./slider/rangeSlider";

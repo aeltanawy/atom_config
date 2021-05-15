@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball",
-  "_id": "autocomplete-python@1.16.0",
+  "_from": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball",
+  "_id": "autocomplete-python@1.17.0",
   "_inBundle": false,
-  "_integrity": "sha512-oJmjxDg27LqKMGs3OjNE9ieR826VtDvtLXxxyjf4BR6utDtU3PTuXBTgXyBoDW6Df/Og2uFiI6MxbvHe6K+k6w==",
+  "_integrity": "sha512-miRz6bICELLlO7DoI8EdwcCOx6AdxZLBp7NYldr8Wv6hKC6ayrroQFSyvjpJB8uGSJeIiY+SFtpY3fWEC24khg==",
   "_location": "/autocomplete-python",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball"
+    "raw": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball",
-  "_shasum": "33f0499fccd1be2a2e72894273f42c52397b77ca",
-  "_spec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.16.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99098-15dnbo3.i7lf",
+  "_resolved": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball",
+  "_shasum": "2ddae2c17c04f46ebd47bf1b6a2d964d03cf6fda",
+  "_spec": "https://www.atom.io/api/packages/autocomplete-python/versions/1.17.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21197-15p4uaj.yd16",
   "bugs": {
     "url": "https://github.com/autocomplete-python/autocomplete-python/issues"
   },
@@ -54,7 +54,7 @@
     "mixpanel": "^0.5.0",
     "selector-kit": "^0.1",
     "space-pen": "^5.1.2",
-    "underscore": "^1.12.1"
+    "underscore": "^1.8.3"
   },
   "deprecated": false,
   "description": "Python completions for packages, variables, methods, functions, with their arguments. Powered by your choice of Jedi or Kite.",
@@ -87,5 +87,5 @@
     "type": "git",
     "url": "git+ssh://git@github.com/autocomplete-python/autocomplete-python.git"
   },
-  "version": "1.16.0"
+  "version": "1.17.0"
 }

@@ -1,22 +1,18 @@
-'use strict'
+"use strict"
 
-/*
-  The following hack clears the require cache of all the paths to the minimap when this file is laoded. It should prevents errors of partial reloading after an update.
- */
-const path = require('path')
+import { Emitter, CompositeDisposable } from "atom"
+import MinimapElement from "./minimap-element"
+import Minimap from "./minimap"
+import config from "./config.json"
+import * as PluginManagement from "./plugin-management"
+import { treeSitterWarning } from "./performance-monitor"
+import DOMStylesReader from "./dom-styles-reader"
+import { debounce } from "./deps/underscore-plus"
 
-if (!atom.inSpecMode()) {
-  Object.keys(require.cache).filter((p) => {
-    return p !== __filename && p.indexOf(path.resolve(__dirname, '..') + path.sep) > -1
-  }).forEach((p) => {
-    delete require.cache[p]
-  })
-}
-
-const include = require('./decorators/include')
-const PluginManagement = require('./mixins/plugin-management')
-
-let Emitter, CompositeDisposable, Minimap, MinimapElement, MinimapPluginGeneratorElement
+export { default as config } from "./config.json"
+export * from "./plugin-management"
+export { default as Minimap } from "./minimap"
+export { default as MinimapElement } from "./minimap-element"
 
 /**
  * The `Minimap` package provides an eagle-eye view of text buffers.
@@ -25,382 +21,444 @@ let Emitter, CompositeDisposable, Minimap, MinimapElement, MinimapPluginGenerato
  * minimap and be available to the user through the minimap settings.
  */
 
-class Main {
-  static initClass () {
-    include(this, PluginManagement)
-    return this
-  }
-  /**
-   * Used only at export time.
-   *
-   * @access private
-   */
-  constructor () {
-    if (!Emitter) { ({Emitter, CompositeDisposable} = require('atom')) }
+/**
+ * The activation state of the package.
+ *
+ * @type {boolean}
+ * @access private
+ */
+let active = false
+/**
+ * The toggle state of the package.
+ *
+ * @type {boolean}
+ * @access private
+ */
+let toggled = false
+/**
+ * The `Map` where Minimap instances are stored with the text editor they
+ * target as key.
+ *
+ * @type {Map}
+ * @access private
+ */
+export let editorsMinimaps = null
+/**
+ * The composite disposable that stores the package's subscriptions.
+ *
+ * @type {CompositeDisposable}
+ * @access private
+ */
+let subscriptions = null
+/**
+ * The disposable that stores the package's commands subscription.
+ *
+ * @type {Disposable}
+ * @access private
+ */
+let subscriptionsOfCommands = null
 
-    /**
-     * The activation state of the package.
-     *
-     * @type {boolean}
-     * @access private
-     */
-    this.active = false
-    /**
-     * The toggle state of the package.
-     *
-     * @type {boolean}
-     * @access private
-     */
-    this.toggled = false
-    /**
-     * The `Map` where Minimap instances are stored with the text editor they
-     * target as key.
-     *
-     * @type {Map}
-     * @access private
-     */
-    this.editorsMinimaps = null
-    /**
-     * The composite disposable that stores the package's subscriptions.
-     *
-     * @type {CompositeDisposable}
-     * @access private
-     */
-    this.subscriptions = null
-    /**
-     * The disposable that stores the package's commands subscription.
-     *
-     * @type {Disposable}
-     * @access private
-     */
-    this.subscriptionsOfCommands = null
+/**
+ * The package's events emitter.
+ *
+ * @type {Emitter}
+ * @access private
+ */
+export const emitter = new Emitter()
 
-    /**
-     * The package's events emitter.
-     *
-     * @type {Emitter}
-     * @access private
-     */
-    this.emitter = new Emitter()
+/**
+  DOMStylesReader cache used for storing token colors
+*/
+export let domStylesReader = null
 
-    this.initializePlugins()
+/**
+ * Activates the minimap package.
+ */
+export function activate() {
+  if (active) {
+    return
   }
 
-  /**
-   * Activates the minimap package.
-   */
-  activate () {
-    if (this.active) { return }
-    if (!CompositeDisposable) { ({Emitter, CompositeDisposable} = require('atom')) }
+  subscriptionsOfCommands = atom.commands.add("atom-workspace", {
+    "minimap:toggle": () => {
+      toggle()
+    },
+    "minimap:generate-coffee-plugin": async () => {
+      await generatePlugin("coffee")
+    },
+    "minimap:generate-javascript-plugin": async () => {
+      await generatePlugin("javascript")
+    },
+    "minimap:generate-babel-plugin": async () => {
+      await generatePlugin("babel")
+    },
+  })
 
-    this.subscriptionsOfCommands = atom.commands.add('atom-workspace', {
-      'minimap:toggle': () => {
-        this.toggle()
-      },
-      'minimap:generate-coffee-plugin': () => {
-        this.generatePlugin('coffee')
-      },
-      'minimap:generate-javascript-plugin': () => {
-        this.generatePlugin('javascript')
-      },
-      'minimap:generate-babel-plugin': () => {
-        this.generatePlugin('babel')
-      }
-    })
+  editorsMinimaps = new Map()
+  domStylesReader = new DOMStylesReader()
 
-    this.editorsMinimaps = new Map()
-    this.subscriptions = new CompositeDisposable()
-    this.active = true
+  subscriptions = new CompositeDisposable()
+  active = true
 
-    if (atom.config.get('minimap.autoToggle')) { this.toggle() }
-  }
-
-  /**
-   * Returns a {MinimapElement} for the passed-in model if it's a {Minimap}.
-   *
-   * @param {*} model the model for which returning a view
-   * @return {MinimapElement}
-   */
-  minimapViewProvider (model) {
-    if (!Minimap) { Minimap = require('./minimap') }
-
-    if (model instanceof Minimap) {
-      if (!MinimapElement) { MinimapElement = require('./minimap-element') }
-
-      const element = new MinimapElement()
-      element.setModel(model)
-      return element
-    }
-  }
-
-  /**
-   * Deactivates the minimap package.
-   */
-  deactivate () {
-    if (!this.active) { return }
-
-    this.deactivateAllPlugins()
-
-    if (this.editorsMinimaps) {
-      this.editorsMinimaps.forEach((value, key) => {
-        value.destroy()
-        this.editorsMinimaps.delete(key)
-      })
-    }
-
-    this.subscriptions.dispose()
-    this.subscriptions = null
-    this.subscriptionsOfCommands.dispose()
-    this.subscriptionsOfCommands = null
-    this.editorsMinimaps = undefined
-    this.toggled = false
-    this.active = false
-  }
-
-  getConfigSchema () {
-    return this.config
-      ? this.config
-      : atom.packages.getLoadedPackage('minimap').metadata.configSchema
-  }
-
-  /**
-   * Toggles the minimap display.
-   */
-  toggle () {
-    if (!this.active) { return }
-
-    if (this.toggled) {
-      this.toggled = false
-
-      if (this.editorsMinimaps) {
-        this.editorsMinimaps.forEach((value, key) => {
-          value.destroy()
-          this.editorsMinimaps.delete(key)
-        })
-      }
-      this.subscriptions.dispose()
-    } else {
-      this.toggled = true
-      this.initSubscriptions()
-    }
-  }
-
-  /**
-   * Opens the plugin generation view.
-   *
-   * @param  {string} template the name of the template to use
-   */
-  generatePlugin (template) {
-    if (!MinimapPluginGeneratorElement) {
-      MinimapPluginGeneratorElement = require('./minimap-plugin-generator-element')
-    }
-    var view = new MinimapPluginGeneratorElement()
-    view.template = template
-    view.attach()
-  }
-
-  /**
-   * Registers a callback to listen to the `did-activate` event of the package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidActivate (callback) {
-    return this.emitter.on('did-activate', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-deactivate` event of the
-   * package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidDeactivate (callback) {
-    return this.emitter.on('did-deactivate', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-create-minimap` event of the
-   * package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidCreateMinimap (callback) {
-    return this.emitter.on('did-create-minimap', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-add-plugin` event of the
-   * package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidAddPlugin (callback) {
-    return this.emitter.on('did-add-plugin', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-remove-plugin` event of the
-   * package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidRemovePlugin (callback) {
-    return this.emitter.on('did-remove-plugin', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-activate-plugin` event of the
-   * package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidActivatePlugin (callback) {
-    return this.emitter.on('did-activate-plugin', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-deactivate-plugin` event of the
-   * package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidDeactivatePlugin (callback) {
-    return this.emitter.on('did-deactivate-plugin', callback)
-  }
-
-  /**
-   * Registers a callback to listen to the `did-change-plugin-order` event of
-   * the package.
-   *
-   * @param  {function(event:Object):void} callback the callback function
-   * @return {Disposable} a disposable to stop listening to the event
-   */
-  onDidChangePluginOrder (callback) {
-    return this.emitter.on('did-change-plugin-order', callback)
-  }
-
-  /**
-   * Returns the `Minimap` class
-   *
-   * @return {Function} the `Minimap` class constructor
-   */
-  minimapClass () {
-    if (!Minimap) { Minimap = require('./minimap') }
-    return Minimap
-  }
-
-  /**
-   * Returns the `Minimap` object associated to the passed-in
-   * `TextEditorElement`.
-   *
-   * @param  {TextEditorElement} editorElement a text editor element
-   * @return {Minimap} the associated minimap
-   */
-  minimapForEditorElement (editorElement) {
-    if (!editorElement) { return }
-    return this.minimapForEditor(editorElement.getModel())
-  }
-
-  /**
-   * Returns the `Minimap` object associated to the passed-in
-   * `TextEditor`.
-   *
-   * @param  {TextEditor} textEditor a text editor
-   * @return {Minimap} the associated minimap
-   */
-  minimapForEditor (textEditor) {
-    if (!textEditor) { return }
-    if (!this.editorsMinimaps) { return }
-
-    let minimap = this.editorsMinimaps.get(textEditor)
-
-    if (!minimap) {
-      if (!Minimap) { Minimap = require('./minimap') }
-
-      minimap = new Minimap({textEditor})
-      this.editorsMinimaps.set(textEditor, minimap)
-
-      var editorSubscription = textEditor.onDidDestroy(() => {
-        let minimaps = this.editorsMinimaps
-        if (minimaps) { minimaps.delete(textEditor) }
-        editorSubscription.dispose()
-      })
-    }
-
-    return minimap
-  }
-
-  /**
-   * Returns a new stand-alone {Minimap} for the passed-in `TextEditor`.
-   *
-   * @param  {TextEditor} textEditor a text editor instance to create
-   *                                 a minimap for
-   * @return {Minimap} a new stand-alone Minimap for the passed-in editor
-   */
-  standAloneMinimapForEditor (textEditor) {
-    if (!textEditor) { return }
-    if (!Minimap) { Minimap = require('./minimap') }
-
-    return new Minimap({
-      textEditor: textEditor,
-      standAlone: true
-    })
-  }
-
-  /**
-   * Returns the `Minimap` associated to the active `TextEditor`.
-   *
-   * @return {Minimap} the active Minimap
-   */
-  getActiveMinimap () {
-    return this.minimapForEditor(atom.workspace.getActiveTextEditor())
-  }
-
-  /**
-   * Calls a function for each present and future minimaps.
-   *
-   * @param  {function(minimap:Minimap):void} iterator a function to call with
-   *                                                   the existing and future
-   *                                                   minimaps
-   * @return {Disposable} a disposable to unregister the observer
-   */
-  observeMinimaps (iterator) {
-    if (!iterator) { return }
-
-    if (this.editorsMinimaps) {
-      this.editorsMinimaps.forEach((minimap) => { iterator(minimap) })
-    }
-    return this.onDidCreateMinimap((minimap) => { iterator(minimap) })
-  }
-
-  /**
-   * Registers to the `observeTextEditors` method.
-   *
-   * @access private
-   */
-  initSubscriptions () {
-    this.subscriptions.add(atom.workspace.observeTextEditors((textEditor) => {
-      let minimap = this.minimapForEditor(textEditor)
-      let minimapElement = atom.views.getView(minimap)
-
-      this.emitter.emit('did-create-minimap', minimap)
-      minimapElement.attach()
-    }))
+  if (atom.config.get("minimap.autoToggle")) {
+    toggle()
   }
 }
 
-Main.initClass()
+/**
+ * Returns a {MinimapElement} for the passed-in model if it's a {Minimap}.
+ *
+ * @param {Minimap} model the model for which returning a view
+ * @return {MinimapElement}
+ */
+export function minimapViewProvider(model) {
+  if (model instanceof Minimap) {
+    let element = model.getMinimapElement()
+    if (!element) {
+      element = new MinimapElement()
+      element.setModel(model)
+    }
+    return element
+  }
+}
 
 /**
- * The exposed instance of the `Main` class.
+ * Deactivates the minimap package.
+ */
+export function deactivate() {
+  if (!active) {
+    return
+  }
+
+  PluginManagement.deactivateAllPlugins()
+
+  if (editorsMinimaps) {
+    editorsMinimaps.forEach((value) => {
+      value.destroy()
+    })
+    editorsMinimaps.clear()
+  }
+
+  subscriptions.dispose()
+  subscriptionsOfCommands.dispose()
+  domStylesReader.invalidateDOMStylesCache()
+  toggled = false
+  active = false
+}
+
+export function getConfigSchema() {
+  return config || atom.packages.getLoadedPackage("minimap").metadata.configSchema
+}
+
+/**
+ * Toggles the minimap display.
+ */
+export function toggle() {
+  if (!active) {
+    return
+  }
+
+  if (toggled) {
+    toggled = false
+
+    if (editorsMinimaps) {
+      editorsMinimaps.forEach((minimap) => {
+        minimap.destroy()
+      })
+      editorsMinimaps.clear()
+    }
+    subscriptions.dispose()
+
+    // HACK: this hack forces rerendering editor size which moves the scrollbar to the right once minimap is removed
+    const wasMaximized = atom.isMaximized()
+    const { width, height } = atom.getSize()
+    atom.setSize(width, height)
+    if (wasMaximized) {
+      atom.maximize()
+    }
+  } else {
+    toggled = true
+    initSubscriptions()
+  }
+  domStylesReader.invalidateDOMStylesCache()
+}
+
+/**
+ * Opens the plugin generation view.
+ *
+ * @param  {string} template the name of the template to use
+ */
+async function generatePlugin(template) {
+  const { default: MinimapPluginGeneratorElement } = await import("./minimap-plugin-generator-element")
+  const view = new MinimapPluginGeneratorElement()
+  view.template = template
+  view.attach()
+}
+
+/**
+ * Registers a callback to listen to the `did-activate` event of the package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidActivate(callback) {
+  return emitter.on("did-activate", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-deactivate` event of the
+ * package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidDeactivate(callback) {
+  return emitter.on("did-deactivate", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-create-minimap` event of the
+ * package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidCreateMinimap(callback) {
+  return emitter.on("did-create-minimap", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-add-plugin` event of the
+ * package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidAddPlugin(callback) {
+  return emitter.on("did-add-plugin", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-remove-plugin` event of the
+ * package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidRemovePlugin(callback) {
+  return emitter.on("did-remove-plugin", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-activate-plugin` event of the
+ * package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidActivatePlugin(callback) {
+  return emitter.on("did-activate-plugin", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-deactivate-plugin` event of the
+ * package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidDeactivatePlugin(callback) {
+  return emitter.on("did-deactivate-plugin", callback)
+}
+
+/**
+ * Registers a callback to listen to the `did-change-plugin-order` event of
+ * the package.
+ *
+ * @param  {function(event:Object):void} callback the callback function
+ * @return {Disposable} a disposable to stop listening to the event
+ */
+export function onDidChangePluginOrder(callback) {
+  return emitter.on("did-change-plugin-order", callback)
+}
+
+/**
+ * Returns the `Minimap` class
+ *
+ * @return {Function} the `Minimap` class constructor
+ */
+export function minimapClass() {
+  return Minimap
+}
+
+/**
+ * Returns the `Minimap` object associated to the passed-in
+ * `TextEditorElement`.
+ *
+ * @param  {TextEditorElement} editorElement a text editor element
+ * @return {Minimap} the associated minimap
+ */
+export function minimapForEditorElement(editorElement) {
+  if (!editorElement) {
+    return
+  }
+  return minimapForEditor(editorElement.getModel())
+}
+
+/**
+ * Returns the `Minimap` object associated to the passed-in
+ * `TextEditor`.
+ *
+ * @param  {TextEditor} textEditor a text editor
+ * @return {Minimap} the associated minimap
+ */
+export function minimapForEditor(textEditor) {
+  if (!textEditor) {
+    return
+  }
+  if (!editorsMinimaps) {
+    return
+  }
+
+  let minimap = editorsMinimaps.get(textEditor)
+
+  if (minimap === undefined || minimap.destroyed) {
+    minimap = new Minimap({ textEditor })
+    editorsMinimaps.set(textEditor, minimap)
+
+    const editorSubscription = textEditor.onDidDestroy(() => {
+      if (editorsMinimaps) {
+        editorsMinimaps.delete(textEditor)
+      }
+      if (minimap) {
+        // just in case
+        minimap.destroy()
+      }
+      editorSubscription.dispose()
+    })
+    // dispose the editorSubscription if minimap is deactivated before destroying the editor
+    subscriptions.add(editorSubscription)
+  }
+
+  return minimap
+}
+
+/**
+ * Returns a new stand-alone {Minimap} for the passed-in `TextEditor`.
+ *
+ * @param  {TextEditor} textEditor a text editor instance to create
+ *                                 a minimap for
+ * @return {Minimap} a new stand-alone Minimap for the passed-in editor
+ */
+export function standAloneMinimapForEditor(textEditor) {
+  if (!textEditor) {
+    return
+  }
+
+  return new Minimap({
+    textEditor,
+    standAlone: true,
+  })
+}
+
+/**
+ * Returns the `Minimap` associated to the active `TextEditor`.
+ *
+ * @return {Minimap} the active Minimap
+ */
+export function getActiveMinimap() {
+  return minimapForEditor(atom.workspace.getActiveTextEditor())
+}
+
+/**
+ * Calls a function for each present and future minimaps.
+ *
+ * @param  {function(minimap:Minimap):void} iterator a function to call with
+ *                                                   the existing and future
+ *                                                   minimaps
+ * @return {Disposable} a disposable to unregister the observer
+ */
+export function observeMinimaps(iterator) {
+  if (!iterator) {
+    return
+  }
+
+  if (editorsMinimaps) {
+    editorsMinimaps.forEach((minimap) => {
+      iterator(minimap)
+    })
+  }
+  return onDidCreateMinimap((minimap) => {
+    iterator(minimap)
+  })
+}
+
+/**
+ * Registers to the `observeTextEditors` method.
  *
  * @access private
  */
-module.exports = new Main()
+function initSubscriptions() {
+  const debounceUpdateStyles = debounce(updateStyles, 300)
+  subscriptions.add(
+    atom.workspace.observeTextEditors((textEditor) => {
+      const minimap = minimapForEditor(textEditor)
+      const minimapElement = minimapViewProvider(minimap)
+
+      emitter.emit("did-create-minimap", minimap)
+      minimapElement.attach(textEditor.getElement())
+    }),
+    // empty color cache if the theme changes
+    atom.themes.onDidChangeActiveThemes(debounceUpdateStyles),
+    atom.styles.onDidUpdateStyleElement(debounceUpdateStyles),
+    atom.styles.onDidAddStyleElement(debounceUpdateStyles),
+    atom.styles.onDidRemoveStyleElement(debounceUpdateStyles),
+    treeSitterWarning()
+  )
+}
+
+/**
+ * Force update styles of minimap
+ */
+function updateStyles() {
+  domStylesReader.invalidateDOMStylesCache()
+  editorsMinimaps.forEach((minimap) => {
+    atom.views.getView(minimap).requestForcedUpdate()
+  })
+}
+
+// The public exports included in the service:
+const MinimapServiceV1 = {
+  minimapViewProvider,
+  getConfigSchema,
+  onDidActivate,
+  onDidDeactivate,
+  onDidCreateMinimap,
+  onDidAddPlugin,
+  onDidRemovePlugin,
+  onDidActivatePlugin,
+  onDidDeactivatePlugin,
+  onDidChangePluginOrder,
+  minimapClass,
+  minimapForEditorElement,
+  minimapForEditor,
+  standAloneMinimapForEditor,
+  getActiveMinimap,
+  observeMinimaps,
+  registerPlugin: PluginManagement.registerPlugin,
+  unregisterPlugin: PluginManagement.unregisterPlugin,
+  togglePluginActivation: PluginManagement.togglePluginActivation,
+  deactivateAllPlugins: PluginManagement.deactivateAllPlugins,
+  activatePlugin: PluginManagement.activatePlugin,
+  deactivatePlugin: PluginManagement.deactivatePlugin,
+  getPluginsOrder: PluginManagement.getPluginsOrder,
+}
+
+/**
+ * Returns the Minimap main module instance.
+ *
+ * @return {Main} The Minimap main module instance.
+ */
+export function provideMinimapServiceV1() {
+  return MinimapServiceV1
+}

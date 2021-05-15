@@ -1,7 +1,9 @@
-SB-CallSite
+SB-Callsite
 ===========
 
-SB-Callsite is a node/javascript module to manipulate stack traces. You can use it to find the filename of calee and for other purposes
+SB-Callsite is a node/javascript module to manipulate stack traces. You can use it to find the filename of callee and such. It uses `err.stack` to achieve this.
+
+`sb-callsite` is feature-complete and considered stable. No further changes will be made to the source.
 
 #### API
 

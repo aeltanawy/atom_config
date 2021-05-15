@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-import { Classes } from "../";
+import "../configureDom4";
 
-export function isDarkTheme(element: Element | Text | null): boolean {
-    return element instanceof Element && element.closest(`.${Classes.DARK}`) != null;
+import * as Classes from "../classes";
+
+export function isDarkTheme(element: Element | Text | null | undefined): boolean {
+    return element != null && element instanceof Element && element.closest(`.${Classes.DARK}`) != null;
 }

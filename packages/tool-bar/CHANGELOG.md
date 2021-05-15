@@ -4,9 +4,40 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and
 tries to follow the [Keep a CHANGELOG](http://keepachangelog.com) convention.
 
-## [vNext](https://github.com/suda/tool-bar/compare/v1.1.0...master) - Unreleased
+## [vNext](https://github.com/suda/tool-bar/compare/v1.2.1...master) - Unreleased
 
 *
+
+## [v1.4.1](https://github.com/suda/tool-bar/compare/v1.4.1...v1.4.0) - 2020-10-15
+
+* [Fix `Failed to load the tool-bar package`](https://github.com/suda/tool-bar/pull/326)  (by [@UziTech](https://github.com/UziTech))
+
+## [v1.4.0](https://github.com/suda/tool-bar/compare/v1.4.0...v1.3.0) - 2020-10-15
+
+* [Using Github Actions](https://github.com/suda/tool-bar/pull/296) (by [@aminya](https://github.com/aminya))
+* [Remove activation hook](https://github.com/suda/tool-bar/pull/300) (by [@aminya](https://github.com/aminya))
+* [Refactor to decrease code duplication and complexity](https://github.com/suda/tool-bar/pull/301) (by [@ericcornelissen](https://github.com/ericcornelissen))
+* [Rollup - improve loading time](https://github.com/suda/tool-bar/pull/302) (by [@aminya](https://github.com/aminya))
+* [useGutter option](https://github.com/suda/tool-bar/pull/305) (by [@aminya](https://github.com/aminya))
+* [Update to current TouchBar Electron API](https://github.com/suda/tool-bar/pull/312) (by [@thatcomputerguy0101](https://github.com/thatcomputerguy0101))
+
+## [v1.3.0](https://github.com/suda/tool-bar/compare/v1.3.0...v1.2.2) - 2020-04-17
+
+* [Type declarations for TypeScript](https://github.com/suda/tool-bar/pull/289) (by [@aminya](https://github.com/aminya))
+* [14px icon size](https://github.com/suda/tool-bar/pull/293) (by [@aminya](https://github.com/aminya))
+* [Ability to add custom HTML element as tool-bar item](https://github.com/suda/tool-bar/pull/294) (by [@aminya](https://github.com/aminya))
+* [Switch to use GitHub Action instead of CircleCI and TravisCI](https://github.com/suda/tool-bar/pull/296) (by [@aminya](https://github.com/aminya))
+
+## [v1.2.2](https://github.com/suda/tool-bar/compare/v1.2.2...v1.2.1) - 2020-03-12
+
+* [Add any class to a toolbar button](https://github.com/suda/tool-bar/pull/285) (by [@ericcornelissen](https://github.com/ericcornelissen))
+* [Allow more iconsizes](https://github.com/suda/tool-bar/pull/277) (by [@aminya](https://github.com/aminya))
+
+## [v1.2.1](https://github.com/suda/tool-bar/compare/v1.2.1...v1.2.0) - 2020-03-08
+
+* [Update icons](https://github.com/suda/tool-bar/pull/267) (by [@UziTech](https://github.com/UziTech))
+* [Adds options for button color and background-color](https://github.com/suda/tool-bar/pull/278) (by [@aminya](https://github.com/aminya))
+* [Add activationHook](https://github.com/suda/tool-bar/pull/283) (by [@idleberg](https://github.com/idleberg))
 
 ## [v1.2.0](https://github.com/suda/tool-bar/compare/v1.2.0...v1.1.12) - 2019-10-03
 

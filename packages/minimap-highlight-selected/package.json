@@ -1,43 +1,33 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-67690-1xoyoyf.vmxeeidx6r"
-    ]
-  ],
-  "_from": "../d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-  "_id": "minimap-highlight-selected@4.6.1",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball",
+  "_id": "minimap-highlight-selected@4.6.5",
+  "_inBundle": false,
+  "_integrity": "sha512-eppLh3r/FjetoBTXypOaQ5G5geZSnwj/+JeI0pExrPSN5cgSIQ5jJetVMWeUNrqDhOFQ7zSge5HvpAcvXIHWIg==",
   "_location": "/minimap-highlight-selected",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-  "_shasum": "6a794f616ac22fce6f97e23106b46bbda2d01d1d",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-11887-67690-1bjuxrd.ucsld9ggb9/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-11887-67690-1xoyoyf.vmxeeidx6r",
+  "_resolved": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball",
+  "_shasum": "2221f5ef9289f8166bdfc8acf0b510460b32a1ba",
+  "_spec": "https://www.atom.io/api/packages/minimap-highlight-selected/versions/4.6.5/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21681-1d160zk.2j1b",
+  "activationHooks": [
+    "core:loaded-shell-environment"
+  ],
+  "atomTestRunner": "./spec/runner.js",
   "bugs": {
     "url": "https://github.com/atom-minimap/minimap-highlight-selected/issues"
   },
+  "bundleDependencies": false,
   "consumedServices": {
     "minimap": {
       "versions": {
@@ -51,29 +41,43 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "^4.4.1",
-    "atom-utils": "0.0.1",
-    "event-kit": ">= 0.7.2",
-    "underscore-plus": "1.x"
+    "atom-package-deps": "^7.1.0"
   },
+  "deprecated": false,
   "description": "A minimap binding for the highlight-selected package",
-  "devDependencies": {},
+  "devDependencies": {
+    "@semantic-release/apm-config": "^8.0.0",
+    "atom-jasmine3-test-runner": "^5.1.8",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.22.0",
+    "semantic-release": "^17.3.3"
+  },
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.20.0"
   },
   "homepage": "https://github.com/atom-minimap/minimap-highlight-selected#readme",
   "license": "MIT",
   "main": "./lib/minimap-highlight-selected",
   "name": "minimap-highlight-selected",
-  "optionalDependencies": {},
   "package-deps": [
-    "highlight-selected"
+    {
+      "name": "minimap"
+    },
+    {
+      "name": "highlight-selected"
+    }
   ],
-  "readme": "# minimap-highlight-selected package\n\nA minimap binding for the [highlight-selected package](https://github.com/richrace/highlight-selected).\n\n![Screenshot](https://github.com/atom-minimap/minimap-highlight-selected/blob/master/screenshot.png?raw=true)\n\n### Customization\n\nIf you want to change the color of the minimap highlights use the following CSS rules in your user stylesheet:\n\n```css\n/* The rule for normal highlights */\n.minimap .highlight-selected {\n  background: blue;\n}\n\n/* The rule for selected highlights */\n.minimap .highlight-selected.selected {\n  background: red;\n}\n```\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom-minimap/minimap-highlight-selected.git"
   },
-  "version": "4.6.1"
+  "scripts": {
+    "lint": "eslint .",
+    "test": "atom --test spec"
+  },
+  "version": "4.6.5"
 }

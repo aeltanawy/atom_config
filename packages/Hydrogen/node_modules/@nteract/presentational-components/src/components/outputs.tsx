@@ -19,12 +19,12 @@ interface OutputWrapperProps {
   expanded?: boolean;
 }
 
-const OutputWrapper = styled.div.attrs<OutputWrapperProps>(props => ({
+const OutputWrapper = styled.div.attrs<OutputWrapperProps>((props) => ({
   style: {
-    maxHeight: props.expanded ? "100%" : null
-  }
+    maxHeight: props.expanded ? "100%" : null,
+  },
 }))`
-  padding: 10px 10px 10px calc(var(--prompt-width, 50px) + 10px);
+  padding: 10px 10px 10px 10px;
   word-wrap: break-word;
   overflow-y: hidden;
   outline: none;
@@ -164,7 +164,7 @@ export class Outputs extends React.PureComponent<OutputsProps> {
     children: null,
     className: "nteract-outputs",
     hidden: false,
-    expanded: false
+    expanded: false,
   };
 
   render() {

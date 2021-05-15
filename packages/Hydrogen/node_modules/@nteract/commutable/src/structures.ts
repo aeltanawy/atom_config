@@ -1,12 +1,14 @@
-import uuid from "uuid/v4";
+import { v4 as uuid } from "uuid";
 
 import { CellId, createCellId } from "./primitives";
 
-import { ImmutableNotebook, makeNotebookRecord } from "./notebook";
-
 import { ImmutableCell, makeCodeCell, makeMarkdownCell } from "./cells";
 
-import { List as ImmutableList, Map as ImmutableMap } from "immutable";
+import {
+  List as ImmutableList,
+  Map as ImmutableMap,
+  Record as ImmutableRecord
+} from "immutable";
 
 // The cell creators here are a bit duplicative
 export const createCodeCell = makeCodeCell;
@@ -15,17 +17,36 @@ export const createMarkdownCell = makeMarkdownCell;
 export const emptyCodeCell = createCodeCell();
 export const emptyMarkdownCell = createMarkdownCell();
 
+export interface CellStructure {
+  cellOrder: ImmutableList<CellId>;
+  cellMap: ImmutableMap<CellId, ImmutableCell>;
+}
+
+export interface NotebookRecordParams {
+  cellOrder: ImmutableList<CellId>;
+  cellMap: ImmutableMap<CellId, ImmutableCell>;
+  nbformat_minor: number;
+  nbformat: number;
+  metadata: ImmutableMap<string, any>;
+}
+
+export type ImmutableNotebook = ImmutableRecord<NotebookRecordParams> &
+  Readonly<NotebookRecordParams>;
+
+export const makeNotebookRecord = ImmutableRecord<NotebookRecordParams>({
+  cellOrder: ImmutableList(),
+  cellMap: ImmutableMap(),
+  nbformat_minor: 0,
+  nbformat: 4,
+  metadata: ImmutableMap()
+});
+
 // These are all kind of duplicative now that we're on records.
 // Since we export these though, they're left for
 // backwards compatiblity
 export const defaultNotebook = makeNotebookRecord();
 export const createNotebook = makeNotebookRecord;
 export const emptyNotebook = makeNotebookRecord();
-
-export interface CellStructure {
-  cellOrder: ImmutableList<CellId>;
-  cellMap: ImmutableMap<CellId, ImmutableCell>;
-}
 
 /**
  * A function that appends a new cell to a CellStructure object.
@@ -153,6 +174,50 @@ export function deleteCell(
   return notebook
     .removeIn(["cellMap", cellId])
     .update("cellOrder", cellOrder => cellOrder.filterNot(id => id === cellId));
+}
+
+/**
+ * Mark a cell as deleting; can be undone.
+ *
+ * @param notebook The notebook containing the cell.
+ * @param cellID The ID of the cell that will be deleted.
+ *
+ * @returns The modified notebook
+ */
+export function markCellDeleting(
+  notebook: ImmutableNotebook,
+  cellId: string
+): ImmutableNotebook {
+  return notebook.withMutations(nb =>
+    nb.setIn(
+      ["cellMap", cellId],
+      nb
+        .getIn(["cellMap", cellId])
+        .setIn(["metadata", "nteract", "transient", "deleting"], true)
+    )
+  );
+}
+
+/**
+ * Undo marking a cell as deleting.
+ *
+ * @param notebook The notebook containing the cell.
+ * @param cellID The ID of the cell that will not be deleted.
+ *
+ * @returns The modified notebook
+ */
+export function markCellNotDeleting(
+  notebook: ImmutableNotebook,
+  cellId: string
+): ImmutableNotebook {
+  return notebook.withMutations(nb =>
+    nb.setIn(
+      ["cellMap", cellId],
+      nb
+        .getIn(["cellMap", cellId])
+        .setIn(["metadata", "nteract", "transient", "deleting"], false)
+    )
+  );
 }
 
 /**

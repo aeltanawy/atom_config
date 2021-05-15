@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball",
-  "_id": "linter-markdownlint@2.0.1",
+  "_from": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball",
+  "_id": "linter-markdownlint@2.0.2",
   "_inBundle": false,
-  "_integrity": "sha512-2xRscA1MQ2g9yIxsDHVTxZlmDwI6uHnrSqEqLutMrOW6AZjyEkGLzyfyenKf/FB7JnxJVuXo6vO+P/Ieb04z+Q==",
+  "_integrity": "sha512-geK6yxX0rvIBrC/OYX57nKY1UWPAvBlR1oGudv5eubAqKP76lQCBJ2SD7DxnkCZtIwODMcMHevk2x/aUiSqHvA==",
   "_location": "/linter-markdownlint",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball",
-  "_shasum": "18c3230bd374758119645152357169f2f6862ebf",
-  "_spec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.1/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99291-ux02wv.zhyaf",
+  "_resolved": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball",
+  "_shasum": "1c1aab0ef30eeb18d0945eb5e94bd0627ab3067d",
+  "_spec": "https://www.atom.io/api/packages/linter-markdownlint/versions/2.0.2/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21252-1fjhmyh.h7wq",
   "activationCommands": {},
   "bugs": {
     "url": "https://github.com/leonelgalan/linter-markdownlint/issues"
@@ -57,5 +57,5 @@
     "type": "git",
     "url": "git+https://github.com/leonelgalan/linter-markdownlint.git"
   },
-  "version": "2.0.1"
+  "version": "2.0.2"
 }

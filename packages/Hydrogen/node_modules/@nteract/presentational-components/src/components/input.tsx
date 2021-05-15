@@ -44,7 +44,7 @@ export const Input = styled(BareInput)`
 
   & ${Source} {
     flex: 1 1 auto;
-    overflow: auto;
+    overflow: visible;
     background-color: var(--theme-cell-input-bg, #fafafa);
   }
 `;

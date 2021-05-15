@@ -6,8 +6,8 @@ import Adapter from "enzyme-adapter-react-16";
 
 import Display, {
   isTextOutputOnly,
-  supportedMediaTypes
-} from "../../lib/components/result-view/display";
+  supportedMediaTypes,
+} from "../../dist/components/result-view/display";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -15,9 +15,9 @@ const testOutput = {
   output_type: "display_data",
   data: {
     "text/html": "<p>This is some HTML that <b>WILL</b> render</p>",
-    "text/plain": "This is some plain text that WILL NOT render"
+    "text/plain": "This is some plain text that WILL NOT render",
   },
-  metadata: {}
+  metadata: {},
 };
 
 describe("Display output", () => {
@@ -29,13 +29,13 @@ describe("Display output", () => {
 });
 
 describe("textOutputOnly", () => {
-  let plainBundle = {
+  const plainBundle = {
     "text/plain": "I'm very plain",
-    "text/output-not-supported": "This should be ignored"
+    "text/output-not-supported": "This should be ignored",
   };
-  let richerBundle = {
+  const richerBundle = {
     "text/plain": "I'm very plain",
-    "text/html": "<div>I am a little <b>richer</b>!</div>"
+    "text/html": "<div>I am a little <b>richer</b>!</div>",
   };
   it("should return true if text is the richest supported output", () => {
     expect(isTextOutputOnly(plainBundle)).toEqual(true);

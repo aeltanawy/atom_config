@@ -1,43 +1,29 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-        "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118824-10582-1mnrwo6.5dwl1bgldi"
-    ]
-  ],
-  "_from": "../d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-  "_id": "tool-bar-markdown-writer@0.5.0",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball",
+  "_id": "tool-bar-markdown-writer@0.5.1",
+  "_inBundle": false,
+  "_integrity": "sha512-KVISlP10psDKcxkEieJ2mn9CYM79wgW9l5jDX2sei8M9bz9QO8CAgkEA8ACjluFJtlcBtgDJwhl6X+sVFkQZVA==",
   "_location": "/tool-bar-markdown-writer",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-    "spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-  "_shasum": "e10327f1062645c46086bf668f345e1610f2841e",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/d-118824-10582-s4gkay.y0wxoxyldi/package.tgz",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-118824-10582-1mnrwo6.5dwl1bgldi",
+  "_resolved": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball",
+  "_shasum": "234e6f763fffbcaf1123f36c157a667fab0b7dcd",
+  "_spec": "https://www.atom.io/api/packages/tool-bar-markdown-writer/versions/0.5.1/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21985-1sycvhr.tgywg",
   "bugs": {
     "url": "https://github.com/zhuochun/tool-bar-md-writer/issues"
   },
+  "bundleDependencies": false,
   "consumedServices": {
     "tool-bar": {
       "versions": {
@@ -48,8 +34,8 @@
   "dependencies": {
     "atom-package-deps": "^4.3.1"
   },
+  "deprecated": false,
   "description": "A tool-bar plugin that adds Markdown editing actions",
-  "devDependencies": {},
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
@@ -63,16 +49,13 @@
   "license": "MIT",
   "main": "./lib/tool-bar-markdown-writer",
   "name": "tool-bar-markdown-writer",
-  "optionalDependencies": {},
   "package-deps": [
     "tool-bar",
     "markdown-writer"
   ],
-  "readme": "# Toolbar for Markdown-Writer\n\n[![Apm Version](https://img.shields.io/apm/v/tool-bar-markdown-writer.svg)](https://atom.io/packages/tool-bar-markdown-writer)\n[![Apm Downloads](https://img.shields.io/apm/dm/tool-bar-markdown-writer.svg)](https://atom.io/packages/tool-bar-markdown-writer)\n\nA tool-bar plugin that adds Markdown editing buttons.\n\nPowered with [Markdown Writer](https://atom.io/packages/markdown-writer) and [Atom Tool Bar](https://atom.io/packages/tool-bar).\n\n![Toolbar for Markdown-Writer](http://i.imgur.com/GK5zB1L.png)\n\n## Installation\n\n```\napm install tool-bar markdown-writer tool-bar-markdown-writer\n```\n\n## Tricks\n\n- `shift` + **New Post**: Add New Draft\n- `shift` + **Insert Link**: Open Link in Browser\n- `shift` + **Code**: Insert Code Block\n- `shift` + **Ordered List**: Format Ordered List Numbers\n- `shift` + **Task List**: Toggle Task Done/Undone\n\n## Configuration\n\n- **Visibility**:\n  - `showToolbarOnMarkdown`: show toolbar in Markdown files.\n  - `showButtonsOnMarkdown`: show Markdown buttons in Markdown files. Useful when you have multiple plugins installed.\n  - `showButtonsOnAll`: always show toolbar and Markdown buttons\n- **Grammars**:\n  - An array of file types to be treated as Markdown files.\n- **Critic Markup**:\n  - A boolean to show or not CriticMarkup buttons.\n\nHappy writing!\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhuochun/tool-bar-md-writer.git"
   },
-  "version": "0.5.0"
+  "version": "0.5.1"
 }

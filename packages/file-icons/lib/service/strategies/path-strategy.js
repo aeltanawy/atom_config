@@ -12,7 +12,7 @@ class PathStrategy extends Strategy {
 			matchesFiles:  true,
 			matchesDirs:   true,
 			noSetting:     true,
-			ignoreVirtual: false
+			ignoreVirtual: false,
 		});
 	}
 	
@@ -32,13 +32,13 @@ class PathStrategy extends Strategy {
 		let icon = null;
 		
 		if(resource.isDirectory)
-			return icon =
+			icon =
 				IconTables.matchPath(resource.path, true) ||
 				IconTables.matchName(resource.name, true) ||
 				null;
 		
 		else{
-			let name = resource.name;
+			let {name} = resource;
 			let path = resource.realPath || resource.path;
 			
 			let isFiltered = false;
@@ -56,9 +56,9 @@ class PathStrategy extends Strategy {
 			
 			if(isFiltered && (null === icon || icon.priority < 1))
 				icon = IconTables.matchName(resource.name);
-			
-			return icon || null;
 		}
+		
+		return icon || null;
 	}
 	
 	

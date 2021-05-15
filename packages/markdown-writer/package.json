@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball",
-  "_id": "markdown-writer@2.11.9",
+  "_from": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball",
+  "_id": "markdown-writer@2.11.11",
   "_inBundle": false,
-  "_integrity": "sha512-UA84iOgF8am3mXQdYB42RTgTPEWC5bQoROGtFBZXzds7tGfMh9T17hlU/hAMXCapq+RxL6lFBbcr9p1gZA4TMg==",
+  "_integrity": "sha512-VXdlqCi9FnHahBvEIuncyHcVXcWIBzsORCsbxCcEgqgmTU8mz8FR7rvJMAMv3OaORrxSXhn3bxP33Zl4UuSXRg==",
   "_location": "/markdown-writer",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball"
+    "raw": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball",
-  "_shasum": "30cc1306444f5c601d68841cc25f67d32c352a06",
-  "_spec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.9/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119107-90378-16uh9y6.jidbh",
+  "_resolved": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball",
+  "_shasum": "e02750923b863a4a4815106929d630654d190a0e",
+  "_spec": "https://www.atom.io/api/packages/markdown-writer/versions/2.11.11/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21277-u6gqqi.hp5qk",
   "activationCommands": {
     "atom-workspace": [
       "markdown-writer:new-post",
@@ -93,12 +93,12 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "anchor-markdown-header": "0.5.7",
-    "atom-space-pen-views": "^2.0.3",
-    "fs-plus": "^2.0.0",
+    "atom-space-pen-views": "^2.0.0",
+    "emoji-regex": "^8.0.0",
+    "fs-plus": "^3.0.0",
     "guid": "0.0.12",
-    "js-yaml": "^3.13.1",
-    "season": "^5.1.0",
+    "js-yaml": "^3.0.0",
+    "season": "^6.0.0",
     "wcwidth": "^1.0.0"
   },
   "deprecated": false,
@@ -126,5 +126,5 @@
     "type": "git",
     "url": "git+https://github.com/zhuochun/md-writer.git"
   },
-  "version": "2.11.9"
+  "version": "2.11.11"
 }

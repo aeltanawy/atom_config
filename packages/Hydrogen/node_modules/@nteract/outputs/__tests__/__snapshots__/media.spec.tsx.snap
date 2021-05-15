@@ -1074,7 +1074,7 @@ exports[`HTML renders direct HTML 1`] = `
           "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "sc-ifAKCX",
-            "isStatic": true,
+            "isStatic": false,
             "lastClassName": "fhkDtF",
             "rules": Array [
               "
@@ -1251,7 +1251,7 @@ exports[`HTML updates the underlying HTML when data changes 1`] = `
           "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "sc-ifAKCX",
-            "isStatic": true,
+            "isStatic": false,
             "lastClassName": "fhkDtF",
             "rules": Array [
               "
@@ -1445,7 +1445,9 @@ exports[`Markdown Should render markdown 1`] = `
   >
     <ReactMarkdown
       astPlugins={Array []}
+      className="markdown-body "
       escapeHtml={false}
+      parserOptions={Object {}}
       plugins={
         Array [
           [Function],
@@ -1465,22 +1467,27 @@ exports[`Markdown Should render markdown 1`] = `
       transformLinkUri={[Function]}
     >
       <Root
-        key="root-1-1"
+        className="markdown-body "
+        key="root-1-1-0"
       >
-        <Heading
-          key="heading-1-1"
-          level={1}
+        <div
+          className="markdown-body "
         >
-          <h1>
-            <TextRenderer
-              key="text-1-3"
-              nodeKey="text-1-3"
-              value="Header"
-            >
-              Header
-            </TextRenderer>
-          </h1>
-        </Heading>
+          <Heading
+            key="heading-1-1-0"
+            level={1}
+          >
+            <h1>
+              <TextRenderer
+                key="text-1-3-0"
+                nodeKey="text-1-3-0"
+                value="Header"
+              >
+                Header
+              </TextRenderer>
+            </h1>
+          </Heading>
+        </div>
       </Root>
     </ReactMarkdown>
   </MarkdownRender>

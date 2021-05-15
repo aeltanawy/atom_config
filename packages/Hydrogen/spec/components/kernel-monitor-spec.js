@@ -7,10 +7,10 @@ const fs = require("fs");
 
 Enzyme.configure({ adapter: new Adapter() });
 
-import { Store } from "../../lib/store";
-import KernelTransport from "../../lib/kernel-transport";
-import Kernel from "../../lib/kernel";
-import KernelMonitor from "../../lib/components/kernel-monitor";
+import { Store } from "../../dist/store";
+import KernelTransport from "../../dist/kernel-transport";
+import Kernel from "../../dist/kernel";
+import KernelMonitor from "../../dist/components/kernel-monitor";
 import { waitAsync } from "../helpers/test-utils";
 
 describe("Kernel monitor", () => {
@@ -27,14 +27,14 @@ describe("Kernel monitor", () => {
           debugName: "Kernel3-unsaved",
           unsaved: true,
           grammarName: "julia",
-          ext: ".jl"
-        }
+          ext: ".jl",
+        },
       ];
 
       spyOn(atom.notifications, "addInfo"); // Spied for 'Show kernel spec' link testing
 
-      for (let mockSetting of mockSettings) {
-        let { ext, unsaved, debugName, grammarName } = mockSetting;
+      for (const mockSetting of mockSettings) {
+        const { ext, unsaved, debugName, grammarName } = mockSetting;
         const newEditor = await atom.workspace.open();
 
         const filename = unsaved
@@ -51,7 +51,7 @@ describe("Kernel monitor", () => {
           new KernelTransport(
             {
               display_name: `Kernel Displayname: ${debugName}`,
-              language: grammarName
+              language: grammarName,
             },
             { name: grammarName }
           )
@@ -61,15 +61,15 @@ describe("Kernel monitor", () => {
         spyOn(kernel, "shutdown");
 
         store.newKernel(kernel, filename, newEditor, {
-          name: grammarName
+          name: grammarName,
         });
         kernel.setExecutionState("idle");
         mocks.push({
           editor: newEditor,
           kernel,
-          grammarName: grammarName,
+          grammarName,
           debugName,
-          filename
+          filename,
         });
       }
 
@@ -84,7 +84,7 @@ describe("Kernel monitor", () => {
   );
   afterEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeoutInterval;
-    filesToDelete.forEach(file => fs.unlinkSync(file));
+    filesToDelete.forEach((file) => fs.unlinkSync(file));
   });
 
   it("has an 'Show kernel spec' link to show kernel spec within `atom.notifications.addInfo({ detail })`", () => {
@@ -126,7 +126,7 @@ describe("Kernel monitor", () => {
     expect(store.runningKernels[0].shutdown).toHaveBeenCalledTimes(1);
   });
 
-  it("activates related editor when Jump to file clicked", done => {
+  it("activates related editor when Jump to file clicked", (done) => {
     const component = mount(<KernelMonitor store={store} />);
     // spyOn(atom.workspace, "open").and.callThrough();
     const [savedMock, savedMock1, unsavedMock] = mocks;
@@ -137,20 +137,22 @@ describe("Kernel monitor", () => {
     // When jump button clicked, the active editor will
     // change to the related editor and call done() to complete the test
     let timesClicked = 1;
-    let disposer = atom.workspace.onDidChangeActiveTextEditor(activeEditor => {
-      if (timesClicked === 1) {
-        expect(activeEditor.id).toEqual(unsavedMock.editor.id);
-        // increment and call the next click
-        timesClicked = 2;
-        jumpToEditorButtonSaved.simulate("click");
+    const disposer = atom.workspace.onDidChangeActiveTextEditor(
+      (activeEditor) => {
+        if (timesClicked === 1) {
+          expect(activeEditor.id).toEqual(unsavedMock.editor.id);
+          // increment and call the next click
+          timesClicked = 2;
+          jumpToEditorButtonSaved.simulate("click");
+        }
+        // if last call, done() to finish spec and dispose
+        else if (timesClicked === 2) {
+          expect(activeEditor.id).toEqual(savedMock.editor.id);
+          done();
+          disposer();
+        }
       }
-      // if last call, done() to finish spec and dispose
-      else if (timesClicked === 2) {
-        expect(activeEditor.id).toEqual(savedMock.editor.id);
-        done();
-        disposer();
-      }
-    });
+    );
     jumpToEditorButtonUnsaved.simulate("click");
   });
 });

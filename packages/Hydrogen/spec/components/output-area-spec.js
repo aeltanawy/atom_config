@@ -3,14 +3,14 @@
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 
-import OutputArea from "../../lib/components/output-area";
-import { Store } from "../../lib/store";
-import KernelTransport from "../../lib/kernel-transport";
-import Kernel from "../../lib/kernel";
+import OutputArea from "../../dist/components/output-area";
+import { Store } from "../../dist/store";
+import KernelTransport from "../../dist/kernel-transport";
+import Kernel from "../../dist/kernel";
 
 describe("Output area component", () => {
   let storeMock, mockKernel, filePath, grammar, editor, component;
-  let errorOutput = {
+  const errorOutput = {
     ename: "NameError",
     evalue: "error message",
     output_type: "error",
@@ -18,24 +18,24 @@ describe("Output area component", () => {
       "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
       "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
       '\u001b[0;32m<ipython-input-1-2f58efa4eb0f>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mraise\u001b[0m \u001b[0mNameError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m"Test Error"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m',
-      "\u001b[0;31mNameError\u001b[0m: Test Error"
-    ]
+      "\u001b[0;31mNameError\u001b[0m: Test Error",
+    ],
   };
 
-  let streamOutput = {
+  const streamOutput = {
     name: "stdout",
     text: " hello",
-    output_type: "stream"
+    output_type: "stream",
   };
 
-  let executeResultOutput = {
+  const executeResultOutput = {
     execution_count: 1,
     metadata: {},
     data: {
       "text/plain": "This is a message",
-      "text/html": "<div>This <b>is</b> a message</div>"
+      "text/html": "<div>This <b>is</b> a message</div>",
     },
-    output_type: "execute_result"
+    output_type: "execute_result",
   };
 
   beforeAll(() => {
@@ -44,7 +44,7 @@ describe("Output area component", () => {
       new KernelTransport(
         {
           display_name: "Python 3",
-          language: "python"
+          language: "python",
         },
         { name: "python" }
       )

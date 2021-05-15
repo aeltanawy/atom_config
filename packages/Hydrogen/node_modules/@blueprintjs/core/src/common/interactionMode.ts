@@ -26,7 +26,6 @@ const TAB_KEY_CODE = 9;
 export class InteractionModeEngine {
     private isRunning = false;
 
-    // tslint:disable-next-line:no-constructor-vars
     constructor(private container: Element, private className: string) {}
 
     /** Returns whether the engine is currently running. */
@@ -48,11 +47,14 @@ export class InteractionModeEngine {
 
     private reset() {
         this.container.classList.remove(this.className);
-        this.container.removeEventListener("keydown", this.handleKeyDown);
+        // HACKHACK: see https://github.com/palantir/blueprint/issues/4342
+        this.container.removeEventListener("keydown", this.handleKeyDown as EventListener);
         this.container.removeEventListener("mousedown", this.handleMouseDown);
     }
 
     private handleKeyDown = (e: KeyboardEvent) => {
+        // HACKHACK: https://github.com/palantir/blueprint/issues/4165
+        // eslint-disable-next-line deprecation/deprecation
         if (e.which === TAB_KEY_CODE) {
             this.reset();
             this.container.addEventListener("mousedown", this.handleMouseDown);
@@ -62,6 +64,7 @@ export class InteractionModeEngine {
     private handleMouseDown = () => {
         this.reset();
         this.container.classList.add(this.className);
-        this.container.addEventListener("keydown", this.handleKeyDown);
+        // HACKHACK: see https://github.com/palantir/blueprint/issues/4342
+        this.container.addEventListener("keydown", this.handleKeyDown as EventListener);
     };
 }

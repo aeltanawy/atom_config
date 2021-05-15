@@ -47,7 +47,6 @@
 
 .binary-icon:before       { .octicons; content: "\f094"; }
 .book-icon:before         { .octicons; content: "\f007"; }
-.brew-icon:before         { .octicons; content: "\f069"; font-size: 15px; left: 1px; }
 .checklist-icon:before    { .octicons; content: "\f076"; font-size: 17px; left: 1px; }
 .code-icon:before         { .octicons; content: "\f05f"; }
 .database-icon:before     { .octicons; content: "\f096"; }
@@ -72,7 +71,7 @@
 
 /*============================================================================*
   FontAwesome
-  http://fortawesome.github.io/Font-Awesome/cheatsheet
+  https://fontawesome.com/v4.7.0/cheatsheet/
 /*============================================================================*/
 .fa { font-family: FontAwesome; font-size: 13px; }
 
@@ -81,6 +80,7 @@
 .at-icon:before           { .fa; content: "\f1fa"; font-size: 15px; top: 1px; }
 .audio-icon:before        { .fa; content: "\f028"; font-size: 15px; top: 1px; }
 .backup-icon:before       { .fa; content: "\f1da"; font-size: 13px; top: 1px; }
+.bitcoin-icon:before      { .fa; content: "\f15a"; font-size: 16px; top: 1px; }
 .book-alt-icon:before     { .fa; content: "\f02d"; font-size: 16px; top: 2px; }
 .bullhorn-icon:before     { .fa; content: "\f0a1"; font-size: 16px; top: 2px; }
 .calc-icon:before         { .fa; content: "\f1ec"; font-size: 14px; }
@@ -89,6 +89,7 @@
 .circle-icon:before       { .fa; content: "\f111"; font-size: 16px; top: 1px; }
 .download-icon:before     { .fa; content: "\f019"; font-size: 16px; top: 2px; }
 .earth-icon:before        { .fa; content: "\f0ac"; font-size: 15px; }
+.filter-icon:before       { .fa; content: "\f0b0"; font-size: 16px; }
 .gears-icon:before        { .fa; content: "\f085"; font-size: 15px; }
 .html5-icon:before        { .fa; content: "\f13b"; font-size: 15px; top: 1px; }
 .lock-icon:before         { .fa; content: "\f023"; font-size: 17px; top: 2px; }
@@ -96,8 +97,10 @@
 .moon-icon:before         { .fa; content: "\f186"; font-size: 16px; top: 1px; }
 .music-icon:before        { .fa; content: "\f001"; font-size: 15px; }
 .print-icon:before        { .fa; content: "\f02f"; font-size: 15px; top: 2px; }
+.question-icon:before     { .fa; content: "\f059"; font-size: 16px; top: 1px; }
 .recycle-icon:before      { .fa; content: "\f1b8"; font-size: 15px; top: 2px; }
 .rss-icon:before          { .fa; content: "\f143"; font-size: 16px; top: 2px; }
+.scales-icon:before       { .fa; content: "\f24e"; font-size: 15px; top: 1px; .tree-view &{ left: -1px; }}
 .smarty-icon:before       { .fa; content: "\f0eb"; font-size: 15px; }
 .sourcemap-icon:before    { .fa; content: "\f279"; font-size: 14px; }
 .sun-icon:before          { .fa; content: "\f185"; font-size: 14px; .thicken; }
@@ -168,7 +171,7 @@
 .jekyll-icon:before       { .devicons; content: "\e60d"; font-size: 16px; .sharpen; }
 .jquery-icon:before       { .devicons; content: "\e650"; font-size: 15px; top: 2px; }
 .jqueryui-icon:before     { .devicons; content: "\e654"; font-size: 15px; top: 2px; }
-.laravel-icon:before      { .devicons; content: "\e63f"; .thicken; }
+.laravel-old-icon:before  { .devicons; content: "\e63f"; .thicken; }
 .materialize-icon:before  { .devicons; content: "\e6b6"; transform: scale(1.2); .thicken; }
 .modernizr-icon:before    { .devicons; content: "\e620"; }
 .mootools-icon:before     { .devicons; content: "\e68f"; .sharpen; }
@@ -198,13 +201,15 @@
 
 /*============================================================================*
   Custom file icons
-  See https://github.com/file-icons/source/charmap.md
+  See https://github.com/file-icons/icons/blob/master/charmap.md
 /*============================================================================*/
 .fi { font-family: file-icons; font-size: 15px; }
 .test-file { top: 3px; font-size: 17px; }
 
 ._1c-icon:before           { .fi; content: "\a5ea"; top: 3px; font-size: 16px; }
 ._1c-alt-icon:before       { .fi; content: "\ea28"; top: 3px; font-size: 16px; }
+._4d-icon:before           { .fi; content: "\eb73"; top: 2px; }
+.a-plus-icon:before        { .fi; content: "\eb79"; top: 2px; }
 .abap-icon:before          { .fi; content: "\e92b"; top: 2px; }
 .abif-icon:before          { .fi; content: "\ea4e"; top: 3px; font-size: 16px; }
 .access-icon:before        { .fi; content: "\e9ea"; top: 2px; }
@@ -213,6 +218,7 @@
 .ae-icon:before            { .fi; content: "\e9f3"; top: 2px; }
 .affectscript-icon:before  { .fi; content: "\eb2c"; top: 3px; font-size: 16px; }
 .affinity-icon:before      { .fi; content: "\eabb"; top: 2px; }
+.agda-icon:before          { .fi; content: "\1315a";top: 2px; font-size: 16px; .sharpen; }
 .ahk-icon:before           { .fi; content: "\e932"; top: 2px; }
 .ai-icon:before            { .fi; content: "\e6b4"; top: 2px; }
 .alacritty-icon:before     { .fi; content: "\eb27"; top: 3px; font-size: 16px; }
@@ -223,7 +229,9 @@
 .ampl-icon:before          { .fi; content: "\e94e"; top: 3px; font-size: 16px; left: 1px; }
 .amusewiki-icon:before     { .fi; content: "\eb32"; top: 3px; font-size: 17px; }
 .amx-icon:before           { .fi; content: "\e99b"; top: 3px; font-size: 16px; }
+.analytica-icon:before     { .fi; content: "\eb7d"; top: 2px; }
 .angelscript-icon:before   { .fi; content: "\ea5b"; top: 4px; font-size: 18px; left: -2px; transform: scale(1.3); .sharpen; }
+.animate-icon:before       { .fi; content: "\eb41"; top: 2px; }
 .animestudio-icon:before   { .fi; content: "\eaed"; top: 2px; }
 .ansible-icon:before       { .fi; content: "\24b6"; top: 2px; }
 .ant-icon:before           { .fi; content: "\e93e"; top: 4px; font-size: 18px; transform: scale(1.1); }
@@ -231,7 +239,9 @@
 .antwar-icon:before        { .fi; content: "\2591"; top: 3px; font-size: 16px; }
 .anyscript-icon:before     { .fi; content: "\eacf"; top: 4px; font-size: 17px; }
 .api-icon:before           { .fi; content: "\e92d"; top: 2px; }
+.apiextractor-icon:before  { .fi; content: "\eb99"; top: 2px; font-size: 16px; }
 .apl-icon:before           { .fi; content: "\234b"; top: 2px; }
+.apollo-icon:before        { .fi; content: "\1f110";top: 3px; font-size: 16px; }
 .apple-icon:before         { .fi; content: "\e925"; top: 1px; }
 .appveyor-icon:before      { .fi; content: "\e923"; top: 2px; }
 .arc-icon:before           { .fi; content: "\e92f"; top: 2px; }
@@ -240,6 +250,15 @@
 .as-icon:before            { .fi; content: "\e92e"; top: 1px; font-size: 14px; }
 .asciidoc-icon:before      { .fi; content: "\e918"; top: 1px; font-size: 14px; }
 .asciidoctor-icon:before   { .fi; content: "\eac7"; top: 2px; font-size: 16px; .sharpen; }
+.asm-icon:before           { .fi; content: "\eb4f"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-agc-icon:before       { .fi; content: "\eb53"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-arm-icon:before       { .fi; content: "\eb51"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-avr-icon:before       { .fi; content: "\eb6c"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-hitachi-icon:before   { .fi; content: "\eb60"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-intel-icon:before     { .fi; content: "\eb4e"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-m68k-icon:before      { .fi; content: "\eb4d"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-vax-icon:before       { .fi; content: "\eb48"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
+.asm-zilog-icon:before     { .fi; content: "\eb47"; top: 2px; font-size: 17px; left: -1px; transform: scale(1.1); }
 .asymptote-icon:before     { .fi; content: "\eae5"; top: 3px; font-size: 16px; .thicken; }
 .atoum-icon:before         { .fi; content: "\2649"; top: 2px; font-size: 16px; }
 .ats-icon:before           { .fi; content: "\e934"; top: 2px; }
@@ -247,24 +266,34 @@
 .augeas-icon:before        { .fi; content: "\e931"; top: 2px; }
 .aurelia-icon:before       { .fi; content: "\ea48"; top: 2px; }
 .autoit-icon:before        { .fi; content: "\e933"; top: 2px; font-size: 16px; }
+.automator-icon:before     { .fi; content: "\ebb4"; top: 2px; }
+.awk-icon:before           { .fi; content: "\1f427";top: 3px; font-size: 17px; left: 1px; }
 .azurepipelines-icon:before{ .fi; content: "\1f680";top: 2px; }
 .avro-icon:before          { .fi; content: "\eaa3"; top: 4px; font-size: 16px; left: 1px; transform: scale(1.2); }
 .babel-icon:before         { .fi; content: "\e91f"; top: 2px; left: 1px; }
+.ballerina-icon:before     { .fi; content: "\eac8"; top: 2px; font-size: 16px; }
 .bazaar-icon:before        { .fi; content: "\eacd"; top: 2px; font-size: 16px; .sharpen; }
 .bazel-icon:before         { .fi; content: "\ead2"; top: 2px; font-size: 16px; .sharpen; }
 .behat-icon:before         { .fi; content: "\ea89"; top: 2px; }
 .bem-icon:before           { .fi; content: "\ea59"; top: 2px; }
 .bibtex-icon:before        { .fi; content: "\e601"; top: 2px; font-size: 16px; .thicken; }
 .biml-icon:before          { .fi; content: "\eb29"; top: 2px; }
+.binder-icon:before        { .fi; content: "\eba4"; top: 3px; font-size: 16px; }
 .bintray-icon:before       { .fi; content: "\ea6e"; top: 2px; }
+.bison-icon:before         { .fi; content: "\1f402";top: 3px; font-size: 16px; }
 .bithound-icon:before      { .fi; content: "\ea2a"; top: 2px; }
 .blender-icon:before       { .fi; content: "\e9fa"; top: 2px; }
+.blitzbasic-icon:before    { .fi; content: "\eba5"; top: 2px; font-size: 16px; }
+.bloc-icon:before          { .fi; content: "\eba3"; top: 3px; font-size: 16px; }
 .bluespec-icon:before      { .fi; content: "\e93c"; top: 1px; font-size: 13px; left: 1px; }
 .bnf-icon:before           { .fi; content: "\2a74"; top: 4px; font-size: 16px; }
 .boo-icon:before           { .fi; content: "\e939"; top: 2px; }
 .boot-icon:before          { .fi; content: "\f103"; top: 2px; font-size: 16px; }
+.bors-icon:before          { .fi; content: "\1f441";top: 2px; }
+.bosque-icon:before        { .fi; content: "\eb96"; top: 2px; }
 .brain-icon:before         { .fi; content: "\e93a"; top: 2px; }
 .brakeman-icon:before      { .fi; content: "\e9d6"; top: 2px; }
+.brew-icon:before          { .fi; content: "\1f37a";top: 3px; font-size: 17px; }
 .bro-icon:before           { .fi; content: "\e93b"; top: 3px; font-size: 16px; }
 .broccoli-icon:before      { .fi; content: "\e922"; top: 1px; font-size: 14px; }
 .brotli-icon:before        { .fi; content: "\eaa2"; top: 2px; }
@@ -272,6 +301,7 @@
 .browsersync-icon:before   { .fi; content: "b";     top: 2px; }
 .brunch-icon:before        { .fi; content: "\ea47"; top: 3px; font-size: 17px; left: -1px; }
 .buck-icon:before          { .fi; content: "\ea46"; top: 2px; }
+.buildkite-icon:before     { .fi; content: "\ebad"; top: 4px; font-size: 17px; left: -1px; transform: scale(1.1); }
 .bundler-icon:before       { .fi; content: "\ea45"; top: 2px; font-size: 16px; }
 .byond-icon:before         { .fi; content: "\e962"; top: 2px; }
 .cabal-icon:before         { .fi; content: "\e9c2"; top: 2px; }
@@ -281,13 +311,17 @@
 .cake-icon:before          { .fi; content: "\e9e3"; top: 2px; }
 .cakefile-icon:before      { .fi; content: "\e924"; top: 2px; }
 .cakephp-icon:before       { .fi; content: "\ea43"; top: 2px; }
+.calva-icon:before         { .fi; content: "\eba1"; top: 3px; font-size: 16px; }
 .carthage-icon:before      { .fi; content: "\ea98"; top: 2px; }
+.casc-icon:before          { .fi; content: "\ebb6"; top: 2px; font-size: 17px; }
 .cc-icon:before            { .fi; content: "\e9d5"; top: 2px; font-size: 16px; }
+.cdf-icon:before           { .fi; content: "\eb46"; top: 2px; font-size: 16px; }
 .ceylon-icon:before        { .fi; content: "\e94f"; top: 2px; }
 .cf-icon:before            { .fi; content: "\e929"; top: 2px; }
 .chai-icon:before          { .fi; content: "c";     top: 3px; font-size: 16px; }
 .chapel-icon:before        { .fi; content: "\e950"; top: 2px; }
 .chartjs-icon:before       { .fi; content: "\ea0b"; top: 2px; }
+.cheetah3d-icon:before     { .fi; content: "\1f406";top: 2px; font-size: 16px; .sharpen; }
 .chef-icon:before          { .fi; content: "\ea42"; top: 2px; }
 .chocolatey-icon:before    { .fi; content: "\1f36b";top: 3px; font-size: 17px; }
 .chuck-icon:before         { .fi; content: "\e943"; top: 2px; }
@@ -302,14 +336,18 @@
 .closure-tpl-icon:before   { .fi; content: "\ea82"; top: 2px; }
 .cloudfoundry-icon:before  { .fi; content: "\ead0"; top: 2px; }
 .cmake-icon:before         { .fi; content: "\e93f"; top: 1px; font-size: 14px; }
+.cnab-icon:before          { .fi; content: "\ebb5"; top: 2px; font-size: 16px; }
 .cobol-icon:before         { .fi; content: "\ea44"; top: 2px; font-size: 16px; }
 .cocoapods-icon:before     { .fi; content: "\ea97"; top: 2px; }
 .codacy-icon:before        { .fi; content: "\ea8b"; top: 2px; }
 .codecov-icon:before       { .fi; content: "\2602"; top: 2px; }
 .codekit-icon:before       { .fi; content: "\ea41"; top: 2px; }
+.codemeta-icon:before      { .fi; content: "\eb8f"; top: 2px; }
 .codeship-icon:before      { .fi; content: "\ea6a"; top: 2px; }
+.commitlint-icon:before    { .fi; content: "\1f191";top: 2px; }
 .composer-icon:before      { .fi; content: "\e683"; top: 3px; font-size: 17px; }
 .conan-icon:before         { .fi; content: "\ead1"; top: 2px; }
+.conda-icon:before         { .fi; content: "\eb3c"; top: 2px; font-size: 16px; }
 .config-icon:before        { .fi; content: "\f07c"; top: 2px; font-size: 14px; }
 .config-coffee-icon:before { .fi; content: "\eb18"; top: 3px; font-size: 17px; }
 .config-go-icon:before     { .fi; content: "\eb12"; top: 3px; font-size: 18px; }
@@ -329,17 +367,23 @@
 .coveralls-icon:before     { .fi; content: "\272a"; top: 2px; }
 .cp-icon:before            { .fi; content: "\e942"; top: 3px; font-size: 17px; }
 .cpan-icon:before          { .fi; content: "\ea87"; top: 2px; }
+.cpcdosc-icon:before       { .fi; content: "\eb8d"; top: 2px; font-size: 16px; }
+.crafttweaker-icon:before  { .fi; content: "\eb89"; top: 2px; font-size: 17px; }
 .creole-icon:before        { .fi; content: "\e95e"; top: 2px; }
 .crowdin-icon:before       { .fi; content: "\ead3"; top: 2px; font-size: 16px; .sharpen; }
 .crystal-icon:before       { .fi; content: "\e902"; top: 2px; left: 1px; }
 .csound-icon:before        { .fi; content: "\e9f0"; top: 2px; }
 .csscript-icon:before      { .fi; content: "\e9e2"; top: 2px; }
+.cubit-icon:before         { .fi; content: "\eb92"; top: 2px; font-size: 16px; }
+.cuneiform-icon:before     { .fi; content: "\eb76"; top: 2px; }
 .cucumber-icon:before      { .fi; content: "\f02b"; top: 3px; }
 .curl-icon:before          { .fi; content: "/";     top: 3px; font-size: 16px; }
+.curry-icon:before         { .fi; content: "\eb78"; top: 3px; font-size: 17px; }
 .cvs-icon:before           { .fi; content: "\1f41f";top: 1px; font-size: 16px; }
 .cwl-icon:before           { .fi; content: "\29d9"; top: 2px; font-size: 16px; }
 .cython-icon:before        { .fi; content: "\e963"; top: 2px; }
 .d3-icon:before            { .fi; content: "\ea10"; top: 2px; }
+.dafny-icon:before         { .fi; content: "\eb8c"; top: 3px; font-size: 17px; }
 .darcs-icon:before         { .fi; content: "\e964"; top: 2px; }
 .dashboard-icon:before     { .fi; content: "\f07d"; top: 2px; font-size: 13px; }
 .dataweave-icon:before     { .fi; content: "\ea99"; top: 2px; }
@@ -348,10 +392,14 @@
 .default-icon:before       { .fi; content: "\1f5cc";top: 2px; font-size: 14px; }
 .delphi-icon:before        { .fi; content: "\ea40"; top: 2px; font-size: 16px; }
 .deno-icon:before          { .fi; content: "\eaef"; top: 2px; font-size: 16px; }
+.dependabot-icon:before    { .fi; content: "\eb3e"; top: 3px; font-size: 17px; }
+.devcontainer-icon:before  { .fi; content: "\eb83"; top: 2px; }
 .devicetree-icon:before    { .fi; content: "\ea57"; top: 2px; font-size: 17px; .sharpen; }
+.dhall-icon:before         { .fi; content: "\1f58b";top: 3px; font-size: 17px; }
 .dia-icon:before           { .fi; content: "\eab5"; top: 2px; }
 .digdag-icon:before        { .fi; content: "\eb03"; top: 2px; }
 .diff-icon:before          { .fi; content: "\e960"; top: 2px; }
+.docbook-icon:before       { .fi; content: "\13167";top: 2px; font-size: 16px; }
 .docker-icon:before        { .fi; content: "\f106"; top: 3px; font-size: 18px; }
 .doclets-icon:before       { .fi; content: "\ea3f"; top: 2px; }
 .docpad-icon:before        { .fi; content: "\21b9"; top: 4px; font-size: 17px; }
@@ -360,7 +408,10 @@
 .dotjs-icon:before         { .fi; content: "\eb0b"; top: 2px; font-size: 16px; }
 .doxygen-icon:before       { .fi; content: "\e928"; top: 1px; font-size: 13px; }
 .dragula-icon:before       { .fi; content: "\1f44c";top: 3px; font-size: 17px; }
+.drawio-icon:before        { .fi; content: "\eb93"; top: 2px; }
 .drone-icon:before         { .fi; content: "\ea3d"; top: 2px; }
+.dub-icon:before           { .fi; content: "\eba2"; top: 3px; font-size: 17px; }
+.dvc-icon:before           { .fi; content: "\eb98"; top: 4px; font-size: 17px; transform: scale(1.1); }
 .dyalog-icon:before        { .fi; content: "\e90c"; top: 1px; font-size: 14px; left: 1px; }
 .dylib-icon:before         { .fi; content: "\ea15"; top: 2px; }
 .e-icon:before             { .fi; content: "E";     top: 1px; font-size: 14px; }
@@ -368,6 +419,7 @@
 .easybuild-icon:before     { .fi; content: "\ea85"; top: 2px; }
 .ec-icon:before            { .fi; content: "\e9c9"; top: 2px; }
 .ecere-icon:before         { .fi; content: "\e966"; top: 3px; font-size: 16px; }
+.eclipse-lang-icon:before  { .fi; content: "\eb80"; top: 2px; }
 .editorconfig-icon:before  { .fi; content: "\ea1b"; top: 3px; }
 .edge-icon:before          { .fi; content: "\ea78"; top: 2px; }
 .eiffel-icon:before        { .fi; content: "\e967"; top: 2px; font-size: 16px; }
@@ -382,14 +434,19 @@
 .esdoc-icon:before         { .fi; content: "\ea5c"; top: 2px; }
 .eslint-icon:before        { .fi; content: "\ea0f"; top: 3px; font-size: 16px; }
 .excel-icon:before         { .fi; content: "\e9ee"; top: 2px; }
+.expo-icon:before          { .fi; content: "\eb71"; top: 2px; font-size: 17px; }
+.fabric-icon:before        { .fi; content: "\1f4dc";top: 3px; font-size: 16px; }
 .fabfile-icon:before       { .fi; content: "\e94b"; top: 2px; font-size: 16px; }
 .factor-icon:before        { .fi; content: "\e96a"; top: 3px; font-size: 18px; left: -2px; transform: scale(1.2); }
 .falcon-icon:before        { .fi; content: "\eae4"; top: 2px; }
 .fancy-icon:before         { .fi; content: "\e96b"; top: 2px; font-size: 16px; }
 .fantom-icon:before        { .fi; content: "\e96f"; top: 2px; left: 1px; }
+.fauna-icon:before         { .fi; content: "\13168";top: 3px; font-size: 17px; }
+.faust-icon:before         { .fi; content: "\22c0"; top: 2px; }
 .fbx-icon:before           { .fi; content: "\e9fc"; top: 2px; }
 .fexl-icon:before          { .fi; content: "\eb20"; top: 4px; font-size: 17px; }
 .ff-icon:before            { .fi; content: "\fb00"; top: 3px; }
+.finaldraft-icon:before    { .fi; content: "\1d4bb";top: 2px; font-size: 16px; }
 .finder-icon:before        { .fi; content: "\e9e9"; top: 3px; font-size: 16px; }
 .firebase-icon:before      { .fi; content: "\ea7f"; top: 2px; }
 .firebase-bolt-icon:before { .fi; content: "\26A1"; top: 3px; }
@@ -400,6 +457,7 @@
 .flux-icon:before          { .fi; content: "\e969"; top: 2px; }
 .font-icon:before          { .fi; content: "\eaaa"; top: 2px; font-size: 16px; .sharpen; }
 .font-bitmap-icon:before   { .fi; content: "\eaab"; top: 2px; }
+.fork-icon:before          { .fi; content: "\2442"; top: 2px; }
 .fortran-icon:before       { .fi; content: "\e90a"; top: 1px; font-size: 14px; left: 1px; }
 .fossa-icon:before         { .fi; content: "\eac3"; top: 3px; font-size: 17px; }
 .fossil-icon:before        { .fi; content: "\ead6"; top: 2px; font-size: 17px; .sharpen; }
@@ -407,18 +465,25 @@
 .franca-icon:before        { .fi; content: "\ea56"; top: 2px; }
 .freemarker-icon:before    { .fi; content: "\e970"; top: 2px; font-size: 16px; left: 1px; }
 .frege-icon:before         { .fi; content: "\e96e"; top: 2px; font-size: 16px; left: 1px; }
+.fthtml-icon:before        { .fi; content: "\eb97"; top: 2px; }
+.ftr-icon:before           { .fi; content: "\2933"; top: 4px; font-size: 18px; transform: scale(1.25); }
 .fuelux-icon:before        { .fi; content: "\ea09"; top: 3px; font-size: 16px; left: 2px; transform: scale(1.15); .sharpen; }
 .fusebox-icon:before       { .fi; content: "\ead7"; top: 2px; }
+.futhark-icon:before       { .fi; content: "\eb77"; top: 3px; font-size: 18px; left: -1px; }
 .gams-icon:before          { .fi; content: "\e973"; top: 2px; left: 1px; }
+.galaxy-icon:before        { .fi; content: "\eb74"; top: 2px; }
 .galen-icon:before         { .fi; content: "\ead8"; top: 2px; }
 .gap-icon:before           { .fi; content: "\e971"; top: 3px; font-size: 16px; left: 1px; }
 .gatsby-icon:before        { .fi; content: "\24bc"; top: 2px; }
+.gauss-icon:before         { .fi; content: "\eb7e"; top: 2px; }
 .gdb-icon:before           { .fi; content: "\ea08"; top: 3px; font-size: 16px; transform: scale(1.15); .sharpen; }
 .genshi-icon:before        { .fi; content: "\e976"; top: 3px; }
+.genstat-icon:before       { .fi; content: "\223f"; top: 2px; }
 .gentoo-icon:before        { .fi; content: "\e96d"; top: 1px; font-size: 14px; left: 1px; }
 .gf-icon:before            { .fi; content: "\e978"; top: 2px; }
 .gimp-icon:before          { .fi; content: "\ea88"; top: 2px; font-size: 17px; transform: scale(1.15); }
 .gitlab-icon:before        { .fi; content: "\ea3c"; top: 3px; font-size: 16px; }
+.gitpod-icon:before        { .fi; content: "\1d5a6";top: 2px; }
 .glade-icon:before         { .fi; content: "\e938"; top: 2px; }
 .glide-icon:before         { .fi; content: "\eacb"; top: 3px; font-size: 17px; transform: scale(1.15); }
 .gltf-icon:before          { .fi; content: "\eaa7"; top: 3px; font-size: 17px; }
@@ -426,12 +491,16 @@
 .gml-icon:before           { .fi; content: "\e975"; top: 3px; font-size: 16px; }
 .gn-icon:before            { .fi; content: "\ea25"; top: 2px; }
 .gnu-icon:before           { .fi; content: "\e679"; top: 2px; font-size: 16px; .sharpen; }
+.gnuplot-icon:before       { .fi; content: "\1f4c8";top: 3px; font-size: 16px; .sharpen; }
 .go-icon:before            { .fi; content: "\eaae"; top: 4px; font-size: 18px; left: -1px; }
 .godot-icon:before         { .fi; content: "\e974"; top: 2px; }
 .golo-icon:before          { .fi; content: "\e979"; top: 2px; }
+.goreleaser-icon:before    { .fi; content: "\eb90"; top: 4px; font-size: 18px; left: 1px; }
 .gosu-icon:before          { .fi; content: "\e97a"; top: 2px; }
+.gql-codegen-icon:before   { .fi; content: "\ebae"; top: 3px; font-size: 18px; transform: scale(1.1); }
 .gradle-icon:before        { .fi; content: "\e903"; top: 3px; font-size: 16px; left: 1px; }
 .graphite-icon:before      { .fi; content: "\ea8a"; top: 2px; font-size: 17px; }
+.grapher-icon:before       { .fi; content: "\1f4c9";top: 4px; font-size: 17px; }
 .graphql-icon:before       { .fi; content: "\e97c"; top: 2px; }
 .graphviz-icon:before      { .fi; content: "\e97d"; top: 4px; font-size: 17px; left: 1px; }
 .greenkeeper-icon:before   { .fi; content: "\eb0c"; top: 3px; font-size: 16px; }
@@ -449,11 +518,15 @@
 .haxedevelop-icon:before   { .fi; content: "\ea3b"; top: 2px; font-size: 16px; .thicken; }
 .helix-icon:before         { .fi; content: "\2695"; top: 2px; font-size: 16px; }
 .hg-icon:before            { .fi; content: "\263f"; top: 2px; }
+.hie-icon:before           { .fi; content: "\ebab"; top: 4px; font-size: 18px; transform: scale(1.1); }
 .hjson-icon:before         { .fi; content: "\eac2"; top: 2px; font-size: 16px; .thicken; }
+.houdini-icon:before       { .fi; content: "\1f300";top: 2px; }
 .houndci-icon:before       { .fi; content: "\eaaf"; top: 2px; }
 .hp-icon:before            { .fi; content: "\33cb"; top: 2px; }
 .hy-icon:before            { .fi; content: "\e97f"; top: 2px; }
+.hygen-icon:before         { .fi; content: "\1f4c3";top: 2px; font-size: 16px; }
 .hyper-icon:before         { .fi; content: "\eb37"; top: 2px; }
+.kibo-icon:before          { .fi; content: "\eba9"; top: 3px; }
 .kx-icon:before            { .fi; content: "\ea9b"; top: 2px; }
 .husky-icon:before         { .fi; content: "\1f436";top: 2px; font-size: 17px; .sharpen; }
 .icomoon-icon:before       { .fi; content: "\eaea"; top: 2px; }
@@ -482,6 +555,7 @@
 .jolie-icon:before         { .fi; content: "\ea75"; top: 2px; }
 .jinja-icon:before         { .fi; content: "\e944"; top: 2px; }
 .jison-icon:before         { .fi; content: "\ea55"; top: 2px; }
+.jscpd-icon:before         { .fi; content: "\eb95"; top: 3px; font-size: 17px; .sharpen; }
 .json-icon:before          { .fi; content: "\eabe"; top: 2px; }
 .json5-icon:before         { .fi; content: "\2478"; top: 2px; }
 .jsonld-icon:before        { .fi; content: "\e958"; top: 3px; font-size: 17px; }
@@ -490,6 +564,7 @@
 .julia-icon:before         { .fi; content: "\26ec"; top: 1px; font-size: 14px; }
 .junos-icon:before         { .fi; content: "\ea81"; top: 2px; }
 .jupyter-icon:before       { .fi; content: "\e987"; top: 3px; font-size: 16px; }
+.kaitai-icon:before        { .fi; content: "\30ab"; top: 3px; font-size: 16px; }
 .karma-icon:before         { .fi; content: "\e9cd"; top: 2px; }
 .keybase-icon:before       { .fi; content: "\eaf8"; top: 2px; font-size: 17px; }
 .keynote-icon:before       { .fi; content: "\e9e5"; top: 2px; }
@@ -502,16 +577,26 @@
 .kotlin-icon:before        { .fi; content: "\e989"; top: 1px; font-size: 14px; }
 .krl-icon:before           { .fi; content: "\e988"; top: 1px; font-size: 14px; }
 .kubernetes-icon:before    { .fi; content: "\2388"; top: 2px; font-size: 16px; }
+.kusto-icon:before         { .fi; content: "\eb9a"; top: 2px; }
 .labview-icon:before       { .fi; content: "\e98a"; top: 2px; font-size: 16px; }
+.laravel-icon:before       { .fi; content: "\e63f"; top: 2px; font-size: 16px; .sharpen; }
+.lark-icon:before          { .fi; content: "\1316b";top: 3px; font-size: 16px; }
 .lasso-icon:before         { .fi; content: "\e98c"; top: 2px; left: 1px; }
+.latino-icon:before        { .fi; content: "\1f426";top: 4px; font-size: 17px; transform: scale(1.25); }
 .leaflet-icon:before       { .fi; content: "\ea07"; top: 2px; }
 .lean-icon:before          { .fi; content: "L";     top: 1px; font-size: 13px; }
+.lefthook-icon:before      { .fi; content: "\eb8b"; top: 3px; font-size: 17px; }
 .lein-icon:before          { .fi; content: "\f105"; top: 3px; font-size: 16px; .sharpen; transform: scale(1.15); }
 .lektor-icon:before        { .fi; content: "\eab9"; top: 2px; font-size: 16px; }
 .lerna-icon:before         { .fi; content: "\ea37"; top: 2px; font-size: 16px; transform: scale(1.15); }
+.lex-icon:before           { .fi; content: "\101ef";top: 3px; font-size: 16px; }
 .lfe-icon:before           { .fi; content: "\e94c"; top: 2px; font-size: 16px; }
+.lgtm-icon:before          { .fi; content: "\1f435";top: 4px; font-size: 17px; transform: scale(1.15); }
+.lighthouse-icon:before    { .fi; content: "\26ef"; top: 2px; font-size: 16px; }
 .lightwave-icon:before     { .fi; content: "\e9fb"; top: 2px; }
+.lilypond-icon:before      { .fi; content: "\1f4ae";top: 2px; font-size: 16px; }
 .lime-icon:before          { .fi; content: "\ea36"; top: 2px; font-size: 16px; }
+.linqpad-icon:before       { .fi; content: "\1d6cc";top: 2px; }
 .lisp-icon:before          { .fi; content: "\e908"; top: 3px; font-size: 17px; }
 .llvm-icon:before          { .fi; content: "\e91d"; top: 3px; font-size: 17px; }
 .logtalk-icon:before       { .fi; content: "\e98d"; top: 2px; .sharpen; }
@@ -521,6 +606,7 @@
 .lsl-icon:before           { .fi; content: "\e98b"; top: 1px; }
 .lua-icon:before           { .fi; content: "\e91b"; top: 2px; font-size: 14px; }
 .lync-icon:before          { .fi; content: "\ead9"; top: 2px; font-size: 16px; }
+.macaulay2-icon:before     { .fi; content: "\2644"; top: 3px; font-size: 17px; }
 .mako-icon:before          { .fi; content: "\e98f"; top: 4px; font-size: 16px; }
 .manpage-icon:before       { .fi; content: "\e936"; top: 3px; }
 .mapbox-icon:before        { .fi; content: "\e941"; top: 1px; font-size: 13px; }
@@ -537,8 +623,10 @@
 .mediawiki-icon:before     { .fi; content: "\e954"; top: 2px; font-size: 16px; }
 .melpa-icon:before         { .fi; content: "\33ab"; top: 2px; font-size: 16px; }
 .mercury-icon:before       { .fi; content: "\e994"; top: 3px; font-size: 16px; transform: scale(1.2); }
+.mermaid-icon:before       { .fi; content: "\eb84"; top: 3px; font-size: 17px; }
 .meson-icon:before         { .fi; content: "\ea54"; top: 2px; }
 .metal-icon:before         { .fi; content: "M";     top: 1px; left: 1px; }
+.metapost-icon:before      { .fi; content: "\1d5ac";top: 2px; }
 .meteor-icon:before        { .fi; content: "\e6a5"; top: 1px; }
 .minecraft-icon:before     { .fi; content: "\e9dc"; top: 2px; }
 .minizinc-icon:before      { .fi; content: "\ea53"; top: 2px; }
@@ -548,9 +636,11 @@
 .mjml-icon:before          { .fi; content: "\ea6f"; top: 2px; }
 .mocha-icon:before         { .fi; content: "\26fe"; top: 2px; font-size: 17px; }
 .model-icon:before         { .fi; content: "\e9e8"; top: 2px; font-size: 16px; }
+.modernweb-icon:before     { .fi; content: "\eb9f"; top: 2px; }
 .modula2-icon:before       { .fi; content: "\e996"; top: 2px; }
 .modula3-icon:before       { .fi; content: "\2778"; top: 3px; font-size: 17px; }
 .modelica-icon:before      { .fi; content: "\eaff"; top: 4px; font-size: 17px; transform: scale(1.2); }
+.modo-icon:before          { .fi; content: "\f01f"; top: 2px; font-size: 16px; }
 .moho-icon:before          { .fi; content: "\eaee"; top: 3px; font-size: 16px; }
 .moleculer-icon:before     { .fi; content: "\eb0e"; top: 3px; font-size: 16px; }
 .moment-icon:before        { .fi; content: "\1f558";top: 2px; }
@@ -570,19 +660,26 @@
 .ndepend-icon:before       { .fi; content: "\eab4"; top: 2px; }
 .neko-icon:before          { .fi; content: "\ea05"; top: 2px; }
 .neo4j-icon:before         { .fi; content: "\eab3"; top: 2px; }
+.neon-icon:before          { .fi; content: "\eb8e"; top: 2px; }
+.nessus-icon:before        { .fi; content: "\23e3"; top: 2px; .thicken; }
 .netlify-icon:before       { .fi; content: "\eabf"; top: 3px; font-size: 16px; }
+.commitizen-icon:before    { .fi; content: "\ebb3"; top: 3px; font-size: 16px; }
 .netlogo-icon:before       { .fi; content: "\e99c"; top: 2px; left: 1px; }
 .newrelic-icon:before      { .fi; content: "\e9d7"; top: 2px; }
 .nextflow-icon:before      { .fi; content: "\eaa5"; top: 2px; font-size: 16px; }
+.nextjs-icon:before        { .fi; content: "\24c3"; top: 2px; }
 .nestjs-icon:before        { .fi; content: "\eac9"; top: 2px; }
 .nginx-icon:before         { .fi; content:"\f146b"; top: 2px; }
 .nib-icon:before           { .fi; content: "\2712"; top: 2px; }
+.nickle-icon:before        { .fi; content: "\a2";   top: 3px; font-size: 16px; }
 .nightwatch-icon:before    { .fi; content: "\eb08"; top: 3px; font-size: 16px; }
+.nimble-icon:before        { .fi; content: "\eb85"; top: 3px; font-size: 16px; }
 .nimrod-icon:before        { .fi; content: "\e998"; top: 2px; }
 .nit-icon:before           { .fi; content: "\e999"; top: 2px; }
 .nix-icon:before           { .fi; content: "\e99a"; top: 3px; font-size: 16px; }
 .nmap-icon:before          { .fi; content: "\e94d"; top: 3px; font-size: 16px; transform: scale(1.1); }
 .nodemon-icon:before       { .fi; content: "\ea26"; top: 2px; }
+.nokogiri-icon:before      { .fi; content: "\92f8"; top: 2px; }
 .nomad-icon:before         { .fi; content: "\ea96"; top: 2px; }
 .noon-icon:before          { .fi; content: "\eb33"; top: 2px; }
 .normalize-icon:before     { .fi; content: "\ea04"; top: 3px; font-size: 16px; }
@@ -592,24 +689,32 @@
 .nsri-alt-icon:before      { .fi; content: "\eb2b"; top: 2px; font-size: 16px; }
 .nuclide-icon:before       { .fi; content: "\ea34"; top: 2px; }
 .nuget-icon:before         { .fi; content: "\e9d9"; top: 2px; }
-.numpy-icon:before         { .fi; content: "\e99d"; top: 2px; font-size: 14px; }
+.numpy-icon:before         { .fi; content: "\eba8"; top: 2px; font-size: 14px; }
 .nunjucks-icon:before      { .fi; content: "\e953"; top: 2px; font-size: 16px; }
 .nuxt-icon:before          { .fi; content: "\eaca"; top: 2px; font-size: 16px; }
+.nwscript-icon:before      { .fi; content: "\23ff"; top: 4px; font-size: 17px; transform: scale(1.1); }
+.nx-icon:before            { .fi; content: "\eb9c"; top: 3px; font-size: 17px; }
 .nxc-icon:before           { .fi; content: "\ea6b"; top: 2px; font-size: 16px; }
 .nvidia-icon:before        { .fi; content: "\e95d"; top: 2px; }
+.oberon-icon:before        { .fi; content: "\eb3f"; top: 3px; font-size: 17px; transform: scale(1.1); }
 .objj-icon:before          { .fi; content: "\e99e"; top: 2px; }
 .ocaml-icon:before         { .fi; content: "\e91a"; top: 1px; font-size: 14px; }
 .octave-icon:before        { .fi; content: "\ea33"; top: 2px; }
 .odin-icon:before          { .fi; content: "\eb36"; top: 2px; }
+.omnigraffle-icon:before   { .fi; content: "\ebaf"; top: 2px; font-size: 16px; }
+.ogone-icon:before         { .fi; content: "\ebaa"; top: 3px; font-size: 16px; }
 .onenote-icon:before       { .fi; content: "\e9eb"; top: 2px; }
 .ooc-icon:before           { .fi; content: "\e9cb"; top: 2px; }
 .opa-icon:before           { .fi; content: "\2601"; top: 2px; }
+.openbsd-icon:before       { .fi; content: "\1f421";top: 3px; font-size: 17px; .sharpen; transform: scale(1.1); }
 .opencl-icon:before        { .fi; content: "\e99f"; top: 2px; font-size: 16px; }
+.openexr-icon:before       { .fi; content: "\1f127";top: 3px; font-size: 16px; }
 .opengl-icon:before        { .fi; content: "\ea7a"; top: 3px; font-size: 18px; transform: scale(1.1); }
 .openoffice-icon:before    { .fi; content: "\e9e4"; top: 2px; }
 .openpolicy-icon:before    { .fi; content: "\eb39"; top: 2px; font-size: 16px; }
 .openvms-icon:before       { .fi; content: "\eac6"; top: 1px; font-size: 16px; transform: scale(1.1); }
 .openvpn-icon:before       { .fi; content: "\eaf3"; top: 2px; }
+.openzfs-icon:before       { .fi; content: "\1d419";top: 2px; font-size: 16px; }
 .org-icon:before           { .fi; content: "\e917"; top: 1px; font-size: 14px; left: 1px; }
 .outlook-icon:before       { .fi; content: "\eada"; top: 2px; font-size: 16px; }
 .owl-icon:before           { .fi; content: "\e957"; top: 2px; }
@@ -622,6 +727,7 @@
 .parrot-icon:before        { .fi; content: "\e9bb"; top: 3px; font-size: 16px; }
 .pascal-icon:before        { .fi; content: "\e92a"; top: 2px; }
 .patch-icon:before         { .fi; content: "\e961"; top: 2px; }
+.patreon-icon:before       { .fi; content: "\eb42"; top: 2px; }
 .pawn-icon:before          { .fi; content: "\265f"; top: 1px; font-size: 14px; }
 .pcd-icon:before           { .fi; content: "\26c5"; top: 2px; font-size: 16px; }
 .peg-icon:before           { .fi; content: "\ea74"; top: 3px; font-size: 16px; }
@@ -639,6 +745,7 @@
 .pipenv-icon:before        { .fi; content: "\1f381";top: 2px; }
 .platformio-icon:before    { .fi; content: "\ea2c"; top: 2px; font-size: 16px; }
 .pm2-icon:before           { .fi; content: "\2630"; top: 3px; }
+.pnpm-icon:before          { .fi; content: "\eb86"; top: 2px; font-size: 16px; .sharpen; }
 .pod-icon:before           { .fi; content: "\ea84"; top: 2px; left: 1px; }
 .pogo-icon:before          { .fi; content: "\e9b8"; top: 3px; font-size: 14px; .thicken; }
 .pointwise-icon:before     { .fi; content: "\e977"; top: 2px; }
@@ -665,22 +772,30 @@
 .pug-alt-icon:before       { .fi; content: "\e9d0"; top: 3px; font-size: 16px; }
 .pug-icon:before           { .fi; content: "\ea13"; top: 3px; font-size: 16px; }
 .puppet-icon:before        { .fi; content: "\f0c3"; top: 2px; left: 1px; }
+.pure-icon:before          { .fi; content: "\1f4a7";top: 2px; font-size: 16px; .sharpen; }
 .purebasic-icon:before     { .fi; content: "\01b5"; top: 2px; }
 .purescript-icon:before    { .fi; content: "\e9b2"; top: 3px; }
 .pullapprove-icon:before   { .fi; content: "\293e"; top: 2px; }
 .pypi-icon:before          { .fi; content: "\ea94"; top: 2px; }
 .pyret-icon:before         { .fi; content: "\2620"; top: 2px; font-size: 16px; }
+.pytest-icon:before        { .fi; content: "\eba6"; top: 4px; font-size: 16px; }
 .pyup-icon:before          { .fi; content: "\eb26"; top: 2px; }
+.qiskit-icon:before        { .fi; content: "\eb81"; top: 2px; font-size: 16px; .sharpen; }
 .qlik-icon:before          { .fi; content: "\1f50d";top: 2px; }
+.qsharp-icon:before        { .fi; content: "\eb91"; top: 3px; font-size: 16px; }
 .qt-icon:before            { .fi; content: "\eb00"; top: 2px; font-size: 16px; }
 .quasar-icon:before        { .fi; content: "\eacc"; top: 2px; }
 .r-icon:before             { .fi; content: "\e905"; top: 3px; font-size: 17px; }
 .racket-icon:before        { .fi; content: "\e9b1"; top: 2px; left: 1px; }
 .raml-icon:before          { .fi; content: "\e913"; top: 1px; font-size: 14px; }
 .rascal-icon:before        { .fi; content: "\ea24"; top: 2px; }
+.razzle-icon:before        { .fi; content: "R";     top: 2px; }
+.rdata-icon:before         { .fi; content: "\eb49"; top: 2px; }
 .rdoc-icon:before          { .fi; content: "\e9b0"; top: 2px; left: 1px; }
 .react-icon:before         { .fi; content: "\f100"; top: 2px; }
+.readthedocs-icon:before   { .fi; content: "\2398"; top: 3px; font-size: 16px; }
 .reason-icon:before        { .fi; content: "\ea1d"; top: 3px; }
+.reasonstudios-icon:before { .fi; content: "\eb44"; top: 2px; }
 .rebol-icon:before         { .fi; content: "\e9ae"; top: 1px; font-size: 13px; }
 .red-icon:before           { .fi; content: "\eaec"; top: 3px; font-size: 16px; }
 .redux-icon:before         { .fi; content: "\ea30"; top: 2px; }
@@ -688,21 +803,29 @@
 .regex-icon:before         { .fi; content: "*";     top: 1px; font-size: 12px; left: 1px; }
 .remark-icon:before        { .fi; content: "\eb1d"; top: 2px; }
 .renovate-icon:before      { .fi; content: "\eb2d"; top: 2px; font-size: 17px; }
+.rescript-icon:before      { .fi; content: "\eba7"; top: 3px; font-size: 16px; }
+.restql-icon:before        { .fi; content: "\ebb0"; top: 2px; font-size: 16px; }
 .rexx-icon:before          { .fi; content: "\ea16"; top: 2px; font-size: 14px; left: 1px; }
 .rhino-icon:before         { .fi; content: "\ea4a"; top: 4px; font-size: 16px; left: 1px; transform: scale(1.1); }
 .ring-icon:before          { .fi; content: "\1f48d";top: 2px; }
 .riot-icon:before          { .fi; content: "\eb2e"; top: 2px; }
+.rmarkdown-icon:before     { .fi; content: "\211b"; top: 3px; font-size: 17px; }
 .robot-icon:before         { .fi; content: "\eb0d"; top: 2px; }
 .robots-icon:before        { .fi; content: "\1f916";top: 2px; }
 .rollup-icon:before        { .fi; content: "\ea20"; top: 2px; }
 .rspec-icon:before         { .fi; content: "\ea31"; top: 3px; font-size: 16px; }
 .rst-icon:before           { .fi; content: "\e9cc"; top: 3px; font-size: 16px; }
 .rstudio-icon:before       { .fi; content: "\24c7"; top: 2px; }
+.rsync-icon:before         { .fi; content: "\eb9e"; top: 3px; font-size: 17px; transform: scale(1.1); }
 .rubocop-icon:before       { .fi; content: "\eade"; top: 2px; }
+.rubygems-icon:before      { .fi; content: "\1f48e";top: 3px; font-size: 17px; }
+.sac-icon:before           { .fi; content: "\203c"; top: 3px; font-size: 16px; }
 .sage-icon:before          { .fi; content: "\e9ab"; top: 3px; font-size: 16px; .thicken; }
+.sails-icon:before         { .fi; content: "\eb87"; top: 2px; }
 .saltstack-icon:before     { .fi; content: "\e915"; top: 2px; font-size: 14px; }
 .sas-icon:before           { .fi; content: "\e95a"; top: 2px; }
 .san-icon:before           { .fi; content: "\eae6"; top: 2px; }
+.sandbox-icon:before       { .fi; content: "\ebb1"; top: 3px; font-size: 16px; }
 .sbt-icon:before           { .fi; content: "\e9d2"; top: 2px; font-size: 14px; }
 .scad-icon:before          { .fi; content: "\e911"; top: 2px; font-size: 14px; }
 .scd-icon:before           { .fi; content: "\e9a2"; top: 2px; }
@@ -712,11 +835,13 @@
 .scratch-icon:before       { .fi; content: "\a7";   top: 2px; }
 .scrutinizer-icon:before   { .fi; content: "\e9d4"; top: 2px; font-size: 14px; }
 .self-icon:before          { .fi; content: "\e9a8"; top: 3px; font-size: 16px; .sharpen; transform: scale(1.2); }
+.semrelease-icon:before    { .fi; content: "\1f7cd";top: 2px; font-size: 16px; }
 .sentry-icon:before        { .fi; content: "\eb1c"; top: 3px; font-size: 16px; }
 .serverless-icon:before    { .fi; content: "\eab8"; top: 2px; }
 .sequelize-icon:before     { .fi; content: "\ea2f"; top: 3px; font-size: 16px; }
 .sf-icon:before            { .fi; content: "\e9db"; top: 2px; }
 .sgi-icon:before           { .fi; content: "\2318"; top: 2px; }
+.shadowcljs-icon:before    { .fi; content: "\eb88"; top: 2px; font-size: 16px; .thicken; }
 .shen-icon:before          { .fi; content: "\e9a7"; top: 2px; font-size: 16px; }
 .shipit-icon:before        { .fi; content: "\26f5"; top: 2px; font-size: 16px; transform: scale(1.1); }
 .shippable-icon:before     { .fi; content: "\ea2d"; top: 2px; }
@@ -731,10 +856,14 @@
 .slash-icon:before         { .fi; content: "\e9a6"; top: 2px; }
 .snapcraft-icon:before     { .fi; content: "\eb09"; top: 3px; font-size: 16px; }
 .snort-icon:before         { .fi; content: "\1f43d";top: 3px; font-size: 17px; }
+.snowpack-icon:before      { .fi; content: "\1f3d4";top: 2px; }
 .snyk-icon:before          { .fi; content: "\ea1c"; top: 2px; font-size: 16px; }
 .solidarity-icon:before    { .fi; content: "\1d5e6";top: 2px; }
 .solidity-icon:before      { .fi; content: "\ea86"; top: 2px; }
+.sophia-icon:before        { .fi; content: "\eb72"; top: 3px; font-size: 17px; }
 .sorbet-icon:before        { .fi; content: "\1f366";top: 2px; font-size: 16px; }
+.source-icon:before        { .fi; content: "\eb82"; top: 2px; }
+.spacengine-icon:before    { .fi; content: "\29cf"; top: 2px; .sharpen; }
 .spacemacs-icon:before     { .fi; content: "\eaa4"; top: 2px; }
 .sparql-icon:before        { .fi; content: "\e959"; top: 2px; }
 .sqf-icon:before           { .fi; content: "\e9a5"; top: 1px; .sharpen; }
@@ -742,12 +871,15 @@
 .squarespace-icon:before   { .fi; content: "\ea5e"; top: 2px; }
 .stan-icon:before          { .fi; content: "\e9a4"; top: 2px; }
 .stata-icon:before         { .fi; content: "\e9a3"; top: 2px; }
+.stdlibjs-icon:before      { .fi; content: "\eb70"; top: 2px; }
 .stencil-icon:before       { .fi; content: "\ea95"; top: 2px; }
+.stitches-icon:before      { .fi; content: "\eba0"; top: 2px; font-size: 16px; .sharpen; }
 .storyist-icon:before      { .fi; content: "\e9ef"; top: 2px; font-size: 16px; }
 .strings-icon:before       { .fi; content: "\e9e0"; top: 2px; }
 .stylable-icon:before      { .fi; content: "\eae0"; top: 2px; }
 .storybook-icon:before     { .fi; content: "\eadf"; top: 2px; font-size: 16px; }
 .stylelint-icon:before     { .fi; content: "\e93d"; top: 2px; }
+.stylishhaskell-icon:before{ .fi; content: "\eb3d"; top: 3px; font-size: 16px; }
 .stylus-icon:before        { .fi; content: "s";     top: 2px; left: 1px; }
 .sublime-icon:before       { .fi; content: "\e986"; top: 2px; }
 .svelte-icon:before        { .fi; content: "\33dc"; top: 3px; font-size: 16px; }
@@ -762,6 +894,8 @@
 .terminal-icon:before      { .fi; content: "\f0c8"; top: 2px; font-size: 14px; }
 .tern-icon:before          { .fi; content: "\1f54a";top: 4px; font-size: 16px; }
 .terraform-icon:before     { .fi; content: "\e916"; top: 1px; font-size: 14px; }
+.terser-icon:before        { .fi; content: "\272c"; top: 2px; }
+.testcafe-icon:before      { .fi; content: "\2714"; top: 3px; font-size: 17px; }
 .test-coffee-icon:before   { .fi; content: "\ea62"; .test-file; }
 .test-dir-icon:before      { .fi; content: "\ea60"; top: 2px; }
 .test-generic-icon:before  { .fi; content: "\ea63"; .test-file; }
@@ -779,12 +913,14 @@
 .textmate-icon:before      { .fi; content: "\2122"; top: 2px; font-size: 16px; }
 .tfs-icon:before           { .fi; content: "\eae1"; top: 3px; }
 .thor-icon:before          { .fi; content: "\e9d8"; top: 2px; }
+.tilt-icon:before          { .fi; content: "\eb8a"; top: 2px; }
 .tipe-icon:before          { .fi; content: "\eaa9"; top: 3px; font-size: 16px; }
 .tla-icon:before           { .fi; content: "\eab2"; top: 2px; }
 .tmux-icon:before          { .fi; content: "\ea8c"; top: 2px; }
 .toml-icon:before          { .fi; content: "\1f143";top: 2px; }
 .tortoise-icon:before      { .fi; content: "\ea93"; top: 3px; font-size: 17px; transform: scale(1.15); }
 .totvs-icon:before         { .fi; content: "\eb34"; top: 2px; }
+.truffle-icon:before       { .fi; content: "\eb3b"; top: 2px; }
 .ts-icon:before            { .fi; content: "\2a6";  top: 1px; font-size: 14px; }
 .tsx-icon:before           { .fi; content: "\e9e7"; top: 1px; font-size: 14px; }
 .tt-icon:before            { .fi; content: "T";     top: 2px; }
@@ -795,14 +931,17 @@
 .txl-icon:before           { .fi; content: "\e9c1"; top: 2px; }
 .typedoc-icon:before       { .fi; content: "\e9fe"; top: 2px; }
 .typings-icon:before       { .fi; content: "\e9df"; top: 2px; }
+.ufo-icon:before           { .fi; content: "\1f144";top: 2px; font-size: 16px; .sharpen; }
 .unbeautify-icon:before    { .fi; content: "\eac4"; top: 2px; font-size: 16px; .sharpen; }
+.unicode-icon:before       { .fi; content: "\eb6e"; top: 2px; }
 .uno-icon:before           { .fi; content: "\e9b3"; top: 2px; }
 .unreal-icon:before        { .fi; content: "u";     top: 2px; }
 .urweb-icon:before         { .fi; content: "\e9ba"; top: 4px; font-size: 18px; left: -1px; .sharpen; }
-.v-icon:before             { .fi; content: "v";     top: 2px; font-size: 16px; }
+.v-icon:before             { .fi; content: "v";     top: 2px; }
 .v8-icon:before            { .fi; content: "\ea1f"; top: 3px; font-size: 16px; }
 .v8-turbofan-icon:before   { .fi; content: "\eaac"; top: 3px; font-size: 17px; }
 .vagrant-icon:before       { .fi; content: "V";     top: 2px; font-size: 14px; }
+.vala-icon:before          { .fi; content: "\1d4b1";top: 2px; }
 .varnish-icon:before       { .fi; content: "\e9b4"; top: 1px; font-size: 14px; }
 .velocity-icon:before      { .fi; content: "\2b94"; top: 3px; font-size: 17px; transform: scale(1.1); }
 .verilog-icon:before       { .fi; content: "\e949"; top: 2px; }
@@ -810,15 +949,20 @@
 .vhdl-icon:before          { .fi; content: "\e9aa"; top: 2px; }
 .video-icon:before         { .fi; content: "\f057"; top: 1px; font-size: 14px; }
 .virtualbox-icon:before    { .fi; content: "\ea3e"; top: 2px; font-size: 16px; }
+.vite-icon:before          { .fi; content: "\2607"; top: 2px; font-size: 16px; }
 .visio-icon:before         { .fi; content: "\ea83"; top: 2px; }
 .vmware-icon:before        { .fi; content: "\ea49"; top: 3px; font-size: 16px; .sharpen; }
+.vray-icon:before          { .fi; content: "\24cb"; top: 3px; font-size: 16px; }
 .vue-icon:before           { .fi; content: "\e906"; top: 3px; }
 .vyper-icon:before         { .fi; content: "\eb31"; top: 3px; font-size: 16px; }
 .vsts-icon:before          { .fi; content: "\eac0"; top: 3px; font-size: 16px; left: -1px; }
+.w3c-icon:before           { .fi; content: "\ebac"; top: 4px; font-size: 18px; }
 .wallaby-icon:before       { .fi; content: "\231f"; top: 2px; }
 .walt-icon:before          { .fi; content: "\eaba"; top: 3px; font-size: 16px; }
+.warcraft3-icon:before     { .fi; content: "\2162"; top: 3px; font-size: 16px; }
 .wasm-icon:before          { .fi; content: "\ea70"; top: 2px; }
 .watchman-icon:before      { .fi; content: "\ea4f"; top: 2px; }
+.wenyan-icon:before        { .fi; content: "\8a00"; top: 3px; font-size: 17px; }
 .wdl-icon:before           { .fi; content: "\eab1"; top: 2px; }
 .webgl-icon:before         { .fi; content: "\ea7b"; top: 3px; font-size: 18px; transform: scale(1.1); }
 .webhint-icon:before       { .fi; content: "\eb35"; top: 2px; font-size: 16px; }
@@ -826,23 +970,30 @@
 .webvtt-icon:before        { .fi; content: "\eb24"; top: 4px; font-size: 16px; transform: scale(1.1); }
 .wercker-icon:before       { .fi; content: "\ea19"; top: 2px; }
 .wget-icon:before          { .fi; content: "\eb38"; top: 2px; }
+.wine-icon:before          { .fi; content: "\1f377";top: 3px; font-size: 16px; transform: scale(1.1); }
+.winui-icon:before         { .fi; content: "\ebb7"; top: 2px; font-size: 16px; }
 .wix-icon:before           { .fi; content: "\eab0"; top: 3px; font-size: 16px; }
+.wolfram-icon:before       { .fi; content: "\1f43a";top: 3px; font-size: 17px; }
 .word-icon:before          { .fi; content: "\e9ed"; top: 2px; }
 .workbox-icon:before       { .fi; content: "\eaa8"; top: 2px; }
 .wurst-icon:before         { .fi; content: "\1f32d";top: 2px; font-size: 16px; }
 .xamarin-icon:before       { .fi; content: "\ea77"; top: 2px; }
 .x10-icon:before           { .fi; content: "\2169"; top: 2px; }
+.xmake-icon:before         { .fi; content: "\eb94"; top: 3px; }
 .xmos-icon:before          { .fi; content: "X";     top: 1px; font-size: 14px; }
 .xojo-icon:before          { .fi; content: "\e9af"; top: 2px; }
 .xpages-icon:before        { .fi; content: "\e9c5"; top: 2px; }
 .xtend-icon:before         { .fi; content: "\e9c6"; top: 2px; }
 .yaml-icon:before          { .fi; content: "y";     top: 2px; }
+.yamllint-icon:before      { .fi; content: "\eb9d"; top: 3px; font-size: 16px; }
 .yandex-icon:before        { .fi; content: "\42f";  top: 2px; }
 .yang-icon:before          { .fi; content: "\262f"; top: 2px; }
 .yara-icon:before          { .fi; content: "\ea9f"; top: 2px; }
 .yarn-icon:before          { .fi; content: "\ea1a"; top: 2px; font-size: 16px; }
+.yorick-icon:before        { .fi; content: "\1f480";top: 2px; }
 .yui-icon:before           { .fi; content: "\ea00"; top: 2px; }
 .zbrush-icon:before        { .fi; content: "\e9f2"; top: 2px; font-size: 16px; }
+.zeit-icon:before          { .fi; content: "\25B2"; top: 2px; }
 .zephir-icon:before        { .fi; content: "\e9c7"; top: 2px; .thicken; }
 .zig-icon:before           { .fi; content: "z";     top: 3px; font-size: 16px; }
 .zimpl-icon:before         { .fi; content: "\e9c8"; top: 2px; font-size: 16px; left: 1px; }

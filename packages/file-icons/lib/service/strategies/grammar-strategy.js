@@ -12,21 +12,8 @@ class GrammarStrategy extends Strategy {
 			name:         "grammar",
 			priority:     7,
 			matchesFiles: true,
-			matchesDirs:  false
+			matchesDirs:  false,
 		});
-	}
-	
-	
-	// HACK: See https://github.com/file-icons/atom/issues/704#issuecomment-367167526
-	// TODO: Delete this once the minimum required Atom version is bumped past 1.24.0
-	enable(){
-		switch(atom.getVersion().replace(/^v/i, "").toLowerCase()){
-			case "1.24.0":
-			case "1.25.0-beta0":
-				if(!atom.inSpecMode())
-					return false;
-		}
-		return super.enable();
 	}
 	
 	

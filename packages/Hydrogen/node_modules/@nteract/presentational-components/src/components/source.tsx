@@ -40,7 +40,11 @@ class BareSource extends React.Component<SourceProps> {
   }
 }
 
-export const Source = styled(BareSource)<SourceProps>``;
+export const Source = styled(BareSource)<SourceProps>`
+  width: 100%;
+  width: -webkit-fill-available;
+  width: -moz-available;
+`;
 
 Source.defaultProps = {
   children: "",

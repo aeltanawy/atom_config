@@ -3,7 +3,190 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.36...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.47...HEAD
+
+
+[v2.1.47] - 2021-03-12
+----------------------
+### Added
+- **New icons:** CASC (`.casc`, `.cas`), CNAB (`cnab` directories), Commitizen (`.cz.{json,toml,yaml}`), Fiddle, Laravel (updated logo), Vite (`vite.config.{js,ts}`)
+- **Support:** Config (`.git/info/*-*`, `.kys`), Databases (`index.{bt,db,dir,pag}`, `language-subtag-registry{,.txt}`, `nametable`, `whatis`), Electron (`{,*.}forge.config.js`), Makefile (`justfile`), PostScript (`.bez`, `fontinfo`), PyPi (`{dev,{doc,test}{,s}}-requirements.{in,txt}`, `requirements-{dev,{doc,test}{,s}}.{in,txt}`), Scheme (`.xtm`)
+
+### Fixed
+- Icons of symlinked projects that aren't Git repositories
+- [[`#841`][]]: `requirements.txt` showing [Binder][] icon instead of PyPi's
+- [[`#843`][]]: Breakage in Atom 1.56.0 caused by mixed BigInt comparisons
+- [[`github/linguist#5271`][]]: Inaccuracies related to modeline matching
+
+[v2.1.47]: https://github.com/file-icons/atom/releases/tag/v2.1.47
+[`github/linguist#5271`]: https://github.com/github/linguist/pull/5271
+[`#841`]: https://github.com/file-icons/atom/issues/841
+[`#843`]: https://github.com/file-icons/atom/issues/843
+[Binder]: https://mybinder.org/
+
+
+
+[v2.1.46] - 2020-12-14
+----------------------
+### Added
+- **Support:** Config (`.ldif`, `pf.os`, `rpc`), Houdini (`.vfl`), Readme (`sudo_lecture`), Shell (`*rc_Apple_Terminal`)
+
+### Fixed
+- Icons of symlinked Git repositories
+- Missing restQL icon
+
+[v2.1.46]: https://github.com/file-icons/atom/releases/tag/v2.1.46
+
+
+
+[v2.1.45] - 2020-12-08
+----------------------
+### Added
+- **New icons:** Automator (`.workflow`, `.action`, `.cation`, `.definition`), Grapher (`.gcx`), Houdini (`.hipnc`, `.hip`, `.i3d`, `.picnc`), MetaPost (`.mp`, `.mf`), NgRx, OmniGraffle (`.graffle`, `.gdiagramstyle`, `.gstencil`, `.gtemplate`), restQL (`.rql`, `.restql`, `restql.yml`), Sandbox (`.sb`), WinUI (`.baml`, `.xaml`), Wolfram (`.wl`, `.wls`, `.wlt`)
+- **Support:** BibTeX (`.bbl`), Config (`.mcf`), Databases (`eign`, `term/tab.*`, `nterm/tab.{X,lpr}`), Fonts (`.dfont`, `.tfm`), GNU (`{A,L,}GPL*`), Images (`.avif`, `.heif`, `.heifs`, `.hif`), Lex (`.lx`), macOS Libraries (`.bundle`, `.ccl`, `.component`, `.framework`, `.kext`, `.mdimporter`, `.osax`, `.{osirix,}plugin`, `.qlgenerator`), Makefile (`contrib.mak-*`), Nokogiri (`.nokogirirc`), PostScript (`Fontmap`), Printer (`.joboptions`), Readme (`.yo`), Tag (`VERSION`)
+
+### Fixed
+- Editors blocked from opening when `atom-fs` misidentifies filetype
+
+[v2.1.45]: https://github.com/file-icons/atom/releases/tag/v2.1.45
+
+
+
+[v2.1.44] - 2020-11-02
+----------------------
+### Added
+- **New icons:** Awk (`.auk`, `.{g,m,n,}awk`), Binder (`{dev-,}requirements.txt`), Blitz BASIC (`.bb`, `.decls`), Bloc (`bloc` directories), Bors (`bors.toml`), Buildkite (`.buildkite` directories), Calva (`*.calva-repl`), DUB (`.dub` directories, `dub{.selections,}.{json,sdl}`), Fauna (`.faunarc`, `.fql`), Gitpod (`.gitpod.yml`), GraphQL Code Generator (`codegen.{json,yaml,yml}`), Haskell IDE Engine (`hie.yaml*`), Kibo (`.hypr`, `.hypr.live`), Lark (`.lark`), Modern Web (`web-{dev-server,test-runner}.config.{cjs,js,mjs,ts}`), Nokogiri, NumPy (Updated branding), NWScript (`.ncs`, `.ndb`, `.nss`), Ogone (`.o3`, `.ogone`), pytest (`pytest.ini`), Read the Docs (`readthedocs.yml`), ReScript (`.resi`), RubyGems (`.gemspec`), Snowpack (`snowpack.config.{cjs,js,json,mjs,ts}`), Spacengine (`.spe`), Stitches (`stitches.config.{cjs,js,mjs,ts}`), W3C (`w3c.json`), Warcraft III (`.jass`, `.wc3`, `.zn`)
+- **Support:** 3D assets (`.p21`, `.step`, `.stp`), Archive (`.hak`), Bazel (`.bazel`), Bitcoin (`.bitcoin` directories, `bitcoin.conf`), Config: Python (`MANIFEST.in`), Config: Ruby (`.autotest`, `.cross_rubies`, `.gemtest`, `.hoerc`, `.kick`, `.simplecov`, `.yardopts*`), Config (`.sdl`, `.sdlang`), Database (`.2da`), Grammar (`.cf`, `.lbnf`), LabVIEW (`.lvlib`), NuGet (`.nupkg`, `.psmdcp`, `.snupkg`), NumPY (`.npy`, `.npz`), Prettier (`.prettierrc.json5`), Python (`py.typed`), Ruby (`Gemfile_*`)
+- Improved recognition of test-files by `test_` prefix (e.g., `test_foo.py` and `test-bar.rb`)
+- Improved recognition of `dockerfile` in modelines; previously, only `docker` was recognised
+- `runghc` and `runhugs` as recognised Haskell interpreters
+
+### Changed
+- `.python-version` now shows a Python config-icon
+- `.simplecov` and `.yardopts` now show Ruby config-icons
+- `.jsbeautifyrc`, `.jshintrc` and `.jscsrc` now show JavaScript config-icons
+
+[v2.1.44]: https://github.com/file-icons/atom/releases/tag/v2.1.44
+
+
+
+[v2.1.43] - 2020-09-19
+----------------------
+### Added
+- **New icons:** Apollo (`apollo.config.js`), For the Record (`.trm`), OpenEXR (`.exr`), OpenZFS (`vdev{0..9}`), rsync (`rsyncd.conf`), V-Ray (`.vrimg`), Wine (`.wine`), YAMLLint (`.yamllint`)
+- **Support**: CoffeeScript (`.coffee.md`), Config: Python (`poetry.lock`), Generic (`.asl`, `.dsl`), GraphQL (`graphql.config.js`, `.graphqlrc{,.{json,js,yaml,yml}}`), Lex (`lexer.x`), NGINX (`.nginx`), Ruby (`.simplecov`), Table of Contents (`.listing`), VimL (`.exrc`, `.nexrc`)
+- Improved recognition for Unicode database files
+
+[v2.1.43]: https://github.com/file-icons/atom/releases/tag/v2.1.43
+
+
+
+[v2.1.42] - 2020-07-25
+----------------------
+### Added
+- **New icons:** API Extractor (`api-extractor{,-base}.json`), Bosque (`.bsq`), Cubit (`cubit{,s}` directories), draw.io (`*.{drawio,dio}.{png,svg}`, `.drawio.*`), DVC (`.dvc` directories), Fabric (`fabric.mod.json`), ftHTML (`.fthtml`), Hygen (`.ejs.t`), Kusto (`.csl`, `.kusto`), jscpd (`jscpd-report.{xml,html,json}`, `.jscpd.json`), Latino (`.lat`), LGTM (`lgtm.yml`), Lighthouse (`{.,}lighthouserc.{yaml,yml,js,json}`), LINQPad (`.linq`), Nx (`nx.json`), Q\# (`.qs`), Rmarkdown (`.rmd`, `.rmarkdown`), TestCafe (`.testcaferc.json`), xmake (`xmake.lua`)
+- **Support:** Config: JS (`.eshost-config.json`, `.eshost.json`), Dependabot (`dependabot.yml`), Fortran (`.pfo`), Generic (`.ssmssln`), Grammar (`.cddl`), Husky (`.huskyrc.yml`, `.huskyrc.yaml`), OpenVMS (`.cld`, `.com`), Qt (`installscript.qs`, `toolchain_installscript.qs`), Vercel (`.vercelignore`, `vercel.json`)
+
+### Changed
+- [[`#818`][]]: Renamed `Zeit` entry to `Vercel`
+- [`.bats`][] tests now display a [test-icon][] instead of terminal-icon
+
+### Fixed
+- [`daa9906`][] not applying to shell-script tests
+- Inconsistent icons for JavaScript tests with `.mjs` and `.cjs` extensions
+- `PKGBUILD` using Shell instead of using Arch Linux icon
+
+[v2.1.42]:   https://github.com/file-icons/atom/releases/tag/v2.1.42
+[test-icon]: https://github.com/file-icons/icons/blob/76bd3c4f8b5be540b47771b0d53e6a435425c4c2/svg/Test-Generic.svg
+[`daa9906`]: https://github.com/file-icons/atom/commit/daa9906fb4a0627c996f70dae96d060fd273a34d
+[`#818`]:    https://github.com/file-icons/atom/issues/818
+[`.bats`]:   https://github.com/bats-core/bats-core
+
+
+
+[v2.1.41] - 2020-05-09
+----------------------
+### Added
+- **New icons:** CodeMeta (`codemeta.json`), CommitLint (`commitlint.config.js`, `.commitlintrc.{js,json,yml}`), CpcdosC+ (`.cpc`), Dafny (`.dfy`, `.dafny`), GoReleaser (`.goreleaser.yml`), Homebrew (`Brewfile`), Hugo, Kaitai (`.ksy`), Macaulay2 (`.m2`), Mermaid (`.mmd`, `.mermaid`), NEON (`.neon`), Tilt (`Tiltfile`)
+- **Support:** Archive (`.hqx`), C (`share/misc/getopt{,s}{0..9}`), Config (`shells`), Database (`.cbor`, `birthtoken`, `flowers`), FontForge (`.ff`), Inno Setup (`.isl`), Markdown (`.jmd`), OpenBSD package data (`+CONTENTS`, `+DESC`, `+DISPLAY`), Roff (`{man,mdoc}.template`), Sieve (`.sieve`), Starlark (`.star`), Test, Shell (`-{spec,test}{,s}.sh`), TeX (`.texinfo`, `.txi`), Text (`.lcov`, `share/misc/{operator,mail.{help,tildehelp}}`), Unit databases (`.units`, `units.lib`, `.units_history`), Unreal (`.uasset`)
+
+### Changed
+- Changed `brew-icon` to use Homebrew logo
+- `.m2` extension now associated with [Macaulay2][] instead of [Modula-2][]
+- `.cpc` extension now associated with [CpcdosC+][] instead of [Cartesian Perceptual Compression][CPC]
+- [[`#812`][]]: Hashbang strategy now recognises test-files
+- Renamed `Bazel` entry to `Starlark`
+- UnrealScript files now coloured grey
+
+[v2.1.41]:   https://github.com/file-icons/atom/releases/tag/v2.1.41
+[`#812`]:    https://github.com/file-icons/atom/issues/812
+[CPC]:       https://en.wikipedia.org/wiki/Cartesian_Perceptual_Compression
+[CpcdosC+]:  https://cpcdos.net/
+[Macaulay2]: https://en.wikipedia.org/wiki/Macaulay2
+[Modula-2]:  https://en.wikipedia.org/wiki/Modula-2
+
+
+
+[v2.1.40] - 2020-03-31
+----------------------
+### Added
+- **New icons:** DevContainer (`devcontainer.json`, `.devcontainer` directories), Fork (`.issuetracker`), Lefthook (solid-filled variant), Nickle (`.5c`), Nimble (`.nimble`), OpenQASM (`.qasm`), PNPM (`pnpm-{lock,workspace}.yaml`, `pnpmfile.js`), Sails (`.sailsrc`), Shadow CLJS (`shadow-cljs.edn`), Valve Source Engine (`.bsp`, `.vpk`, `.vtfx`, `.vmt`, `.vtf`, `.vmf`, `.res`), ZenScript (`.zs`, `.zsrc.json`)
+- **Support:** Atom (`.apmrc`, `apmrc`), Config: Rust (`rust-toolchain`), Godot (`.godot`, `.import`, `.tres`, `.tscn`), Jest (`.snap`, `jest.config.babel.*`), Squirrel (`.gnut`)
+- [[`#721`][]]: Colour variations for JavaScript test files
+- [[`#67`][]]: Support for `cjs` and `mjs` config files
+
+### Changed
+- Lefthook icon to use solid-filled variant
+- Modeline strategy now also checks second line
+
+[v2.1.40]: https://github.com/file-icons/atom/releases/tag/v2.1.40
+[`#721`]:  https://github.com/file-icons/atom/issues/797
+[`#67`]:   https://github.com/file-icons/icons/issues/67
+
+
+
+[v2.1.39] - 2020-02-07
+----------------------
+### Added
+- **New icons:** 4D (`.4dm`), A+ (`.a+`, `.+`), Agda (`.agda`, `.lagda`), Analytica (`.ana`), Bison (`.bison`, `.y`, `.yacc`, `.yy`), C#, C++, Cuneiform (`.cfl`), Curl (language), Curry (`.curry`), ECLiPSe (`.ecl`), Expo (`.expo{,-shared}` directories), Futhark (`.fut`), Galaxy (`galaxy.ini`), GAUSS (`.gss`), Hop (`.hop`), KNIME, Lefthook (`lefthook{,-local}.yml`), Lex (`.l`, `.lex`, `.flex`), Mono, Nemerle, Nessus (`.nasl`), Next.js (`next.config.js`), OpenStack, Pure (`.pure`), SAC (`.sac`), Semantic Release (`.releaserc{,.js,.json,.yaml,.yml}`), Sophia (`.aes`), Stdlib.js (`stdlib-*{.js,.js.gz}`), UFO (`*.ufo` directories), Unicode (`UNIDATA/*.txt`, `UnicodeData.txt`), Vala (`.vala`, `.vapi`), Wenyan (`.wy`)
+- **Support:** ESLint (`.eslintrc.{cjs,mjs}`), Grunt (`gruntfile*.{cjs,jsx,mjs,ts,tsx}`), Gulp (`gulpfile*.{cjs,jsx,mjs,ts,tsx}`), Lasso (`.lassoapp`), Lua (`lakefile`, `.rockspec`, `.luacheckrc`), Jest (`.jestrc{,.*}`, `jest.config.{cjs,jsx,mjs,ts,tsx}`), Python config (`pyproject.toml`), Webpack (`webpack*.{cjs,mjs,coffee}`), WiX (`.wix`), Yarn (`.yarn` directories)
+- **Interpreter recognition:** JavaScript ([`slimerjs`][])
+- Colour variations for PL/SQL files
+
+[v2.1.39]:    https://github.com/file-icons/atom/releases/tag/v2.1.39
+[`slimerjs`]: https://slimerjs.org/
+
+
+
+[v2.1.38] - 2020-01-11
+----------------------
+### Added
+- **New icons:** Adobe, Adobe Acrobat, Adobe Animate (`.fla`), Adobe Audition, Adobe Bridge, Adobe CC, Adobe Character Animator, Adobe Dimension, Adobe Dreamweaver, Adobe Flash, Adobe Fuse, Adobe InCopy, Adobe Lightroom, Adobe Media Encoder, Adobe Prelude, Adobe Rush, Adobe XD, AGC, AMD, ARM, Assembly: AGC (`.agc`), Assembly: AMD, Assembly: ARM (`.arm`), Assembly: ATT, Assembly: AVR (`.avr`), Assembly: Generic (`.a`, `.i`, `.s`, `.asm`, `.a51`), Assembly: Hitachi (`.h8s`, `.h8sx`, `.h8300`), Assembly: Intel (`.x86`, `.x64`, `.i32`, `.i64`, `.i386`), Assembly: Motorola (`.m68k`, `.lst`), Assembly: PowerPC, Assembly: RISCV, Assembly: SPARC, Assembly: VAX (`.vax`, `.vasm`), Assembly: Zilog (`.z80`, `.PLX`, `.PLXCOPY`), ATT/Bell Labs, AVR, Cheetah3D (`.jas`), Computable Document Format (`.cdf`), Dhall (`.dhall`), DocBook (`.dbk`, `.docbook`), Final Draft (`.fdx`), GenStat (`.gen`, `.gpi`), Hitachi, Intel, LilyPond (`.ly`, `.ily`), Modo (`.lxo`), Motorola, PowerPC, R database (`.Rdata`, `.rdb`, `.rds`, `.rdx`), Reason Studios (`.reason`, `.rns`, `.rsn`, `.rx2`, `.sxt`), RISC-V, SPARC, VAX, Yorick (`.yorick`), Zilog
+- **Support:** 3D asset (`.c4d`, `.dwg`, `.dxf`, `.jas`, `.lxo`, `.ply`), Audio (`.it`, `.s3m`, `.sndh`), Ballerina (`.balx`), BibTeX (`.bibtex`), Binary (`.pyd`), COLLADA (`.collada`), Compressed (`.dsk`, `.ear`), Config (`.cnf`), Database (`.dbi`, `.od`, `.onlydata`), Dephi (`.dof`), Generic code (`.jspx`, `.tagx`), Generic test (`t/[0-9]-*.sh`), Handlebars (`.hbt`), Help file (`.chm`, `.hlp`), HTML (`.jspf`), Image (`.jng`, `.wbmp`), Java (`.class`), JavaScript test (`*-{test,spec}.cjs`, `t/[0-9.]-*.{cjs,mjs,js}`), JSON (`.rsj`), Markdown (`.mdtext`, `.mdtxt`), MATLAB (`.mdlp`, `.mltbx`, `.mn`, `.mlappinstall`, `.mlpkginstall`, `.sldd`, `.slx`, `.slxp`), Pascal (`.lfm`, `.lpi`, `.lpk`, `.lps`, `.lrs`, `.lrt`, `.or`, `.ppu`), PHP (`.engine`, `.phar`), Pickle (`.pickle`), PostScript (`.epsf`, `.epsi`), Python (`.pyz`), Readme (`COPYRIGHT`), Tags (`.tld`), Text (`.stderr`, `.stdout`), Themes (`.theme`), Unity3D (`.cubemap`, `.physic{,s}Material{,2D}`, `.unitypackage`), Video (`.asx`), VSCode (`.dbproj`, `.lsproj`, `.modelproj`, `.vcxitems`)
+
+### Fixed
+- Missing [Ballerina](https://ballerina.io/) icon
+
+[v2.1.38]: https://github.com/file-icons/atom/releases/tag/v2.1.38
+
+
+
+[v2.1.37] - 2019-12-20
+----------------------
+### Added
+- **New icons:** Conda (`.condarc`), Dependabot (`.dependabot` directories), Faust (`.dsp`), Gnuplot, Oberon (`.ob2`), Patreon (`PATRONS.md`), Razzle (`razzle.config.*`), Stylish Haskell (`.stylish-haskell.yaml`), Terser (`.{terserrc,uglifyrc}.*`), Truffle (`truffle.js`), WASI, Zeit (`now.json`, `.nowignore`)
+- **Support:** Firestore (`firestore.indexes.json`), Gridsome (`gridsome.{client,server}.*`), JavaScript (`**/cartridge/scripts/**/*.ds`), JSON (`.jsonc`), Ledger (`.ledger`, `.hledger`, `.journal`), Mocha (`.mocharc.{jsonc,cjs,mjs}`), Modernizr (`.modernizr{,rc}.js`), Raku (`.raku`, `.rakumod`, `.rakutest`), Shell (`.dircolors`, `dircolors`), VSCode (`.code-workspace`), YAML (`.yaml.mysql`, `.yaml.sed`)
+- **Interpreter recognition:** JavaScript ([`gjs`][], [`mujs`][], [`qjs{,bn,bnc,c}`][QuickJS]), WebAssembly ([`wasmtime`][])
+
+### Changed
+- Renamed Perl 6 to Raku
+
+[v2.1.37]:    https://github.com/file-icons/atom/releases/tag/v2.1.37
+[`gjs`]:      https://gitlab.gnome.org/GNOME/gjs/wikis/Home
+[`mujs`]:     https://www.mujs.com/
+[`wasmtime`]: https://wasmtime.dev/
+[QuickJS]:    https://bellard.org/quickjs/
+
 
 
 [v2.1.36] - 2019-10-19

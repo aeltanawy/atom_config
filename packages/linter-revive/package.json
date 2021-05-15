@@ -1,29 +1,29 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball",
-  "_id": "linter-revive@0.6.0",
+  "_from": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball",
+  "_id": "linter-revive@1.0.0",
   "_inBundle": false,
-  "_integrity": "sha512-dIHg3Otr8llTLBge7581gJKBgV+ov+PaW/IlcmPM9JXoH7Exu6EXb1s/Xy6nfGExadzElbR3LSewv2M45lMrhw==",
+  "_integrity": "sha512-RNEpBTNTL87g+pMTIHDcQAk5q2cf382NP96UAdcbIj40KrmnoPBgXlmOho2KBKK0BnzgyCL/GrJwn4JNbYxm4A==",
   "_location": "/linter-revive",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball",
-  "_shasum": "56585942bfded8e5e5fc2db47ebeba0ddb293acb",
-  "_spec": "https://www.atom.io/api/packages/linter-revive/versions/0.6.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99306-si9zys.0m12m",
+  "_resolved": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball",
+  "_shasum": "7d1992eab2edf522f6fbdd4cf89ae7755696d243",
+  "_spec": "https://www.atom.io/api/packages/linter-revive/versions/1.0.0/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21559-1toplbj.q4x",
   "author": {
     "name": "Markus Wiegand",
-    "email": "mail@morphy2k.io",
-    "url": "https://morphy2k.io"
+    "email": "mail@morphy2k.dev",
+    "url": "https://morphy2k.dev"
   },
   "bugs": {
     "url": "https://github.com/morphy2k/linter-revive/issues"
@@ -63,19 +63,18 @@
       }
     }
   },
-  "contributors": "https://github.com/morphy2k/linter-revive/graphs/contributors",
   "dependencies": {
-    "atom-package-deps": "^5.1.0",
-    "execa": "^2.0.4"
+    "atom-package-deps": "^7.0.2",
+    "execa": "^4.1.0"
   },
   "deprecated": false,
   "description": "Lint Go files, using Revive",
   "devDependencies": {
-    "eslint": "^6.2.2",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint": "^7.13.0",
+    "eslint-plugin-import": "^2.22.1"
   },
   "engines": {
-    "atom": ">=1.4.0 <2.0.0"
+    "atom": ">=1.39.0 <2.0.0"
   },
   "eslintConfig": {
     "env": {
@@ -141,7 +140,10 @@
   "main": "./lib/main",
   "name": "linter-revive",
   "package-deps": [
-    "linter:2.0.0"
+    {
+      "name": "linter",
+      "minimumVersion": "2.0.0"
+    }
   ],
   "providedServices": {
     "linter": {
@@ -159,5 +161,5 @@
     "pretest": "npm run lint",
     "test": "apm test"
   },
-  "version": "0.6.0"
+  "version": "1.0.0"
 }

@@ -1,3 +1,24 @@
+## 2.10.1 - PlatformIO
+
+* Fix an issue with missed pre-built node-pty modules
+
+## 2.10.0 - PlatformIO
+
+* Add setting to disable toolbar buttons (issue #794)
+* Update themes on config changes (issue #793)
+
+## 2.9.4 - PlatformIO
+
+* Add compatibility for Atom Electron 3.x builds
+
+## 2.9.3 - PlatformIO
+
+* Fix broken terminal
+
+## 2.9.2 - PlatformIO
+
+* Add compatibility for Atom 1.39
+
 ## 2.9.1 - PlatformIO
 
 * Add "solarized-light" theme

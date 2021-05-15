@@ -34,14 +34,14 @@ Styleguide menu
 */
 
 .#{$ns}-menu {
-  margin: 0;
-  border-radius: $pt-border-radius;
   background: $menu-background-color;
+  border-radius: $pt-border-radius;
+  color: $pt-text-color;
+  list-style: none;
+  margin: 0;
   min-width: $menu-min-width;
   padding: $half-grid-size;
-  list-style: none;
   text-align: left;
-  color: $pt-text-color;
 }
 
 .#{$ns}-menu-divider {
@@ -60,8 +60,8 @@ Styleguide menu
 
   &::before,
   > .#{$ns}-icon {
-    margin-top: ($menu-item-line-height - $pt-icon-size-standard) / 2;
     color: $pt-icon-color;
+    margin-top: ($menu-item-line-height - $pt-icon-size-standard) / 2;
   }
 
   .#{$ns}-menu-item-label {
@@ -78,13 +78,13 @@ Styleguide menu
   }
 
   // pt-disable always overrides over styles
-  // stylelint-disable declaration-no-important
+  /* stylelint-disable declaration-no-important */
   &.#{$ns}-disabled {
+    background-color: inherit !important;
+    color: $pt-text-color-disabled !important;
+    cursor: not-allowed !important;
     // override global a:focus styles
     outline: none !important;
-    background-color: inherit !important;
-    cursor: not-allowed !important;
-    color: $pt-text-color-disabled !important;
 
     &::before,
     > .#{$ns}-icon,
@@ -92,7 +92,7 @@ Styleguide menu
       color: $pt-icon-color-disabled !important;
     }
   }
-  // stylelint-enable declaration-no-important
+  /* stylelint-enable declaration-no-important */
 
   .#{$ns}-large & {
     @include menu-item-large();
@@ -104,17 +104,17 @@ Styleguide menu
 
     &::before {
       @include pt-icon($pt-icon-size-large);
-      margin-top: ($menu-item-line-height-large - $pt-icon-size-large) / 2;
       margin-right: $menu-item-padding-large;
+      margin-top: ($menu-item-line-height-large - $pt-icon-size-large) / 2;
     }
   }
 }
 
 button.#{$ns}-menu-item {
-  border: none;
   background: none;
-  width: 100%;
+  border: none;
   text-align: left;
+  width: 100%;
 }
 
 /*
@@ -168,7 +168,7 @@ Styleguide menu-header
     }
 
     // pt-disable always overrides over styles
-    // stylelint-disable declaration-no-important
+    /* stylelint-disable declaration-no-important */
     &.#{$ns}-disabled {
       color: $pt-dark-text-color-disabled !important;
 
@@ -178,7 +178,7 @@ Styleguide menu-header
         color: $pt-dark-icon-color-disabled !important;
       }
     }
-    // stylelint-enable declaration-no-important
+    /* stylelint-enable declaration-no-important */
   }
 
   .#{$ns}-menu-divider,

@@ -1,3 +1,32 @@
+## [4.6.5](https://github.com/atom-minimap/minimap-highlight-selected/compare/v4.6.4...v4.6.5) (2021-01-18)
+
+
+### Bug Fixes
+
+* **deps:** bump atom-package-deps from 7.0.3 to 7.1.0 ([#65](https://github.com/atom-minimap/minimap-highlight-selected/issues/65)) ([14d7df4](https://github.com/atom-minimap/minimap-highlight-selected/commit/14d7df4e96c1065c67f444b682051e61e90ed77c))
+
+## [4.6.4](https://github.com/atom-minimap/minimap-highlight-selected/compare/v4.6.3...v4.6.4) (2020-12-14)
+
+
+### Bug Fixes
+
+* **deps:** bump atom-package-deps from 7.0.2 to 7.0.3 ([#56](https://github.com/atom-minimap/minimap-highlight-selected/issues/56)) ([ab4763c](https://github.com/atom-minimap/minimap-highlight-selected/commit/ab4763cf5ff65992febe8cbb8bd839d3bbabef91))
+
+## [4.6.3](https://github.com/atom-minimap/minimap-highlight-selected/compare/v4.6.2...v4.6.3) (2020-12-10)
+
+
+### Bug Fixes
+
+* Optimizations ([#53](https://github.com/atom-minimap/minimap-highlight-selected/issues/53)) ([e76876f](https://github.com/atom-minimap/minimap-highlight-selected/commit/e76876f91b331a57464f9ea72ee82b000c632d6a))
+
+## [4.6.2](https://github.com/atom-minimap/minimap-highlight-selected/compare/v4.6.1...v4.6.2) (2020-11-28)
+
+
+### Bug Fixes
+
+* add minimap as dependency ([c349d21](https://github.com/atom-minimap/minimap-highlight-selected/commit/c349d21968cee637efb33c5691184f1356ef8ba5))
+* decaffeinate ([0264d0d](https://github.com/atom-minimap/minimap-highlight-selected/commit/0264d0d5457faf7d9f0f2d16078943c545ed97cf))
+
 <a name="4.6.1"></a>
 # 4.6.1 (2017-01-12)
 

@@ -5,7 +5,7 @@ The `Input` component is a container component that serves as a container for th
 import { Input } from "@nteract/presentational-components"
 ```
 
-The `Input` component provides a `hidden` prop which you can use to dictate whether or not the children of the container are rendered. The default value is set to `true`, so you'll see the text "You can see this." rendered here.
+The `Input` component provides a `hidden` prop which you can use to dictate whether or not the children of the container are rendered. The default value is set to `false`, so you'll see the text "You can see this." rendered here.
 
 ```
 <Input>
@@ -13,7 +13,7 @@ You can see this.
 </ Input>
 ```
 
-You can also set the prop to `true` to hide all children. Take a look at the code for the component below to see how.
+You can also set the `hidden` prop to `true` to hide all children. Take a look at the code for the component below to see how.
 
 ```
 <Input hidden={true}>

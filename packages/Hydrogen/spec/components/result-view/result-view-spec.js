@@ -3,7 +3,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import ResultViewComponent from "../../../lib/components/result-view/result-view";
+import ResultViewComponent from "../../../dist/components/result-view/result-view";
 
 describe("ResultViewComponent", () => {
   beforeEach(() => {
@@ -20,8 +20,8 @@ describe("ResultViewComponent", () => {
         lineHeight: 0,
         lineLength: 0,
         editorWidth: 0,
-        charWidth: 0
-      }
+        charWidth: 0,
+      },
     };
 
     const mockKernel = {};
@@ -50,8 +50,8 @@ describe("ResultViewComponent", () => {
         lineHeight: 0,
         lineLength: 0,
         editorWidth: 0,
-        charWidth: 0
-      }
+        charWidth: 0,
+      },
     };
 
     const mockKernel = {};

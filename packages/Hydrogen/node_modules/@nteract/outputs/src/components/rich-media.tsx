@@ -103,8 +103,8 @@ export class RichMedia extends React.PureComponent<RichMediaProps, State> {
 
       if (
         !childElement ||
-        typeof childElement === "string" ||
-        typeof childElement === "number"
+        typeof childElement !== "object" ||
+        !("type" in childElement)
       ) {
         return;
       }

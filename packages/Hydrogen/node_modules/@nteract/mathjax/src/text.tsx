@@ -8,7 +8,7 @@ interface Props {
   onRender?: () => void;
 }
 
-class MathJaxText_ extends React.Component<Props & MathJaxContextValue> {
+export class MathJaxText_ extends React.Component<Props & MathJaxContextValue> {
   nodeRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: Props & MathJaxContextValue) {

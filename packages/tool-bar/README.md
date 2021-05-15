@@ -1,9 +1,7 @@
 # Atom Tool Bar
 
-[![Travis CI](https://travis-ci.org/suda/tool-bar.svg?branch=master)](https://travis-ci.org/suda/tool-bar)
-[![Circle CI](https://circleci.com/gh/suda/tool-bar/tree/master.svg?style=shield)](https://circleci.com/gh/suda/tool-bar/tree/master)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/xtm6u3sn3oil50da?svg=true)](https://ci.appveyor.com/project/suda/tool-bar)
-[![apm](https://img.shields.io/apm/dm/tool-bar.svg)]()
+[![CI](https://github.com/suda/tool-bar/workflows/CI/badge.svg)](https://github.com/suda/tool-bar/actions?query=workflow%3ACI)
+[![apm](https://img.shields.io/apm/dm/tool-bar.svg)](https://atom.io/packages/tool-bar)
 [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/suda/tool-bar?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This package provides extensible tool bar for Atom.
@@ -32,10 +30,14 @@ On which edge of the editor should the tool bar appear. Possible options:
 
 ### Icon size
 
-*   Very Small *(12px)*
-*   Small *(16px)*
+*   Infinitesimal *(12px)*
+*   Tiny *(14px)*
+*   Very Small *(16px)*
+*   Small: *(18px)*
+*   Medium: *(21px)*
 *   Big *(24px)*
-*   Large *(32px)*
+*   Very Big *(28px)*
+*   Huge *(32px)*
 
 ### Visibility
 
@@ -55,15 +57,13 @@ currently) it can display up to seven tool bar buttons there.
 
 *   [Flex Tool Bar](https://atom.io/packages/flex-tool-bar)
 *   [Tool Bar Main](https://atom.io/packages/tool-bar-main)
-*   [Toolbar Almighty](https://atom.io/packages/tool-bar-almighty)
 *   [Toolbar for Atom](https://atom.io/packages/tool-bar-atom)
-*   [Toolbar Shortcuts](https://atom.io/packages/tool-bar-shortcuts)
+*   [Juno Plus](https://atom.io/packages/juno-plus) in TypeScript
 *   And [more](https://atom.io/packages/search?utf8=%E2%9C%93&q=keyword%3Atool-bar)...
 
 ## Packages using tool-bar
 
 *   [Particle Dev](https://atom.io/packages/spark-dev)
-*   [Facebook Nuclide](https://atom.io/packages/nuclide)
 *   [PlatformIO IDE](https://atom.io/packages/platformio-ide)
 *   [Organized](https://atom.io/packages/organized)
 
@@ -201,6 +201,28 @@ export function consumeToolBar(getToolBar) {
     callback: 'application:about'
   });
 
+  // Text buttons can be colored
+  toolBar.addButton({
+    icon: 'octoface',
+    callback: 'application:about',
+    tooltip: 'About Atom',
+    color: 'red' // color of the text or icon
+    background: 'black' // color of the background
+  });
+
+  // Buttons can be styled with arbitrary CSS through classes.
+  // An example of how the class can be used is show below.
+  toolBar.addButton({
+    icon: 'octoface',
+    callback: 'application:about',
+    class: 'my-awesome-class'
+  });
+  toolBar.addButton({
+    icon: 'octoface',
+    callback: 'application:about',
+    class: ['multiple', 'classes', 'also', 'works']
+  });
+
   // Cleaning up when tool bar is deactivated
   toolBar.onDidDestroy(() => {
     this.toolBar = null;
@@ -209,9 +231,22 @@ export function consumeToolBar(getToolBar) {
 }
 ```
 
+```css
+/*
+Follow the instructions at:
+https://flight-manual.atom.io/using-atom/sections/basic-customization/#style-tweaks
+to define your classes.
+*/
+.my-awesome-class {
+  background-image: url(data:image/svg+xml;base64,...);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+```
+
 ## Methods
 
-### `.addButton({icon, iconset, text, html, callback, priority, tooltip, data})`
+### `.addButton({icon, iconset, text, html, callback, priority, tooltip, data, color, background})`
 
 The method `addButton` requires an object with at least the property `callback`. The
 `callback` must be an Atom command string, a custom callback function or an
@@ -224,8 +259,11 @@ The remaining properties
 `html` (default `false`),
 `icon` (default there is no icon),
 `iconset` (defaults to `Octicons`),
-`data`, and
-`priority` (defaults `50`)
+`data`,
+`priority` (defaults `50`),
+`color`,
+`background`, and
+`class`
 are optional.
 
 The `tooltip` option may be a `string` or an `object` that is passed to Atom's
@@ -238,6 +276,12 @@ The return value of this method shares another method called
 
 The method `addSpacer` has only one optional property `priority` (defaults
 `50`).
+
+### `.addItem({element, priority})`
+
+Adds a custom HTML element as an item to the tool-bar. Arguments are:
+- `element`: pass your HTML element.
+- `priority`: optional field specifying the position of the item.
 
 ### `.removeItems()`
 
@@ -293,3 +337,12 @@ using this one. For all contributions credits are due:
 *   [Paul Brown](https://github.com/PaulBrownMagic)
 *   [Raphael Fetzer](https://github.com/pheraph)
 *   [Sven Lohrmann](https://github.com/malnvenshorn)
+*   [Amin Yahyaabadi](https://github.com/aminya)
+*   [Eric Cornelissen](https://github.com/ericcornelissen)
+*   [Jan T. Sott](https://github.com/idleberg)
+*   [Luis Romero](https://github.com/luiscobits)
+*   [Jordan Eldredge](https://github.com/captbaritone)
+*   [Juan Rial](https://github.com/jrial)
+*   [Vadim Kotov](https://github.com/vkotovv)
+*   [Michael Bolin](https://github.com/bolinfest)
+

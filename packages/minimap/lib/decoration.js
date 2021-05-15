@@ -1,18 +1,18 @@
-'use strict'
+"use strict"
 
-const _ = require('underscore-plus')
-const {Emitter} = require('atom')
+import { Emitter } from "atom"
 
 let idCounter = 0
-const nextId = function () { return idCounter++ }
+const nextId = function () {
+  return idCounter++
+}
 
 /**
  * The `Decoration` class represents a decoration in the Minimap.
  *
  * It has the same API than the `Decoration` class of a text editor.
  */
-module.exports = class Decoration {
-
+export default class Decoration {
   /**
    * Returns `true` if the passed-in decoration properties matches the
    * specified type.
@@ -21,9 +21,11 @@ module.exports = class Decoration {
    * @param  {string} type the decoration type to match
    * @return {boolean} whether the decoration properties match the type
    */
-  static isType (decorationProperties, type) {
-    if (_.isArray(decorationProperties.type)) {
-      if (decorationProperties.type.indexOf(type) >= 0) { return true }
+  static isType(decorationProperties, type) {
+    if (Array.isArray(decorationProperties.type)) {
+      if (decorationProperties.type.indexOf(type) >= 0) {
+        return true
+      }
       return false
     } else {
       return type === decorationProperties.type
@@ -38,7 +40,7 @@ module.exports = class Decoration {
    *                           be displayed
    * @param  {Object} properties the decoration's properties
    */
-  constructor (marker, minimap, properties) {
+  constructor(marker, minimap, properties) {
     /**
      * @access private
      */
@@ -81,13 +83,14 @@ module.exports = class Decoration {
    * If you own the marker, you should use `Marker#destroy` which will destroy
    * this decoration.
    */
-  destroy () {
-    if (this.destroyed) { return }
+  destroy() {
+    if (this.destroyed) {
+      return
+    }
 
-    this.markerDestroyDisposable.dispose()
-    this.markerDestroyDisposable = null
+    this.markerDestroyDisposable?.dispose?.()
     this.destroyed = true
-    this.emitter.emit('did-destroy')
+    this.emitter.emit("did-destroy")
     this.emitter.dispose()
   }
 
@@ -96,7 +99,9 @@ module.exports = class Decoration {
    *
    * @return {boolean} whether this decoration is destroyed or not
    */
-  isDestroyed () { return this.destroyed }
+  isDestroyed() {
+    return this.destroyed
+  }
 
   /**
    * Registers an event listener to the `did-change-properties` event.
@@ -107,8 +112,11 @@ module.exports = class Decoration {
    *                                        when the event is triggered
    * @return {Disposable} a disposable to stop listening to the event
    */
-  onDidChangeProperties (callback) {
-    return this.emitter.on('did-change-properties', callback)
+  onDidChangeProperties(callback) {
+    if (this.destroyed) {
+      return
+    }
+    return this.emitter.on("did-change-properties", callback)
   }
 
   /**
@@ -118,8 +126,11 @@ module.exports = class Decoration {
    *                                    is triggered
    * @return {Disposable} a disposable to stop listening to the event
    */
-  onDidDestroy (callback) {
-    return this.emitter.on('did-destroy', callback)
+  onDidDestroy(callback) {
+    if (this.destroyed) {
+      return
+    }
+    return this.emitter.on("did-destroy", callback)
   }
 
   /**
@@ -127,14 +138,18 @@ module.exports = class Decoration {
    *
    * @return {number} the decoration id
    */
-  getId () { return this.id }
+  getId() {
+    return this.id
+  }
 
   /**
    * Returns the marker associated with this Decoration.
    *
    * @return {Marker} the decoration's marker
    */
-  getMarker () { return this.marker }
+  getMarker() {
+    return this.marker
+  }
 
   /**
    * Check if this decoration is of type `type`.
@@ -145,7 +160,7 @@ module.exports = class Decoration {
    *                             matches any in the array.
    * @return {boolean} whether this decoration match the passed-in type
    */
-  isType (type) {
+  isType(type) {
     return Decoration.isType(this.properties, type)
   }
 
@@ -154,7 +169,7 @@ module.exports = class Decoration {
    *
    * @return {Object} the decoration's properties
    */
-  getProperties () {
+  getProperties() {
     return this.properties
   }
 
@@ -164,13 +179,15 @@ module.exports = class Decoration {
    *
    * @param {Object} newProperties the new properties for the decoration
    */
-  setProperties (newProperties) {
-    if (this.destroyed) { return }
+  setProperties(newProperties) {
+    if (this.destroyed) {
+      return
+    }
 
-    let oldProperties = this.properties
+    const oldProperties = this.properties
     this.properties = newProperties
     this.properties.id = this.id
 
-    this.emitter.emit('did-change-properties', {oldProperties, newProperties})
+    this.emitter.emit("did-change-properties", { oldProperties, newProperties })
   }
 }

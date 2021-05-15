@@ -36,7 +36,8 @@ class UI {
 					FileSystem.paths.delete(path);
 					entity = FileSystem.get(path);
 				}
-				entity && entity.addEditor(editor);
+				if(entity && "function" === typeof entity.addEditor)
+					entity.addEditor(editor);
 			})
 		);
 	}
@@ -51,7 +52,7 @@ class UI {
 
 
 	observe(){
-		this.disposables.add(			
+		this.disposables.add(
 			atom.workspace.observeTextEditors(editor => {
 				this.emitOpenedEditor(editor);
 				
@@ -120,8 +121,11 @@ class UI {
 	
 	
 	observeFiles(fn){
-		for(const editor of atom.textEditors.editors)
+		const {editors} = atom.textEditors;
+		for(let i = 0, l = editors.length; i < l; ++i){
+			const editor = editors[i];
 			editor.getFileName() && fn(editor);
+		}
 		return this.onOpenFile(fn);
 	}
 
@@ -144,7 +148,8 @@ class UI {
 		if(!document || !styles || !packagePath)
 			return null;
 		const stylePath = join(packagePath, "styles", filename);
-		for(const styleSheet of styles){
+		for(let i = 0, l = styles.length; i < l; ++i){
+			const styleSheet = styles[i];
 			const {ownerNode} = styleSheet;
 			if(ownerNode && ownerNode.sourcePath === stylePath)
 				return styleSheet;

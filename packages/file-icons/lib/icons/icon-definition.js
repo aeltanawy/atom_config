@@ -1,6 +1,6 @@
 "use strict";
 
-const {caseKludge, escapeRegExp, forceNonCapturing, fuzzyRegExp, isNumeric, isRegExp} = require("../utils.js");
+const {caseKludge, escapeRegExp, forceNonCapturing, fuzzyRegExp} = require("../utils.js");
 
 
 /**
@@ -44,7 +44,7 @@ class IconDefinition{
 		// Improve performance by forcing groups to be non-capturing
 		for(const name in this){
 			const value = this[name];
-			if(isRegExp(value) && !/\\[1-9]/.test(value.source.replace(/\\[^1-9]/g, "")))
+			if(value instanceof RegExp && !/\\[1-9]/.test(value.source.replace(/\\[^1-9]/g, "")))
 				this[name] = forceNonCapturing(value);
 		}
 	}
@@ -82,7 +82,7 @@ class IconDefinition{
 	 * @private
 	 */
 	setPriority(priority){
-		this.priority = isNumeric(priority)
+		this.priority = !Number.isNaN(+priority)
 			? +priority
 			: (priority || 1);
 	}
@@ -96,7 +96,7 @@ class IconDefinition{
 	 */
 	setInterpreter(pattern){
 		if(!pattern) return;
-		this.interpreter = !isRegExp(pattern)
+		this.interpreter = !(pattern instanceof RegExp)
 			? new RegExp("^" + pattern + "$")
 			: pattern;
 	}
@@ -110,7 +110,7 @@ class IconDefinition{
 	 */
 	setScope(pattern){
 		if(!pattern) return;
-		this.scope = !isRegExp(pattern)
+		this.scope = !(pattern instanceof RegExp)
 			? new RegExp(`\\.${escapeRegExp(pattern)}$`, "i")
 			: pattern;
 	}
@@ -129,7 +129,7 @@ class IconDefinition{
 	setName(alias = null, noKey = false, noFuzz = false){
 		
 		if(alias){
-			if(isRegExp(alias))
+			if(alias instanceof RegExp)
 				this.lang = alias;
 			
 			else{
@@ -144,7 +144,7 @@ class IconDefinition{
 		if(noKey) return;
 		
 		const {key} = this;
-		const keyDiffersToAlias = isRegExp(alias)
+		const keyDiffersToAlias = alias instanceof RegExp
 			? !alias.test(key)
 			: (!alias || key.toLowerCase() !== alias.toLowerCase());
 		
@@ -182,6 +182,7 @@ class IconDefinition{
 		if(!this.scope       && input.scope)       this.scope       = input.scope;
 		if(!this.interpreter && input.interpreter) this.interpreter = input.interpreter;
 		if(!this.signature   && input.signature)   this.signature   = input.signature;
+		if(!this.tag         && input.tag)         this.tag         = input.tag;
 	}
 	
 	
@@ -193,7 +194,7 @@ class IconDefinition{
 	toString(){
 		
 		// Order of values must match what Icon's constructor expects
-		let args = [
+		const args = [
 			this.icon,
 			this.colour,
 			this.match,
@@ -202,7 +203,7 @@ class IconDefinition{
 			this.interpreter,
 			this.scope,
 			this.lang,
-			this.signature
+			this.signature,
 		];
 		
 		// Shorten array by pruning trailing null values.
@@ -224,7 +225,7 @@ class IconDefinition{
 		return "[" + args.map(
 			arg => null === arg
 				? ""
-				: isRegExp(arg)
+				: arg instanceof RegExp
 					? arg.toString()
 					: JSON.stringify(arg)
 		).join(",") + "]";
@@ -250,7 +251,7 @@ Object.assign(IconDefinition.prototype, {
 	interpreter: null,
 	scope:       null,
 	lang:        null,
-	signature:   null
+	signature:   null,
 });
 
 

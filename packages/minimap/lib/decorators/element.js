@@ -1,10 +1,10 @@
-'use strict'
+"use strict"
 
-const {registerOrUpdateElement} = require('atom-utils')
+import { registerOrUpdateElement } from "atom-utils-plus"
 
 /**
  * Generates a decorator function to convert a class into a custom element
- * through the `registerOrUpdateElement` method from `atom-utils`.
+ * through the `registerOrUpdateElement` method from `atom-utils-plus`.
  *
  * The decorator will take care to return the generated element class so that
  * you can just export it directly as demonstrated below.
@@ -34,6 +34,6 @@ const {registerOrUpdateElement} = require('atom-utils')
  *   // ...
  * }
  */
-module.exports = function element (cls, elementName) {
-  return registerOrUpdateElement(elementName, {class: cls})
+export default function element(cls, elementName) {
+  return registerOrUpdateElement(elementName, { class: cls })
 }

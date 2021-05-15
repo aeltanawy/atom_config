@@ -1,7 +1,6 @@
 # Hydrogen <img src="https://cdn.rawgit.com/nteract/hydrogen/17eda245/static/animate-logo.svg" alt="hydrogen animated logo" height="50px" align="right" />
 
-[![slack in](https://slackin-nteract.now.sh/badge.svg)](https://slackin-nteract.now.sh)
-[![Build Status](https://travis-ci.org/nteract/hydrogen.svg?branch=master)](https://travis-ci.org/nteract/hydrogen)
+[![CI](https://github.com/nteract/hydrogen/actions/workflows/CI.yml/badge.svg)](https://github.com/nteract/hydrogen/actions/workflows/CI.yml)
 
 Hydrogen is an interactive coding environment that supports Python, R, JavaScript and [other Jupyter kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels).
 
@@ -14,11 +13,12 @@ Checkout our [Documentation](https://nteract.gitbooks.io/hydrogen/) and [Medium 
 1. [Background](#background)
 2. [Features](#features)
 3. [Plugins for Hydrogen](#plugins-for-hydrogen)
-4. [How it works](#how-it-works)
-5. [Why "Hydrogen"?](#why-hydrogen)
-6. [Contributing](#contributing)
-7. [Changelog](#changelog)
-8. [License](#license)
+4. [Useful external packages](#useful-external-packages)
+5. [How it works](#how-it-works)
+6. [Why "Hydrogen"?](#why-hydrogen)
+7. [Contributing](#contributing)
+8. [Changelog](#changelog)
+9. [License](#license)
 
 ## Background
 
@@ -53,13 +53,21 @@ You also may be interested in our latest project – [nteract](https://github.co
 
 Hydrogen has support for plugins. Feel free to add your own to the list:
 
-- [Hydrogen Launcher](https://github.com/lgeiger/hydrogen-launcher)
-- [hydrogen-python](https://github.com/nikitakit/hydrogen-python)
-- [Data Explorer](https://github.com/BenRussert/data-explorer)
-- [Cell Navigation](https://github.com/hoishing/cell-navigation)
-- [Hydrogen Cell Separator](https://github.com/jhabriel/hydrogen-cell-separator)
+- [Hydrogen Launcher](https://github.com/lgeiger/hydrogen-launcher): launches terminals and Jupyter consoles connected to Hydrogen
+- [hydrogen-python](https://github.com/nikitakit/hydrogen-python): provides various Python-specific features
+- [Data Explorer](https://github.com/BenRussert/data-explorer): allows you to use [nteract data-explorer](https://github.com/BenRussert/data-explorer) within Hydrogen
 
 If you are interested in building a plugin take a look at our [plugin API documentation](https://nteract.gitbooks.io/hydrogen/docs/PluginAPI.html).
+
+## Useful external packages
+
+Here is a list of external packages that could be useful when using Hydrogen (without using Hydrogen plugin API, as such they're mostly only related to the UIs):
+
+- [markdown-cell-highlight](https://github.com/aviatesk/atom-markdown-cell-highlight): highlights code cells in markdown files
+- [Cell Navigation](https://github.com/hoishing/cell-navigation): enables easy jumps between Hydrogen code cells
+- [Hydrogen Cell Separator](https://github.com/jhabriel/hydrogen-cell-separator): gives simple horizontal line decorations for Hydrogen code cells
+
+If you find/create a package that you think can be useful when used in combination with Hydrogen, feel free to make a PR and add it.
 
 ## How it works
 

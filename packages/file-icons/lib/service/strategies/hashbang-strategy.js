@@ -2,7 +2,7 @@
 
 const IconTables = require("../../icons/icon-tables.js");
 const HeaderStrategy = require("./header-strategy.js");
-const {executableIcon} = IconTables;
+const {taggedIcons} = IconTables;
 
 
 class HashbangStrategy extends HeaderStrategy {
@@ -10,8 +10,25 @@ class HashbangStrategy extends HeaderStrategy {
 	constructor(){
 		super({
 			name: "hashbangs",
-			priority: 5
+			priority: 5,
 		});
+	}
+	
+	
+	getRemapping(icon){
+		switch(icon){
+			case taggedIcons.coffee:     return taggedIcons.coffeeTest;
+			case taggedIcons.go:         return taggedIcons.goTest;
+			case taggedIcons.haskell:    return taggedIcons.haskellTest;
+			case taggedIcons.js:         return taggedIcons.jsTest;
+			case taggedIcons.perl:       return taggedIcons.perlTest;
+			case taggedIcons.python:     return taggedIcons.pythonTest;
+			case taggedIcons.ruby:       return taggedIcons.rubyTest;
+			case taggedIcons.rust:       return taggedIcons.rustTest;
+			case taggedIcons.executable: return taggedIcons.genericTest;
+			case taggedIcons.ts:         return taggedIcons.tsTest;
+		}
+		return null;
 	}
 	
 	
@@ -32,7 +49,14 @@ class HashbangStrategy extends HeaderStrategy {
 		if("node" === name && /\.tsx?$/i.test(resource.name))
 			return null;
 		
-		let result = IconTables.matchInterpreter(name);
+		let remap, result = IconTables.matchInterpreter(name);
+		
+		// HACK: Remap icons of test-files containing hashbangs (#812)
+		if(result && null !== (remap = this.getRemapping(result))){
+			const {match, matchPath} = remap;
+			if(match.test(matchPath ? resource.path : resource.name))
+				return remap;
+		}
 		
 		// Valid hashbang, unrecognised interpreter
 		if(!result){
@@ -43,12 +67,12 @@ class HashbangStrategy extends HeaderStrategy {
 				const onStats = resource.onDidLoadStats(() => {
 					onStats.dispose();
 					if(resource.executable)
-						resource.icon.add(executableIcon, this.priority);
+						resource.icon.add(taggedIcons.executable, this.priority);
 				});
 			}
 			
 			else if(executable)
-				result = executableIcon;
+				result = taggedIcons.executable;
 		}
 		
 		return result || null;

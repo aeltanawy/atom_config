@@ -1,12 +1,12 @@
 "use babel";
 
-import WatchStore from "../../lib/store/watch";
+import WatchStore from "../../dist/store/watch";
 
 describe("WatchStore", () => {
   let store;
   beforeEach(() => {
     store = new WatchStore({
-      executeWatch: (code, callback) => callback("result")
+      executeWatch: (code, callback) => callback("result"),
     });
   });
   describe("run", () => {

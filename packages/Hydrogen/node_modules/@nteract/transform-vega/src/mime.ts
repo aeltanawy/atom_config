@@ -6,7 +6,9 @@ export type VegaMediaType =
   | "application/vnd.vega.v5+json"
   | "application/vnd.vegalite.v1+json"
   | "application/vnd.vegalite.v2+json"
-  | "application/vnd.vegalite.v3+json";
+  | "application/vnd.vegalite.v3+json"
+  | "application/vnd.vegalite.v4+json"
+  ;
 
 /** Information about a particular Vega or Vega Lite version. */
 export interface VegaMediaTypeInfo<T extends VegaMediaType> {
@@ -70,5 +72,12 @@ export const MEDIA_TYPES: VegaMediaTypes = {
     vegaLevel: 5,
     mediaType: "application/vnd.vegalite.v3+json",
     schemaPrefix: "https://vega.github.io/schema/vega-lite/v3",
+  },
+  "application/vnd.vegalite.v4+json": {
+    kind: "vega-lite",
+    version: "4",
+    vegaLevel: 5,
+    mediaType: "application/vnd.vegalite.v4+json",
+    schemaPrefix: "https://vega.github.io/schema/vega-lite/v4",
   },
 };

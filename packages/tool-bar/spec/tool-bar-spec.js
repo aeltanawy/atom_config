@@ -1,8 +1,5 @@
 'use babel';
 
-/* eslint-env browser */
-/* global advanceClock */
-
 function getGlyph (elm) {
   return window.getComputedStyle(elm, ':before')
     .getPropertyValue('content')
@@ -36,6 +33,10 @@ describe('Tool Bar package', () => {
       const pack = await atom.packages.activatePackage('tool-bar');
       toolBarService = pack.mainModule.provideToolBar();
     });
+
+    // if activation hook was being used
+    // atom.packages.triggerDeferredActivationHooks();
+    // atom.packages.triggerActivationHook('core:loaded-shell-environment');
   });
 
   describe('@activate', () => {
@@ -145,6 +146,29 @@ describe('Tool Bar package', () => {
         expect(toolBar.children.length).toBe(1);
         const element = toolBar.firstChild;
         expect(element.outerHTML.indexOf('<span>text</span>')).not.toBe(-1);
+      });
+
+      it('with one class', () => {
+        toolBarAPI.addButton({
+          icon: 'octoface',
+          callback: 'application:about',
+          class: 'class'
+        });
+        expect(toolBar.children.length).toBe(1);
+        const element = toolBar.firstChild;
+        expect(element.classList.contains('class')).toBe(true);
+      });
+
+      it('with multiple classes', () => {
+        toolBarAPI.addButton({
+          icon: 'octoface',
+          callback: 'application:about',
+          class: ['class-a', 'class-b']
+        });
+        expect(toolBar.children.length).toBe(1);
+        const element = toolBar.firstChild;
+        expect(element.classList.contains('class-a')).toBe(true);
+        expect(element.classList.contains('class-b')).toBe(true);
       });
 
       it('using default iconset', () => {
@@ -396,18 +420,20 @@ describe('Tool Bar package', () => {
 
             beforeEach(() => {
               spy = jasmine.createSpy();
-              toolBarAPI.addButton({
-                icon: 'octoface',
-                callback: {
-                  '': 'tool-bar:modifier-default',
-                  'alt': 'tool-bar:modifier-alt',
-                  'ctrl': 'tool-bar:modifier-ctrl',
-                  'shift': 'tool-bar:modifier-shift',
-                  'shift+alt': 'tool-bar:modifier-shift-alt',
-                  'alt+shift': 'tool-bar:modifier-alt-shift',
-                  'ctrl+shift': 'tool-bar:modifier-ctrl-shift',
-                  'alt ctrl-shift': 'tool-bar:modifier-alt-ctrl-shift'
-                }},
+              toolBarAPI.addButton(
+                {
+                  icon: 'octoface',
+                  callback: {
+                    '': 'tool-bar:modifier-default',
+                    'alt': 'tool-bar:modifier-alt',
+                    'ctrl': 'tool-bar:modifier-ctrl',
+                    'shift': 'tool-bar:modifier-shift',
+                    'shift+alt': 'tool-bar:modifier-shift-alt',
+                    'alt+shift': 'tool-bar:modifier-alt-shift',
+                    'ctrl+shift': 'tool-bar:modifier-ctrl-shift',
+                    'alt ctrl-shift': 'tool-bar:modifier-alt-ctrl-shift'
+                  }
+                },
                 jasmine.attachToDOM(toolBar),
                 atom.commands.onWillDispatch(spy)
               );

@@ -18,7 +18,8 @@ class IconService{
 			// #693: Notify `FileSystem` when files are deleted
 			atom.project.onDidChangeFiles(events => {
 				for(const {action, path} of events){
-					if("deleted" === action && FileSystem.paths.has(path)){
+					if("deleted" === action && FileSystem.paths.has(path)
+					&& events.every(e => "created" !== e.action || path !== e.path)){
 						const resource = FileSystem.get(path);
 						if(resource)
 							resource.destroy();
@@ -60,11 +61,8 @@ class IconService{
 			})
 		);
 		
-		// TODO: Add `.inode` property to Resource class
-		if(resource.stats && resource.stats.ino){
-			const inode = resource.stats.ino;
-			Storage.setPathInode(resource.path, inode);
-		}
+		if(resource.id)
+			Storage.setPathID(resource.path, resource.id);
 		
 		if(resource.type & EntityType.SYMLINK)
 			this.disposables.add(

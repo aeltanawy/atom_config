@@ -17,32 +17,16 @@
 import classNames from "classnames";
 import * as React from "react";
 import { polyfill } from "react-lifecycles-compat";
-import { AbstractPureComponent2, Classes, DISPLAYNAME_PREFIX, IProps } from "../../common";
+
+import { AbstractPureComponent2, Classes, DISPLAYNAME_PREFIX } from "../../common";
 import { HOTKEYS_HOTKEY_CHILDREN } from "../../common/errors";
-import { isElementOfType } from "../../common/utils";
+import { isElementOfType, isReactChildrenElementOrElements } from "../../common/utils";
 import { H4 } from "../html/html";
 import { Hotkey, IHotkeyProps } from "./hotkey";
-
-export { Hotkey, IHotkeyProps } from "./hotkey";
-export { KeyCombo, IKeyComboProps } from "./keyCombo";
-export { HotkeysTarget, IHotkeysTargetComponent } from "./hotkeysTarget";
-export { IKeyCombo, comboMatches, getKeyCombo, getKeyComboString, parseKeyCombo } from "./hotkeyParser";
-export { IHotkeysDialogProps, hideHotkeysDialog, setHotkeysDialogProps } from "./hotkeysDialog";
-
-export interface IHotkeysProps extends IProps {
-    /**
-     * In order to make local hotkeys work on elements that are not normally
-     * focusable, such as `<div>`s or `<span>`s, we add a `tabIndex` attribute
-     * to the hotkey target, which makes it focusable. By default, we use `0`,
-     * but you can override this value to change the tab navigation behavior
-     * of the component. You may even set this value to `null`, which will omit
-     * the `tabIndex` from the component decorated by `HotkeysTarget`.
-     */
-    tabIndex?: number;
-}
+import { IHotkeysProps } from "./hotkeysTypes";
 
 @polyfill
-export class Hotkeys extends AbstractPureComponent2<IHotkeysProps, {}, {}> {
+export class Hotkeys extends AbstractPureComponent2<IHotkeysProps> {
     public static displayName = `${DISPLAYNAME_PREFIX}.Hotkeys`;
 
     public static defaultProps = {
@@ -50,6 +34,10 @@ export class Hotkeys extends AbstractPureComponent2<IHotkeysProps, {}, {}> {
     };
 
     public render() {
+        if (!isReactChildrenElementOrElements(this.props.children)) {
+            return null;
+        }
+
         const hotkeys = React.Children.map(
             this.props.children,
             (child: React.ReactElement<IHotkeyProps>) => child.props,
@@ -57,13 +45,13 @@ export class Hotkeys extends AbstractPureComponent2<IHotkeysProps, {}, {}> {
 
         // sort by group label alphabetically, prioritize globals
         hotkeys.sort((a, b) => {
-            if (a.global === b.global) {
+            if (a.global === b.global && a.group && b.group) {
                 return a.group.localeCompare(b.group);
             }
             return a.global ? -1 : 1;
         });
 
-        let lastGroup = null as string;
+        let lastGroup: string | undefined;
         const elems = [] as JSX.Element[];
         for (const hotkey of hotkeys) {
             const groupLabel = hotkey.group;
@@ -78,6 +66,10 @@ export class Hotkeys extends AbstractPureComponent2<IHotkeysProps, {}, {}> {
     }
 
     protected validateProps(props: IHotkeysProps & { children: React.ReactNode }) {
+        if (!isReactChildrenElementOrElements(props.children)) {
+            return;
+        }
+
         React.Children.forEach(props.children, (child: JSX.Element) => {
             if (!isElementOfType(child, Hotkey)) {
                 throw new Error(HOTKEYS_HOTKEY_CHILDREN);

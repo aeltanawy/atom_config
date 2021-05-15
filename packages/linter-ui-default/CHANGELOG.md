@@ -1,4 +1,151 @@
 # Changelog
+### 3.3.1
+- fix: update dependencies #639
+  fix: the issue with atom-package-deps not installing the linter dependency #639
+- minor optimizations #639
+
+### 3.3.0
+- feat: colorize the severity in the bottom panel
+- fix: sort based on severity (show errors first)
+
+### 3.2.5
+- fix: bump atom-package-deps to support spaced paths on Windows
+
+### 3.2.4
+- fix: fix copying text from tooltips on MacOS
+
+### 3.2.3
+- fix: move the linter tooltip down when there is not enough space on top
+
+### 3.2.2
+- Update deps
+
+### 3.2.1
+- fix: use native copy handling in tooltips:
+  - It is faster.
+  - Supports MacOS (cmd+c)
+  - In addition to performance benefits, it also fixes the jumps that happened in the linter when you wanted to copy the text
+- fix: make `toggleDescription` async
+
+### 3.2.0
+- Render descriptions correctly (#625)
+-
+### 3.1.1
+- Fix linter panel scroll (#622)
+
+### 3.1.0
+- Make text in the tooltips selectable and copyable (#620)
+
+
+### 3.0.3
+- Use the default button style for Fix button (#619)
+- Add `globalThis` workaround for old Atom (#618) (please update Atom!)
+
+### 3.0.1
+- Bypass parcel temporarily
+
+### 3.0.0
+- Redesigned tooltip :tada: (#616)
+
+### 2.5.2
+- fix: use @font-family (#615)
+
+### 2.5.1
+- clean up classes (merge subscriptions, emitter types, etc.) (#614)
+
+### 2.5.0
+- Replaces React with Solid-js :tada: (#613)
+- Use solid-simple-table for Panel :tada: (#613)
+- Using solid makes linter more performant! (#613)
+- Better style for the panel (#613)
+- Update dependencies
+
+### 2.4.1
+- fix: minor null bug fixes
+- fix: faster load time
+
+### 2.4.0
+- feat: large/minified file optimizations (#612)
+
+### 2.3.5
+- fix: do not move the linter tooltip out of the editor
+
+### 2.3.4
+- fix: transform the whole overlay to make underneath of the tooltip clickable
+
+### 2.3.3
+- fix: make event listeners passive
+
+### 2.3.2
+- fix: linter tooltip messages not being visible in some themes
+
+### 2.3.1
+- fix: remove extra space from the tooltip due to arrow pointer
+- fix: decrease the time required for showing the linter tooltip (faster response)
+
+### 2.3.0
+- Fixes overlaps with datatips (linter messages now are positioned above the point, unless there is not enough space) (#607)
+- Changes the style of the tooltips so they match datatips (atom-ide-community style) (#607)
+
+  info messages:
+
+  ![image](https://user-images.githubusercontent.com/16418197/102887312-532a8280-441c-11eb-99ca-3e82306f3dfb.png)
+
+  error messages:
+
+  ![image](https://user-images.githubusercontent.com/16418197/102887315-54f44600-441c-11eb-8b3f-d89a463b5865.png)
+
+  when the message is at the top of the page, it does not translate:
+
+  ![image](https://user-images.githubusercontent.com/16418197/102887388-7bb27c80-441c-11eb-8961-6a13890ba86a.png)
+
+### 2.2.4
+- Bump dependencies
+- Add benchmarks (#605)
+
+### 2.2.3
+- if file path of the editor is undefined save the message in ""
+
+### 2.2.2
+- Huge number of bug fixes (#604)
+- Maximize TypeScript strictness (#604)
+
+### 2.2.1
+- Use parcel to build and optimize linter-ui-default (#603)
+-
+### 2.2.0
+- feat: convert codebase to typescript. [This involved many bug fixes](https://github.com/steelbrain/linter-ui-default/pull/602)
+
+## 2.1.5
+- fix: check if `intersectsWith` is a function
+
+## 2.1.4
+* Update dependencies
+* Re-add package-lock.json
+
+## 2.1.3
+* Remove package-lock.json
+
+## 2.1.2
+* Add another null check for messages
+
+
+## 2.1.1
+* null check guard for messages to prevent unforeseen errors
+
+### 2.1.0
+* Bump deps #589
+* Use lodash.debounce instead of the deprecated sb-debounce.debounce
+
+## 2.0.1
+* improve performance (#581)
+* rewrite rendering algorithm (#581)
+* fix memory leaks (#581)
+
+
+## 1.8.1
+
+* Fix `showPanel` being set to `true` on Editor restart (Thanks @Osmose)
 
 ## 1.8.0
 

@@ -54,7 +54,7 @@ function exec(path, ops, meta = {}){
 		let stats = null;
 		if(OP_STAT & ops){
 			op = OP_STAT;
-			stats = fs.lstatSync(path);
+			stats = fs.lstatSync(path, {bigint: true});
 			emit("op:done", op, path, stats);
 		}
 		

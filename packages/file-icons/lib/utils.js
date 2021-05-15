@@ -7,9 +7,6 @@ module.exports = {
 	findBasePath,
 	forceNonCapturing,
 	fuzzyRegExp,
-	isNumeric,
-	isRegExp,
-	isString,
 	rgbToHSL,
 	wait,
 };
@@ -22,30 +19,15 @@ module.exports = {
  * so this function attempts to approximate the closest thing.
  *
  * @param {String} input - Case-insensitive text
- * @param {Boolean} fuzz - Apply {@link fuzzyRegExp} to input
  * @return {String}
  */
-function caseKludge(input, fuzz = false){
-	let output = input.split("").map((s, index, array) => {
-		if(/[A-Z]/.test(s)){
-			const output = "[" + s + s.toLowerCase() + "]";
-			const prev   = array[index - 1];
-			if(fuzz && prev && /[a-z]/.test(prev))
-				return "[\\W_\\S]*" + output;
-			return output;
-		}
-		if(/[a-z]/.test(s))     return "[" + s.toUpperCase() + s + "]";
-		if(!fuzz)               return s.replace(/([/\\^$*+?{}[\]().|])/g, "\\$1");
-		if("0" === s)           return "[0Oo]";
-		if(/[\W_ \t]?/.test(s)) return "[\\W_ \\t]?";
-		return s;
-	}).join("");
-	
-	if(fuzz)
-		output = output.replace(/\[Oo\]/g, "[0Oo]");
-	return output.replace(/(\[\w{2,3}\])(\1+)/g, (match, first, rest) => {
-		return first + "{" + ((rest.length / first.length) + 1) + "}";
-	});
+function caseKludge(input){
+	return input.split("").map(match =>
+		/[A-Z]/.test(match) ? "[" + match + match.toLowerCase() + "]" :
+		/[a-z]/.test(match) ? "[" + match + match.toUpperCase() + "]" :
+		match
+	).join("").replace(/(\[\w{2,3}\])(\1+)/g, (match, first, rest) =>
+		first + "{" + ((rest.length / first.length) + 1) + "}");
 }
 
 
@@ -155,7 +137,7 @@ function forceNonCapturing(pattern){
  * @return {String|RegExp}
  */
 function fuzzyRegExp(input, format = RegExp){
-	if("[object String]" !== Object.prototype.toString.call(input))
+	if("string" !== typeof input)
 		return input;
 	
 	const output = input
@@ -171,44 +153,6 @@ function fuzzyRegExp(input, format = RegExp){
 	
 	// Otherwise, crank the fuzz
 	return new RegExp(output, "i");
-}
-
-
-/**
- * Return true if a variable is a {@link Number} or number-like {@link String}.
- * 
- * String-checking is intentionally restricted to "basic" numeric forms only.
- * Advanced notation like hexadecimal, exponential or binary literals are ignored:
- * strings like "0b10100100", "0xE4" and "3.1536e+10" will each return `false`.
- * 
- * @param {Mixed} i - Value to inspect
- * @return {Boolean}
- */
-function isNumeric(i){
-	// eslint-disable-next-line
-	return "" !== i && +i == i && (String(i) === String(+i) || !/[^\d.]+/.test(i));
-}
-
-
-/**
- * Return true if the given value is a {@link RegExp|regular expression}.
- *
- * @param {*} input
- * @return {Boolean}
- */
-function isRegExp(input){
-	return "[object RegExp]" === Object.prototype.toString.call(input);
-}
-
-
-/**
- * Return true if the given value is a {@link String}.
- *
- * @param {*} input
- * @return {Boolean}
- */
-function isString(input){
-	return "[object String]" === Object.prototype.toString.call(input);
 }
 
 

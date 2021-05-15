@@ -1,8 +1,17 @@
----
-tag: new
----
-
 @# Panel stack
+
+<div class="@ns-callout @ns-intent-danger @ns-icon-error">
+    <h4 class="@ns-heading">
+
+Deprecated: use [PanelStack2](#core/components/panel-stack2)
+
+</h4>
+
+This API is **deprecated since @blueprintjs/core v3.40.0** in favor of the new
+PanelStack2 component available to React 16.8+ users. You should migrate to the
+new API which will become the standard in Blueprint v4.
+
+</div>
 
 `PanelStack` manages a stack of panels and displays only the topmost panel.
 
@@ -12,6 +21,11 @@ the stack. Panels use
 [`CSSTransition`](http://reactcommunity.org/react-transition-group/css-transition)
 for seamless transitions.
 
+By default, only the currently active panel is rendered to the DOM. This means
+that other panels are unmounted and can lose their component state as a user
+transitions between the panels. You can notice this in the example below as
+the numeric counter is reset. To render all panels to the DOM and keep their
+React trees mounted, change the `renderActivePanelOnly` prop.
 
 @reactExample PanelStackExample
 
@@ -58,8 +72,7 @@ class SettingsPanel extends React.Component<IPanelProps & { enabled: boolean }> 
 
 @## Props
 
-The panel stack cannot be controlled but `onClose` and `onOpen` callbacks are
-available to listen for changes.
+PanelStack can be operated as a controlled or uncontrolled component.
 
 @interface IPanelStackProps
 

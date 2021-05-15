@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
-  "_id": "Hydrogen@2.13.1",
+  "_from": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball",
+  "_id": "Hydrogen@2.15.3",
   "_inBundle": false,
-  "_integrity": "sha512-zL30t6W+njAVRNafJ1Sy+iXa0mWL/zPUekylU1CQ/LvCggkP/apQkGvK4fuMpkk9TVHwRGTc+7kZYl8CK6mSvw==",
+  "_integrity": "sha512-POnnK2HJkanmSYuli9q5lkJ0M/vs6zaLxWYT1mgfJe0pkdDA2JnoyxJQGE4xJU/FXvGya5HgpEcCf/34HLVe+w==",
   "_location": "/Hydrogen",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball"
+    "raw": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
-  "_shasum": "58bbb496dc5515f5c87ad35dfe2eacc514b46a67",
-  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.13.1/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119107-90303-1pm2287.lqit",
+  "_resolved": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball",
+  "_shasum": "55d89ce57ec87faa510f9618ddcabcb6fa0f1c8f",
+  "_spec": "https://www.atom.io/api/packages/hydrogen/versions/2.15.3/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21150-jzz64g.5zhrt",
   "activationCommands": {
     "atom-text-editor": [
       "hydrogen:start-local-kernel",
@@ -57,19 +57,19 @@
     }
   },
   "dependencies": {
+    "@aminya/jmp": "^2.0.8",
     "@babel/runtime-corejs2": "^7.0.0",
     "@jupyterlab/services": "^0.52.0",
     "@nteract/commutable": "^7.1.4",
-    "@nteract/markdown": "^4.0.0",
-    "@nteract/mathjax": "^4.0.1",
-    "@nteract/outputs": "^2.1.5",
+    "@nteract/markdown": "^4.5.1",
+    "@nteract/mathjax": "^4.0.2",
+    "@nteract/outputs": "^3.0.0",
     "@nteract/plotly": "^1.48.3",
-    "@nteract/transform-vega": "^6.0.0",
-    "anser": "^1.4.8",
+    "@nteract/transform-vega": "^7.0.0",
+    "anser": "^2.0.1",
     "atom-select-list": "^0.7.0",
     "escape-carriage": "^1.2.0",
-    "escape-string-regexp": "^2.0.0",
-    "jmp": "^2.0.0",
+    "escape-string-regexp": "^4.0.0",
     "kernelspecs": "^2.0.0",
     "lodash": "^4.14.0",
     "mathjax-electron": "^3.0.0",
@@ -77,38 +77,47 @@
     "mobx-react": "^6.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-rangeslider": "^2.1.0",
     "react-table": "^6.10.0",
     "spawnteract": "^5.1.0",
     "strip-indent": "^3.0.0",
+    "styled-components": "^5.0.1",
     "tildify": "^2.0.0",
-    "uuid": "^3.2.1",
-    "ws": "^3.3.1",
+    "uuid": "^8.0.0",
+    "ws": "^7.0.0",
     "xmlhttprequest": "^1.8.0"
   },
   "deprecated": false,
   "description": "Run code interactively, inspect data, and plot. All the power of Jupyter kernels, inside your favorite text editor.",
   "devDependencies": {
-    "atom-jasmine3-test-runner": "^4.0.0",
-    "enzyme": "^3.1.1",
-    "enzyme-adapter-react-16": "^1.0.4",
-    "flow-bin": "^0.110.0",
-    "husky": "^3.0.0",
-    "lint-staged": "^9.0.0",
+    "@nteract/types": "^7.1.7",
+    "@types/atom": "^1.40.10",
+    "@types/enzyme": "^3.10.8",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^14.14.37",
+    "@types/react": "^16.8.6",
+    "@types/react-dom": "^16.8.6",
+    "@types/react-table": "^6",
+    "@types/react-test-renderer": "^16.0.0",
+    "@types/styled-components": "^5.1.9",
+    "@types/uuid": "^8.3.0",
+    "@types/ws": "^7.4.1",
+    "atom-jasmine3-test-runner": "^5.2.2",
+    "build-commit": "^0.1.4",
+    "electron": "^6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "eslint-config-atomic": "^1.14.0",
     "markdox": "^0.1.10",
-    "mobx-react-devtools": "^6.0.0",
-    "prettier": "^1.14.3",
-    "react-test-renderer": "^16.0.0"
+    "prettier-config-atomic": "^2.0.1",
+    "react-test-renderer": "^16.0.0",
+    "shx": "^0.3.3",
+    "typescript": "^4.2.4"
   },
   "engines": {
     "atom": ">=1.28.0 <2.0.0"
   },
   "homepage": "https://github.com/nteract/hydrogen#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "keywords": [
     "execute",
     "run",
@@ -124,13 +133,7 @@
     "image"
   ],
   "license": "MIT",
-  "lint-staged": {
-    "{lib,spec}/**/*.js": [
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "main": "./lib/main",
+  "main": "./dist/main",
   "name": "Hydrogen",
   "providedServices": {
     "autocomplete.provider": {
@@ -150,11 +153,20 @@
     "url": "git+https://github.com/nteract/hydrogen.git"
   },
   "scripts": {
+    "build": "npm run clean && tsc -p lib/tsconfig.json || echo done",
+    "build-commit": "build-commit -o dist",
+    "build.test": "npm run build && npm run test",
     "build:docs": "npm run build:plugin-docs && npm run build:services-docs",
     "build:plugin-docs": "markdox lib/plugin-api/hydrogen-provider.js lib/plugin-api/hydrogen-kernel.js -o docs/PluginAPI.md",
     "build:services-docs": "markdox lib/services/index.js -o lib/services/README.md",
-    "flow": "flow",
-    "prettier": "prettier --write \"lib/**/*.js\" \"spec/**/*.js\""
+    "clean": "shx rm -rf dist",
+    "dev": "npm run clean && npm run build -- --watch",
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "prepare": "npm run build",
+    "test": "echo 'test without rebuilding' && atom --test spec",
+    "test.format": "prettier . --check",
+    "test.lint": "eslint ."
   },
-  "version": "2.13.1"
+  "version": "2.15.3"
 }

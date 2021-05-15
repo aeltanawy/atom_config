@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball",
-  "_id": "linter-jscs@4.2.2",
+  "_from": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball",
+  "_id": "linter-jscs@4.2.4",
   "_inBundle": false,
-  "_integrity": "sha512-nYvFeV945BA0h8lhQjZI8hPS+/YyId4Gr/f1zWiVPEoEVTjMjX1CwdheetKg7o0/Ksx1ioOd9earf30EGFL12A==",
+  "_integrity": "sha512-ywPcfjXxnk5MPXrkLOFzo/P2A1D8pVy78kY/9ev+6QnJJ56AExz5x3/UGFZaJMa9XrCqCgDnX3PcFamJp2Odkw==",
   "_location": "/linter-jscs",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball",
-  "_shasum": "494a9b9aa4278775d4bdef9bc05219b024b884fb",
-  "_spec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.2/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119323-17851-rxdo47.yia9h",
+  "_resolved": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball",
+  "_shasum": "f34c78740ad78ecd97322c14e6b9668771a8fe26",
+  "_spec": "https://www.atom.io/api/packages/linter-jscs/versions/4.2.4/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21240-1w5k2fy.m8l3",
   "activationHooks": [
     "language-babel:grammar-used",
     "language-html:grammar-used",
@@ -39,25 +39,25 @@
   "dependencies": {
     "atom-linter": "10.0.0",
     "atom-package-deps": "5.1.0",
-    "globule": "1.2.1",
+    "globule": "1.3.1",
     "jscs": "3.0.7",
     "object-assign": "4.1.1"
   },
   "deprecated": false,
   "description": "Linter plugin for JavaScript, using JSCS",
   "devDependencies": {
-    "@commitlint/cli": "7.5.2",
-    "@commitlint/config-conventional": "7.5.0",
-    "@commitlint/travis-cli": "7.5.2",
-    "@semantic-release/apm-config": "6.0.1",
-    "eslint": "5.16.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.17.2",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@commitlint/travis-cli": "8.3.5",
+    "@semantic-release/apm-config": "8.0.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.20.1",
     "fsmonitor": "0.2.4",
-    "husky": "1.3.1",
+    "husky": "4.2.3",
     "jasmine-fix": "1.3.1",
-    "semantic-release": "15.13.3",
-    "temp": "0.9.0"
+    "semantic-release": "17.0.3",
+    "temp": "0.9.1"
   },
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
@@ -119,5 +119,5 @@
     "tdd": "fsmonitor -d src -s -q apm test",
     "test": "apm test"
   },
-  "version": "4.2.2"
+  "version": "4.2.4"
 }

@@ -1,14 +1,18 @@
-'use strict'
+"use strict"
 
 /**
  * @access private
  */
-module.exports = class LegacyAdapter {
-  constructor (textEditor) { this.textEditor = textEditor }
+export default class LegacyAdapter {
+  constructor(textEditor) {
+    this.textEditor = textEditor
+  }
 
-  enableCache () { this.useCache = true }
+  enableCache() {
+    this.useCache = true
+  }
 
-  clearCache () {
+  clearCache() {
     this.useCache = false
     delete this.heightCache
     delete this.scrollTopCache
@@ -16,15 +20,15 @@ module.exports = class LegacyAdapter {
     delete this.maxScrollTopCache
   }
 
-  onDidChangeScrollTop (callback) {
+  onDidChangeScrollTop(callback) {
     return this.textEditor.onDidChangeScrollTop(callback)
   }
 
-  onDidChangeScrollLeft (callback) {
+  onDidChangeScrollLeft(callback) {
     return this.textEditor.onDidChangeScrollLeft(callback)
   }
 
-  getHeight () {
+  getHeight() {
     if (this.useCache) {
       if (!this.heightCache) {
         this.heightCache = this.textEditor.getHeight()
@@ -34,7 +38,7 @@ module.exports = class LegacyAdapter {
     return this.textEditor.getHeight()
   }
 
-  getScrollTop () {
+  getScrollTop() {
     if (this.useCache) {
       if (!this.scrollTopCache) {
         this.scrollTopCache = this.textEditor.getScrollTop()
@@ -44,11 +48,11 @@ module.exports = class LegacyAdapter {
     return this.textEditor.getScrollTop()
   }
 
-  setScrollTop (scrollTop) {
+  setScrollTop(scrollTop) {
     return this.textEditor.setScrollTop(scrollTop)
   }
 
-  getScrollLeft () {
+  getScrollLeft() {
     if (this.useCache) {
       if (!this.scrollLeftCache) {
         this.scrollLeftCache = this.textEditor.getScrollLeft()
@@ -59,21 +63,23 @@ module.exports = class LegacyAdapter {
     return this.textEditor.getScrollLeft()
   }
 
-  getMaxScrollTop () {
+  getMaxScrollTop() {
     if (this.maxScrollTopCache != null && this.useCache) {
       return this.maxScrollTopCache
     }
-    var maxScrollTop = this.textEditor.displayBuffer.getMaxScrollTop()
-    var lineHeight = this.textEditor.getLineHeightInPixels()
+    let maxScrollTop = this.textEditor.displayBuffer.getMaxScrollTop()
+    const lineHeight = this.textEditor.getLineHeightInPixels()
 
     if (this.scrollPastEnd) {
       maxScrollTop -= this.getHeight() - 3 * lineHeight
     }
-    if (this.useCache) { this.maxScrollTopCache = maxScrollTop }
+    if (this.useCache) {
+      this.maxScrollTopCache = maxScrollTop
+    }
     return maxScrollTop
   }
 
-  editorDestroyed () {
+  editorDestroyed() {
     return !this.textEditor || this.textEditor.isDestroyed()
   }
 }

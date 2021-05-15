@@ -128,16 +128,14 @@ class IconDelegate{
 	getReplacementClass(){
 		const {resource} = this;
 		
-		if(resource.isRepository && resource.isRoot)
-			return "icon-repo";
-		
-		else if(resource.isSymlink){
-			const type = resource.isDirectory ? "directory" : "file";
-			return "icon-file-symlink-" + type;
-		}
+		if(resource.isSymlink && !(resource.isRoot && resource.isRepository))
+			return `icon-file-symlink-${resource.isDirectory ? "directory" : "file"}`;
 		
 		else if(resource.isSubmodule)
 			return "icon-file-submodule";
+		
+		else if(resource.isRepository)
+			return "icon-repo";
 		
 		else return "";
 	}
@@ -255,7 +253,7 @@ class IconDelegate{
 				Storage.setPathIcon(path, {
 					priority:  this.currentPriority,
 					iconClass: icon.icon,
-					index:     icon.index
+					index:     icon.index,
 				});
 			
 			else
@@ -284,7 +282,6 @@ class IconDelegate{
 			return;
 		
 		const originalIcon = this.currentIcon;
-		let currentIcon    = originalIcon;
 		let masterDelegate = null;
 		let disposable     = null;
 		
@@ -315,10 +312,10 @@ class IconDelegate{
 							this.emitter.emit("did-change-master", {from, to});
 						
 						to = this.currentIcon;
-						this.emitIconChange(currentIcon, to);
+						this.emitIconChange(originalIcon, to);
 					}
-				}
-			}
+				},
+			},
 		});
 		
 		this.master = input;

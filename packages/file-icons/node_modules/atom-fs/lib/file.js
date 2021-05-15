@@ -91,7 +91,7 @@ class File extends Resource {
 	get size(){
 		return this.isDataComplete
 			? this.data.length
-			: this.stats ? this.stats.size : null;
+			: this.stats ? Number(this.stats.size) : null;
 	}
 	
 	

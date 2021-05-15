@@ -1,25 +1,31 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-  "_id": "linter-ui-default@1.8.0",
+  "_from": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball",
+  "_id": "linter-ui-default@3.3.1",
   "_inBundle": false,
-  "_integrity": "sha512-PkOFe091etNRMTK5SYaw9vTvK7QWlsBtxQmnYltlWU0CT02akGeb7q7YAjjpkTM+LxwLJX1KsXc2W0LmncDTCw==",
+  "_integrity": "sha512-yLTBQGAUOgYY6psE+ax7blgW5vpN15xEVLB7GzL+ft3jMugR+f1Fw9mDPRP71aFyTJ5FI62zcuSKjHk19pD8YA==",
   "_location": "/linter-ui-default",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-  "_shasum": "2a03809663d08d75e6603e554ddb18d9a64bcb95",
-  "_spec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-119810-99326-bix78r.lkaur",
+  "_resolved": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball",
+  "_shasum": "182929db5764a8a0d12cd07012416fd1d0f2905b",
+  "_spec": "https://www.atom.io/api/packages/linter-ui-default/versions/3.3.1/tarball",
+  "_where": "/private/var/folders/6s/ms_gwh6x2fngsylqymfqm59c0009_z/T/apm-install-dir-2021415-21484-1dwjvj2.24cke",
+  "activationHooks": [
+    "core:loaded-shell-environment"
+  ],
+  "alias": {
+    "solid-simple-table": "solid-simple-table/dist/SimpleTable.module"
+  },
   "bugs": {
     "url": "https://github.com/steelbrain/linter-ui-default/issues"
   },
@@ -153,6 +159,20 @@
       "type": "number",
       "default": 100,
       "order": 3
+    },
+    "longLineLength": {
+      "title": "Long Line Length",
+      "description": "If an editor has a line with a length more than this number, linter will skip adding inline linter markers.",
+      "type": "number",
+      "default": 4000,
+      "order": 10
+    },
+    "largeFileLineCount": {
+      "title": "Large File Line Count",
+      "description": "If an editor more line numbers than this number, linter will skip adding inline linter markers.",
+      "type": "number",
+      "default": 20000,
+      "order": 11
     }
   },
   "consumedServices": {
@@ -168,23 +188,44 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "^5.1.0",
-    "disposable-event": "^1.0.3",
-    "marked": "^0.7.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "sb-debounce": "^1.0.1",
-    "sb-react-table": "^1.0.2"
+    "atom-package-deps": "^7.2.3",
+    "disposable-event": "^1.1.0",
+    "lodash": "^4.17.21",
+    "marked": "^2.0.1",
+    "solid-js": "^0.23.11",
+    "solid-simple-table": "^0.1.4"
   },
   "deprecated": false,
   "description": "Default UI for the Linter package",
   "devDependencies": {
-    "eslint-config-steelbrain": "^5.0.0",
-    "flow-bin": "^0.67.1",
-    "jasmine-fix": "^1.0.1"
+    "@babel/cli": "^7.13.10",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/atom": "^1.40.10",
+    "@types/chance": "^1.1.1",
+    "@types/jasmine": "^3.6.7",
+    "@types/lodash": "^4.14.168",
+    "@types/marked": "^2.0.0",
+    "@types/node": "^14.14.35",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "atom-ide-base": "2.5.0",
+    "babel-plugin-transform-globalthis": "^1.0.0",
+    "babel-preset-atomic": "^3.0.3",
+    "babel-preset-solid": "^0.23.8",
+    "build-commit": "0.1.4",
+    "chance": "^1.1.7",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.22.0",
+    "eslint-config-atomic": "1.12.4",
+    "jasmine-fix": "^1.3.1",
+    "parcel": "2.0.0-nightly.630",
+    "prettier-config-atomic": "^1.0.1",
+    "shx": "^0.3.3",
+    "typescript": "^4"
   },
   "engines": {
-    "atom": ">=1.19.0 <2.0.0"
+    "atom": ">=1.52.0",
+    "electron": ">=6.x"
   },
   "homepage": "https://github.com/steelbrain/linter-ui-default#readme",
   "keywords": [
@@ -192,11 +233,16 @@
     "linter-ui-default"
   ],
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "name": "linter-ui-default",
   "package-deps": [
-    "intentions",
-    "linter"
+    {
+      "name": "intentions"
+    },
+    {
+      "name": "linter",
+      "minimumVersion": "3.0.0"
+    }
   ],
   "providedServices": {
     "linter-ui": {
@@ -215,8 +261,37 @@
     "url": "git+https://github.com/steelbrain/linter-ui-default.git"
   },
   "scripts": {
-    "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
-    "test": "apm test"
+    "babel": "babel dist --out-dir dist --retain-lines",
+    "babel.globalThis": "babel dist --out-dir dist --plugins babel-plugin-transform-globalthis --retain-lines",
+    "benchmark": "cross-env NODE_ENV=production npm run tsc.build && atom --test ./benchmark/benchmark.js",
+    "build": "cross-env NODE_ENV=production parcel build --target main ./lib/index.ts && npm run babel.globalThis",
+    "build-commit": "npm run clean && build-commit -o dist",
+    "build.clean": "npm run clean && npm run build",
+    "clean": "shx rm -rf dist .parcel-cache",
+    "dev": "cross-env NODE_ENV=development parcel watch --target main ./lib/index.ts",
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build-commit",
+    "test": "npm run tsc.build && npm run build && npm run test.only",
+    "test.format": "prettier . --check",
+    "test.lint": "eslint .",
+    "test.only": "atom --test spec",
+    "tsc.build": "npm run clean && cross-env NODE_ENV=production tsc -p lib/tsconfig.json || echo done && npm run babel",
+    "tsc.dev": "npm run clean && cross-env NODE_ENV=development tsc --watch -p lib/tsconfig.json || echo done && npm run babel"
   },
-  "version": "1.8.0"
+  "targets": {
+    "main": {
+      "context": "node",
+      "includeNodeModules": {
+        "atom": false,
+        "electron": false,
+        "atom-package-deps": false,
+        "disposable-event": false
+      },
+      "outputFormat": "commonjs",
+      "isLibrary": true
+    }
+  },
+  "version": "3.3.1"
 }
